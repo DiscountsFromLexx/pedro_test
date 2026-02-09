@@ -1133,97 +1133,152 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 20px;
     }
 
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
+        position: absolute;
         top: 24px;
-        left: 14px; /* було 24px; */
-        gap: 16px;
-    }    
+        left: 24px;
+        right: 24px;              /* розтягуємо на всю ширину */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 20px;
+    }
+
+    /* FEEDBACK відштовхується вправо до перемикача тем */
+    .feedback-btn {
+        margin-left: auto;        /* головне — відштовхується максимально вправо */
+        min-width: 110px;
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+
+    .coupons-btn,
+    .instruction-btn,
+    .web-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 110px;
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
 
     .btn-icon {
-        width: 48px;
-        height: 48px;
+        width: 52px;
+        height: 52px;
         margin-bottom: 10px;
+        object-fit: contain;
     }
 
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
     .feedback-btn span {
-        font-size: 13px;
+        font-size: 14px;
+        font-weight: 500;
         margin-top: 8px;
+        color: #FFFFFF;
     }
 
+    body.light-theme .coupons-btn span,
+    body.light-theme .instruction-btn span,
+    body.light-theme .web-btn span,
+    body.light-theme .feedback-btn span {
+        color: #000000 !important;
+    }
+
+    .coupons-btn:hover,
+    .instruction-btn:hover,
+    .web-btn:hover,
+    .feedback-btn:hover {
+        background: rgba(30, 144, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* Центральна іконка Pedro — по центру */
     .instruction-img {
-        width: 90px;
-        height: 90px;
+        position: absolute;
         top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        z-index: 10;
     }
 
-    .feedback-btn {
-        top: 24px;
-        left: 44px; /* було right: 24px; */
-        min-width: 110px;
-        padding: 16px 12px;
+    .slogan-text {
+        margin-top: 120px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
     }
 
+    /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
-        top: 30px;                    /* трохи нижче, щоб не прилипав до краю */
-        right: 14px;                  /* було right: 14px; */
-        gap: 8px;                     /* більша відстань між іконками та повзунком */
-        z-index: 1000;
+        position: absolute;
+        top: 30px;                /* трохи нижче, щоб не перекривати кнопки */
+        right: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
     }
 
     .theme-toggle {
-        height: 48px;                 /* значно вищий — зручніше натискати пальцем */
-        width: 110px;                 /* ширший для читабельності тексту */
+        height: 48px;
+        width: 110px;
     }
 
     .slider {
-        border-radius: 24px;          /* більші скруглення */
-        border: 2px solid #FFFFFF;    /* товстіший бордер для видимості */
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
     }
 
     .slider:after {
-        font-size: 12px;              /* текст "ТЕМНА/СВІТЛА ТЕМА" більший */
+        font-size: 12px;
         letter-spacing: 0.8px;
     }
 
     .slider:before {
-        height: 42px;                 /* більша "кнопка" повзунка */
+        height: 42px;
         width: 42px;
-        left: -4px;                   /* скориговано, щоб був усередині */
+        left: -4px;
         bottom: 2px;
-        
+        border: 2px solid #FFFFFF;
     }
 
     input:checked + .slider:before {
-        transform: translateX(64px);  /* скориговано під нову ширину */
+        transform: translateX(64px);
     }
 
     .theme-label {
-        font-size: 16px;              /* значно більший текст */
+        font-size: 16px;
         font-weight: 600;
         letter-spacing: 1px;
     }
 
     .theme-label-moon,
     .theme-label-sun {
-        font-size: 2.2em;             /* більші емодзі місяця/сонця */
-        top: 8px;                     /* трохи нижче для центрування */
+        font-size: 2.2em;
+        top: 8px;
         margin-top: -4px;
     }
 
     .theme-label.active {
-        font-size: 24px;              /* активний стан — ще більший */
+        font-size: 24px;
     }
 
     .theme-label:not(.active) {
-        font-size: 12px;              /* неактивний — теж читається */
-    }
-
-    .slogan-text {
-        margin-top: 110px;
-        font-size: 16px;
+        font-size: 12px;
     }
 
     .header-text {
