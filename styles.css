@@ -1125,7 +1125,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body {
         font-size: 18px; /* більший базовий текст */
     }
-
     .main-container {
         width: 94%;
         max-width: 900px; /* не розтягуємо занадто */
