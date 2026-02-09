@@ -1137,7 +1137,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;
         top: 24px;
-        left: 24px;
+        left: 14px;
         right: 24px;              /* розтягуємо на всю ширину */
         z-index: 1000;
         display: flex;
@@ -1226,7 +1226,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 30px;                /* трохи нижче, щоб не перекривати кнопки */
-        right: 24px;
+        right: 14px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -1253,7 +1253,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 42px;
         left: -4px;
         bottom: 2px;
-        border: 2px solid #FFFFFF;
+        border: 0px solid #FFFFFF;
     }
 
     input:checked + .slider:before {
