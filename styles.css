@@ -1193,7 +1193,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 42px;
         left: -4px;                   /* скориговано, щоб був усередині */
         bottom: 2px;
-        border: 2px solid #FFFFFF;    /* товстіший бордер на повзунку */
+        
     }
 
     input:checked + .slider:before {
