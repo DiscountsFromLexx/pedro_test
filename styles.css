@@ -1209,8 +1209,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 12px;
         left: 50%;
         transform: translateX(-50%);
-        width: 100px;
-        height: 100px;
+        width: 105px;
+        height: 105px;
         border-radius: 50%;
         z-index: 10;
     }
