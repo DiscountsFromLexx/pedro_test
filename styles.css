@@ -1166,6 +1166,61 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 12px;
     }
 
+    .theme-toggle-container {
+        top: 30px;                    /* трохи нижче, щоб не прилипав до краю */
+        right: 30px;                  /* симетрично зліва */
+        gap: 8px;                     /* більша відстань між іконками та повзунком */
+        z-index: 1000;
+    }
+
+    .theme-toggle {
+        height: 48px;                 /* значно вищий — зручніше натискати пальцем */
+        width: 110px;                 /* ширший для читабельності тексту */
+    }
+
+    .slider {
+        border-radius: 24px;          /* більші скруглення */
+        border: 2px solid #FFFFFF;    /* товстіший бордер для видимості */
+    }
+
+    .slider:after {
+        font-size: 12px;              /* текст "ТЕМНА/СВІТЛА ТЕМА" більший */
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;                 /* більша "кнопка" повзунка */
+        width: 42px;
+        left: -4px;                   /* скориговано, щоб був усередині */
+        bottom: 2px;
+        border: 2px solid #FFFFFF;    /* товстіший бордер на повзунку */
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);  /* скориговано під нову ширину */
+    }
+
+    .theme-label {
+        font-size: 16px;              /* значно більший текст */
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;             /* більші емодзі місяця/сонця */
+        top: 8px;                     /* трохи нижче для центрування */
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;              /* активний стан — ще більший */
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;              /* неактивний — теж читається */
+    }
+
     .slogan-text {
         margin-top: 110px;
         font-size: 16px;
