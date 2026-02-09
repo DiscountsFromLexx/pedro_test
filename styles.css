@@ -1137,7 +1137,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;
         top: 24px;
-        left: 4px;
+        left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
@@ -1149,7 +1149,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: 100px;        /* головне — відштовхується максимально вправо auto */
+        margin-left: 150px;        /* головне — відштовхується максимально вправо auto */
         min-width: 80px;
         padding: 16px 12px;
         border-radius: 16px;
@@ -1226,7 +1226,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 30px;                /* трохи нижче, щоб не перекривати кнопки */
-        right: 4px;
+        right: 2px;
         display: flex;
         align-items: center;
         gap: 10px;
