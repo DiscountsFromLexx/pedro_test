@@ -1138,13 +1138,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         position: absolute;
         top: 24px;
         left: 14px;
-        right: 24px;              /* розтягуємо на всю ширину */
+        right: 18px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
         flex-direction: row;
         align-items: flex-end;
         justify-content: flex-start; /* кнопки зліва */
-        gap: 4px;
+        gap: 1px;
     }
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
