@@ -173,6 +173,11 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open('https://pedroapp.lexxexpress.click', '_blank');
         // або window.location.href = 'https://pedroapp.lexxexpress.click'; — якщо хочеш відкрити в тому ж вікні
     });
+    // ─── Кнопка FEEDBACK — написати адміністрації ────────────────────────
+    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
+        window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
+        // або window.location.href = 'https://t.me/EarlyBirdDeals_bot'; — якщо хочеш відкрити в тому ж вікні
+    });
     // ─── Функція відправки форми (використовується і з кнопки, і з Enter) ──
     const sendForm = async () => {
         let link = field4.value.trim();
