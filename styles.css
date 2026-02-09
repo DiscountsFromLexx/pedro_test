@@ -1135,7 +1135,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .top-buttons {
         top: 24px;
-        left: 24px;
+        left: 14px; /* було 24px; */
         gap: 16px;
     }
 
