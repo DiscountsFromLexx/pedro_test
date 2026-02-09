@@ -1144,7 +1144,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         flex-direction: row;
         align-items: flex-end;
         justify-content: flex-start; /* кнопки зліва */
-        gap: 20px;
+        gap: 4px;
     }
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
