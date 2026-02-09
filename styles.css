@@ -1120,189 +1120,126 @@ body.light-theme .result-text[data-coupons-loaded] b {
      
 }
 
-/* iPad Mini та подібні планшети (портретний режим) */
-@media (max-width: 821px) {
+/* Планшети (iPad Mini, iPad Air тощо) — ширина від 769 до 1024 px */
+@media (min-width: 769px) and (max-width: 1024px) {
     body {
-        font-size: 18px; /* базовий розмір тексту більший */
+        font-size: 18px; /* більший базовий текст */
     }
 
     .main-container {
-        width: 96%;
-        padding: 12px;
-        max-width: 768px;
+        width: 94%;
+        max-width: 900px; /* не розтягуємо занадто */
+        padding: 20px;
     }
 
     .container {
-        padding: 20px 16px;
-        border-radius: 16px;
+        padding: 30px 24px;
+        border-radius: 20px;
     }
 
     .top-buttons {
-        top: 16px;
-        left: 16px;
-        gap: 12px; /* більша відстань між іконками */
+        top: 24px;
+        left: 24px;
+        gap: 20px; /* більша відстань між іконками */
+    }
+
+    .feedback-btn {
+        top: 24px;
+        right: 24px;
+        min-width: 110px;
+        padding: 16px 12px;
     }
 
     .coupons-btn,
     .instruction-btn,
-    .web-btn {
-        min-width: 90px;
-        padding: 12px 8px;
-        border-radius: 12px;
+    .web-btn,
+    .feedback-btn {
+        min-width: 110px;
+        padding: 16px 12px;
+        border-radius: 16px;
     }
 
     .btn-icon {
-        width: 42px;
-        height: 42px;
-        margin-bottom: 8px;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 10px;
     }
 
     .coupons-btn span,
     .instruction-btn span,
-    .web-btn span {
-        font-size: 12px;
+    .web-btn span,
+    .feedback-btn span {
+        font-size: 14px;
         font-weight: 500;
-        letter-spacing: 0.8px;
-        margin-top: 6px;
+        margin-top: 8px;
     }
 
     .instruction-img {
-        width: 80px;
-        height: 80px;
-        top: 8px;
+        width: 100px;
+        height: 100px;
+        top: 12px;
     }
 
     .slogan-text {
-        margin-top: 80px;
-        font-size: 14px;
+        margin-top: 120px;
+        font-size: 18px;
         font-weight: 300;
     }
 
     .header-text {
-        font-size: 26px;
-        margin-top: 30px;
+        font-size: 32px;
+        margin-top: 40px;
     }
 
     .block-form {
-        margin-top: 20px;
-        padding: 20px;
+        margin-top: 40px;
+        padding: 30px;
     }
 
     .checkbox-group {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 10px 12px;
-        padding: 16px 20px;
-        font-size: 14px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px 18px;
+        padding: 20px 24px;
+        font-size: 16px;
     }
 
     .checkbox-group label {
-        font-size: 14px;
-        padding: 8px 12px;
-        min-height: 16px;
+        font-size: 16px;
+        padding: 10px 14px;
+        min-height: 20px;
     }
 
     .input-group label {
-        font-size: 18px;
-        margin-bottom: 8px;
+        font-size: 20px;
+        margin-bottom: 10px;
     }
 
-    .input-group input,
-    .input-with-paste input {
-        font-size: 16px;
-        padding: 14px;
+    .input-group input {
+        font-size: 18px;
+        padding: 16px;
     }
 
     .result label {
-        font-size: 20px;
-        margin-bottom: 12px;
+        font-size: 22px;
+        margin-bottom: 14px;
     }
 
     .result-text {
-        min-height: 240px;
-        font-size: 16px;
-        padding: 20px;
-        line-height: 1.7;
+        min-height: 300px;
+        font-size: 18px;
+        padding: 24px;
+        line-height: 1.8;
     }
 
     .submit-group {
-        gap: 10px;
-        margin-top: 16px;
+        gap: 16px;
+        margin-top: 24px;
     }
 
     .submit-btn,
     .clear-btn {
-        font-size: 18px;
-        padding: 14px;
-        border-radius: 10px;
-    }
-
-    .channels-text {
-        font-size: 18px;
-        margin-top: 40px;
-    }
-
-    .tgkch-text {
-        font-size: 22px;
-    }
-
-    .iheader-text {
-        font-size: 28px;
-        margin-top: 50px;
-    }
-
-    .instructions-text {
-        font-size: 17px;
-        line-height: 1.7;
-    }
-
-    .theme-toggle-container {
-        top: 20px;
-        right: 20px;
-        gap: 6px;
-    }
-
-    .theme-toggle {
-        height: 40px;
-        width: 90px;
-    }
-
-    .theme-label {
-        font-size: 14px;
-    }
-
-    .theme-label-moon,
-    .theme-label-sun {
-        font-size: 2em;
-    }
-
-    .slider {
-        border-radius: 16px;
-    }
-
-    .slider:after {
-        font-size: 10px;
-    }
-
-    .scroll-top-btn {
-        bottom: 30px;
-        right: 30px;
-        padding: 14px 28px;
-        font-size: 18px;
-        border-radius: 60px;
-    }
-
-    .paste-btn {
-        padding: 10px 16px;
-        font-size: 14px;
-    }
-
-    .promo-code {
-        font-size: 15px;
-        padding: 6px 12px;
-    }
-
-    .result-text img {
-        max-width: 140px;
-        margin: 0 0 16px 20px;
+        font-size: 20px;
+        padding: 16px;
+        border-radius: 12px;
     }
 }
