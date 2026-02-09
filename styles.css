@@ -1138,7 +1138,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         position: absolute;
         top: 24px;
         left: 4px;
-        right: 18px;              /* розтягуємо на всю ширину  24px; */
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
         flex-direction: row;
@@ -1149,7 +1149,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: auto;        /* головне — відштовхується максимально вправо */
+        margin-left: 70px;        /* головне — відштовхується максимально вправо auto */
         min-width: 110px;
         padding: 16px 12px;
         border-radius: 16px;
