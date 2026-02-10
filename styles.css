@@ -1347,9 +1347,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .main-container {
-        width: 92%;
+        width: 98%;
         max-width: 1200px; /* не розтягуємо занадто на великому екрані */
-        padding: 30px;
+        padding: 20px;
     }
 
     .container {
@@ -1360,7 +1360,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок — розтягнутий на всю ширину */
     .top-buttons {
         top: 32px;
-        left: 32px;
+        left: 2px; /* 32px  */
         right: 32px;
         gap: 10px; /* більша відстань між іконками в ландшафті 24px */
         justify-content: space-between; /* кнопки рівномірно по ширині */
@@ -1370,7 +1370,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .web-btn,
     .feedback-btn {
-        min-width: 100px; /* було 130px */
+        min-width: 80px; /* було 130px */
         padding: 20px 16px;
         border-radius: 20px;
     }
@@ -1393,6 +1393,65 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 120px;
         height: 120px;
         top: 16px;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 48px;
+        width: 110px;
+    }
+
+    .slider {
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;
+        width: 42px;
+        left: -4px;
+        bottom: 2px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);
+    }
+
+    .theme-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;
+        top: 8px;
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;
     }
 
     .slogan-text {
@@ -1457,57 +1516,5 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 14px;
     }
 
-    /* Перемикач тем — праворуч, більший */
-    .theme-toggle-container {
-        top: 40px;
-        right: 40px;
-        gap: 12px;
-    }
-
-    .theme-toggle {
-        height: 56px;
-        width: 130px;
-    }
-
-    .slider {
-        border-radius: 28px;
-        border: 3px solid #FFFFFF;
-    }
-
-    .slider:after {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .slider:before {
-        height: 50px;
-        width: 50px;
-        left: -6px;
-        bottom: 3px;
-        border: 0px solid #FFFFFF;
-    }
-
-    input:checked + .slider:before {
-        transform: translateX(76px);
-    }
-
-    .theme-label {
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    .theme-label-moon,
-    .theme-label-sun {
-        font-size: 2.5em;
-        top: 10px;
-        margin-top: -6px;
-    }
-
-    .theme-label.active {
-        font-size: 28px;
-    }
-
-    .theme-label:not(.active) {
-        font-size: 14px;
-    }
+    
 }
