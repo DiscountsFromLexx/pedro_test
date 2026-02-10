@@ -1373,7 +1373,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: 110px;        /* головне — відштовхується максимально вправо auto */
+        margin-left: 80px;        /* головне — відштовхується максимально вправо auto */
         min-width: 110px;
         padding: 16px 12px;
         border-radius: 16px;
