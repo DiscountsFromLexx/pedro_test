@@ -1357,42 +1357,152 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 24px;
     }
 
-    /* Контейнер усіх кнопок — розтягнутий на всю ширину */
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
-        top: 32px;
-        left: 32px;
-        right: 32px;
-        gap: 4px; /* більша відстань між іконками в ландшафті 24px */
-        justify-content: space-between; /* кнопки рівномірно по ширині */
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }
+
+    /* FEEDBACK відштовхується вправо до перемикача тем */
+    .feedback-btn {
+        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
+        min-width: 85px;
+        padding: 16px 12px;
+        border-radius: 16px;
     }
 
     .coupons-btn,
     .instruction-btn,
     .web-btn,
     .feedback-btn {
-        min-width: 80px; /* було 130px */
-        padding: 20px 16px;
-        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 95px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
     }
 
     .btn-icon {
-        width: 64px;
-        height: 64px;
-        margin-bottom: 12px;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 10px;
+        object-fit: contain;
     }
 
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
     .feedback-btn span {
-        font-size: 16px;
-        margin-top: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 8px;
+        color: #FFFFFF;
     }
 
+    body.light-theme .coupons-btn span,
+    body.light-theme .instruction-btn span,
+    body.light-theme .web-btn span,
+    body.light-theme .feedback-btn span {
+        color: #000000 !important;
+    }
+
+    .coupons-btn:hover,
+    .instruction-btn:hover,
+    .web-btn:hover,
+    .feedback-btn:hover {
+        background: rgba(30, 144, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* Центральна іконка Pedro — по центру */
     .instruction-img {
-        width: 120px;
-        height: 120px;
-        top: 16px;
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .slogan-text {
+        margin-top: 120px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 48px;
+        width: 110px;
+    }
+
+    .slider {
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;
+        width: 42px;
+        left: -4px;
+        bottom: 2px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);
+    }
+
+    .theme-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;
+        top: 8px;
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;
     }
 
     .slogan-text {
@@ -1457,57 +1567,5 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 14px;
     }
 
-    /* Перемикач тем — праворуч, більший */
-    .theme-toggle-container {
-        top: 40px;
-        right: 40px;
-        gap: 12px;
-    }
-
-    .theme-toggle {
-        height: 56px;
-        width: 130px;
-    }
-
-    .slider {
-        border-radius: 28px;
-        border: 3px solid #FFFFFF;
-    }
-
-    .slider:after {
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .slider:before {
-        height: 50px;
-        width: 50px;
-        left: -6px;
-        bottom: 3px;
-        border: 0px solid #FFFFFF;
-    }
-
-    input:checked + .slider:before {
-        transform: translateX(76px);
-    }
-
-    .theme-label {
-        font-size: 18px;
-        font-weight: 600;
-    }
-
-    .theme-label-moon,
-    .theme-label-sun {
-        font-size: 2.5em;
-        top: 10px;
-        margin-top: -6px;
-    }
-
-    .theme-label.active {
-        font-size: 28px;
-    }
-
-    .theme-label:not(.active) {
-        font-size: 14px;
-    }
+    
 }
