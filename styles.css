@@ -1371,13 +1371,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: 1px;
     }
 
-    /* FEEDBACK відштовхується вправо до перемикача тем */
-    .feedback-btn {
-        margin-left: 60px;        /* головне — відштовхується максимально вправо auto */
-        min-width: 110px;
-        padding: 16px 12px;
-        border-radius: 16px;
-    }
+    
 
     .coupons-btn,
     .instruction-btn,
