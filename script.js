@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // або window.location.href = 'https://t.me/EarlyBirdDeals_bot'; — якщо хочеш відкрити в тому ж вікні
     });
     // ─── Функція відправки форми (використовується і з кнопки, і з Enter) ──
-    const sendForm = async () => {
+        const sendForm = async () => {
         let link = field4.value.trim();
     
         // Якщо поле порожнє — намагаємося взяти з буфера
@@ -236,6 +236,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
     
+        // Отримуємо дані користувача з Telegram WebApp (якщо є)
+        const tg = window.Telegram?.WebApp;
+        const tgUser = tg?.initDataUnsafe?.user || {};
+    
+        const userData = {
+            user_id: tgUser.id || 0,
+            user_name: tgUser.first_name || (tgUser.last_name ? `${tgUser.first_name} ${tgUser.last_name}` : 'Без імені'),
+            username: tgUser.username ? `@${tgUser.username}` : 'немає',
+            language_code: tgUser.language_code || 'uk', // опціонально
+            is_premium: tgUser.is_premium || false      // опціонально
+        };
+    
         // Запускаємо обробку
         submitBtn.disabled = true;
         submitBtn.textContent = 'Обробка...';
@@ -245,9 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('https://lexxexpress.click/pedro/submit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     link: link,
-                    sections: sections  // передаємо масив вибраних розділів
+                    sections: sections,
+                    // Передаємо всі дані користувача
+                    ...userData
                 })
             });
     
