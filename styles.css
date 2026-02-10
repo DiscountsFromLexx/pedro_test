@@ -1349,7 +1349,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .main-container {
         width: 98%;
         max-width: 1200px; /* не розтягуємо занадто на великому екрані */
-        padding: 30px;
+        padding: 20px;
     }
 
     .container {
@@ -1370,7 +1370,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .web-btn,
     .feedback-btn {
-        min-width: 130px;
+        min-width: 80px; /* було 130px */
         padding: 20px 16px;
         border-radius: 20px;
     }
