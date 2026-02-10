@@ -1380,7 +1380,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 110px; /* було 110px */
+        min-width: 90px; /* було 110px */
         padding: 16px 12px;
         border-radius: 16px;
         background: transparent;
