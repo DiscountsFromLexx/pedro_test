@@ -1530,5 +1530,15 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 14px;
     }
 
+    .result-text img {
+        float: right;                /* фото праворуч */
+        margin: 0 0 12px 16px;       /* відступи: знизу 0, зліва 16px (щоб текст не прилипав) */
+        max-width: 240px; /* було 120px; */
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        clear: both;                 /* щоб текст не "обтікав" інші елементи */
+    }
+
     
 }
