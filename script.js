@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data.success) {
                 let html = '';
                 if (data.image_url) {
-                    html += `<img src="${data.image_url}" alt="Товар" class="product-image">`;
+                    html += `<img src="${data.image_url}" alt="Зображення" class="product-image">`;
                 }
                 html += data.result || 'Готово!';
                 resultText.innerHTML = html;
