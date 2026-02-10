@@ -1080,9 +1080,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 50px; /* було 40px */
         padding: 15px; /* було 10px */
     }
-    .result-text .product-image {
-        max-width: 1500px;          /* або 400px — підбери під себе */
-    }    
+        
     
     .header-text {
         font-size: 18px;
@@ -1113,6 +1111,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-family: 'Montserrat', sans-serif;
         letter-spacing: 2px;
         margin-bottom: 5px;
+    }
+
+    .result-text .product-image {
+        max-width: 90px;          /* або 400px — підбери під себе */
     }
      
 }
