@@ -941,15 +941,18 @@ body.light-theme blockquote i {
 .result-text blockquote span:not(.promo-code) {
     color: inherit !important;
 }
-.result-text img {
-        float: right;                /* фото праворуч */
-        margin: 0 0 12px 16px;       /* відступи: знизу 0, зліва 16px (щоб текст не прилипав) */
-        max-width: 90px; /* було 90px; */
-        height: auto;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        clear: both;                 /* щоб текст не "обтікав" інші елементи */
-    } 
+ 
+.result-text .product-image {
+    float: right;
+    margin: 0 0 16px 20px;         /* трохи більше відступів для планшетів */
+    max-width: 90px;              /* базовий розмір для телефонів */
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    clear: both;
+}
+
 
 
 /* Текст промокодів у resultText — завжди контрастний */
@@ -1077,14 +1080,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 50px; /* було 40px */
         padding: 15px; /* було 10px */
     }
-    .result-text img {
-        float: right;                /* фото праворуч */
-        margin: 0 0 12px 16px;       /* відступи: знизу 0, зліва 16px (щоб текст не прилипав) */
-        max-width: 90px; /* було 120px; */
-        height: auto;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        clear: both;                 /* щоб текст не "обтікав" інші елементи */
+    .result-text .product-image {
+        max-width: 1500px;          /* або 400px — підбери під себе */
     }    
     
     .header-text {
@@ -1337,10 +1334,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 16px;
         border-radius: 12px;
     }
-    .result-text img {
-        
-        max-width: 380px; /* було 120px; */
-        
+    .result-text .product-image {
+        max-width: 300px;          /* або 400px — підбери під себе */
     }
 }
 
@@ -1535,14 +1530,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 14px;
     }
 
-    .result-text img {
-        float: right;                /* фото праворуч */
-        margin: 0 0 12px 16px;       /* відступи: знизу 0, зліва 16px (щоб текст не прилипав) */
-        width: 500px; /* було 120px; */
-        height: auto;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        clear: both;                 /* щоб текст не "обтікав" інші елементи */
+    
+    .result-text .product-image {
+        max-width: 300px;          /* або 400px — підбери під себе */
     }
 
     
