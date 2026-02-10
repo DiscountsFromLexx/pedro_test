@@ -1373,7 +1373,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
+        margin-left: 100px;        /* головне — відштовхується максимально вправо auto */
         min-width: 85px;
         padding: 16px 12px;
         border-radius: 16px;
@@ -1446,68 +1446,58 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
 
-    /* Перемикач тем — праворуч від FEEDBACK */
+    /* Перемикач тем — праворуч, більший */
     .theme-toggle-container {
-        position: absolute;
-        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
-        right: 2px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        z-index: 1001;            /* вище всіх кнопок */
+        top: 40px;
+        right: 40px;
+        gap: 12px;
     }
 
     .theme-toggle {
-        height: 48px;
-        width: 110px;
+        height: 56px;
+        width: 130px;
     }
 
     .slider {
-        border-radius: 24px;
-        border: 2px solid #FFFFFF;
+        border-radius: 28px;
+        border: 3px solid #FFFFFF;
     }
 
     .slider:after {
-        font-size: 12px;
-        letter-spacing: 0.8px;
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 
     .slider:before {
-        height: 42px;
-        width: 42px;
-        left: -4px;
-        bottom: 2px;
-        border: 0px solid #FFFFFF;
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 3px solid #FFFFFF;
     }
 
     input:checked + .slider:before {
-        transform: translateX(64px);
+        transform: translateX(76px);
     }
 
     .theme-label {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 600;
-        letter-spacing: 1px;
     }
 
     .theme-label-moon,
     .theme-label-sun {
-        font-size: 2.2em;
-        top: 8px;
-        margin-top: -4px;
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
     }
 
     .theme-label.active {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .theme-label:not(.active) {
-        font-size: 12px;
-    }
-
-    .slogan-text {
-        margin-top: 140px;
-        font-size: 22px;
+        font-size: 14px;
     }
 
     .header-text {
