@@ -1390,8 +1390,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .btn-icon {
-        width: 64px;
-        height: 64px;
+        width: 54px; /* було 64px */
+        height: 54px; /* було 64px */
         margin-bottom: 12px;
     }
 
