@@ -246,10 +246,10 @@ body.light-theme .promo-code {
 
 /* Заголовки розділів */
 .moneti-title {
-    color: #ffeb3b; /* золотистий жовтий — видно на темному */
+    color: #FFFFFF; /* золотистий жовтий — видно на темному */
 }
 body.light-theme .moneti-title {
-    color: #f57c00; /* помаранчевий для світлої */
+    color: #000000; /* помаранчевий для світлої */
 }
 
 .crystal-title {
