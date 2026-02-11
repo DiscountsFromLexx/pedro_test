@@ -1878,7 +1878,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 }
 
-/* Планшети (PC тощо) — ширина від 769 до 1024 px (max-width: 821px) */
+/* PC тощо */
 @media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
@@ -1901,7 +1901,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;
         top: 24px;
-        left: 2px;
+        left: -14px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
@@ -1953,7 +1953,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 50px;                /*  45px; */
-        right: 2px;
+        right: -14px;
         display: flex;
         align-items: center;
         gap: 10px;
