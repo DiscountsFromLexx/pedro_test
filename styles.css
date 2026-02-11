@@ -1901,7 +1901,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;
         top: 24px;
-        left: -74px;
+        left: -114px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
@@ -1953,7 +1953,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 50px;                /*  45px; */
-        right: -74px;
+        right: -114px;
         display: flex;
         align-items: center;
         gap: 10px;
