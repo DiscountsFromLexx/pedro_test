@@ -1119,7 +1119,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
      
 }
 
-@media (max-width: 800px) and (orientation: landscape) {  
+@media (min-width: 824px) and (max-width: 854px) and (orientation: landscape) {  
     
     body.in-telegram .container {
         top: 50px; !important;
