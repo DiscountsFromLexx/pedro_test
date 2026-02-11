@@ -1124,6 +1124,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 18px;
+        width: 100%;
     }
 
     .main-container {
