@@ -1694,6 +1694,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 20px;
     }
 
+    .container {
+        padding: 40px 32px;
+        border-radius: 24px;
+    }
+
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
@@ -1708,13 +1713,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: 1px;
     }
 
-    /* FEEDBACK відштовхується вправо до перемикача тем */
-    .feedback-btn {
-        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
-        min-width: 85px;
-        padding: 16px 12px;
-        border-radius: 16px;
-    }
+    
 
     .coupons-btn,
     .instruction-btn,
@@ -1723,7 +1722,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 95px; /* було 110px */
+        min-width: 90px; /* було 110px */
         padding: 16px 12px;
         border-radius: 16px;
         background: transparent;
@@ -1733,60 +1732,29 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .btn-icon {
-        width: 52px;
-        height: 52px;
-        margin-bottom: 10px;
-        object-fit: contain;
+        width: 54px; /* було 64px */
+        height: 54px; /* було 64px */
+        margin-bottom: 12px;
     }
 
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
     .feedback-btn span {
-        font-size: 14px;
-        font-weight: 500;
-        margin-top: 8px;
-        color: #FFFFFF;
+        font-size: 16px;
+        margin-top: 10px;
     }
 
-    body.light-theme .coupons-btn span,
-    body.light-theme .instruction-btn span,
-    body.light-theme .web-btn span,
-    body.light-theme .feedback-btn span {
-        color: #000000 !important;
-    }
-
-    .coupons-btn:hover,
-    .instruction-btn:hover,
-    .web-btn:hover,
-    .feedback-btn:hover {
-        background: rgba(30, 144, 255, 0.15);
-        transform: scale(1.05);
-    }
-
-    /* Центральна іконка Pedro — по центру */
     .instruction-img {
-        position: absolute;
-        top: 12px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 105px;
-        height: 105px;
-        border-radius: 50%;
-        z-index: 10;
-    }
-
-    .slogan-text {
-        margin-top: 120px;
-        font-size: 18px;
-        font-weight: 300;
-        text-align: center;
+        width: 120px;
+        height: 120px;
+        top: 16px;
     }
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        top: 50px;                /*  45px; */
         right: 2px;
         display: flex;
         align-items: center;
@@ -1795,111 +1763,117 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .theme-toggle {
-        height: 48px;
-        width: 110px;
+        height: 56px;
+        width: 130px;
     }
 
     .slider {
-        border-radius: 24px;
+        border-radius: 28px;
         border: 2px solid #FFFFFF;
     }
 
     .slider:after {
-        font-size: 12px;
-        letter-spacing: 0.8px;
+        font-size: 14px;
+        letter-spacing: 1px;
     }
 
     .slider:before {
-        height: 42px;
-        width: 42px;
-        left: -4px;
-        bottom: 2px;
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
         border: 0px solid #FFFFFF;
     }
 
     input:checked + .slider:before {
-        transform: translateX(64px);
+        transform: translateX(76px);
     }
 
     .theme-label {
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 600;
         letter-spacing: 1px;
     }
 
-    .theme-label-moon,
+    theme-label-moon,
     .theme-label-sun {
-        font-size: 2.2em;
-        top: 8px;
-        margin-top: -4px;
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
     }
 
     .theme-label.active {
-        font-size: 24px;
+        font-size: 28px;
     }
 
     .theme-label:not(.active) {
-        font-size: 12px;
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 140px;
+        font-size: 22px;
     }
 
     .header-text {
-        font-size: 32px;
-        margin-top: 40px;
+        font-size: 38px;
+        margin-top: 50px;
     }
 
     .block-form {
-        margin-top: 40px;
-        padding: 30px;
+        margin-top: 50px;
+        padding: 40px;
     }
 
     .checkbox-group {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 14px 18px;
-        padding: 20px 24px;
-        font-size: 16px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        font-size: 18px;
     }
 
     .checkbox-group label {
-        font-size: 16px;
-        padding: 10px 14px;
-        min-height: 20px;
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
     }
 
     .input-group label {
-        font-size: 20px;
-        margin-bottom: 10px;
+        font-size: 22px;
+        margin-bottom: 12px;
     }
 
     .input-group input {
-        font-size: 18px;
-        padding: 16px;
+        font-size: 20px;
+        padding: 18px;
     }
 
     .result label {
-        font-size: 22px;
-        margin-bottom: 14px;
+        font-size: 24px;
+        margin-bottom: 16px;
     }
 
     .result-text {
-        min-height: 300px;
-        font-size: 18px;
-        padding: 24px;
-        line-height: 1.8;
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
     }
 
     .submit-group {
-        gap: 16px;
-        margin-top: 24px;
+        gap: 20px;
+        margin-top: 30px;
     }
 
     .submit-btn,
     .clear-btn {
-        font-size: 20px;
-        padding: 16px;
-        border-radius: 12px;
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
     }
+
+    
     .result-text .product-image {
-        max-width: 220px;          /* або 300px — підбери під себе */
+        max-width: 400px;          /* або 400px — підбери під себе */
     }
 }
-
