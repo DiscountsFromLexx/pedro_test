@@ -1684,7 +1684,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 @media (min-width: 1020px) and (max-width: 1025px) and (orientation: portrait) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
-        font-size: 18px;
+        font-size: 18px; /* 18px */
         width: 100%;
     }
 
@@ -1823,6 +1823,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .block-form {
         margin-top: 50px;
         padding: 40px;
+        font-size: 28px;
     }
 
     .checkbox-group {
