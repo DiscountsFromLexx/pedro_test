@@ -1479,7 +1479,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 12px;
     }
     .result-text .product-image {
-        max-width: 220px;          /* або 300px — підбери під себе */
+        max-width: 420px;          /* або 220px — підбери під себе */
     }
 }
 
