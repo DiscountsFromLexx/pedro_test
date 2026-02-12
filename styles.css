@@ -2072,6 +2072,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     
     .result-text .product-image {
-        max-width: 300px;          /* або 400px — підбери під себе */
+        max-width: 280px;          /* або 400px — підбери під себе */
     }
 }
