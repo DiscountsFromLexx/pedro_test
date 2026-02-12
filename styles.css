@@ -982,7 +982,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     body.in-telegram .container {
         top: 50px; !important;
-        padding: 6px;
+        padding: 2px; /* було top: 6px; */
         width: 100%;
     }
     body.in-telegram .top-buttons {
