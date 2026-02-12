@@ -1122,143 +1122,224 @@ body.light-theme .result-text[data-coupons-loaded] b {
 /* Планшети (iPad Mini тощо) — (min-width: 744px) (max-width: 821px) */
 @media (min-width: 743px) and (max-width: 745px) and (orientation: portrait) {  
     
-    body.in-telegram .container {
-        top: 20px; !important;
-        padding: 2px; /* було top: 6px; */
-        width: 96%;
-    }
-    body.in-telegram .top-buttons {
-        top: calc(90px + var(--tg-safe-area-top, 0px)) !important;
-    }
-    
-    
-    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
-    .top-buttons {
-        top: 10px !important;
-        left: 15px;
-        gap: -20px;
-    }
-    
-    .main-container {                  
-        width: 98%;
-        max-width: 744px;
-        padding: 4px;
+    body {
+        font-size: 18px;
+        width: 100%;
     }
 
-    .container {
-        top: -10px; !important;
-        padding: 6px;
-        width: 96%;
+    .main-container {
+        width: 100%;
+        max-width: 820px;
+        padding: 20px;
     }
-    
-    .instruction-img {
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
         position: absolute;
-        top: 2px;
-        left: 50%;
-        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 65px; /* було top: 60px; */
-        height: 65px; /* було top: 60px; */
-        border-radius: 50px;
-        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
-    }
-    .slogan-text {
-        margin-top: 65px;
-        font-weight: 100;
-        
-    }
-    .slider:before {        
-        height: 30px;             /* було 30px */
-        bottom: 2px;        
-    }
-    .theme-toggle-container {
-        top: 98px; /* було 98px */
-        right: 12px;    /* було right: 8px;  */
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
         gap: 1px;
     }
-    .theme-toggle {    
-        height: 37px;             /* було 40px height: 22px; */
-        width: 75px;              /* було 48px */
+
+    /* FEEDBACK відштовхується вправо до перемикача тем */
+    .feedback-btn {
+        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
+        min-width: 85px;
+        padding: 16px 12px;
+        border-radius: 16px;
     }
-    .theme-label {
-        font-size: 8px; /* 6px */
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 100;
-        color: #FF0000;
-    }
-    .theme-label.active {
-        font-size: 10px;
-    }
-    .theme-label:not(.active) {
-        font-size: 5px;
-    }
- 
-    .top-buttons {
-        left: 15px;
-        gap: -20px;
-    }
+
     .coupons-btn,
     .instruction-btn,
     .web-btn,
     .feedback-btn {
-        min-width: 60px;
-        padding: 6px 4px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 95px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
     }
-    
+
     .btn-icon {
-        width: 35px; /* 32px; */
-        height: 35px;  /* 32px; */
-        margin-bottom: 4px;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 10px;
+        object-fit: contain;
     }
-    
+
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
-    .feedback-btn span{
-        font-size: 8px;
-    }
-    
-    
-    .block-form {
-        margin-top: 50px; /* було 40px */
-        padding: 15px; /* було 10px */
-    }
-        
-    
-    .header-text {
-        font-size: 18px;
-        font-weight: 200;
-    }
-    .input-group input {
-        font-size: 10px;
-        font-family: 'Montserrat', sans-serif;
+    .feedback-btn span {
+        font-size: 14px;
         font-weight: 500;
-    }
-     .input-group label {
-        display: block;
-        font-size: 8px;
-        font-weight: 400;
-        font-family: 'Montserrat', sans-serif;
-        letter-spacing: 2px;
-        margin-bottom: 5px;
-    }
-    .result input {
-        font-size: 10px;
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 500;
-    }
-     .result label {
-        display: block;
-        font-size: 8px;
-        font-weight: 400;
-        font-family: 'Montserrat', sans-serif;
-        letter-spacing: 2px;
-        margin-bottom: 5px;
+        margin-top: 8px;
+        color: #FFFFFF;
     }
 
-    .result-text .product-image {
-        max-width: 180px;          /* або 400px — підбери під себе */
+    body.light-theme .coupons-btn span,
+    body.light-theme .instruction-btn span,
+    body.light-theme .web-btn span,
+    body.light-theme .feedback-btn span {
+        color: #000000 !important;
     }
-     
+
+    .coupons-btn:hover,
+    .instruction-btn:hover,
+    .web-btn:hover,
+    .feedback-btn:hover {
+        background: rgba(30, 144, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* Центральна іконка Pedro — по центру */
+    .instruction-img {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .slogan-text {
+        margin-top: 120px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 48px;
+        width: 110px;
+    }
+
+    .slider {
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;
+        width: 42px;
+        left: -4px;
+        bottom: 2px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);
+    }
+
+    .theme-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;
+        top: 8px;
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;
+    }
+
+    .header-text {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    .block-form {
+        margin-top: 40px;
+        padding: 30px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px 18px;
+        padding: 20px 24px;
+        font-size: 16px;
+    }
+
+    .checkbox-group label {
+        font-size: 16px;
+        padding: 10px 14px;
+        min-height: 20px;
+    }
+
+    .input-group label {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .input-group input {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .result label {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    .result-text {
+        min-height: 300px;
+        font-size: 18px;
+        padding: 24px;
+        line-height: 1.8;
+    }
+
+    .submit-group {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 20px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    .result-text .product-image {
+        max-width: 250px;          /* або 220px — підбери під себе */
+    }
 }
 
 @media (min-width: 824px) and (max-width: 854px) and (orientation: landscape) {  
@@ -1402,7 +1483,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
      
 }
 
-/* Планшети (11 дюймів iPad Mini тощо) — (min-width: 769px) (max-width: 821px) */
+/* Планшети (11 дюймів iPad тощо) — (min-width: 769px) (max-width: 821px) */
 @media (min-width: 769px) and (max-width: 821px) and (orientation: portrait) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
