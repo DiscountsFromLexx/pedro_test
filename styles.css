@@ -1121,7 +1121,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 }
 
 /* Планшети (iPad Mini тощо) — (min-width: 744px) (max-width: 821px) */
-@media (min-width: 743px) and (max-width: 745px) and (orientation: portrait) {  
+@media (min-width: 740px) and (max-width: 750px) and (orientation: portrait) {  
     
     body {
         font-size: 18px;
