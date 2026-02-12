@@ -1139,11 +1139,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: -20px;
     }
     
-    .main-container {        
-        top: 0px; /* було top: 200px; */
+    .main-container {                  
+        width: 98%;
+        max-width: 744px;
         padding: 4px;
-        width: 100%;
-    } 
+    }
 
     .container {
         top: -10px; !important;
@@ -1256,7 +1256,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .result-text .product-image {
-        max-width: 280px;          /* або 400px — підбери під себе */
+        max-width: 180px;          /* або 400px — підбери під себе */
     }
      
 }
