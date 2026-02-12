@@ -1261,7 +1261,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 }
 
 /* Планшети (11 дюймів iPad Mini тощо) — (min-width: 769px) (max-width: 821px) */
-@media (min-width: 743px) and (max-width: 821px) and (orientation: portrait) {
+@media (min-width: 769px) and (max-width: 821px) and (orientation: portrait) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 18px;
