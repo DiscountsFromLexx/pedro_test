@@ -1077,7 +1077,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     
     .block-form {
-        margin-top: 40px; /* було 50px */
+        margin-top: 50px; /* було 50px */
         padding: 15px; /* було 10px */
     }
         
