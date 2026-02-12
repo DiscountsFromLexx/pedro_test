@@ -1913,7 +1913,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     
-
     .coupons-btn,
     .instruction-btn,
     .web-btn,
@@ -2073,6 +2072,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     
     .result-text .product-image {
-        max-width: 400px;          /* або 400px — підбери під себе */
+        max-width: 300px;          /* або 400px — підбери під себе */
     }
 }
