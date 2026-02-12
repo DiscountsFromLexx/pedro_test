@@ -1020,7 +1020,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     .slogan-text {
-        margin-top: 65px;
+        margin-top: 70px;
         font-weight: 100;
         
     }
@@ -1077,7 +1077,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     
     .block-form {
-        margin-top: 10px; /* було 50px */
+        margin-top: 40px; /* було 50px */
         padding: 15px; /* було 10px */
     }
         
