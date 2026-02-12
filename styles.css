@@ -465,8 +465,9 @@ input:checked + .slider:before {
     padding: 20px;
 }
 
+/* top: -10px; */
 .container {
-    top: -10px; /* не було */
+     
     width: 96%; /* було 100%; */
     padding: 10px; /* було 20px */
     border-radius: 12px;
