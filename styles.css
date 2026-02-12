@@ -1128,12 +1128,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     }
 
-    .container {
-        top: -10px; !important;
-        padding: 6px;
-        width: 100%;
-    }
-
     .main-container {
         width: 100%;
         max-width: 744px;
