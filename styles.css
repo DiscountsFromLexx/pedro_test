@@ -1125,13 +1125,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     body {
         font-size: 18px;
-        width: 100%;
+        width: 98%;
     }
 
     .main-container {
         width: 100%;
-        max-width: 744px;
-        padding: 20px;
+        max-width: 745px;
+        padding: 10px;
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
