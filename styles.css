@@ -1120,7 +1120,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 }
 
 /* Планшети (iPad Mini тощо) — (min-width: 744px) (max-width: 821px) */
-@media (max-width: 743px) and (max-width: 745px) and (orientation: portrait) {  
+@media (min-width: 743px) and (max-width: 745px) and (orientation: portrait) {  
     
     body.in-telegram .container {
         top: 20px; !important;
@@ -1256,7 +1256,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .result-text .product-image {
-        max-width: 180px;          /* або 400px — підбери під себе */
+        max-width: 280px;          /* або 400px — підбери під себе */
     }
      
 }
