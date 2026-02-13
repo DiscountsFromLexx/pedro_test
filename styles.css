@@ -492,7 +492,7 @@ input:checked + .slider:before {
 /* Контейнер кнопок — горизонтальний рядок */
 .top-buttons {
     position: absolute;
-    top: 10px;                    /* або 90px на мобілках */
+    top: 90px;                    /* або 90px на мобілках */
     left: 15px;
     z-index: 1000;
     display: flex;
@@ -1050,11 +1050,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-label:not(.active) {
         font-size: 5px;
     }
- 
-    .top-buttons {
-        left: 15px;
-        gap: -20px;
-    }
+    
     .coupons-btn,
     .instruction-btn,
     .web-btn,
