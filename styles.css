@@ -1217,7 +1217,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .slogan-text {
-        margin-top: 120px;
+        margin-top: 125px;
         font-size: 18px;
         font-weight: 300;
         text-align: center;
@@ -1226,7 +1226,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        top: 40px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
         right: 2px;
         display: flex;
         align-items: center;
