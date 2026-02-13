@@ -1029,7 +1029,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         bottom: 2px;        
     }
     .theme-toggle-container {
-        top: 98px; /* було 98px */
+        top: 98px; !important; /* було 98px */
         right: 12px;    /* було right: 8px;  */
         gap: 1px;
     }
