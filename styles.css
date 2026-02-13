@@ -459,13 +459,12 @@ input:checked + .slider:before {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90%;
+    width: 98%;
     min-width: 300px;
     max-width: 600px;
-    padding: 20px;
+    padding: 10px;
 }
 
-/* top: -10px; */
 .container {
     top: -10px;
     width: 96%; /* було 100%; */
@@ -493,7 +492,7 @@ input:checked + .slider:before {
 .top-buttons {
     position: absolute;
     top: 90px;                    /* або 90px на мобілках */
-    left: 15px;
+    left: 5px;
     z-index: 1000;
     display: flex;
     flex-direction: row;
@@ -576,7 +575,7 @@ body.light-theme .feedback-btn span {
 }
 
 .slogan-text {
-    margin-top: 55px;
+    margin-top: 60px;
     font-size: 10px;
     font-weight: 200;
     font-family: 'Montserrat', sans-serif;
@@ -595,7 +594,7 @@ body.light-theme .feedback-btn span {
 }
 
 .block-form {
-    margin-top: 10px; /* було 80px */
+    margin-top: 25px; /* було 10px */
     padding: 15px; /* було 10px */
 }
 
