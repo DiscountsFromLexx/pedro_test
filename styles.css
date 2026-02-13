@@ -979,7 +979,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     color: #f57c00 !important; /* помаранчевий у світлій */
 }
 
-@media (max-width: 380px) {  
+@media (min-width: 380px) and (max-width: 396px) and (orientation: portrait) {  
     
     body.in-telegram .container {
         top: 50px; !important;
