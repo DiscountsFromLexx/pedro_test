@@ -252,48 +252,28 @@ document.addEventListener('DOMContentLoaded', () => {
         // Запускаємо обробку
         submitBtn.disabled = true;
         submitBtn.textContent = 'Обробка...';
-        resultText.innerHTML = '<span class="loading-text">Зачекайте...</span>';
+        resultText.innerHTML = '<span class="loading-text">Завантаження трекінгу...</span>';
     
         try {
             if (isTrackNumber) {
-                // Трек-номер — показуємо вбудований iframe з сторінкою Cainiao
+                // Трек-номер — вбудований iframe з сторінкою Cainiao
                 const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
     
                 let html = `
                     <b>Статус відправлення (Cainiao)</b><br><br>
-                    <div style="
-                        background: rgba(30, 144, 255, 0.12);
-                        padding: 16px;
-                        border-radius: 12px;
-                        border: 1px solid rgba(30, 144, 255, 0.3);
-                        margin: 12px 0;
-                    ">
-                        <strong>Номер відправлення:</strong><br>
-                        <code style="
-                            background: rgba(0,0,0,0.3);
-                            padding: 6px 12px;
-                            border-radius: 8px;
-                            font-size: 16px;
-                            margin: 8px 0;
-                            display: inline-block;
-                        ">
-                            ${inputValue}
-                        </code>
-                        <br><br>
-                        <iframe src="${trackUrl}" style="
-                            width: 100%;
-                            height: 700px;  /* можна змінити висоту, якщо потрібно */
-                            border: none;
-                            border-radius: 8px;
-                            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                            background: #fff;
-                        "></iframe>
-                        <br><br>
-                        <small style="color:#aaa; font-style:italic;">
-                            Повна інформація завантажується з офіційного сайту Cainiao.
-                            Якщо iframe не відображається — перевірте трек на https://global.cainiao.com
-                        </small>
-                    </div>
+                    <iframe src="${trackUrl}" style="
+                        width: 100%;
+                        height: 700px;
+                        border: none;
+                        border-radius: 8px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                        background: #fff;
+                    "></iframe>
+                    <br><br>
+                    <small style="color:#aaa; font-style:italic;">
+                        Повна інформація з офіційного сайту Cainiao (логістика AliExpress).<br>
+                        Якщо iframe не завантажився — перевірте трек на https://global.cainiao.com
+                    </small>
                 `;
     
                 resultText.innerHTML = html;
