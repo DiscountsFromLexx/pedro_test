@@ -217,7 +217,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Визначаємо тип введення
         const isAliLink = inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com');
-        const isTrackNumber = /^[A-Za-z0-9]{10,35}$/.test(inputValue) && !isAliLink;
+        const isTrackNumber = 
+            inputValue.length >= 10 && 
+            inputValue.length <= 35 && 
+            /^[A-Za-z0-9- ]+$/.test(inputValue) &&  // дозволяє дефіси та пробіли
+            !isAliLink;
     
         if (!isAliLink && !isTrackNumber) {
             resultText.innerHTML = 'Це не посилання AliExpress і не схоже на трек-номер.';
@@ -268,6 +272,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 payload.sections = sections;
             }
     
+            console.log('Відправляємо запит на трекінг:', {
+                tracking_number: inputValue
+            });
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
