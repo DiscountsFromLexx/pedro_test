@@ -1,8 +1,3 @@
-Відкривав з веб сторінки сафарі
-2026-02-15 01:10:45 — GET_COUPONS
-User Name: Без імені, Username: @немає, User ID: 0
-Джерело: 📱 Mini App
-Details: Користувач відкрив промокоди
 // Визначаємо, чи це Telegram Mini App
 const isWebVersion = !window.Telegram?.WebApp?.initDataUnsafe; // якщо Telegram.WebApp відсутній — це веб-версія
 const isTelegramMiniApp = !!window.Telegram?.WebApp;
