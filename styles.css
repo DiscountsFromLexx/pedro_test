@@ -998,13 +998,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     .main-container {        
-        top: -30px; /* було top: 200px; */
+        top: 0px; /* було top: 200px; */
         padding: 4px;
         width: 100%;
     } 
 
     .container {
-        top: 0px; !important;
+        top: -50px; !important;
         padding: 6px;
         width: 96%;
     }
