@@ -252,7 +252,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Запускаємо обробку
         submitBtn.disabled = true;
         submitBtn.textContent = 'Обробка...';
-        resultText.innerHTML = '<span class="loading-text">Завантаження трекінгу...</span>';
+        resultText.innerHTML = '<span class="loading-text">Завантаження ...</span>';
     
         try {
             if (isTrackNumber) {
