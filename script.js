@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultText.style.color = '#00ff88';
                 } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {
                     console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
-                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Завантаження статусу з Cainiao...';
+                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Готово до перегляду';
                     resultText.style.color = '#00ff88';
                 } else {
                     resultText.innerHTML = 'У буфері немає валідного посилання або трек-номера.<br>Вставте вручну.';
@@ -256,63 +256,57 @@ document.addEventListener('DOMContentLoaded', () => {
     
         try {
             if (isTrackNumber) {
-                // Трек-номер — запит на сервер для парсингу Cainiao
-                const response = await fetch('https://lexxexpress.click/pedro/track', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ tracking_number: inputValue })
-                });
+                // Трек-номер — відразу показуємо гарне посилання на Cainiao
+                const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
     
-                console.log('Статус відповіді трекінгу:', response.status);
-    
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
-                }
-    
-                const data = await response.json();
-    
-                if (data.success) {
-                    let html = `
-                        <b>Статус відправлення (Cainiao)</b><br><br>
-                        <strong>Поточний статус:</strong> ${data.status || 'Невідомо'}<br>
-                        <strong>Країна:</strong> ${data.country || '—'}<br>
-                        <strong>Останнє оновлення:</strong> ${data.latest_event || '—'}<br><br>
-                    `;
-    
-                    if (data.events && data.events.length > 0) {
-                        html += '<b>Історія подій:</b><ul style="padding-left: 20px; margin: 10px 0; list-style-type: disc;">';
-                        data.events.forEach(event => {
-                            html += `<li><strong>${event.time}</strong> — ${event.status}</li>`;
-                        });
-                        html += '</ul>';
-                    } else {
-                        html += '<small style="color:#aaa;">Історія подій ще не доступна або посилка не через Cainiao.</small>';
-                    }
-    
-                    // Кнопка для повного трекінгу на сайті Cainiao (опціонально)
-                    const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
-                    html += `
+                let html = `
+                    <b>Відстеження посилки</b><br><br>
+                    <div style="
+                        background: rgba(30, 144, 255, 0.12);
+                        padding: 20px;
+                        border-radius: 12px;
+                        border: 1px solid rgba(30, 144, 255, 0.3);
+                        margin: 12px 0;
+                        text-align: center;
+                    ">
+                        <strong>Номер відправлення:</strong><br>
+                        <code style="
+                            background: rgba(0,0,0,0.3);
+                            padding: 6px 12px;
+                            border-radius: 8px;
+                            font-size: 16px;
+                            margin: 8px 0;
+                            display: inline-block;
+                        ">
+                            ${inputValue}
+                        </code>
                         <br><br>
+                        <p style="color: #aaa; margin: 8px 0 16px 0;">
+                            Дані з офіційного сервісу Cainiao (логістика AliExpress)
+                        </p>
                         <a href="${trackUrl}" target="_blank" style="
                             display: inline-block;
-                            padding: 12px 20px;
-                            background: #1E90FF;
+                            padding: 14px 28px;
+                            background: linear-gradient(90deg, #1E90FF, #00BFFF);
                             color: white;
                             text-decoration: none;
-                            border-radius: 8px;
-                            font-weight: 500;
-                        ">
-                            Повний трекінг на сайті Cainiao →
+                            border-radius: 10px;
+                            font-weight: 600;
+                            font-size: 16px;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(30, 144, 255, 0.6)'"
+                           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(30, 144, 255, 0.4)'">
+                            Відкрити трекінг на Cainiao →
                         </a>
-                    `;
+                    </div>
+                    <small style="color:#aaa; font-style:italic; display:block; margin-top: 12px;">
+                        Натисніть на кнопку, щоб побачити повну історію відправлення.
+                    </small>
+                `;
     
-                    resultText.innerHTML = html;
-                    resultText.style.color = 'inherit';
-                } else {
-                    resultText.innerHTML = data.error || 'Не вдалося отримати дані з Cainiao';
-                    resultText.style.color = 'red';
-                }
+                resultText.innerHTML = html;
+                resultText.style.color = 'inherit';
             } else {
                 // Звичайна обробка посилання — йде запит на сервер
                 let endpoint = 'https://lexxexpress.click/pedro/submit';
