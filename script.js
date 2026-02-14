@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Автоматично вставлено посилання з буфера:', inputValue);
                     resultText.innerHTML = 'Посилання вставлено з буфера!<br>Обробка...';
                     resultText.style.color = '#00ff88';
-                } else if (/^[A-Za-z0-9]{10,35}$/.test(inputValue)) {
+                } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {  // дозволені дефіси для деяких треків
                     console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
                     resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Відстеження...';
                     resultText.style.color = '#00ff88';
@@ -217,11 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Визначаємо тип введення
         const isAliLink = inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com');
-        const isTrackNumber = 
-            inputValue.length >= 10 && 
-            inputValue.length <= 35 && 
-            /^[A-Za-z0-9- ]+$/.test(inputValue) &&  // дозволяє дефіси та пробіли
-            !isAliLink;
+        const isTrackNumber = /^[A-Za-z0-9-]{10,35}$/.test(inputValue) && !isAliLink;
     
         if (!isAliLink && !isTrackNumber) {
             resultText.innerHTML = 'Це не посилання AliExpress і не схоже на трек-номер.';
@@ -229,16 +225,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
     
-        // Для посилань на товар збираємо чекбокси
+        // Для посилань збираємо чекбокси
         const sections = [];
         if (isAliLink) {
-            if (document.getElementById('all')?.checked) {
-                sections.push('all');
-            } else {
-                ['coins', 'crystal', 'prizeland', 'complect', 'bestsellers'].forEach(id => {
-                    if (document.getElementById(id)?.checked) sections.push(id);
-                });
-            }
+            if (document.getElementById('all')?.checked) sections.push('all');
+            ['coins', 'crystal', 'prizeland', 'complect', 'bestsellers'].forEach(id => {
+                if (document.getElementById(id)?.checked) sections.push(id);
+            });
     
             if (sections.length === 0) {
                 resultText.innerHTML = 'Оберіть хоча б один розділ для обробки посилання.';
@@ -247,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     
-        // Дані користувача (залишаємо як є)
+        // Дані користувача
         const tg = window.Telegram?.WebApp;
         const tgUser = tg?.initDataUnsafe?.user || {};
         const userData = {
@@ -267,22 +260,25 @@ document.addEventListener('DOMContentLoaded', () => {
     
             if (isTrackNumber) {
                 endpoint = 'https://lexxexpress.click/pedro/track';
-                payload = { tracking_number: inputValue };
+                payload = { tracking_number: inputValue }; // ← ключовий рядок!
+                console.log('Запит на ТРЕКІНГ:', JSON.stringify(payload)); // лог для перевірки
             } else {
                 payload.sections = sections;
+                console.log('Запит на ОБРОБКУ ПОСИЛАННЯ:', JSON.stringify(payload));
             }
     
-            console.log('Відправляємо запит на трекінг:', {
-                tracking_number: inputValue
-            });
             const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
     
+            console.log('Статус відповіді:', response.status, response.statusText);
+    
             if (!response.ok) {
-                throw new Error(`Помилка сервера: ${response.status}`);
+                const errorText = await response.text();
+                console.log('Помилка сервера:', errorText);
+                throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
             }
     
             const data = await response.json();
@@ -291,7 +287,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 let html = '';
     
                 if (isTrackNumber) {
-                    // Відображення результату трекінгу
                     html = `<b>Статус:</b> ${data.status || 'Невідомо'}<br>`;
                     if (data.carrier) html += `<b>Кур'єр:</b> ${data.carrier}<br>`;
                     if (data.latest_event) html += `<b>Останнє оновлення:</b> ${data.latest_event}<br>`;
@@ -303,7 +298,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         html += '</ul>';
                     }
                 } else {
-                    // Звичайна обробка посилання
                     if (data.image_url) {
                         html += `<img src="${data.image_url}" alt="Зображення" class="product-image">`;
                     }
@@ -319,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultText.style.color = 'red';
             }
         } catch (err) {
-            resultText.innerHTML = 'Помилка з’єднання з сервером';
+            resultText.innerHTML = 'Помилка з’єднання або сервер: ' + err.message;
             resultText.style.color = 'red';
             console.error('Fetch error:', err);
         } finally {
