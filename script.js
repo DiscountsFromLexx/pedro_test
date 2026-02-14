@@ -4,11 +4,11 @@ const isTelegramMiniApp = !!window.Telegram?.WebApp;
 // Приклад використання — додаємо клас до body
 if (isTelegramMiniApp) {
     document.body.classList.add('in-telegram');
-    
+   
     // Отримуємо safe-area від Telegram WebApp (якщо доступно)
     const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 0;
     document.documentElement.style.setProperty('--tg-safe-area-top', safeTop + 'px');
-    
+   
     // Розгортаємо Mini App на весь екран
     window.Telegram.WebApp.expand();
 } else {
@@ -22,21 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultText = document.getElementById('resultText');
     const clearBtn = document.querySelector('.clear-btn');
     const themeToggle = document.getElementById('themeToggle');
-
     // Логування
     const addLog = (msg, data = {}) => console.log(`${msg}:`, data);
 
     // ─── Логіка чекбокса ALL ────────────────────────────────────────
     const allCheckbox = document.getElementById('all');
     const otherCheckboxes = document.querySelectorAll('input[name="check"]:not(#all)');
-
     if (allCheckbox) {
         allCheckbox.addEventListener('change', (e) => {
             const isChecked = e.target.checked;
             otherCheckboxes.forEach(cb => cb.checked = isChecked);
         });
     }
-
     otherCheckboxes.forEach(cb => {
         cb.addEventListener('change', () => {
             const allChecked = Array.from(otherCheckboxes).every(c => c.checked);
@@ -46,8 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ─── Збереження стану чекбоксів у localStorage ────────────────────────
     const CHECKBOX_STORAGE_KEY = 'pedro_checkboxes_state';
-    
-    // Функція збереження стану
+   
     const saveCheckboxes = () => {
         const state = {};
         otherCheckboxes.forEach(cb => {
@@ -56,8 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         state.all = allCheckbox.checked;
         localStorage.setItem(CHECKBOX_STORAGE_KEY, JSON.stringify(state));
     };
-    
-    // Функція відновлення стану
+   
     const restoreCheckboxes = () => {
         const saved = localStorage.getItem(CHECKBOX_STORAGE_KEY);
         if (saved) {
@@ -71,23 +66,18 @@ document.addEventListener('DOMContentLoaded', () => {
             allCheckbox.checked = allChecked;
         }
     };
-    
-    // При завантаженні — відновлюємо
+   
     restoreCheckboxes();
-    
-    // При зміні — зберігаємо
     allCheckbox.addEventListener('change', saveCheckboxes);
-    otherCheckboxes.forEach(cb => {
-        cb.addEventListener('change', saveCheckboxes);
-    });
+    otherCheckboxes.forEach(cb => cb.addEventListener('change', saveCheckboxes));
 
-    // ─── Очищення форми ─────────────────────────────────────────────    
+    // ─── Очищення форми ─────────────────────────────────────────────
     if (clearBtn) {
         clearBtn.addEventListener('click', () => {
             form.reset();
             field4.value = '';
             resultText.innerHTML = '';
-            localStorage.removeItem(CHECKBOX_STORAGE_KEY); // ← додаємо це
+            localStorage.removeItem(CHECKBOX_STORAGE_KEY);
             addLog('Форма та чекбокси очищені');
         });
     }
@@ -98,34 +88,27 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.toggle('light-theme', saved === 'light');
         document.body.classList.toggle('dark-theme', saved !== 'light');
         themeToggle.checked = saved === 'light';
-
         themeToggle.addEventListener('change', () => {
             const isLight = themeToggle.checked;
             document.body.classList.toggle('light-theme', isLight);
             document.body.classList.toggle('dark-theme', !isLight);
             localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
             document.querySelector('.theme-label-moon')?.classList.toggle('active', !isLight);
             document.querySelector('.theme-label-sun')?.classList.toggle('active', isLight);
             addLog('Тема змінена', { theme: isLight ? 'light' : 'dark' });
         });
     }
 
-    
-    // Новий обробник для промокодів
+    // ─── Новий обробник для промокодів ──────────────────────────────────
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('promo-code')) {
-            const promoText = e.target.textContent.trim(); // беремо текст промокоду
-
+            const promoText = e.target.textContent.trim();
             navigator.clipboard.writeText(promoText).then(() => {
-                // Показуємо повідомлення прямо в resultText
                 resultText.innerHTML += '<br><small style="color:#FF0000; font-style:italic;">Промокод скопійовано!</small>';
             }).catch(err => {
                 console.error('Помилка копіювання:', err);
                 resultText.innerHTML += '<br><small style="color:#ff5555;">Не вдалося скопіювати</small>';
             });
-
-            // Опціонально: візуальний фідбек (наприклад, підсвітка)
             e.target.style.background = 'rgba(0,255,136,0.3)';
             setTimeout(() => { e.target.style.background = ''; }, 500);
         }
@@ -136,35 +119,35 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             resultText.innerHTML = '<span class="loading-text">Завантаження промокодів...</span>';
             resultText.style.color = '#00ff88';
-    
+
             const userId = window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 0;
             const userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.first_name || 'Без імені';
-            const userUsername = window.Telegram?.WebApp?.initDataUnsafe?.user?.username 
-                ? `@${window.Telegram.WebApp.initDataUnsafe.user.username}` 
+            const userUsername = window.Telegram?.WebApp?.initDataUnsafe?.user?.username
+                ? `@${window.Telegram.WebApp.initDataUnsafe.user.username}`
                 : 'немає';
-    
+
             const response = await fetch('https://lexxexpress.click/pedro/coupons', {
-                method: 'POST',  // ← змінили на POST
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     user_id: userId,
                     user_name: userName,
-                    username: userUsername
+                    username: userUsername,
+                    source: isTelegramMiniApp ? 'MINI_APP' : 'WEB'  // ← додаємо джерело
                 })
             });
-    
+
             if (!response.ok) {
                 throw new Error(`Помилка: ${response.status}`);
             }
-    
+
             const data = await response.json();
-    
+
             if (data.success) {
                 let html = '<b>Актуальні промокоди та акції:</b><br><br>';
                 html += data.text.replace(/\n/g, '<br>');
                 resultText.innerHTML = html;
                 resultText.style.color = 'inherit';
-                // Додаємо атрибут, щоб стилі з CSS застосувалися саме сюди
                 resultText.setAttribute('data-coupons-loaded', 'true');
             } else {
                 resultText.innerHTML = data.error || 'Не вдалося завантажити промокоди';
@@ -176,27 +159,26 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Coupons error:', err);
         }
     });
-    // ─── Кнопка WEB — перехід на повну версію сайту ────────────────────────
+
+    // ─── Кнопка WEB / FEEDBACK — без логування (не критичні дії) ──────
     document.querySelector('.web-btn')?.addEventListener('click', () => {
         window.open('https://pedroapp.lexxexpress.click', '_blank');
-        // або window.location.href = 'https://pedroapp.lexxexpress.click'; — якщо хочеш відкрити в тому ж вікні
     });
-    // ─── Кнопка FEEDBACK — написати адміністрації ────────────────────────
+
     document.querySelector('.feedback-btn')?.addEventListener('click', () => {
         window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
-        // або window.location.href = 'https://t.me/EarlyBirdDeals_bot'; — якщо хочеш відкрити в тому ж вікні
     });
-    // ─── Функція відправки форми (використовується і з кнопки, і з Enter) ──
-        const sendForm = async () => {
+
+    // ─── Функція відправки форми ────────────────────────────────────────
+    const sendForm = async () => {
         let inputValue = field4.value.trim();
-    
-        // Якщо поле порожнє — беремо з буфера
+
         if (!inputValue) {
             try {
                 inputValue = await navigator.clipboard.readText();
                 inputValue = inputValue.trim();
                 field4.value = inputValue;
-    
+
                 if (inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com')) {
                     console.log('Автоматично вставлено посилання з буфера:', inputValue);
                     resultText.innerHTML = 'Посилання вставлено з буфера!<br>Обробка...';
@@ -222,93 +204,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
         }
-    
-        // Визначаємо тип введення
+
         const isAliLink = inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com');
         const isTrackNumber = /^[A-Za-z0-9-]{10,35}$/.test(inputValue) && !isAliLink;
-    
+
         if (!isAliLink && !isTrackNumber) {
             resultText.innerHTML = 'Це не посилання AliExpress і не схоже на трек-номер.';
             resultText.style.color = 'red';
             return;
         }
-    
-        // Для посилань збираємо чекбокси
+
         const sections = [];
         if (isAliLink) {
             if (document.getElementById('all')?.checked) sections.push('all');
             ['coins', 'crystal', 'prizeland', 'complect', 'bestsellers'].forEach(id => {
                 if (document.getElementById(id)?.checked) sections.push(id);
             });
-    
+
             if (sections.length === 0) {
                 resultText.innerHTML = 'Оберіть хоча б один розділ для обробки посилання.';
                 resultText.style.color = 'red';
                 return;
             }
         }
-    
-        // Дані користувача
+
         const tg = window.Telegram?.WebApp;
         const tgUser = tg?.initDataUnsafe?.user || {};
         const userData = {
             user_id: tgUser.id || 0,
             user_name: tgUser.first_name || (tgUser.last_name ? `${tgUser.first_name} ${tgUser.last_name}` : 'Без імені'),
-            username: tgUser.username ? `@${tgUser.username}` : 'немає'
+            username: tgUser.username ? `@${tgUser.username}` : 'немає',
+            source: isTelegramMiniApp ? 'MINI_APP' : 'WEB'  // ← додаємо джерело
         };
-    
-        // Запускаємо обробку
+
         submitBtn.disabled = true;
         submitBtn.textContent = 'Обробка...';
-        resultText.innerHTML = '<span class="loading-text">Завантаження ...</span>';
-    
+        resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
+
         try {
             if (isTrackNumber) {
-                // Трек-номер — вбудований iframe з сторінкою Cainiao
                 const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
-    
-                let html = `                    
+
+                let html = `
+                    <b>Статус відправлення (Cainiao)</b><br><br>
                     <iframe src="${trackUrl}" style="
                         width: 100%;
-                        height: 700px;
+                        height: 800px;
                         border: none;
-                        border-radius: 8px;
-                        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-                        background: #fff;
-                    "></iframe>
+                        border-radius: 12px;
+                        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+                        background: #ffffff;
+                    " allowfullscreen></iframe>
                     <br><br>
                     <small style="color:#aaa; font-style:italic;">
-                        Повна інформація з офіційного сайту Cainiao (логістика AliExpress).<br>
-                        Якщо iframe не завантажився — перевірте трек на https://global.cainiao.com
+                        Повна інформація з офіційного сайту Cainiao.<br>
+                        Якщо сторінка не завантажилася — перевірте трек за посиланням.
                     </small>
                 `;
-    
+
                 resultText.innerHTML = html;
                 resultText.style.color = 'inherit';
             } else {
-                // Звичайна обробка посилання — йде запит на сервер
                 let endpoint = 'https://lexxexpress.click/pedro/submit';
                 let payload = { link: inputValue, ...userData };
                 payload.sections = sections;
-    
+
                 console.log('Запит на ОБРОБКУ ПОСИЛАННЯ:', JSON.stringify(payload));
-    
+
                 const response = await fetch(endpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
-    
+
                 console.log('Статус відповіді:', response.status, response.statusText);
-    
+
                 if (!response.ok) {
                     const errorText = await response.text();
                     console.log('Помилка сервера:', errorText);
                     throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
                 }
-    
+
                 const data = await response.json();
-    
+
                 if (data.success) {
                     let html = '';
                     if (data.image_url) {
@@ -322,7 +300,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultText.style.color = 'red';
                 }
             }
-    
+
             field4.value = '';
             field4.readOnly = false;
         } catch (err) {
@@ -343,7 +321,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── Обробка кліку по кнопці (основний шлях) ─────────────────────
     if (submitBtn) {
         submitBtn.addEventListener('click', async (e) => {
             e.preventDefault();
@@ -351,7 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ─── Enter в полі field4 також відправляє ────────────────────────
     if (field4) {
         field4.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
@@ -362,16 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── Інші обробники ──────────────────────────────────────────────
-        document.querySelector('.instruction-btn')?.addEventListener('click', () => {
+    document.querySelector('.instruction-btn')?.addEventListener('click', () => {
         const instructionsElement = document.getElementById('instructions');
         if (instructionsElement) {
-            const yOffset = -75; // негативне значення — опускаємо на 80 px
+            const yOffset = -75;
             const y = instructionsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    
-            window.scrollTo({
-                top: y,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: y, behavior: 'smooth' });
         }
     });
 
