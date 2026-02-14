@@ -2099,7 +2099,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 }
 
 /* PC тощо */
-@media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
+@media (min-width: 1370px) and (orientation: landscape) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 18px;
@@ -2238,7 +2238,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 50px;
+        margin-top: 30px;
         padding: 40px;
     }
 
