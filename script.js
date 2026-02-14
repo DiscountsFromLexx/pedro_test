@@ -1,20 +1,14 @@
-// Визначаємо справжній Telegram Mini App
-const tg = window.Telegram?.WebApp;
-const isTelegramMiniApp = tg && 
-                         tg.initData && 
-                         tg.initDataUnsafe && 
-                         tg.initDataUnsafe.user && 
-                         tg.platform && 
-                         ['ios', 'android', 'macos', 'windows'].includes(tg.platform);
+// Визначаємо, чи це Telegram Mini App
+const isTelegramMiniApp = !!window.Telegram?.WebApp && !!window.Telegram.WebApp.initDataUnsafe?.user?.id;
 
-const isWebVersion = !isTelegramMiniApp;
-
-// Додаємо клас до body
+// Приклад використання — додаємо клас до body
 if (isTelegramMiniApp) {
     document.body.classList.add('in-telegram');
-    const safeTop = tg.safeAreaInset?.top || 0;
+   
+    const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 0;
     document.documentElement.style.setProperty('--tg-safe-area-top', safeTop + 'px');
-    tg.expand();
+   
+    window.Telegram.WebApp.expand();
 } else {
     document.body.classList.add('in-browser');
 }
