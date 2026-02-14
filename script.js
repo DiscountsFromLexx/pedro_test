@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultText.style.color = '#00ff88';
                 } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {
                     console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
-                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Готово до перегляду';
+                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Завантаження трекінгу...';
                     resultText.style.color = '#00ff88';
                 } else {
                     resultText.innerHTML = 'У буфері немає валідного посилання або трек-номера.<br>Вставте вручну.';
@@ -256,18 +256,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
         try {
             if (isTrackNumber) {
-                // Трек-номер — відразу показуємо гарне посилання на Cainiao
+                // Трек-номер — показуємо вбудований iframe з сторінкою Cainiao
                 const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
     
                 let html = `
-                    <b>Відстеження посилки</b><br><br>
+                    <b>Статус відправлення (Cainiao)</b><br><br>
                     <div style="
                         background: rgba(30, 144, 255, 0.12);
-                        padding: 20px;
+                        padding: 16px;
                         border-radius: 12px;
                         border: 1px solid rgba(30, 144, 255, 0.3);
                         margin: 12px 0;
-                        text-align: center;
                     ">
                         <strong>Номер відправлення:</strong><br>
                         <code style="
@@ -281,28 +280,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             ${inputValue}
                         </code>
                         <br><br>
-                        <p style="color: #aaa; margin: 8px 0 16px 0;">
-                            Дані з офіційного сервісу Cainiao (логістика AliExpress)
-                        </p>
-                        <a href="${trackUrl}" target="_blank" style="
-                            display: inline-block;
-                            padding: 14px 28px;
-                            background: linear-gradient(90deg, #1E90FF, #00BFFF);
-                            color: white;
-                            text-decoration: none;
-                            border-radius: 10px;
-                            font-weight: 600;
-                            font-size: 16px;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
-                        " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(30, 144, 255, 0.6)'"
-                           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(30, 144, 255, 0.4)'">
-                            Відкрити трекінг на Cainiao →
-                        </a>
+                        <iframe src="${trackUrl}" style="
+                            width: 100%;
+                            height: 700px;  /* можна змінити висоту, якщо потрібно */
+                            border: none;
+                            border-radius: 8px;
+                            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                            background: #fff;
+                        "></iframe>
+                        <br><br>
+                        <small style="color:#aaa; font-style:italic;">
+                            Повна інформація завантажується з офіційного сайту Cainiao.
+                            Якщо iframe не відображається — перевірте трек на https://global.cainiao.com
+                        </small>
                     </div>
-                    <small style="color:#aaa; font-style:italic; display:block; margin-top: 12px;">
-                        Натисніть на кнопку, щоб побачити повну історію відправлення.
-                    </small>
                 `;
     
                 resultText.innerHTML = html;
