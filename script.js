@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.log('Автоматично вставлено посилання з буфера:', inputValue);
                     resultText.innerHTML = 'Посилання вставлено з буфера!<br>Обробка...';
                     resultText.style.color = '#00ff88';
-                } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {  // дозволені дефіси для деяких треків
+                } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {
                     console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
                     resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Відстеження...';
                     resultText.style.color = '#00ff88';
@@ -255,63 +255,87 @@ document.addEventListener('DOMContentLoaded', () => {
         resultText.innerHTML = '<span class="loading-text">Зачекайте...</span>';
     
         try {
-            let endpoint = 'https://lexxexpress.click/pedro/submit';
-            let payload = { link: inputValue, ...userData };
-    
             if (isTrackNumber) {
-                endpoint = 'https://lexxexpress.click/pedro/track';
-                payload = { tracking_number: inputValue }; // ← ключовий рядок!
-                console.log('Запит на ТРЕКІНГ:', JSON.stringify(payload)); // лог для перевірки
+                // Трек-номер — просто показуємо посилання в resultText
+                const trackUrl = `https://t.17track.net/en#nums=${encodeURIComponent(inputValue)}`;
+    
+                let html = `
+                    <b>Відстеження трек-номера</b><br><br>
+                    <div style="
+                        background: rgba(30, 144, 255, 0.12);
+                        padding: 20px;
+                        border-radius: 12px;
+                        border: 1px solid rgba(30, 144, 255, 0.3);
+                        margin: 12px 0;
+                    ">
+                        <strong>Номер відправлення:</strong> 
+                        <code style="background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 6px;">
+                            ${inputValue}
+                        </code>
+                        <br><br>
+                        <a href="${trackUrl}" target="_blank" style="
+                            display: inline-block;
+                            padding: 14px 24px;
+                            background: linear-gradient(90deg, #1E90FF, #00BFFF);
+                            color: white;
+                            text-decoration: none;
+                            border-radius: 10px;
+                            font-weight: 600;
+                            font-size: 16px;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
+                        " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(30, 144, 255, 0.6)'" 
+                           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(30, 144, 255, 0.4)'">
+                            Відкрити трекінг на 17track.net →
+                        </a>
+                    </div>
+                    <small style="color:#aaa; font-style:italic;">
+                        Натисніть на кнопку, щоб побачити повну історію відправлення.
+                    </small>
+                `;
+    
+                resultText.innerHTML = html;
+                resultText.style.color = 'inherit';
             } else {
+                // Звичайна обробка посилання — йде запит на сервер
+                let endpoint = 'https://lexxexpress.click/pedro/submit';
+                let payload = { link: inputValue, ...userData };
                 payload.sections = sections;
+    
                 console.log('Запит на ОБРОБКУ ПОСИЛАННЯ:', JSON.stringify(payload));
-            }
     
-            const response = await fetch(endpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
     
-            console.log('Статус відповіді:', response.status, response.statusText);
+                console.log('Статус відповіді:', response.status, response.statusText);
     
-            if (!response.ok) {
-                const errorText = await response.text();
-                console.log('Помилка сервера:', errorText);
-                throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
-            }
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    console.log('Помилка сервера:', errorText);
+                    throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
+                }
     
-            const data = await response.json();
+                const data = await response.json();
     
-            if (data.success) {
-                let html = '';
-    
-                if (isTrackNumber) {
-                    html = `<b>Статус:</b> ${data.status || 'Невідомо'}<br>`;
-                    if (data.carrier) html += `<b>Кур'єр:</b> ${data.carrier}<br>`;
-                    if (data.latest_event) html += `<b>Останнє оновлення:</b> ${data.latest_event}<br>`;
-                    if (data.events && data.events.length > 0) {
-                        html += '<br><b>Історія:</b><ul style="padding-left: 20px; margin: 10px 0;">';
-                        data.events.forEach(event => {
-                            html += `<li>${event.time} — ${event.status}</li>`;
-                        });
-                        html += '</ul>';
-                    }
-                } else {
+                if (data.success) {
+                    let html = '';
                     if (data.image_url) {
                         html += `<img src="${data.image_url}" alt="Зображення" class="product-image">`;
                     }
                     html += data.result || 'Готово!';
+                    resultText.innerHTML = html;
+                    resultText.style.color = 'inherit';
+                } else {
+                    resultText.innerHTML = data.error || 'Помилка на сервері';
+                    resultText.style.color = 'red';
                 }
-    
-                resultText.innerHTML = html;
-                resultText.style.color = 'inherit';
-                field4.value = '';
-                field4.readOnly = false;
-            } else {
-                resultText.innerHTML = data.error || 'Помилка на сервері';
-                resultText.style.color = 'red';
             }
+    
+            field4.value = '';
+            field4.readOnly = false;
         } catch (err) {
             resultText.innerHTML = 'Помилка з’єднання або сервер: ' + err.message;
             resultText.style.color = 'red';
