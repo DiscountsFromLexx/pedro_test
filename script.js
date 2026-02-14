@@ -1,20 +1,17 @@
-// Визначаємо справжній Telegram Mini App (мобільний клієнт)
+// Визначаємо справжній Telegram Mini App
 const tg = window.Telegram?.WebApp;
 const isTelegramMiniApp = tg && 
                          tg.initData && 
                          tg.initDataUnsafe && 
                          tg.initDataUnsafe.user && 
                          tg.platform && 
-                         ['ios', 'android', 'macos', 'windows'].includes(tg.platform);  // тільки мобільні/десктоп клієнти
+                         ['ios', 'android', 'macos', 'windows'].includes(tg.platform);
 
-// Якщо це не справжній Mini App — вважаємо веб-версією (браузер або web.telegram.org)
 const isWebVersion = !isTelegramMiniApp;
 
-// Додаємо клас до body для стилів
+// Додаємо клас до body
 if (isTelegramMiniApp) {
     document.body.classList.add('in-telegram');
-
-    // Safe-area та розгортання — тільки для справжнього Mini App
     const safeTop = tg.safeAreaInset?.top || 0;
     document.documentElement.style.setProperty('--tg-safe-area-top', safeTop + 'px');
     tg.expand();
