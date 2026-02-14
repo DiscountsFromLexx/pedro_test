@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultText.style.color = '#00ff88';
                 } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {
                     console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
-                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Відстеження...';
+                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Завантаження статусу...';
                     resultText.style.color = '#00ff88';
                 } else {
                     resultText.innerHTML = 'У буфері немає валідного посилання або трек-номера.<br>Вставте вручну.';
@@ -256,46 +256,63 @@ document.addEventListener('DOMContentLoaded', () => {
     
         try {
             if (isTrackNumber) {
-                // Трек-номер — показуємо красиве посилання в resultText
-                const trackUrl = `https://t.17track.net/en#nums=${encodeURIComponent(inputValue)}`;
+                // Трек-номер — запит на сервер для парсингу 17track.net
+                const response = await fetch('https://lexxexpress.click/pedro/track', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ tracking_number: inputValue })
+                });
     
-                let html = `
-                    <b>Відстеження трек-номера</b><br><br>
-                    <div style="
-                        background: rgba(30, 144, 255, 0.12);
-                        padding: 20px;
-                        border-radius: 12px;
-                        border: 1px solid rgba(30, 144, 255, 0.3);
-                        margin: 12px 0;
-                    ">
-                        <strong>Номер відправлення:</strong> 
-                        <code style="background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 6px;">
-                            ${inputValue}
-                        </code>
+                console.log('Статус відповіді трекінгу:', response.status);
+    
+                if (!response.ok) {
+                    const errorText = await response.text();
+                    throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
+                }
+    
+                const data = await response.json();
+    
+                if (data.success) {
+                    let html = `
+                        <b>Статус відправлення</b><br><br>
+                        <strong>Поточний статус:</strong> ${data.status || 'Невідомо'}<br>
+                        <strong>Кур'єр:</strong> ${data.carrier || '—'}<br>
+                        <strong>Останнє оновлення:</strong> ${data.latest_event || '—'}<br><br>
+                    `;
+    
+                    if (data.events && data.events.length > 0) {
+                        html += '<b>Історія подій:</b><ul style="padding-left: 20px; margin: 10px 0; list-style-type: disc;">';
+                        data.events.forEach(event => {
+                            html += `<li><strong>${event.time}</strong> — ${event.status}</li>`;
+                        });
+                        html += '</ul>';
+                    } else {
+                        html += '<small style="color:#aaa;">Історія подій ще не доступна.</small>';
+                    }
+    
+                    // Додаємо кнопку для повного трекінгу (опціонально)
+                    const trackUrl = `https://t.17track.net/en#nums=${encodeURIComponent(inputValue)}`;
+                    html += `
                         <br><br>
                         <a href="${trackUrl}" target="_blank" style="
                             display: inline-block;
-                            padding: 14px 24px;
-                            background: linear-gradient(90deg, #1E90FF, #00BFFF);
+                            padding: 12px 20px;
+                            background: #1E90FF;
                             color: white;
                             text-decoration: none;
-                            border-radius: 10px;
-                            font-weight: 600;
-                            font-size: 16px;
-                            transition: all 0.3s ease;
-                            box-shadow: 0 4px 12px rgba(30, 144, 255, 0.4);
-                        " onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(30, 144, 255, 0.6)'" 
-                           onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(30, 144, 255, 0.4)'">
-                            Відкрити трекінг на 17track.net →
+                            border-radius: 8px;
+                            font-weight: 500;
+                        ">
+                            Повний трекінг на 17track.net →
                         </a>
-                    </div>
-                    <small style="color:#aaa; font-style:italic;">
-                        Натисніть на кнопку, щоб побачити повну історію відправлення.
-                    </small>
-                `;
+                    `;
     
-                resultText.innerHTML = html;
-                resultText.style.color = 'inherit';
+                    resultText.innerHTML = html;
+                    resultText.style.color = 'inherit';
+                } else {
+                    resultText.innerHTML = data.error || 'Не вдалося отримати дані трекінгу';
+                    resultText.style.color = 'red';
+                }
             } else {
                 // Звичайна обробка посилання — йде запит на сервер
                 let endpoint = 'https://lexxexpress.click/pedro/submit';
