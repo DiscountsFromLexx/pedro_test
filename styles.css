@@ -998,7 +998,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     .main-container {        
-        top: 0px; /* було top: 200px; */
+        top: -30px; /* було top: 200px; */
         padding: 4px;
         width: 100%;
     } 
