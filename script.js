@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultText.style.color = '#00ff88';
                 } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {
                     console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
-                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Завантаження статусу...';
+                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Завантаження статусу з Cainiao...';
                     resultText.style.color = '#00ff88';
                 } else {
                     resultText.innerHTML = 'У буфері немає валідного посилання або трек-номера.<br>Вставте вручну.';
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
         try {
             if (isTrackNumber) {
-                // Трек-номер — запит на сервер для парсингу 17track.net
+                // Трек-номер — запит на сервер для парсингу Cainiao
                 const response = await fetch('https://lexxexpress.click/pedro/track', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -274,9 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
                 if (data.success) {
                     let html = `
-                        <b>Статус відправлення</b><br><br>
+                        <b>Статус відправлення (Cainiao)</b><br><br>
                         <strong>Поточний статус:</strong> ${data.status || 'Невідомо'}<br>
-                        <strong>Кур'єр:</strong> ${data.carrier || '—'}<br>
+                        <strong>Країна:</strong> ${data.country || '—'}<br>
                         <strong>Останнє оновлення:</strong> ${data.latest_event || '—'}<br><br>
                     `;
     
@@ -287,11 +287,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         });
                         html += '</ul>';
                     } else {
-                        html += '<small style="color:#aaa;">Історія подій ще не доступна.</small>';
+                        html += '<small style="color:#aaa;">Історія подій ще не доступна або посилка не через Cainiao.</small>';
                     }
     
-                    // Додаємо кнопку для повного трекінгу (опціонально)
-                    const trackUrl = `https://t.17track.net/en#nums=${encodeURIComponent(inputValue)}`;
+                    // Кнопка для повного трекінгу на сайті Cainiao (опціонально)
+                    const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
                     html += `
                         <br><br>
                         <a href="${trackUrl}" target="_blank" style="
@@ -303,14 +303,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             border-radius: 8px;
                             font-weight: 500;
                         ">
-                            Повний трекінг на 17track.net →
+                            Повний трекінг на сайті Cainiao →
                         </a>
                     `;
     
                     resultText.innerHTML = html;
                     resultText.style.color = 'inherit';
                 } else {
-                    resultText.innerHTML = data.error || 'Не вдалося отримати дані трекінгу';
+                    resultText.innerHTML = data.error || 'Не вдалося отримати дані з Cainiao';
                     resultText.style.color = 'red';
                 }
             } else {
