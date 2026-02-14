@@ -1,4 +1,6 @@
 // Визначаємо, чи це Telegram Mini App
+const isWebVersion = !window.Telegram?.WebApp?.initDataUnsafe;  // якщо Telegram.WebApp відсутній — це веб-версія
+
 const isTelegramMiniApp = !!window.Telegram?.WebApp;
 
 // Приклад використання — додаємо клас до body
