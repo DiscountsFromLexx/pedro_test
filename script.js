@@ -180,25 +180,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // ─── Функція відправки форми (використовується і з кнопки, і з Enter) ──
         const sendForm = async () => {
-        let link = field4.value.trim();
+        let inputValue = field4.value.trim();
     
-        // Якщо поле порожнє — намагаємося взяти з буфера
-        if (!link) {
+        // Якщо поле порожнє — беремо з буфера
+        if (!inputValue) {
             try {
-                link = await navigator.clipboard.readText();
-                link = link.trim();
-                if (link && (link.includes('aliexpress.com') || link.includes('s.click.aliexpress.com'))) {
-                    field4.value = link;
-                    console.log('Автоматично вставлено з буфера:', link);
+                inputValue = await navigator.clipboard.readText();
+                inputValue = inputValue.trim();
+                field4.value = inputValue;
+    
+                if (inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com')) {
+                    console.log('Автоматично вставлено посилання з буфера:', inputValue);
                     resultText.innerHTML = 'Посилання вставлено з буфера!<br>Обробка...';
                     resultText.style.color = '#00ff88';
+                } else if (/^[A-Za-z0-9]{10,35}$/.test(inputValue)) {
+                    console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
+                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Відстеження...';
+                    resultText.style.color = '#00ff88';
                 } else {
-                    resultText.innerHTML = 'У буфері немає валідного посилання з AliExpress.<br>Вставте вручну.';
+                    resultText.innerHTML = 'У буфері немає валідного посилання або трек-номера.<br>Вставте вручну.';
                     resultText.style.color = 'orange';
                     return;
                 }
             } catch (err) {
-                resultText.innerHTML = '<b>Не вдалося прочитати буфер обміну.</b><br>Вставте посилання вручну в поле "Посилання на товар" і натисніть INSERT AND START.';
+                resultText.innerHTML = '<b>Не вдалося прочитати буфер обміну.</b><br>Вставте посилання або трек-номер вручну.';
                 resultText.style.color = '#FF0000';
                 submitBtn.style.background = 'linear-gradient(to bottom, #ffcc00, #ff9900)';
                 submitBtn.style.boxShadow = '0 0 15px rgba(255,204,0,0.6)';
@@ -210,42 +215,41 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     
-        // Перевірка валідності
-        if (!link.includes('aliexpress.com') && !link.includes('s.click.aliexpress.com')) {
-            resultText.innerHTML = 'Це не посилання AliExpress';
+        // Визначаємо тип введення
+        const isAliLink = inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com');
+        const isTrackNumber = /^[A-Za-z0-9]{10,35}$/.test(inputValue) && !isAliLink;
+    
+        if (!isAliLink && !isTrackNumber) {
+            resultText.innerHTML = 'Це не посилання AliExpress і не схоже на трек-номер.';
             resultText.style.color = 'red';
             return;
         }
     
-        // Збираємо стан чекбоксів
+        // Для посилань на товар збираємо чекбокси
         const sections = [];
-        if (document.getElementById('all')?.checked) {
-            sections.push('all');
-        } else {
-            if (document.getElementById('coins')?.checked) sections.push('coins');
-            if (document.getElementById('crystal')?.checked) sections.push('crystal');
-            if (document.getElementById('prizeland')?.checked) sections.push('prizeland');
-            if (document.getElementById('complect')?.checked) sections.push('complect');
-            if (document.getElementById('bestsellers')?.checked) sections.push('bestsellers');
+        if (isAliLink) {
+            if (document.getElementById('all')?.checked) {
+                sections.push('all');
+            } else {
+                ['coins', 'crystal', 'prizeland', 'complect', 'bestsellers'].forEach(id => {
+                    if (document.getElementById(id)?.checked) sections.push(id);
+                });
+            }
+    
+            if (sections.length === 0) {
+                resultText.innerHTML = 'Оберіть хоча б один розділ для обробки посилання.';
+                resultText.style.color = 'red';
+                return;
+            }
         }
     
-        // Якщо жоден не вибраний — показуємо помилку
-        if (sections.length === 0) {
-            resultText.innerHTML = 'Оберіть хоча б один розділ (ALL, COINS, CRYSTALS або PRIZE LAND)';
-            resultText.style.color = 'red';
-            return;
-        }
-    
-        // Отримуємо дані користувача з Telegram WebApp (якщо є)
+        // Дані користувача (залишаємо як є)
         const tg = window.Telegram?.WebApp;
         const tgUser = tg?.initDataUnsafe?.user || {};
-    
         const userData = {
             user_id: tgUser.id || 0,
             user_name: tgUser.first_name || (tgUser.last_name ? `${tgUser.first_name} ${tgUser.last_name}` : 'Без імені'),
-            username: tgUser.username ? `@${tgUser.username}` : 'немає',
-            language_code: tgUser.language_code || 'uk', // опціонально
-            is_premium: tgUser.is_premium || false      // опціонально
+            username: tgUser.username ? `@${tgUser.username}` : 'немає'
         };
     
         // Запускаємо обробку
@@ -254,29 +258,51 @@ document.addEventListener('DOMContentLoaded', () => {
         resultText.innerHTML = '<span class="loading-text">Зачекайте...</span>';
     
         try {
-            const response = await fetch('https://lexxexpress.click/pedro/submit', {
+            let endpoint = 'https://lexxexpress.click/pedro/submit';
+            let payload = { link: inputValue, ...userData };
+    
+            if (isTrackNumber) {
+                endpoint = 'https://lexxexpress.click/pedro/track';
+                payload = { tracking_number: inputValue };
+            } else {
+                payload.sections = sections;
+            }
+    
+            const response = await fetch(endpoint, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    link: link,
-                    sections: sections,
-                    // Передаємо всі дані користувача
-                    ...userData
-                })
+                body: JSON.stringify(payload)
             });
     
             if (!response.ok) {
-                throw new Error(`Помилка: ${response.status}`);
+                throw new Error(`Помилка сервера: ${response.status}`);
             }
     
             const data = await response.json();
     
             if (data.success) {
                 let html = '';
-                if (data.image_url) {
-                    html += `<img src="${data.image_url}" alt="Зображення" class="product-image">`;
+    
+                if (isTrackNumber) {
+                    // Відображення результату трекінгу
+                    html = `<b>Статус:</b> ${data.status || 'Невідомо'}<br>`;
+                    if (data.carrier) html += `<b>Кур'єр:</b> ${data.carrier}<br>`;
+                    if (data.latest_event) html += `<b>Останнє оновлення:</b> ${data.latest_event}<br>`;
+                    if (data.events && data.events.length > 0) {
+                        html += '<br><b>Історія:</b><ul style="padding-left: 20px; margin: 10px 0;">';
+                        data.events.forEach(event => {
+                            html += `<li>${event.time} — ${event.status}</li>`;
+                        });
+                        html += '</ul>';
+                    }
+                } else {
+                    // Звичайна обробка посилання
+                    if (data.image_url) {
+                        html += `<img src="${data.image_url}" alt="Зображення" class="product-image">`;
+                    }
+                    html += data.result || 'Готово!';
                 }
-                html += data.result || 'Готово!';
+    
                 resultText.innerHTML = html;
                 resultText.style.color = 'inherit';
                 field4.value = '';
