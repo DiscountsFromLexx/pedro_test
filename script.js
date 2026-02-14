@@ -137,12 +137,20 @@ document.addEventListener('DOMContentLoaded', () => {
             resultText.innerHTML = '<span class="loading-text">Завантаження промокодів...</span>';
             resultText.style.color = '#00ff88';
     
-            // Отримуємо user_id з Telegram WebApp (якщо є)
             const userId = window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 0;
+            const userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.first_name || 'Без імені';
+            const userUsername = window.Telegram?.WebApp?.initDataUnsafe?.user?.username 
+                ? `@${window.Telegram.WebApp.initDataUnsafe.user.username}` 
+                : 'немає';
     
-            const response = await fetch(`https://lexxexpress.click/pedro/coupons?user_id=${userId}`, {
-                method: 'GET',
-                headers: { 'Content-Type': 'application/json' }
+            const response = await fetch('https://lexxexpress.click/pedro/coupons', {
+                method: 'POST',  // ← змінили на POST
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_id: userId,
+                    user_name: userName,
+                    username: userUsername
+                })
             });
     
             if (!response.ok) {
