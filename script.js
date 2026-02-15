@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isTrackNumber) {
                 const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
                 let html = `
-                    <b>Статус відправлення (Cainiao)</b><br>
+                    <b>Статус відправлення (Cainiao)</b>
                     <iframe src="${trackUrl}" style="
                         width: 100%;
                         height: 800px;
