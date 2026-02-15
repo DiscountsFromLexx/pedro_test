@@ -145,11 +145,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    user_id: userId,
-                    user_name: userName,
-                    username: userUsername,
-                    source: isTelegramMiniApp ? 'MINI_APP' : 'WEB' // ← додаємо джерело
-                })
+                  user_id: userId,
+                  user_name: userName,
+                  username: userUsername,
+                  source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
+                  device: deviceInfo,          // ← додаємо
+                  mini_app: miniAppInfo        // ← додаємо
+              })
             });
             if (!response.ok) {
                 throw new Error(`Помилка: ${response.status}`);
