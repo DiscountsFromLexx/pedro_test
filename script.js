@@ -1,19 +1,24 @@
-// Визначаємо, чи це Telegram Mini App
-const isWebVersion = !window.Telegram?.WebApp?.initDataUnsafe; // якщо Telegram.WebApp відсутній — це веб-версія
-const isTelegramMiniApp = !!window.Telegram?.WebApp;
-// Приклад використання — додаємо клас до body
+// Визначаємо справжній Telegram Mini App
+const tg = window.Telegram?.WebApp;
+const isTelegramMiniApp = tg && 
+                         tg.initData && 
+                         tg.initDataUnsafe && 
+                         tg.initDataUnsafe.user && 
+                         tg.platform && 
+                         ['ios', 'android', 'macos', 'windows'].includes(tg.platform);
+
+const isWebVersion = !isTelegramMiniApp;
+
+// Додаємо клас до body
 if (isTelegramMiniApp) {
     document.body.classList.add('in-telegram');
-  
-    // Отримуємо safe-area від Telegram WebApp (якщо доступно)
-    const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 0;
+    const safeTop = tg.safeAreaInset?.top || 0;
     document.documentElement.style.setProperty('--tg-safe-area-top', safeTop + 'px');
-  
-    // Розгортаємо Mini App на весь екран
-    window.Telegram.WebApp.expand();
+    tg.expand();
 } else {
     document.body.classList.add('in-browser');
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('telegramForm');
     const submitBtn = document.querySelector('.submit-btn');
