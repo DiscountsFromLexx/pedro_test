@@ -1,4 +1,4 @@
-// Визначаємо справжній Telegram Mini App
+// Визначаємо справжній Telegram Mini App (мобільний/десктоп клієнт)
 const tg = window.Telegram?.WebApp;
 const isTelegramMiniApp = tg && 
                          tg.initData && 
@@ -9,15 +9,34 @@ const isTelegramMiniApp = tg &&
 
 const isWebVersion = !isTelegramMiniApp;
 
-// Додаємо клас до body
+// Додаємо клас до body для стилів
 if (isTelegramMiniApp) {
     document.body.classList.add('in-telegram');
+
+    // Safe-area та розгортання — тільки для справжнього Mini App
     const safeTop = tg.safeAreaInset?.top || 0;
     document.documentElement.style.setProperty('--tg-safe-area-top', safeTop + 'px');
     tg.expand();
 } else {
     document.body.classList.add('in-browser');
 }
+// Інформація про пристрій (працює у всіх браузерах)
+const deviceInfo = {
+    screen: `${window.innerWidth}×${window.innerHeight}`,
+    userAgent: navigator.userAgent,
+    language: navigator.language || navigator.userLanguage || 'unknown',
+    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown',
+    isMobile: /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent),
+    platform: navigator.platform || 'unknown'
+};
+
+// Додаткова інформація тільки з Mini App
+const miniAppInfo = isTelegramMiniApp ? {
+    premium: tg.initDataUnsafe.user.is_premium || false,
+    language_code: tg.initDataUnsafe.user.language_code || 'unknown',
+    tg_platform: tg.platform || 'unknown',
+    tg_version: tg.version || 'unknown'
+} : null;
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('telegramForm');
@@ -211,13 +230,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
         }
-        const tg = window.Telegram?.WebApp;
         const tgUser = tg?.initDataUnsafe?.user || {};
         const userData = {
             user_id: tgUser.id || 0,
             user_name: tgUser.first_name || (tgUser.last_name ? `${tgUser.first_name} ${tgUser.last_name}` : 'Без імені'),
             username: tgUser.username ? `@${tgUser.username}` : 'немає',
-            source: isTelegramMiniApp ? 'MINI_APP' : 'WEB' // ← додаємо джерело
+            source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
+            device: deviceInfo,          // базова інформація про пристрій
+            mini_app: miniAppInfo        // тільки якщо Mini App
         };
         submitBtn.disabled = true;
         submitBtn.textContent = 'Обробка...';
