@@ -133,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     // ─── Кнопка COUPONS ──────────────────────────────────────────────────
     document.querySelector('.coupons-btn')?.addEventListener('click', async () => {
+        console.log('Кнопка COUPONS натиснута! Час:', new Date().toISOString());
         try {
             resultText.innerHTML = '<span class="loading-text">Завантаження промокодів...</span>';
             resultText.style.color = '#00ff88';
