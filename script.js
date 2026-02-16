@@ -1,3 +1,25 @@
+// Генерація або отримання постійного UUID для користувача
+const getUserUUID = () => {
+    const STORAGE_KEY = 'pedro_user_uuid';
+    let uuid = localStorage.getItem(STORAGE_KEY);
+
+    if (!uuid) {
+        // Генеруємо новий UUID (проста версія v4)
+        uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            const r = Math.random() * 16 | 0;
+            const v = c === 'x' ? r : (r & 0x3 | 0x8);
+            return v.toString(16);
+        });
+        localStorage.setItem(STORAGE_KEY, uuid);
+    }
+
+    return uuid;
+};
+
+// Отримуємо UUID один раз
+const userUUID = getUserUUID();
+
+
 // Визначаємо справжній Telegram Mini App (мобільний/десктоп клієнт)
 const tg = window.Telegram?.WebApp;
 const isTelegramMiniApp = tg && 
@@ -151,7 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   username: userUsername,
                   source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
                   device: deviceInfo,          // ← додаємо
-                  mini_app: miniAppInfo        // ← додаємо
+                  mini_app: miniAppInfo,        // ← додаємо
+                  uuid: userUUID
               })
             });
             if (!response.ok) {
@@ -240,7 +263,8 @@ document.addEventListener('DOMContentLoaded', () => {
             username: tgUser.username ? `@${tgUser.username}` : 'немає',
             source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
             device: deviceInfo,          // базова інформація про пристрій
-            mini_app: miniAppInfo        // тільки якщо Mini App
+            mini_app: miniAppInfo,        // тільки якщо Mini App
+            uuid: userUUID
         };
         submitBtn.disabled = true;
         submitBtn.textContent = 'Обробка...';
