@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
         try {
             if (isTrackNumber) {
-                const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
+                const trackUrl = `https://m.global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
                 let html = `
                     <b>Статус відправлення (Cainiao)</b>
                     <iframe src="${trackUrl}" style="
