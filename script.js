@@ -271,24 +271,25 @@ document.addEventListener('DOMContentLoaded', () => {
         resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
         try {
             if (isTrackNumber) {
-                // Використовуємо мобільну версію Cainiao (вона краще адаптується в iframe)
                 const trackUrl = `https://m.global.cainiao.com/detail.htm?mailNoList=${encodeURIComponent(inputValue)}&lang=en-US`;
             
                 let html = `
                     <b>Статус відправлення (Cainiao)</b><br><br>
                     <iframe src="${trackUrl}" style="
                         width: 100%;
-                        height: 1200px;  // трохи більше, щоб не обрізало
+                        height: 1400px;  // фіксована висота — підбери під себе (1200–1800 px)
                         border: none;
                         border-radius: 12px;
                         box-shadow: 0 4px 15px rgba(0,0,0,0.4);
                         background: #ffffff;
                     " allowfullscreen></iframe>
-                    <br>
+                    <br><br>
                     <small style="color:#aaa; font-style:italic;">
-                        Інформація з офіційного сайту Cainiao.
+                        Повна інформація з мобільної версії Cainiao.<br>
+                        Якщо не завантажилося — перевірте трек за посиланням нижче.
                     </small>
                 `;
+            
                 resultText.innerHTML = html;
                 resultText.style.color = 'inherit';
                 // Автоматична висота iframe
