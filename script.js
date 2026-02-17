@@ -271,60 +271,67 @@ document.addEventListener('DOMContentLoaded', () => {
         resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
         try {
             if (isTrackNumber) {
-                const trackUrl = `https://m.global.cainiao.com/detail.htm?mailNoList=${encodeURIComponent(inputValue)}&lang=en-US`;
+                const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
             
                 // Створюємо модальне вікно
                 const modal = document.createElement('div');
+                modal.id = 'cainiao-modal'; // для стилів
                 modal.style.position = 'fixed';
-                modal.style.top = '0';
-                modal.style.left = '0';
-                modal.style.width = '100%';
-                modal.style.height = '100%';
-                modal.style.background = 'rgba(0,0,0,0.8)';
+                modal.style.inset = '0'; // top/right/bottom/left = 0
+                modal.style.background = 'rgba(0,0,0,0.85)';
                 modal.style.zIndex = '9999';
                 modal.style.display = 'flex';
                 modal.style.alignItems = 'center';
                 modal.style.justifyContent = 'center';
+                modal.style.overflow = 'auto';
+            
+                // Додаємо відступ зверху для Mini App (враховуємо safe-area)
+                if (isTelegramMiniApp) {
+                    const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
+                    modal.style.paddingTop = `${safeTop + 10}px`; // +10 для краси
+                    modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
+                }
             
                 const closeBtn = document.createElement('button');
                 closeBtn.innerHTML = '✕';
-                closeBtn.style.position = 'absolute';
-                closeBtn.style.top = '15px';
+                closeBtn.style.position = 'fixed';
+                closeBtn.style.top = isTelegramMiniApp ? `${(window.Telegram.WebApp.safeAreaInset?.top || 50) + 10}px` : '15px';
                 closeBtn.style.right = '15px';
-                closeBtn.style.background = 'rgba(0,0,0,0.6)';
+                closeBtn.style.background = 'rgba(0,0,0,0.7)';
                 closeBtn.style.color = 'white';
                 closeBtn.style.border = 'none';
                 closeBtn.style.borderRadius = '50%';
-                closeBtn.style.width = '40px';
-                closeBtn.style.height = '40px';
-                closeBtn.style.fontSize = '24px';
+                closeBtn.style.width = '44px';
+                closeBtn.style.height = '44px';
+                closeBtn.style.fontSize = '28px';
                 closeBtn.style.cursor = 'pointer';
-                closeBtn.style.zIndex = '10000';
+                closeBtn.style.zIndex = '10001';
+                closeBtn.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+            
+                const iframeContainer = document.createElement('div');
+                iframeContainer.style.width = '100%';
+                iframeContainer.style.maxWidth = '1000px';
+                iframeContainer.style.height = isTelegramMiniApp ? 'calc(100vh - 60px)' : '90vh';
+                iframeContainer.style.borderRadius = '16px';
+                iframeContainer.style.overflow = 'hidden';
+                iframeContainer.style.boxShadow = '0 10px 40px rgba(0,0,0,0.6)';
             
                 const iframe = document.createElement('iframe');
                 iframe.src = trackUrl;
-                iframe.style.width = '95%';
-                iframe.style.maxWidth = '1000px';  // обмеження для великих екранів
-                iframe.style.height = '90%';
+                iframe.style.width = '100%';
+                iframe.style.height = '100%';
                 iframe.style.border = 'none';
-                iframe.style.borderRadius = '12px';
-                iframe.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-                iframe.style.background = '#ffffff';
+                iframe.allowFullscreen = true;
             
+                iframeContainer.appendChild(iframe);
                 modal.appendChild(closeBtn);
-                modal.appendChild(iframe);
+                modal.appendChild(iframeContainer);
                 document.body.appendChild(modal);
             
                 // Закриття модалки
-                closeBtn.onclick = () => {
-                    document.body.removeChild(modal);
-                };
-            
-                // Закриття по кліку поза iframe
+                closeBtn.onclick = () => modal.remove();
                 modal.onclick = (e) => {
-                    if (e.target === modal) {
-                        document.body.removeChild(modal);
-                    }
+                    if (e.target === modal) modal.remove();
                 };
             
                 // Показуємо повідомлення про завантаження
