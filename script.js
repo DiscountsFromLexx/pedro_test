@@ -285,6 +285,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.display = 'flex';
                 modal.style.alignItems = 'center';
                 modal.style.justifyContent = 'center';
+
+                if (isTelegramMiniApp) {
+                    const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
+                    modal.style.paddingTop = `${safeTop + 10}px`; // +10 для краси
+                    modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
+                }
             
                 const closeBtn = document.createElement('button');
                 closeBtn.innerHTML = '✕';
