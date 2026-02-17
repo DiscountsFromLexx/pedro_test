@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const closeBtn = document.createElement('button');
                 closeBtn.innerHTML = '✕';
                 closeBtn.style.position = 'absolute';
-                closeBtn.style.top = '10px';
+                closeBtn.style.top = '5px';
                 closeBtn.style.right = '15px';
                 closeBtn.style.background = 'rgba(0,0,0,0.6)';
                 closeBtn.style.color = 'white';
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeBtn.style.zIndex = '10000';
 
                 if (isTelegramMiniApp) {
-                    closeBtn.style.top = '95px';
+                    closeBtn.style.top = '5px'; // було 95
                 }
             
                 const iframe = document.createElement('iframe');
