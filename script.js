@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             
                 // Показуємо повідомлення про завантаження
-                resultText.innerHTML = '<span style="color:#FF6347;">Для повторного видстеження посилки по трекеру вставте номер та натисніть "INSERT AND START"</span>';
+                resultText.innerHTML = '<span style="color:#FF6347;">Для повторного відстеження посилки по трекеру вставте номер та натисніть "INSERT AND START"</span>';
                 resultText.style.color = 'inherit';
                 
                 
