@@ -1004,7 +1004,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     } 
 
     .container {
-        top: -10px; !important;
+        top: -5px; !important;
         padding: 6px;
         width: 96%;
     }
