@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeBtn.style.zIndex = '10000';
 
                 if (isTelegramMiniApp) {
-                    closeBtn.style.top = '115px'; // було 95
+                    closeBtn.style.top = '135px'; // було 95
                 }
             
                 const iframe = document.createElement('iframe');
