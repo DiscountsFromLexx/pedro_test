@@ -1909,12 +1909,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .main-container {
         width: 100%;
-        max-width: 1020px;
+        max-width: 1022px;
         padding: 20px;
     }
 
     .container {
-        padding: 40px 32px;
+        padding: 10px 32px;
         border-radius: 24px;
     }
 
