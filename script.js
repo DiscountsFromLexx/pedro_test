@@ -275,17 +275,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 let html = `
                     <b>Статус відправлення (Cainiao)</b>
                     <iframe src="${trackUrl}" style="
-                        width: 120%;
-                        height: auto; // ← було 800px
+                        width: 100%;
+                        height: 1500px; // ← було 800px
                         border: none;
                         border-radius: 12px;
                         box-shadow: 0 4px 15px rgba(0,0,0,0.4);
                         background: #ffffff;
                     " allowfullscreen></iframe>
-                    <br><br>
+                    <br>
                     <small style="color:#aaa; font-style:italic;">
-                        Повна інформація з офіційного сайту Cainiao.<br>
-                        Якщо сторінка не завантажилася — перевірте трек за посиланням.
+                        Інформація з офіційного сайту Cainiao.
                     </small>
                 `;
                 resultText.innerHTML = html;
