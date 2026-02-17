@@ -279,7 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.top = '0';
                 modal.style.left = '0';
                 modal.style.width = '100%';
-                modal.style.height = '100%';
+                modal.style.height = '110%';
                 modal.style.background = 'rgba(0,0,0,0.8)';
                 modal.style.zIndex = '9999';
                 modal.style.display = 'flex';
@@ -288,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (isTelegramMiniApp) {
                     const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
-                    modal.style.paddingTop = `${safeTop + 10}px`; // +10 для краси
+                    modal.style.paddingTop = `${safeTop + 50}px`; // +10 для краси
                     modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
                 }
             
