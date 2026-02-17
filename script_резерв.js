@@ -1,3 +1,13 @@
+
+
+
+
+
+
+
+
+
+
 // Визначаємо справжній Telegram Mini App (мобільний/десктоп клієнт)
 const tg = window.Telegram?.WebApp;
 const isTelegramMiniApp = tg && 
