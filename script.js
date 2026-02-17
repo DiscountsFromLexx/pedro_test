@@ -293,15 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 resultText.style.color = 'inherit';
                 // Автоматична висота iframe
                 const iframe = document.getElementById('cainiao-iframe');
-                iframe.onload = () => {
-                    try {
-                        const contentHeight = iframe.contentWindow.document.body.scrollHeight;
-                        iframe.style.height = contentHeight + 'px';
-                    } catch (e) {
-                        // Якщо не вдається через CORS — залишаємо фіксовану висоту
-                        iframe.style.height = '1200px';
-                    }
-                }
+                
             } else {
                 let endpoint = 'https://lexxexpress.click/pedro/submit';
                 let payload = { link: inputValue, ...userData };
