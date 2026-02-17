@@ -302,14 +302,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeBtn.style.zIndex = '10000';
 
                 if (isTelegramMiniApp) {
-                    closeBtn.style.top = '35px';
+                    closeBtn.style.top = '85px';
                 }
             
                 const iframe = document.createElement('iframe');
                 iframe.src = trackUrl;
                 iframe.style.width = '95%';
                 iframe.style.maxWidth = '1000px';  // обмеження для великих екранів
-                iframe.style.height = '90%';
+                iframe.style.height = '100%';   // було 90
                 iframe.style.border = 'none';
                 iframe.style.borderRadius = '12px';
                 iframe.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
