@@ -270,8 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.textContent = 'Обробка...';
         resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
         try {
-            if (isTrackNumber) {
-                const trackUrl = `https://m.global.cainiao.com/detail.htm?mailNoList=${encodeURIComponent(inputValue)}&lang=en-US`;
+            if (isTrackNumber) {                
+                const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
             
                 // Створюємо модальне вікно
                 const modal = document.createElement('div');
