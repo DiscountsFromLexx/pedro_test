@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeBtn.style.zIndex = '10000';
 
                 if (isTelegramMiniApp) {
-                    closeBtn.style.top = '170px'; // було 95
+                    closeBtn.style.top = '165px'; // було 95
                 }
             
                 const iframe = document.createElement('iframe');
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
             
                 // Показуємо повідомлення про завантаження
-                resultText.innerHTML = '<span style="color:#FF6347;">Для повторного відкриття трекеру вставте номер та натисніть "INSERT AND START"</span>';
+                resultText.innerHTML = '<span style="color:#FF6347;">Для повторного видстеження посилки по трекеру вставте номер та натисніть "INSERT AND START"</span>';
                 resultText.style.color = 'inherit';
                 
                 
