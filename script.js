@@ -271,23 +271,64 @@ document.addEventListener('DOMContentLoaded', () => {
         resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
         try {
             if (isTrackNumber) {
-                const trackUrl = `https://m.global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
-                let html = `
-                    <b>Статус відправлення (Cainiao)</b>
-                    <iframe src="${trackUrl}" style="
-                        width: 100%;
-                        height: 800px;
-                        border: none;
-                        border-radius: 12px;
-                        box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-                        background: #ffffff;
-                    " allowfullscreen></iframe>
-                    <br>                    
-                    <small style="color:#aaa; font-style:italic;">
-                        Інформація з офіційного сайту Cainiao.
-                    </small>
-                `;
-                resultText.innerHTML = html;
+                const trackUrl = `https://m.global.cainiao.com/detail.htm?mailNoList=${encodeURIComponent(inputValue)}&lang=en-US`;
+            
+                // Створюємо модальне вікно
+                const modal = document.createElement('div');
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100%';
+                modal.style.height = '100%';
+                modal.style.background = 'rgba(0,0,0,0.8)';
+                modal.style.zIndex = '9999';
+                modal.style.display = 'flex';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+            
+                const closeBtn = document.createElement('button');
+                closeBtn.innerHTML = '✕';
+                closeBtn.style.position = 'absolute';
+                closeBtn.style.top = '15px';
+                closeBtn.style.right = '15px';
+                closeBtn.style.background = 'rgba(0,0,0,0.6)';
+                closeBtn.style.color = 'white';
+                closeBtn.style.border = 'none';
+                closeBtn.style.borderRadius = '50%';
+                closeBtn.style.width = '40px';
+                closeBtn.style.height = '40px';
+                closeBtn.style.fontSize = '24px';
+                closeBtn.style.cursor = 'pointer';
+                closeBtn.style.zIndex = '10000';
+            
+                const iframe = document.createElement('iframe');
+                iframe.src = trackUrl;
+                iframe.style.width = '95%';
+                iframe.style.maxWidth = '1000px';  // обмеження для великих екранів
+                iframe.style.height = '90%';
+                iframe.style.border = 'none';
+                iframe.style.borderRadius = '12px';
+                iframe.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                iframe.style.background = '#ffffff';
+            
+                modal.appendChild(closeBtn);
+                modal.appendChild(iframe);
+                document.body.appendChild(modal);
+            
+                // Закриття модалки
+                closeBtn.onclick = () => {
+                    document.body.removeChild(modal);
+                };
+            
+                // Закриття по кліку поза iframe
+                modal.onclick = (e) => {
+                    if (e.target === modal) {
+                        document.body.removeChild(modal);
+                    }
+                };
+            
+                // Показуємо повідомлення про завантаження
+                resultText.innerHTML = '<span style="color:#00ff88;">Трекер відкрито у спливаючому вікні ↓</span>';
                 resultText.style.color = 'inherit';
                 
                 
