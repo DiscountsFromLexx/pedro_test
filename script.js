@@ -279,18 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 modal.style.top = '0';
                 modal.style.left = '0';
                 modal.style.width = '100%';
-                modal.style.height = '110%';
+                modal.style.height = '100%';
                 modal.style.background = 'rgba(0,0,0,0.8)';
                 modal.style.zIndex = '9999';
                 modal.style.display = 'flex';
                 modal.style.alignItems = 'center';
-                modal.style.justifyContent = 'center';
-
-                if (isTelegramMiniApp) {
-                    const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
-                    modal.style.paddingTop = `${safeTop + 50}px`; // +10 для краси
-                    modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
-                }
+                modal.style.justifyContent = 'center';                
             
                 const closeBtn = document.createElement('button');
                 closeBtn.innerHTML = '✕';
@@ -306,6 +300,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeBtn.style.fontSize = '24px';
                 closeBtn.style.cursor = 'pointer';
                 closeBtn.style.zIndex = '10000';
+
+                if (isTelegramMiniApp) {
+                    closeBtn.style.top = '35px';
+                }
             
                 const iframe = document.createElement('iframe');
                 iframe.src = trackUrl;
