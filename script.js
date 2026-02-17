@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let html = `
                     <b>Статус відправлення (Cainiao)</b>
                     <iframe src="${trackUrl}" style="
-                        width: 100%;
+                        width: 120%;
                         height: auto; // ← було 800px
                         border: none;
                         border-radius: 12px;
