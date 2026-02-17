@@ -282,10 +282,18 @@ document.addEventListener('DOMContentLoaded', () => {
                         box-shadow: 0 4px 15px rgba(0,0,0,0.4);
                         background: #ffffff;
                     " allowfullscreen></iframe>
+                    <br>
+
+                    <button onclick="document.getElementById('cainiao-iframe').style.height='2000px';" 
+                            style="padding:8px 16px; background:#1E90FF; color:white; border:none; border-radius:8px; cursor:pointer;">
+                        Розгорнути повністю
+                    </button>
                     <br><br>
                     <small style="color:#aaa; font-style:italic;">
-                        Повна інформація з офіційного сайту Cainiao.<br>
-                        Якщо сторінка не завантажилася — перевірте трек за посиланням.
+                        Мобільна версія Cainiao. Якщо потрібно більше — натисніть кнопку вище.
+                    </small>
+                    <small style="color:#aaa; font-style:italic;">
+                        Інформація з офіційного сайту Cainiao.
                     </small>
                 `;
                 resultText.innerHTML = html;
