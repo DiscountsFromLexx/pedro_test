@@ -575,9 +575,9 @@ body.light-theme .feedback-btn span {
 }
 
 .slogan-text {
-    margin-top: 20px;
-    font-size: 20px;
-    font-weight: 300;
+    margin-top: 55px;
+    font-size: 10px;
+    font-weight: 200;
     font-family: 'Montserrat', sans-serif;
     -webkit-tap-highlight-color: transparent;
     letter-spacing: 2px;
@@ -1020,7 +1020,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     .slogan-text {
-        margin-top: 20px;
+        margin-top: 65px;
         font-weight: 100;
         
     }
