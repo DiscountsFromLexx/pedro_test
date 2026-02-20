@@ -408,8 +408,13 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // });
     
+    function closeAllModals() {
+        document.querySelectorAll('#help-modal, #cainiao-modal').forEach(modal => modal.remove());
+    }
+
     // Новий обробник: відкриває модальне вікно з https://discountsfromlexx.github.io/help/
     document.querySelector('.instruction-btn')?.addEventListener('click', () => {
+        closeAllModals();
         const helpUrl = 'https://discountsfromlexx.github.io/help/';
     
         // Створюємо модальне вікно
