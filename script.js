@@ -197,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Coupons error:', err);
         }
     });
+    
     // ─── Кнопка WEB / FEEDBACK — без логування (не критичні дії) ──────
     document.querySelector('.web-btn')?.addEventListener('click', () => {
         window.open('https://pedroapp.lexxexpress.click', '_blank');
@@ -204,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.feedback-btn')?.addEventListener('click', () => {
         window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
     });
+    
     // ─── Функція відправки форми ────────────────────────────────────────
     const sendForm = async () => {
         let inputValue = field4.value.trim();
@@ -412,18 +414,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.instruction-btn')?.addEventListener('click', () => {
         // Переходимо на сторінку інструкцій
         window.location.href = 'howto.html';
-    
-        // Або в новій вкладці, якщо хочеш
-        // window.open('howto.html', '_blank');
+
     });
 
     // ─── Кнопка ІСТОРІЯ ТА ФАКТИ в howto.html ───────────────────────────────────
     document.querySelector('.history-btn')?.addEventListener('click', () => {
         // Переходимо на сторінку історії
         window.location.href = 'history.html';
-    
-        // Або в новій вкладці
-        // window.open('history.html', '_blank');
+
     });
 
 
