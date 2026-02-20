@@ -430,16 +430,12 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.paddingTop = `${safeTop + 10}px`;
             modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
         }
-
-        if (isTelegramMiniApp) {
-                    closeBtn.style.top = '165px'; // було 95
-                }
     
         // Кнопка закриття (хрестик)
         const closeBtn = document.createElement('button');
         closeBtn.innerHTML = '✕';
         closeBtn.style.position = 'fixed';
-        closeBtn.style.top = isTelegramMiniApp ? `${(window.Telegram.WebApp.safeAreaInset?.top || 50) + 10}px` : '55px';
+        closeBtn.style.top = isTelegramMiniApp ? `${(window.Telegram.WebApp.safeAreaInset?.top || 50) + 70}px` : '55px';
         closeBtn.style.right = '15px';
         closeBtn.style.background = 'rgba(0,0,0,0.7)';
         closeBtn.style.color = 'white';
