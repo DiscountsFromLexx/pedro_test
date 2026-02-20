@@ -113,6 +113,19 @@ body.dark-theme .instructions-text a:hover {
     color: #B2EBF2;
 }
 
+
+body.dark-theme .howto-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .howto-text a {
+    color: #00BFFF;
+}
+
+body.dark-theme .howto-text a:hover {
+    color: #B2EBF2;
+}
+
 body.dark-theme .theme-label {
     color: #FFFFFF;
 }
@@ -212,6 +225,19 @@ body.light-theme .instructions-text a {
 }
 
 body.light-theme .instructions-text a:hover {
+    color: #4682B4;
+}
+
+
+body.light-theme .howto-text {
+    color: #000000;
+}
+
+body.light-theme .howto-text a {
+    color: #1E90FF;
+}
+
+body.light-theme .howto-text a:hover {
     color: #4682B4;
 }
 
@@ -798,6 +824,26 @@ body.light-theme .feedback-btn span {
     text-decoration: underline;
 }
 
+.howto-text {
+    margin-top: 10px;
+    font-size: 14px; /* було 14px; */
+    font-weight: 100; /* було 200; */
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.howto-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.howto-text a:hover {
+    text-decoration: underline;
+}
+
 .scroll-top-btn {
     display: none;
     position: fixed;
@@ -998,6 +1044,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 4px;
         width: 100%;
     } 
+
+    howto-text {
+        width: 95%;
+    }
 
     
     
