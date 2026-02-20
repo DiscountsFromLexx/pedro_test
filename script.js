@@ -60,6 +60,20 @@ const miniAppInfo = isTelegramMiniApp ? {
     tg_version: tg.version || 'unknown'
 } : null;
 
+// Обробники кнопок — виконуються відразу після завантаження скрипта
+function initButtons() {
+    // Кнопка HOW TO / ІНСТРУКЦІЇ (на index.html)
+    document.querySelector('.instruction-btn')?.addEventListener('click', () => {
+        window.location.href = 'howto.html';
+    });
+
+    // Кнопка ІСТОРІЯ ТА ФАКТИ (на howto.html)
+    document.querySelector('.history-btn')?.addEventListener('click', () => {
+        window.location.href = 'history.html';
+    });
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('telegramForm');
     const submitBtn = document.querySelector('.submit-btn');
