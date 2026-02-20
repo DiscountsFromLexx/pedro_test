@@ -482,7 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // history
     // Новий обробник: відкриває модальне вікно з https://discountsfromlexx.github.io/help/history.html
-    document.querySelector('.instruction-btn')?.addEventListener('click', () => {
+    document.querySelector('.history-btn')?.addEventListener('click', () => {
         const helpUrl = 'https://discountsfromlexx.github.io/help/history.html';
     
         // Створюємо модальне вікно
