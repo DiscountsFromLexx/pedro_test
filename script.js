@@ -408,81 +408,22 @@ document.addEventListener('DOMContentLoaded', () => {
     //     }
     // });
     
-    function closeAllModals() {
-        document.querySelectorAll('#help-modal, #cainiao-modal').forEach(modal => modal.remove());
-    }
-
-    // Новий обробник: відкриває модальне вікно з https://discountsfromlexx.github.io/help/
+    // ─── Кнопка HOW TO / ІНСТРУКЦІЇ ──────────────────────────────────────────────
     document.querySelector('.instruction-btn')?.addEventListener('click', () => {
-        closeAllModals();
-        const helpUrl = 'https://discountsfromlexx.github.io/help/';
+        // Переходимо на сторінку інструкцій
+        window.location.href = 'howto.html';
     
-        // Створюємо модальне вікно
-        const modal = document.createElement('div');
-        modal.id = 'help-modal';
-        modal.style.position = 'fixed';
-        modal.style.inset = '0';
-        modal.style.background = 'rgba(0,0,0,0.85)';
-        modal.style.zIndex = '9999';
-        modal.style.display = 'flex';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
-        modal.style.overflow = 'auto';
+        // Або в новій вкладці, якщо хочеш
+        // window.open('howto.html', '_blank');
+    });
+
+    // ─── Кнопка ІСТОРІЯ ТА ФАКТИ в howto.html ───────────────────────────────────
+    document.querySelector('.history-btn')?.addEventListener('click', () => {
+        // Переходимо на сторінку історії
+        window.location.href = 'history.html';
     
-        // Відступ зверху для Mini App (щоб не перекривати панель Telegram)
-        if (isTelegramMiniApp) {
-            const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
-            modal.style.paddingTop = `${safeTop + 10}px`;
-            modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
-        }
-    
-        // Кнопка закриття (хрестик)
-        const closeBtn = document.createElement('button');
-        closeBtn.innerHTML = '✕';
-        closeBtn.style.position = 'fixed';
-        closeBtn.style.top = isTelegramMiniApp ? `${(window.Telegram.WebApp.safeAreaInset?.top || 50) + 70}px` : '55px';
-        closeBtn.style.right = '15px';
-        closeBtn.style.background = 'rgba(0,0,0,0.7)';
-        closeBtn.style.color = 'white';
-        closeBtn.style.border = 'none';
-        closeBtn.style.borderRadius = '50%';
-        closeBtn.style.width = '44px';
-        closeBtn.style.height = '44px';
-        closeBtn.style.fontSize = '28px';
-        closeBtn.style.cursor = 'pointer';
-        closeBtn.style.zIndex = '10001';
-        closeBtn.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
-    
-        // Контейнер для iframe
-        const iframeContainer = document.createElement('div');
-        iframeContainer.style.width = '100%';
-        iframeContainer.style.maxWidth = '1000px'; // обмеження для десктопу
-        iframeContainer.style.height = isTelegramMiniApp ? 'calc(100vh - 60px)' : '90vh';
-        iframeContainer.style.borderRadius = '16px';
-        iframeContainer.style.overflow = 'hidden';
-        iframeContainer.style.boxShadow = '0 10px 40px rgba(0,0,0,0.6)';
-    
-        const iframe = document.createElement('iframe');
-        iframe.src = helpUrl;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        iframe.allowFullscreen = true;
-    
-        iframeContainer.appendChild(iframe);
-        modal.appendChild(closeBtn);
-        modal.appendChild(iframeContainer);
-        document.body.appendChild(modal);
-    
-        // Закриття модалки
-        closeBtn.onclick = () => modal.remove();
-        modal.onclick = (e) => {
-            if (e.target === modal) modal.remove();
-        };
-    
-        // Повідомлення в resultText (опціонально)
-        resultText.innerHTML = '<span style="color:#00ff88;">Інструкція відкрита у повноекранному вікні ↓</span>';
-        resultText.style.color = 'inherit';
+        // Або в новій вкладці
+        // window.open('history.html', '_blank');
     });
 
 
