@@ -74,6 +74,13 @@ function initButtons() {
 
 }
 
+// Викликаємо ініціалізацію після завантаження сторінки
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initButtons);
+} else {
+    initButtons();  // якщо скрипт підключений після завантаження
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('telegramForm');
     const submitBtn = document.querySelector('.submit-btn');
