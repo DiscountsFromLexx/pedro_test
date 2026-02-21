@@ -72,6 +72,11 @@ function initButtons() {
         window.location.href = 'history.html';
     });
 
+    // ─── Кнопка FEEDBACK — повернення на головну ─────────────────────────────────
+    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+
 }
 
 // Викликаємо ініціалізацію після завантаження сторінки
@@ -223,9 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.web-btn')?.addEventListener('click', () => {
         window.open('https://pedroapp.lexxexpress.click', '_blank');
     });
-    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
-        window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
-    });
+    //document.querySelector('.feedback-btn')?.addEventListener('click', () => {
+    //    window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
+    // });
     
     // ─── Функція відправки форми ────────────────────────────────────────
     const sendForm = async () => {
