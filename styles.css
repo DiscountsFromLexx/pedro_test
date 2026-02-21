@@ -1078,7 +1078,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
-        padding: 4px;
+        padding: 8px;
         width: 100%;
     } 
 
