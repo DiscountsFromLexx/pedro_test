@@ -637,7 +637,7 @@ body.light-theme .feedback-btn span {
 
 .history_main-text {
     margin-top: 55px;
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 900;
     font-family: 'Montserrat', sans-serif;
     -webkit-tap-highlight-color: transparent;
@@ -1129,6 +1129,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history_main-text {
         margin-top: 65px;
         font-weight: 900;
+        font-size: 20px;
         
     }
 
