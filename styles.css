@@ -89,6 +89,11 @@ body.dark-theme .submit-btn:hover, body.dark-theme .clear-btn:hover {
 body.dark-theme .slogan-text {
     color: #FFFFFF;
 }
+
+body.dark-theme .history_main-text {
+    color: #FFFFFF;
+}
+
 body.dark-theme .channels-text {
     color: #FFFFFF;
 }    
@@ -206,6 +211,11 @@ body.light-theme .channels-text {
 body.light-theme .slogan-text {
     color: #000000;
     font-weight: 200;
+}
+
+body.light-theme .history_main-text {
+    color: #000000;
+    font-weight: 900;
 }
 
 body.light-theme .tgkch-text {
@@ -619,6 +629,16 @@ body.light-theme .feedback-btn span {
     margin-top: 55px;
     font-size: 10px;
     font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.history_main-text {
+    margin-top: 55px;
+    font-size: 40px;
+    font-weight: 900;
     font-family: 'Montserrat', sans-serif;
     -webkit-tap-highlight-color: transparent;
     letter-spacing: 2px;
@@ -1105,6 +1125,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-weight: 100;
         
     }
+
+    .history_main-text {
+        margin-top: 65px;
+        font-weight: 900;
+        
+    }
+
     .slider:before {        
         height: 30px;             /* було 30px */
         bottom: 2px;        
@@ -1305,6 +1332,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
 
+    .history_main-text {
+        margin-top: 135px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
@@ -1468,9 +1502,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .slogan-text {
         margin-top: 65px;
-        font-weight: 100;
-        
+        font-weight: 100;        
     }
+
+    .history_main-text {
+        margin-top: 65px;
+        font-weight: 100;        
+    }
+    
     .slider:before {        
         height: 30px;             /* було 30px */
         bottom: 2px;        
@@ -1672,6 +1711,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 120px;
         font-size: 18px;
         font-weight: 300;
+        text-align: center;
+    }
+
+    .history_main-text {
+        margin-top: 120px;
+        font-size: 38px;
+        font-weight: 900;
         text-align: center;
     }
 
@@ -1931,6 +1977,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-size: 22px;
     }
 
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
+    }
+
     .header-text {
         font-size: 38px;
         margin-top: 50px;
@@ -2129,6 +2180,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .slogan-text {
         margin-top: 140px;
         font-size: 22px;
+    }
+    
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
     }
 
     .header-text {
@@ -2329,6 +2385,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .slogan-text {
         margin-top: 140px;
         font-size: 22px;
+    }
+
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
     }
 
     .header-text {
