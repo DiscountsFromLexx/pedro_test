@@ -624,6 +624,16 @@ body.light-theme .feedback-btn span {
     border-radius: 50px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
+.headhistory-img {
+    position: absolute;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
 
 .slogan-text {
     margin-top: 55px;
@@ -1117,6 +1127,16 @@ body.light-theme .result-text[data-coupons-loaded] b {
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 65px; /* було top: 60px; */
         height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .headhistory-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 75px; /* було top: 60px; */
+        height: 75px; /* було top: 60px; */
         border-radius: 50px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
