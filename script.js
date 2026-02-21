@@ -445,6 +445,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
+    // ─── Кнопка FEEDBACK — повернення на головну ─────────────────────────────────
+    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+
 
     
     window.scrollToTop = () => {
