@@ -2312,6 +2312,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .web-btn,
     .feedback-btn {
         display: flex;
+        top: 10px;
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px */
