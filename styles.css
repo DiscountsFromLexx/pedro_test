@@ -2286,10 +2286,15 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 20px;
     }
 
+    
     .container {
-        padding: 40px 32px;
-        border-radius: 24px;
-    }
+    top: -10px;
+    width: 96%; /* було 100%; */
+    padding: 10px; /* було 20px */
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+}
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
