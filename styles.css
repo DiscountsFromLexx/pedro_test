@@ -2273,7 +2273,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 }
 
 /* PC тощо */
-@media (min-width: 1370px) and (orientation: landscape) {
+@media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 18px;
@@ -2294,7 +2294,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: -32px;
+        top: 24px;
         left: -114px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -2306,9 +2306,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     
+
     .coupons-btn,
     .instruction-btn,
-    .history-btn,
     .web-btn,
     .feedback-btn {
         display: flex;
@@ -2331,7 +2331,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .coupons-btn span,
     .instruction-btn span,
-    .history-btn span,
     .web-btn span,
     .feedback-btn span {
         font-size: 16px;
@@ -2408,18 +2407,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-size: 22px;
     }
 
-    .history_main-text {
-        margin-top: 140px;
-        font-size: 38px;
-    }
-
     .header-text {
         font-size: 38px;
         margin-top: 50px;
     }
 
     .block-form {
-        margin-top: 10px;
+        margin-top: 50px;
         padding: 40px;
     }
 
@@ -2472,6 +2466,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     
     .result-text .product-image {
-        max-width: 280px;          /* або 400px — підбери під себе */
+        max-width: 400px;          /* або 400px — підбери під себе */
     }
 }
