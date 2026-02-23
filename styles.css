@@ -2294,7 +2294,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 2px;
+        top: -32px;
         left: -114px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -2335,7 +2335,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .web-btn span,
     .feedback-btn span {
         font-size: 16px;
-        /* було margin-top: 10px;  */
+        margin-top: 10px;
     }
 
     .instruction-img {
