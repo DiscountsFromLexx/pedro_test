@@ -2300,7 +2300,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;
 
-        margin-top: -35px; !important;
+        
         left: -114px;
         right: 0px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -2318,6 +2318,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .web-btn,
     .feedback-btn {
         display: flex;
+        margin-top: -35px; !important;
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px */
