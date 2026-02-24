@@ -2319,7 +2319,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex;
-        margin-top: -35px; !important;
+        margin-top: -65px; !important;
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px */
@@ -2411,7 +2411,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .slogan-text {
-        margin-top: 140px;
+        margin-top: 160px;
         font-size: 22px;
     }
 
