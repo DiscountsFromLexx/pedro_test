@@ -2316,6 +2316,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .web-btn,
+    .history-btn,
     .feedback-btn {
         display: flex;
         margin-top: -55px; !important;
@@ -2339,6 +2340,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
+    .history-btn,
     .feedback-btn span {
         font-size: 16px;
     }
