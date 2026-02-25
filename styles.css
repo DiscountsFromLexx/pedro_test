@@ -2272,7 +2272,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 @media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
-        font-size: 18px;
+        font-size: 20px;
         width: 100%;
     }
 
@@ -2290,7 +2290,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     border-radius: 12px;
     text-align: center;
     position: relative;
-}
+    }
+    
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
