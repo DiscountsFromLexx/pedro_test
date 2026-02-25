@@ -1892,9 +1892,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         align-items: flex-end;
         justify-content: flex-start; /* кнопки зліва */
         gap: 1px;
-    }
-
-    
+    }    
 
     .coupons-btn,
     .instruction-btn,
@@ -2097,9 +2095,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         align-items: flex-end;
         justify-content: flex-start; /* кнопки зліва */
         gap: 1px;
-    }
-
-    
+    }    
 
     .coupons-btn,
     .instruction-btn,
@@ -2309,9 +2305,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         align-items: flex-end;
         justify-content: flex-start; /* кнопки зліва */
         gap: 1px;
-    }
-
-    
+    }    
 
     .coupons-btn,
     .instruction-btn,
@@ -2320,6 +2314,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .feedback-btn {
         display: flex;
         margin-top: -65px; !important;
+        font-size: 18px; 
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px */
