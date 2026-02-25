@@ -2335,7 +2335,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
-    .history-btn,
+    .history-btn span,
     .feedback-btn span {
         font-size: 16px;
     }
