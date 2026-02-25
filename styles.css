@@ -2295,7 +2295,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        
+        font-size: 18px; 
         left: -94px;
         right: 0px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
