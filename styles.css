@@ -2280,7 +2280,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .main-container {
         width: 100%;
         max-width: 1400px;
-        padding: 5px;
+        padding: 35px;
     }
     .howto-container {
         text-align: top;
