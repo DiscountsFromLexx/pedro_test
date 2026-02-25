@@ -2346,9 +2346,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .howto-buttons {
-        font-size: 18px;
-        
-    }
+        font-size: 18px;        
+    }   
 
     .instruction-img {
         width: 120px;
@@ -2418,6 +2417,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .slogan-text {
         margin-top: 160px;
         font-size: 22px;
+    }
+
+    .history_main-text {
+        margin-top: 200px;
+        font-size: 22px;
+        font-weight: 500;
     }
 
     .header-text {
