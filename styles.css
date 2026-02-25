@@ -6,7 +6,7 @@
 
 body {
     display: flex;    
-    justify-content: center;
+    justify-content: top;
     align-items: top;
     min-height: 100vh;
     font-family: Helvetica, Arial, sans-serif;
