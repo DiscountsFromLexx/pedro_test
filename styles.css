@@ -2274,11 +2274,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 20px;
-        width: 100%;
+        width: 98%;
     }
 
     .main-container {
-        width: 100%;
+        width: 98%;
         max-width: 1020px;
         padding: 20px;
     }
@@ -2288,7 +2288,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     .container {
     top: -10px;
-    width: 96%; /* було 100%; */
+    width: 98%; /* було 100%; */
     padding: 10px; /* було 20px */
     border-radius: 12px;
     text-align: center;
@@ -2300,8 +2300,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;
         font-size: 18px; 
-        left: -94px;
-        right: 0px;              /* розтягуємо на всю ширину  24px; */
+        left: 4px;
+        right: 4px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
         flex-direction: row;
