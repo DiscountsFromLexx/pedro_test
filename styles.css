@@ -506,7 +506,7 @@ input:checked + .slider:before {
     width: 96%; /* було 100%; */
     padding: 10px; /* було 20px */
     border-radius: 12px;
-    text-align: center;
+    text-align: center; /* було 20px */
     position: relative;
 }
 
@@ -2288,7 +2288,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     width: 96%; /* було 100%; */
     padding: 10px; /* було 20px */
     border-radius: 12px;
-    text-align: center;
+    text-align: left;
     position: relative;
     }
     
