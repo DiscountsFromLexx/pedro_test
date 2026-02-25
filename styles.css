@@ -626,7 +626,7 @@ body.light-theme .feedback-btn span {
 }
 .headhistory-img {
     position: absolute;
-    top: 5px;
+    top: 2px;
     left: 50%;
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     width: 70px;
@@ -1132,7 +1132,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .headhistory-img {
         position: absolute;
-        top: 1px;
+        top: 2px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 85px; /* було top: 60px; */
