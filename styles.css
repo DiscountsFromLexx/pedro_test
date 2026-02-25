@@ -7,7 +7,7 @@
 body {
     display: flex;    
     justify-content: top;
-    align-items: center;
+    align-items: top;
     min-height: 100vh;
     font-family: Helvetica, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
@@ -2274,11 +2274,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 20px;
-        width: 98%;
+        width: 100%;
     }
 
     .main-container {
-        width: 98%;
+        width: 100%;
         max-width: 1440px;
         padding: 20px;
     }
