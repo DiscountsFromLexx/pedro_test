@@ -2288,7 +2288,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     width: 96%; /* було 100%; */
     padding: 10px; /* було 20px */
     border-radius: 12px;
-    text-align: left;
+    text-align: center;
     position: relative;
     }
     
