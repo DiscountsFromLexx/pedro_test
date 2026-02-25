@@ -538,7 +538,7 @@ input:checked + .slider:before {
 
 .howto-buttons {
     position: absolute;
-    top: 90px;                    /* або 90px на мобілках */
+    top: 10px;                    /* або 90px на мобілках */
     left: 5px;
     z-index: 1000;
     display: flex;
@@ -616,7 +616,7 @@ body.light-theme .feedback-btn span {
 
 .instruction-img {
     position: absolute;
-    top: 5px;
+    top: 2px;
     left: 50%;
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     width: 60px;
@@ -2347,7 +2347,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .headhistory-img {
         position: absolute;
-        top: 1px;
+        top: 2px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 120px; /* було top: 60px; */
