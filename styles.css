@@ -2349,6 +2349,16 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: 120px;
         top: 16px;
     }
+    .headhistory-img {
+        position: absolute;
+        top: 1px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 105px; /* було top: 60px; */
+        height: 105px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
