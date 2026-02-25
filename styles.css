@@ -2345,6 +2345,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-size: 16px;
     }
 
+    .howto-buttons {
+        font-size: 18px;
+        
+    }
+
     .instruction-img {
         width: 120px;
         height: 120px;
