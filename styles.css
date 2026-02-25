@@ -2281,7 +2281,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         max-width: 1020px;
         padding: 20px;
     }
-
+    .howto-container {
+        text-align: top;
+    }
     
     .container {
     top: -10px;
