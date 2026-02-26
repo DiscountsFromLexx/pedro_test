@@ -1117,6 +1117,18 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: -20px;
         text-align: center;
     }
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span {
+        display: block;
+        margin-top: 2px;  /* 4px; */
+        font-size: 9px;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-align: center;
+    }
     .main-container {        
         top: 0px; /* було top: 200px; */
         padding: 4px;
