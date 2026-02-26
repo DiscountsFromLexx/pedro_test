@@ -1084,6 +1084,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     body.in-telegram .howto-buttons {
         top: calc(110px + var(--tg-safe-area-top, 0px)) !important;
+        justify-content: center;
+        align-items: center;
     }
 
     body.in-telegram .howto-text {
