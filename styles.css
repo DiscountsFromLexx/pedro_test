@@ -2325,7 +2325,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         flex-direction: column;
         align-items: top;
         min-width: 90px; /* було 110px */
-        padding: 16px 12px;
+        padding: 8px 6px; /* було 16px 12px; */
         border-radius: 16px;
         background: transparent;
         border: none;
