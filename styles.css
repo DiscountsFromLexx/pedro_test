@@ -1147,8 +1147,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     #viewerImg {
         width: auto;
         height: auto;
-        max-width: 90%;
-        max-height: 90%;
+        max-width: none;
+        max-height: none;
         object-fit: none;
         transform-origin: top center;
         -webkit-user-select: none;     /* забороняємо виділення тексту */
