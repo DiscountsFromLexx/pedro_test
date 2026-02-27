@@ -455,21 +455,20 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
-    function openFullscreen(src) {
-    const modal = document.getElementById('fullscreenModal');
-    const img = document.getElementById('fullscreenImg');
+    function openImageViewer(src) {
+    const viewer = document.getElementById('imageViewer');
+    const img = document.getElementById('viewerImg');
     
     img.src = src;
-    modal.classList.add('active');
+    viewer.classList.add('active');
+    
+    // Дозволяємо зум та скрол пальцями
+    img.style.touchAction = 'pinch-zoom pan-x pan-y';
     }
     
-    function closeFullscreen() {
-        const modal = document.getElementById('fullscreenModal');
-        modal.classList.remove('active');
-    }
-    if (isTelegramMiniApp) {
-        const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
-        document.getElementById('fullscreenModal').style.paddingTop = `${safeTop}px`;
+    function closeImageViewer() {
+        const viewer = document.getElementById('imageViewer');
+        viewer.classList.remove('active');
     }
 
 
