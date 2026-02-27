@@ -1095,9 +1095,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     } 
 
-    howto-text {
+    .howto-text {
         width: 95%;
-        margin-top: 10px;
+        margin-top: 190px;
     }
     
     
