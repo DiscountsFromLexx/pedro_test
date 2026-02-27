@@ -8,501 +8,2516 @@
 
 
 
-// Генерація або отримання постійного UUID для користувача
-const getUserUUID = () => {
-    const STORAGE_KEY = 'pedro_user_uuid';
-    let uuid = localStorage.getItem(STORAGE_KEY);
-
-    if (!uuid) {
-        // Генеруємо новий UUID (проста версія v4)
-        uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            const r = Math.random() * 16 | 0;
-            const v = c === 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
-        localStorage.setItem(STORAGE_KEY, uuid);
-    }
-
-    return uuid;
-};
-
-// Отримуємо UUID один раз
-const userUUID = getUserUUID();
-
-
-// Визначаємо справжній Telegram Mini App (мобільний/десктоп клієнт)
-const tg = window.Telegram?.WebApp;
-const isTelegramMiniApp = tg && 
-                         tg.initData && 
-                         tg.initDataUnsafe && 
-                         tg.initDataUnsafe.user && 
-                         tg.platform && 
-                         ['ios', 'android', 'macos', 'windows'].includes(tg.platform);
-
-const isWebVersion = !isTelegramMiniApp;
-
-// Додаємо клас до body для стилів
-if (isTelegramMiniApp) {
-    document.body.classList.add('in-telegram');
-
-    // Safe-area та розгортання — тільки для справжнього Mini App
-    const safeTop = tg.safeAreaInset?.top || 0;
-    document.documentElement.style.setProperty('--tg-safe-area-top', safeTop + 'px');
-    tg.expand();
-} else {
-    document.body.classList.add('in-browser');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-// Інформація про пристрій (працює у всіх браузерах)
-const deviceInfo = {
-    screen: `${window.innerWidth}×${window.innerHeight}`,
-    userAgent: navigator.userAgent,
-    language: navigator.language || navigator.userLanguage || 'unknown',
-    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || 'unknown',
-    isMobile: /Mobi|Android|iPhone|iPad|iPod/.test(navigator.userAgent),
-    platform: navigator.platform || 'unknown'
-};
 
-// Додаткова інформація тільки з Mini App
-const miniAppInfo = isTelegramMiniApp ? {
-    premium: tg.initDataUnsafe.user.is_premium || false,
-    language_code: tg.initDataUnsafe.user.language_code || 'unknown',
-    tg_platform: tg.platform || 'unknown',
-    tg_version: tg.version || 'unknown'
-} : null;
+body {
+    display: flex;    
+    justify-content: top;
+    align-items: bottom;
+    min-height: 100vh;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('telegramForm');
-    const submitBtn = document.querySelector('.submit-btn');
-    const field4 = document.getElementById('field4');
-    const resultText = document.getElementById('resultText');
-    const clearBtn = document.querySelector('.clear-btn');
-    const themeToggle = document.getElementById('themeToggle');
-    // Логування
-    const addLog = (msg, data = {}) => console.log(`${msg}:`, data);
-    // ─── Логіка чекбокса ALL ────────────────────────────────────────
-    const allCheckbox = document.getElementById('all');
-    const otherCheckboxes = document.querySelectorAll('input[name="check"]:not(#all)');
-    if (allCheckbox) {
-        allCheckbox.addEventListener('change', (e) => {
-            const isChecked = e.target.checked;
-            otherCheckboxes.forEach(cb => cb.checked = isChecked);
-        });
-    }
-    otherCheckboxes.forEach(cb => {
-        cb.addEventListener('change', () => {
-            const allChecked = Array.from(otherCheckboxes).every(c => c.checked);
-            allCheckbox.checked = allChecked;
-        });
-    });
-    // ─── Збереження стану чекбоксів у localStorage ────────────────────────
-    const CHECKBOX_STORAGE_KEY = 'pedro_checkboxes_state';
-  
-    const saveCheckboxes = () => {
-        const state = {};
-        otherCheckboxes.forEach(cb => {
-            state[cb.id] = cb.checked;
-        });
-        state.all = allCheckbox.checked;
-        localStorage.setItem(CHECKBOX_STORAGE_KEY, JSON.stringify(state));
-    };
-  
-    const restoreCheckboxes = () => {
-        const saved = localStorage.getItem(CHECKBOX_STORAGE_KEY);
-        if (saved) {
-            const state = JSON.parse(saved);
-            otherCheckboxes.forEach(cb => {
-                if (state[cb.id] !== undefined) {
-                    cb.checked = state[cb.id];
-                }
-            });
-            const allChecked = Array.from(otherCheckboxes).every(c => c.checked);
-            allCheckbox.checked = allChecked;
-        }
-    };
-  
-    restoreCheckboxes();
-    allCheckbox.addEventListener('change', saveCheckboxes);
-    otherCheckboxes.forEach(cb => cb.addEventListener('change', saveCheckboxes));
-    // ─── Очищення форми ─────────────────────────────────────────────
-    if (clearBtn) {
-        clearBtn.addEventListener('click', () => {
-            form.reset();
-            field4.value = '';
-            resultText.innerHTML = '';
-            localStorage.removeItem(CHECKBOX_STORAGE_KEY);
-            addLog('Форма та чекбокси очищені');
-        });
-    }
-    // ─── Перемикання теми ───────────────────────────────────────────
-    if (themeToggle) {
-        const saved = localStorage.getItem('theme') || 'dark';
-        document.body.classList.toggle('light-theme', saved === 'light');
-        document.body.classList.toggle('dark-theme', saved !== 'light');
-        themeToggle.checked = saved === 'light';
-        themeToggle.addEventListener('change', () => {
-            const isLight = themeToggle.checked;
-            document.body.classList.toggle('light-theme', isLight);
-            document.body.classList.toggle('dark-theme', !isLight);
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            document.querySelector('.theme-label-moon')?.classList.toggle('active', !isLight);
-            document.querySelector('.theme-label-sun')?.classList.toggle('active', isLight);
-            addLog('Тема змінена', { theme: isLight ? 'light' : 'dark' });
-        });
-    }
-    // ─── Новий обробник для промокодів ──────────────────────────────────
-    document.addEventListener('click', function(e) {
-        if (e.target.classList.contains('promo-code')) {
-            const promoText = e.target.textContent.trim();
-            navigator.clipboard.writeText(promoText).then(() => {
-                resultText.innerHTML += '<br><small style="color:#FF0000; font-style:italic;">Промокод скопійовано!</small>';
-            }).catch(err => {
-                console.error('Помилка копіювання:', err);
-                resultText.innerHTML += '<br><small style="color:#ff5555;">Не вдалося скопіювати</small>';
-            });
-            e.target.style.background = 'rgba(0,255,136,0.3)';
-            setTimeout(() => { e.target.style.background = ''; }, 500);
-        }
-    });
-    // ─── Кнопка COUPONS ──────────────────────────────────────────────────
-    document.querySelector('.coupons-btn')?.addEventListener('click', async () => {
-        console.log('Кнопка COUPONS натиснута! Час:', new Date().toISOString());
-        try {
-            resultText.innerHTML = '<span class="loading-text">Завантаження промокодів...</span>';
-            resultText.style.color = '#00ff88';
-            const userId = window.Telegram?.WebApp?.initDataUnsafe?.user?.id || 0;
-            const userName = window.Telegram?.WebApp?.initDataUnsafe?.user?.first_name || 'Без імені';
-            const userUsername = window.Telegram?.WebApp?.initDataUnsafe?.user?.username
-                ? `@${window.Telegram.WebApp.initDataUnsafe.user.username}`
-                : 'немає';
-            const response = await fetch('https://lexxexpress.click/pedro/coupons', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  user_id: userId,
-                  user_name: userName,
-                  username: userUsername,
-                  source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
-                  device: deviceInfo,          // ← додаємо
-                  mini_app: miniAppInfo,        // ← додаємо
-                  uuid: userUUID
-              })
-            });
-            if (!response.ok) {
-                throw new Error(`Помилка: ${response.status}`);
-            }
-            const data = await response.json();
-            if (data.success) {
-                let html = '<b>Актуальні промокоди та акції:</b><br><br>';
-                html += data.text.replace(/\n/g, '<br>');
-                resultText.innerHTML = html;
-                resultText.style.color = 'inherit';
-                resultText.setAttribute('data-coupons-loaded', 'true');
-            } else {
-                resultText.innerHTML = data.error || 'Не вдалося завантажити промокоди';
-                resultText.style.color = 'red';
-            }
-        } catch (err) {
-            resultText.innerHTML = 'Помилка з’єднання з сервером';
-            resultText.style.color = 'red';
-            console.error('Coupons error:', err);
-        }
-    });
-    // ─── Кнопка WEB / FEEDBACK — без логування (не критичні дії) ──────
-    document.querySelector('.web-btn')?.addEventListener('click', () => {
-        window.open('https://pedroapp.lexxexpress.click', '_blank');
-    });
-    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
-        window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
-    });
-    // ─── Функція відправки форми ────────────────────────────────────────
-    const sendForm = async () => {
-        let inputValue = field4.value.trim();
-        if (!inputValue) {
-            try {
-                inputValue = await navigator.clipboard.readText();
-                inputValue = inputValue.trim();
-                field4.value = inputValue;
-                if (inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com')) {
-                    console.log('Автоматично вставлено посилання з буфера:', inputValue);
-                    resultText.innerHTML = 'Посилання вставлено з буфера!<br>Обробка...';
-                    resultText.style.color = '#00ff88';
-                } else if (/^[A-Za-z0-9-]{10,35}$/.test(inputValue)) {
-                    console.log('Автоматично вставлено трек-номер з буфера:', inputValue);
-                    resultText.innerHTML = 'Трек-номер вставлено з буфера!<br>Завантаження трекінгу...';
-                    resultText.style.color = '#00ff88';
-                } else {
-                    resultText.innerHTML = 'У буфері немає валідного посилання або трек-номера.<br>Вставте вручну.';
-                    resultText.style.color = 'orange';
-                    return;
-                }
-            } catch (err) {
-                resultText.innerHTML = '<b>Не вдалося прочитати буфер обміну.</b><br>Вставте посилання або трек-номер вручну.';
-                resultText.style.color = '#FF0000';
-                submitBtn.style.background = 'linear-gradient(to bottom, #ffcc00, #ff9900)';
-                submitBtn.style.boxShadow = '0 0 15px rgba(255,204,0,0.6)';
-                setTimeout(() => {
-                    submitBtn.style.background = '';
-                    submitBtn.style.boxShadow = '';
-                }, 3000);
-                return;
-            }
-        }
-        const isAliLink = inputValue.includes('aliexpress.com') || inputValue.includes('s.click.aliexpress.com');
-        const isTrackNumber = /^[A-Za-z0-9-]{10,35}$/.test(inputValue) && !isAliLink;
-        if (!isAliLink && !isTrackNumber) {
-            resultText.innerHTML = 'Це не посилання AliExpress і не схоже на трек-номер.';
-            resultText.style.color = 'red';
-            return;
-        }
-        const sections = [];
-        if (isAliLink) {
-            if (document.getElementById('all')?.checked) sections.push('all');
-            ['coins', 'crystal', 'prizeland', 'complect', 'bestsellers'].forEach(id => {
-                if (document.getElementById(id)?.checked) sections.push(id);
-            });
-            if (sections.length === 0) {
-                resultText.innerHTML = 'Оберіть хоча б один розділ для обробки посилання.';
-                resultText.style.color = 'red';
-                return;
-            }
-        }
-        const tgUser = tg?.initDataUnsafe?.user || {};
-        const userData = {
-            user_id: tgUser.id || 0,
-            user_name: tgUser.first_name || (tgUser.last_name ? `${tgUser.first_name} ${tgUser.last_name}` : 'Без імені'),
-            username: tgUser.username ? `@${tgUser.username}` : 'немає',
-            source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
-            device: deviceInfo,          // базова інформація про пристрій
-            mini_app: miniAppInfo,        // тільки якщо Mini App
-            uuid: userUUID
-        };
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Обробка...';
-        resultText.innerHTML = '<span class="loading-text">Завантаження...</span>';
-        try {
-            if (isTrackNumber) {
-                const trackUrl = `https://global.cainiao.com/detail.htm?lang=en-US&mailNoList=${encodeURIComponent(inputValue)}`;
-            
-                // Створюємо модальне вікно
-                const modal = document.createElement('div');
-                modal.style.position = 'fixed';
-                modal.style.top = '0';
-                modal.style.left = '0';
-                modal.style.width = '100%';
-                modal.style.height = '100%';
-                modal.style.background = 'rgba(0,0,0,0.8)';
-                modal.style.zIndex = '9999';
-                modal.style.display = 'flex';
-                modal.style.alignItems = 'center';
-                modal.style.justifyContent = 'center';                
-            
-                const closeBtn = document.createElement('button');
-                closeBtn.innerHTML = '✕';
-                closeBtn.style.position = 'absolute';
-                closeBtn.style.top = '5px';
-                closeBtn.style.right = '15px';
-                closeBtn.style.background = 'rgba(0,0,0,0.6)';
-                closeBtn.style.color = 'white';
-                closeBtn.style.border = 'none';
-                closeBtn.style.borderRadius = '50%';
-                closeBtn.style.width = '40px';
-                closeBtn.style.height = '40px';
-                closeBtn.style.fontSize = '24px';
-                closeBtn.style.cursor = 'pointer';
-                closeBtn.style.zIndex = '10000';
+/* Темний режим (старий styles.css) */
+body.dark-theme {
+    background: linear-gradient(to bottom, #000000, #191970);
+}
 
-                if (isTelegramMiniApp) {
-                    closeBtn.style.top = '165px'; // було 95
-                }
-            
-                const iframe = document.createElement('iframe');
-                iframe.src = trackUrl;
-                iframe.style.width = '95%';
-                iframe.style.maxWidth = '1400px';  // 1000px обмеження для великих екранів
-                iframe.style.height = '100%';   // було 90
-                iframe.style.border = 'none';
-                iframe.style.borderRadius = '12px';
-                iframe.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
-                iframe.style.background = '#ffffff';
-            
-                modal.appendChild(closeBtn);
-                modal.appendChild(iframe);
-                document.body.appendChild(modal);
-            
-                // Закриття модалки
-                closeBtn.onclick = () => {
-                    document.body.removeChild(modal);
-                };
-            
-                // Закриття по кліку поза iframe
-                modal.onclick = (e) => {
-                    if (e.target === modal) {
-                        document.body.removeChild(modal);
-                    }
-                };
-            
-                // Показуємо повідомлення про завантаження
-                resultText.innerHTML = '<span style="color:#FF6347;">Для повторного відстеження посилки по трекеру вставте номер та натисніть "INSERT AND START"</span>';
-                resultText.style.color = 'inherit';
-                
-                
-            } else {
-                let endpoint = 'https://lexxexpress.click/pedro/submit';
-                let payload = { link: inputValue, ...userData };
-                payload.sections = sections;
-                console.log('Запит на ОБРОБКУ ПОСИЛАННЯ:', JSON.stringify(payload));
-                const response = await fetch(endpoint, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                console.log('Статус відповіді:', response.status, response.statusText);
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    console.log('Помилка сервера:', errorText);
-                    throw new Error(`Помилка сервера: ${response.status} — ${errorText}`);
-                }
-                const data = await response.json();
-                if (data.success) {
-                    let html = '';
-                    if (data.image_url) {
-                        html += `<img src="${data.image_url}" alt="Зображення" class="product-image">`;
-                    }
-                    html += data.result || 'Готово!';
-                    resultText.innerHTML = html;
-                    resultText.style.color = 'inherit';
-                } else {
-                    resultText.innerHTML = data.error || 'Помилка на сервері';
-                    resultText.style.color = 'red';
-                }
-            }
-            field4.value = '';
-            field4.readOnly = false;
-        } catch (err) {
-            resultText.innerHTML = 'Помилка з’єднання або сервер: ' + err.message;
-            resultText.style.color = 'red';
-            console.error('Fetch error:', err);
-        } finally {
-            submitBtn.disabled = false;
-            submitBtn.textContent = 'INSERT AND START';
-        }
-    };
-    // ─── Обробка submit форми ────────────────────────────────────────
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            await sendForm();
-        });
-    }
-    if (submitBtn) {
-        submitBtn.addEventListener('click', async (e) => {
-            e.preventDefault();
-            await sendForm();
-        });
-    }
-    if (field4) {
-        field4.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                sendForm();
-            }
-        });
-    }
-    // ─── Інші обробники ──────────────────────────────────────────────
-    // document.querySelector('.instruction-btn')?.addEventListener('click', () => {
-    //     const instructionsElement = document.getElementById('instructions');
-    //     if (instructionsElement) {
-    //         const yOffset = -75;
-    //         const y = instructionsElement.getBoundingClientRect().top + window.pageYOffset + yOffset;
-    //         window.scrollTo({ top: y, behavior: 'smooth' });
-    //     }
-    // });
-    
-    function closeAllModals() {
-        document.querySelectorAll('#help-modal, #cainiao-modal').forEach(modal => modal.remove());
-    }
+body.dark-theme .container {
+    background: linear-gradient(to bottom, #000000, #191970);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
 
-    // Новий обробник: відкриває модальне вікно з https://discountsfromlexx.github.io/help/
-    document.querySelector('.instruction-btn')?.addEventListener('click', () => {
-        closeAllModals();
-        const helpUrl = 'https://discountsfromlexx.github.io/help/';
-    
-        // Створюємо модальне вікно
-        const modal = document.createElement('div');
-        modal.id = 'help-modal';
-        modal.style.position = 'fixed';
-        modal.style.inset = '0';
-        modal.style.background = 'rgba(0,0,0,0.85)';
-        modal.style.zIndex = '9999';
-        modal.style.display = 'flex';
-        modal.style.alignItems = 'center';
-        modal.style.justifyContent = 'center';
-        modal.style.overflow = 'auto';
-    
-        // Відступ зверху для Mini App (щоб не перекривати панель Telegram)
-        if (isTelegramMiniApp) {
-            const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
-            modal.style.paddingTop = `${safeTop + 10}px`;
-            modal.style.paddingBottom = 'env(safe-area-inset-bottom)';
-        }
-    
-        // Кнопка закриття (хрестик)
-        const closeBtn = document.createElement('button');
-        closeBtn.innerHTML = '✕';
-        closeBtn.style.position = 'fixed';
-        closeBtn.style.top = isTelegramMiniApp ? `${(window.Telegram.WebApp.safeAreaInset?.top || 50) + 70}px` : '55px';
-        closeBtn.style.right = '15px';
-        closeBtn.style.background = 'rgba(0,0,0,0.7)';
-        closeBtn.style.color = 'white';
-        closeBtn.style.border = 'none';
-        closeBtn.style.borderRadius = '50%';
-        closeBtn.style.width = '44px';
-        closeBtn.style.height = '44px';
-        closeBtn.style.fontSize = '28px';
-        closeBtn.style.cursor = 'pointer';
-        closeBtn.style.zIndex = '10001';
-        closeBtn.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
-    
-        // Контейнер для iframe
-        const iframeContainer = document.createElement('div');
-        iframeContainer.style.width = '100%';
-        iframeContainer.style.maxWidth = '1000px'; // обмеження для десктопу
-        iframeContainer.style.height = isTelegramMiniApp ? 'calc(100vh - 60px)' : '90vh';
-        iframeContainer.style.borderRadius = '16px';
-        iframeContainer.style.overflow = 'hidden';
-        iframeContainer.style.boxShadow = '0 10px 40px rgba(0,0,0,0.6)';
-    
-        const iframe = document.createElement('iframe');
-        iframe.src = helpUrl;
-        iframe.style.width = '100%';
-        iframe.style.height = '100%';
-        iframe.style.border = 'none';
-        iframe.allowFullscreen = true;
-    
-        iframeContainer.appendChild(iframe);
-        modal.appendChild(closeBtn);
-        modal.appendChild(iframeContainer);
-        document.body.appendChild(modal);
-    
-        // Закриття модалки
-        closeBtn.onclick = () => modal.remove();
-        modal.onclick = (e) => {
-            if (e.target === modal) modal.remove();
-        };
-    
-        // Повідомлення в resultText (опціонально)
-        resultText.innerHTML = '<span style="color:#00ff88;">Інструкція відкрита у повноекранному вікні ↓</span>';
-        resultText.style.color = 'inherit';
-    });
+body.dark-theme .instruction-btn {
+    background: transparent;
+    font-weight: 100;
+    color: #FFFFFF;
+    border: 0px solid #1E90FF;
+}
 
 
+body.dark-theme .coupons-btn {
+    background: transparent;
+    font-weight: 100;
+    color: #FFFFFF;
+    border: 0px solid #1E90FF;
+}
+
+body.dark-theme .checkbox-group {
     
-    window.scrollToTop = () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-    window.addEventListener('scroll', () => {
-        const btn = document.querySelector('.scroll-top-btn');
-        if (btn) btn.style.display = window.scrollY > 300 ? 'block' : 'none';
-    });
-    console.log("Скрипт Педро завантажився");
-});
+    color: #FFFFFF;
+}
+
+body.dark-theme .header-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .input-group label {
+    color: #FFFFFF;
+}
+
+body.dark-theme .result label {
+    color: #FFFFFF;
+}
+
+body.dark-theme .input-group input {
+    border: 1px solid #4682B4;
+    color: #FFFFFF;
+    background: #000000;
+}
+
+body.dark-theme .result input {
+    border: 1px solid #4682B4;
+    color: #FFFFFF;
+    background: #000000;
+}
+
+body.dark-theme .input-group input:focus {
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+body.dark-theme .result input:focus {
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+body.dark-theme .submit-btn, body.dark-theme .clear-btn {
+    background: linear-gradient(to bottom, #4682B4, #4682B4);
+    border: 1px solid #1E90FF;
+}
+
+body.dark-theme .submit-btn:hover, body.dark-theme .clear-btn:hover {
+    background: linear-gradient(to bottom, #4682B4, #1E90FF);
+}
+
+body.dark-theme .slogan-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .history_main-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .channels-text {
+    color: #FFFFFF;
+}    
+
+body.dark-theme .tgkch-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .iheader-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .instructions-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .instructions-text a {
+    color: #00BFFF;
+}
+
+body.dark-theme .instructions-text a:hover {
+    color: #B2EBF2;
+}
+
+
+body.dark-theme .howto-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .howto-text a {
+    color: #00BFFF;
+}
+
+body.dark-theme .howto-text a:hover {
+    color: #B2EBF2;
+}
+
+body.dark-theme .theme-label {
+    color: #FFFFFF;
+}
+
+/* Світлий режим (на основі наданого коду) */
+body.light-theme {
+    background: #B0E0E6;  /*  було background: transparent; */
+}
+
+body.light-theme .container {
+    background: #B0E0E6;
+}
+
+body.light-theme .loading-text {
+    color: #FF0000; /*  або #1a3d5a для контрасту */
+}
+
+
+body.light-theme .header-text {
+    color: #000000;
+    font-weight: 500;
+}
+
+body.light-theme .input-group label {
+    color: #000000;
+}
+body.light-theme .result-text {
+    background: rgba(240, 248, 255, 0.9);
+    color: #1a1a3d; /* темний синій/чорний */
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Плейсхолдер */
+.result-text:empty:before {
+    content: "Тут буде магія...";
+    color: #888;
+    font-style: italic;
+}
+
+body.light-theme .input-group input {
+    border: 0px solid #000080;
+    color: #000000;
+    background: #F5F5F5;
+}
+
+
+body.light-theme .input-group input:focus {
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+.result-text:empty:before {
+    content: "Тут буде магія...";
+    color: #888;
+    font-style: italic;
+}
+
+body.light-theme .checkbox-group {
+    background: #B0E0E6;   /* було #4682B4; */
+    border: 1px solid #FFFFFF; 
+    color: #000000;
+}
+
+body.light-theme .submit-btn, body.light-theme .clear-btn {
+    background: #4682B4;
+    border: 1px solid #FFFFFF;
+}
+
+body.light-theme .submit-btn:hover, body.light-theme .clear-btn:hover {
+    background: linear-gradient(to bottom, #4682B4, #1E90FF);
+}
+
+body.light-theme .channels-text {
+    color: #000000;
+    font-weight: 300;
+}
+
+body.light-theme .slogan-text {
+    color: #000000;
+    font-weight: 200;
+}
+
+body.light-theme .history_main-text {
+    color: #000000;
+    font-weight: 900;
+}
+
+body.light-theme .tgkch-text {
+    color: #000000;
+}
+
+body.light-theme .iheader-text {
+    color: #000000;
+}
+
+body.light-theme .instructions-text {
+    color: #000000;
+}
+
+body.light-theme .instructions-text a {
+    color: #1E90FF;
+}
+
+body.light-theme .instructions-text a:hover {
+    color: #4682B4;
+}
+
+
+body.light-theme .howto-text {
+    color: #000000;
+}
+
+body.light-theme .howto-text a {
+    color: #1E90FF;
+}
+
+body.light-theme .howto-text a:hover {
+    color: #4682B4;
+}
+
+body.light-theme .theme-label {
+    color: #000000;
+}
+
+/* Текст після промокоду (code + звичайний текст) */
+.promo-code {
+    background: rgba(255, 193, 7, 0.15); /* легкий жовтий фон */
+    color: #ffeb3b;                      /* жовтий текст для темної теми */
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: 600;
+    user-select: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.promo-code:hover {
+    background: rgba(255, 193, 7, 0.3);
+    transform: scale(1.05);
+}
+body.light-theme .promo-code {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ef6c00; /* темніший жовтий/помаранчевий для світлої теми */
+}
+
+/* Універсальні кольори для заголовків і посилань */
+
+/* Заголовки розділів */
+.moneti-title {
+    color: #FFFFFF; /* золотистий жовтий — видно на темному */ 
+}
+body.light-theme .moneti-title {
+    color: #000000; /* помаранчевий для світлої */
+}
+
+.crystal-title {
+    color: #81d4fa; /* м'який блакитний */
+}
+body.light-theme .crystal-title {
+    color: #0288d1; /* темніший блакитний */
+}
+
+.prizi-title {
+    color: #a5d6a7; /* м'який зелений */
+}
+body.light-theme .prizi-title {
+    color: #388e3c; /* темніший зелений */
+}
+
+/* Посилання — об'єднаний блок */
+.moneti-link,
+.crystal-link,
+.prizi-link,
+.complect-link,
+.bestsellers-link {
+    color: #4fc3f7; /* синій у темній темі */
+}
+
+/* Світла тема — темніший синій для всіх типів посилань */
+body.light-theme .moneti-link,
+body.light-theme .crystal-link,
+body.light-theme .prizi-link,
+body.light-theme .complect-link,
+body.light-theme .bestsellers-link {
+    color: #0277bd;
+}
+
+/* Загальний текст результату (якщо потрібно) */
+.result-text {
+    color: #f0f4f8; /* дуже світлий сіро-білий — ідеально на темному */
+}
+body.light-theme .result-text {
+    color: #1a2533; /* темно-синій/сірий для світлої */
+}
+
+/* Підказка */
+.hint {
+    color: #b0bec5;
+}
+body.light-theme .hint {
+    color: #455a64;
+}
+
+body.light-theme .hint {
+    color: #666666; /* темніший сірий */
+}
+
+/* Загальний текст результату (якщо потрібно) */
+.result-text {
+    color: #e0e0ff; /* світло-білий для темної */
+}
+body.light-theme .result-text {
+    color: #1a1a3d; /* темно-синій/чорний для світлої */
+}
+
+blockquote {
+    background: rgba(255,255,255,0.08);
+    border-left: 4px solid #1E90FF;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+}
+body.light-theme blockquote {
+    background: rgba(0,0,0,0.05);
+    border-left-color: #0288d1;
+}
+
+
+/* Стилі для перемикача тем (зменшений розмір, окремий контейнер, з написом) */
+.theme-toggle-container {
+    position: absolute; /* було position: absolute;  */
+    top: 20px;                /* було 15px */
+    right: 20px;              /* було right: 15px; */
+    display: flex;
+    align-items: center;
+    gap: 4px;                 /* було 2px → трохи збільшено для кращого вигляду */
+    z-index: 1000;
+}
+
+.theme-label {
+    font-size: 11px;          /* було 14px / 16px */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: font-size 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+body.dark-theme .theme-label {
+    color: #FFFFFF;
+}
+
+body.light-theme .theme-label {
+    color: #000000;
+}
+
+.theme-label-moon {
+    order: -1;
+}
+
+.theme-label-sun {
+    order: 1;
+}
+
+.theme-label.active {
+    font-size: 19px;          /* було 13px */
+}
+.theme-label-moon,
+.theme-label-sun {
+    font-size: 1.5em;           /* трохи більші іконки для кращої видимості */
+    line-height: 1;
+    vertical-align: middle;
+    position: relative;
+    top: 6px;                   /* головний параметр — опускає іконки вниз */
+    margin-top: -2px;           /* компенсує, якщо є зайвий відступ зверху */
+}
+
+.theme-label:not(.active) {
+    font-size: 9px;           /* було 9px */
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    height: 30px;             /* було height: 35px; */
+    width: 70px;              /* було 55px */
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 8px;   /* було top: 0; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    transition: 0.4s;
+    border: 1px solid #FFFFFF;
+    border-radius: 12px;      /* пропорційно зменшено з 24px */
+}
+
+/* Напис на повзунку */
+.slider:after {
+    position: absolute;
+    content: "ТЕМНА ТЕМА";
+    font-size: 8px;           /* було 12px */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #D3D3D3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    transition: 0.4s;
+    letter-spacing: 0.3px;
+}
+
+input:checked + .slider:after {
+    content: "СВІТЛА ТЕМА";
+    color: #FF8C00; /* було #FFFFFF; */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 25px;             /* було 30px */
+    width: 30px;              /* було 30px */
+    left: -20px;                /* скориговано з -30px → тепер всередині */
+    bottom: 0.5px;              /* було 2px */
+    background-color: transparent;
+    border: 0px solid #FFFFFF; /* було 1px solid #FFFFFF; */
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #B0E0E6; /* було #1E90FF; */
+}
+
+input:checked + .slider:before {
+    transform: translateX(75px);  /* було 119px → пропорційно зменшено */
+}
+
+/* Очищаємо дублювання та конфліктні правила */
+.theme-label {
+    /* це правило дублювало попереднє — обираємо одне */
+    font-size: 11px;
+    font-weight: 500;         /* трохи легше, ніж 600 */
+    letter-spacing: 0.5px;
+}
+
+/* Решта стилів зі старого styles.css */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 98%;
+    min-width: 300px;
+    max-width: 600px;
+    padding: 10px;
+}
+
+.container {
+    top: 20px;
+    width: 96%; /* було 100%; */
+    padding: 10px; /* було 20px */
+    border-radius: 12px;
+    text-align: center; /* було 20px */
+    position: relative;
+}
+
+/* Стилі для "Зачекайте..." */
+.loading-text {
+    color: #FF0000;
+    font-weight: 500;
+    font-style: italic;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Контейнер кнопок — горизонтальний рядок */
+.top-buttons {
+    position: absolute;
+    top: 10px;                    /* або 90px на мобілках */
+    left: 5px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    gap: -35px;                    /* відстань між кнопками 12px;*/
+    align-items: center;        /* вирівнюємо по низу, щоб підписи були на одному рівні */
+}
+
+.howto-buttons {
+    position: absolute;
+    top: 10px;                    /* або 90px на мобілках */
+    left: 5px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    gap: -35px;                    /* відстань між кнопками 12px;*/
+    align-items: center;        /* вирівнюємо по низу, щоб підписи були на одному рівні */
+}
+
+
+/* Стилі для кнопок */
+.coupons-btn,
+.instruction-btn,
+.history-btn,
+.web-btn,
+.feedback-btn {
+    display: flex;
+    flex-direction: column;       /* іконка зверху, текст знизу */
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    padding: 8px 6px;
+    background: transparent;
+    border: none;                 /* без рамки навколо кнопки */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+/* Світла тема — чорний текст */
+body.light-theme .coupons-btn span,
+body.light-theme .instruction-btn span,
+body.light-theme .history-btn span,
+body.light-theme .web-btn span,
+body.light-theme .feedback-btn span {
+    color: #000000 !important;
+}
+
+.coupons-btn:hover,
+.instruction-btn:hover,
+.history-btn:hover,
+.web-btn:hover,
+.feedback-btn:hover {
+    background: rgba(30, 144, 255, 0.15);  /* легкий фон при наведенні */
+    transform: scale(1.05);
+    font-weight: 100; /* було 300px */
+}
+
+/* Іконка */
+.btn-icon {
+    width: 30px;                  /* розмір іконки — підбери */
+    height: 30px;
+    margin-bottom: 4px;           /* відстань між іконкою і текстом */
+    object-fit: contain;
+}
+
+/* Підпис під іконкою */
+.coupons-btn span,
+.instruction-btn span,
+.history-btn span,
+.web-btn span,
+.feedback-btn span {
+    display: block;
+    margin-top: 2px;  /* 4px; */
+    font-size: 9px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+
+.instruction-img {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+.headhistory-img {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+
+.slogan-text {
+    margin-top: 55px;
+    font-size: 10px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.history_main-text {
+    margin-top: 65px;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.header-text {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.block-form {
+    margin-top: 50px; /* було 10px */
+    padding: 15px; /* було 10px */
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* було repeat(auto-fit, minmax(140px, 1fr)); */
+    grid-template-rows: repeat(3, minmax(16px, 5px));   /* фіксовані 3 рядки 16px, auto  repeat(3, minmax(16px, 5px)); */
+    gap: 6px 8px; /* було gap: 6px 8px; */
+    padding: 12px 16px;
+    border: 1px solid rgba(30, 144, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(20, 20, 50, 0.4);
+    margin: 6px 0 10px; /* було 12px 0 20px; */
+
+    /* Якщо елементів більше 6 — вони просто не помістяться, можна додати overflow */
+    overflow: auto;   /* або auto, якщо хочеш скрол */
+}
+
+/* label вже не потребує flex-властивостей */
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 4px;                     /* було 4px — трохи більше для зручності */
+    cursor: pointer;
+    user-select: none;
+    font-size: 10px;              /* 10px — занадто мало, повертаємо до читабельного */
+                                 /* повертаємо нормальний колір, #696969 погано читається */
+    padding: 4px 6px;            /* було 4px 6px — зменшуємо, щоб не було зайвого простору */
+    border-radius: 8px;           /* 50px робить дуже круглим — краще 8–12px */
+    transition: background 0.15s;
+    position: relative;
+    height: 1px;                 /* прибираємо height:1px — це ламало все */
+    min-height: 10px;             /* мінімальна висота для зручного натискання 16px */
+   
+}
+
+.checkbox-group label:hover,
+.checkbox-group label:active {
+    background: rgba(30, 144, 255, 0.12);
+}
+
+
+.input-group {
+    height: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    transition: border-color 0.3s ease;
+}
+
+
+.result {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.result label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #ffffff; /* або #000 для світлої теми */
+}
+
+.result-text {
+    width: 100%;
+    min-height: 180px;
+    padding: 16px;
+    background: rgba(30, 30, 50, 0.6);
+    border-radius: 12px;
+    border: none;
+    color: #e0e0ff; /* білий/світло-блакитний для темної теми */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+}
+
+
+.submit-group {
+    display: flex;    
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    padding: 8px;
+    width: 50%;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.clear-btn {
+    padding: 8px;
+    width: 50%;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover, .clear-btn:hover {
+    transform: translateY(-2px);
+}
+
+.submit-btn:active, .clear-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.channels-text {
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+}
+
+.tgkch-text {
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.channels-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.channels-text a:hover {
+    text-decoration: underline;
+}
+
+.iheader-text {
+    margin-top: 40px;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    text-align: left;
+}
+
+.instructions-text {
+    margin-top: 10px;
+    font-size: 14px; /* було 14px; */
+    font-weight: 100; /* було 200; */
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.instructions-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.instructions-text a:hover {
+    text-decoration: underline;
+}
+
+.howto-text {
+    margin-top: 80px;
+    left: 4px;
+    font-size: 14px; /* було 14px; */
+    font-weight: 100; /* було 200; */
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.howto-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.howto-text a:hover {
+    text-decoration: underline;
+}
+
+.scroll-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #FF7F50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top-btn:hover {
+    background: #FF6347;
+    transform: scale(1.1);
+}
+
+.input-with-paste {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-with-paste input {
+    margin-top: 2px;
+    flex: 1;
+    padding-right: 110px; /* місце для кнопки */
+}
+
+.paste-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    font-size: 12px;
+    background: #1E90FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.paste-btn:hover {
+    background: #00bfff;
+}
+/* Усі жирні тексти в результаті — білі в темній темі */
+.result-text b,
+.result-text strong {
+    color: #ffffff; /* чистий білий — ідеально видно на темному */
+    font-weight: 600; /* трохи жирніше, щоб виділявся */
+}
+
+/* Світла тема — темний жирний текст */
+body.light-theme .result-text b,
+body.light-theme .result-text strong {
+    color: #1a1a3d; /* темно-синій/чорний */
+}
+
+/* Промокод і весь текст після нього — завжди контрастний */
+.promo-code,
+.promo-code ~ * {
+    color: #ffeb3b !important;  /* світло-жовтий — ідеально видно на чорному */
+}
+
+/* Світла тема — темніший колір */
+body.light-theme .promo-code,
+body.light-theme .promo-code ~ * {
+    color: #ef6c00 !important;  /* помаранчевий */
+}
+
+/* Сам промокод (span.promo-code) — фон + бордер + hover */
+.promo-code {
+    background: rgba(255, 193, 7, 0.18);
+    color: #fff9c4 !important;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    user-select: none;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.promo-code:hover {
+    background: rgba(255, 193, 7, 0.35);
+    transform: scale(1.03);
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+/* Текст після промокоду (якщо є додатковий текст після span) */
+.result-text .promo-code + * {
+    margin-top: 8px;
+    color: inherit !important;
+}
+
+/* Усі тексти всередині blockquote — завжди контрастні */
+blockquote,
+blockquote * {
+    color: #f0f4f8 !important; /* світлий білий/сірий — видно на темному фоні */
+}
+
+/* Світла тема */
+body.light-theme blockquote,
+body.light-theme blockquote * {
+    color: #1a2533 !important; /* темно-синій/сірий */
+}
+
+/* Промокод і його сусіди — перекриваємо все */
+.promo-code,
+.promo-code ~ *,
+blockquote .promo-code ~ * {
+    color: #ffeb3b !important;
+}
+
+body.light-theme .promo-code,
+body.light-theme .promo-code ~ *,
+body.light-theme blockquote .promo-code ~ * {
+    color: #ef6c00 !important;
+}
+
+/* Підказка *Клікніть...* — сіра */
+blockquote i {
+    color: #b0bec5 !important;
+    font-size: 13px;
+}
+
+body.light-theme blockquote i {
+    color: #455a64 !important;
+}
+
+/* Якщо текст після промокоду все ще темний — примусово білий */
+.result-text blockquote p,
+.result-text blockquote div,
+.result-text blockquote span:not(.promo-code) {
+    color: inherit !important;
+}
+ 
+.result-text .product-image {
+    float: right;
+    margin: 0 0 16px 20px;         /* трохи більше відступів для планшетів */
+    max-width: 90px;              /* базовий розмір для телефонів */
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    clear: both;
+}
+
+
+
+/* Текст промокодів у resultText — завжди контрастний */
+.result-text[data-coupons-loaded] p,
+.result-text[data-coupons-loaded] span,
+.result-text[data-coupons-loaded] div,
+.result-text[data-coupons-loaded] {
+    color: #f0f4f8 !important; /* світлий білий/сірий у темній темі */
+}
+
+body.light-theme .result-text[data-coupons-loaded],
+body.light-theme .result-text[data-coupons-loaded] * {
+    color: #1a2533 !important; /* темно-синій/чорний у світлій темі */
+}
+
+/* Виділення заголовка "Актуальні промокоди та акції" */
+.result-text[data-coupons-loaded] b {
+    color: #FFEFD5 !important; /* було #ffeb3b золотистий у темній */
+    font-size: 16px;
+}
+
+body.light-theme .result-text[data-coupons-loaded] b {
+    color: #f57c00 !important; /* помаранчевий у світлій */
+}
+
+@media (min-width: 200px) and (max-width: 480px) and (orientation: portrait) {  
+    
+    body.in-telegram .container {
+        top: 50px; !important;
+        padding: 2px; /* було top: 6px; */
+        width: 96%;
+    }
+    body.in-telegram .top-buttons {
+        top: calc(90px + var(--tg-safe-area-top, 0px)) !important;
+        text-align: center;
+    }
+
+    }
+    body.in-telegram .howto-buttons {
+        top: calc(100px + var(--tg-safe-area-top, 0px)) !important;
+        text-align: center;
+    }
+
+    .howto-container {        
+        top: 25px; !important; /* було top: 30px; */
+        padding: 8px;
+        width: 100%;
+    } 
+
+    .howto-text {
+        width: 95%;
+        margin-top: 30px;
+    }
+
+    .structure-img {
+        margin-top: 5px;
+    }
+    
+    
+    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
+    .top-buttons {
+        top: 100px !important; /* було 10px; */
+        left: 15px;
+        gap: -20px;
+    }
+    .howto-buttons {
+        top: 90px !important; /* було 10px; */
+        left: 5px;
+        gap: -20px;
+        text-align: center;
+    }
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span {
+        display: block;
+        margin-top: 2px;  /* 4px; */
+        font-size: 9px;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-align: center;
+    }
+    .main-container {        
+        top: 0px; /* було top: 200px; */
+        padding: 4px;
+        width: 100%;
+    } 
+
+    .container {
+        top: -5px; !important;
+        padding: 6px;
+        width: 96%;
+    }
+    
+    .instruction-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 65px; /* було top: 60px; */
+        height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .headhistory-img {
+        position: absolute;
+        top: 1px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 85px; /* було top: 60px; */
+        height: 85px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .slogan-text {
+        margin-top: 65px;
+        font-weight: 100;
+        
+    }
+
+    .history_main-text {
+        margin-top: 180px;
+        font-weight: 900;
+        font-size: 20px;
+        
+    }
+
+    .slider:before {        
+        height: 30px;             /* було 30px */
+        bottom: 2px;        
+    }
+    .theme-toggle-container {
+        top: 90px; !important; /* було 98px */
+        right: 12px;    /* було right: 8px;  */
+        gap: 1px;
+    }
+    .theme-toggle {    
+        height: 37px;             /* було 40px height: 22px; */
+        width: 75px;              /* було 48px */
+    }
+    .theme-label {
+        font-size: 8px; /* 6px */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 100;
+        color: #FF0000;
+    }
+    .theme-label.active {
+        font-size: 10px;
+    }
+    .theme-label:not(.active) {
+        font-size: 5px;
+    }
+    
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .feedback-btn {
+        min-width: 60px;
+        padding: 6px 4px;
+    }
+    
+    .btn-icon {
+        width: 35px; /* 32px; */
+        height: 35px;  /* 32px; */
+        margin-bottom: 4px;
+    }
+    
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span{
+        font-size: 8px;
+    }
+    
+    
+    .block-form {
+        margin-top: 60px; /* було 50px */
+        padding: 10px; /* було 10px */
+    }
+        
+    
+    .header-text {
+        font-size: 18px;
+        font-weight: 200;
+    }
+    .input-group input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .input-group label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+    .result input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .result label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .result-text .product-image {
+        max-width: 90px;          /* або 400px — підбери під себе */
+    }
+     
+}
+
+/* Планшети (iPad Mini тощо) — (min-width: 744px) (max-width: 821px) */
+@media (min-width: 700px) and (max-width: 750px) and (orientation: portrait) {  
+    
+    body {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 98%;
+        max-width: 820px;
+        padding: 10px;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }
+
+    /* FEEDBACK відштовхується вправо до перемикача тем */
+    .feedback-btn {
+        margin-left: 160px;        /* головне — відштовхується максимально вправо auto */
+        min-width: 85px;
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 75px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 42px;
+        height: 42px;
+        margin-bottom: 10px;
+        object-fit: contain;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 8px;
+        color: #FFFFFF;
+    }
+
+    body.light-theme .coupons-btn span,
+    body.light-theme .instruction-btn span,
+    body.light-theme .history-btn span,
+    body.light-theme .web-btn span,
+    body.light-theme .feedback-btn span {
+        color: #000000 !important;
+    }
+
+    .coupons-btn:hover,
+    .instruction-btn:hover,
+    .history-btn:hover,
+    .web-btn:hover,
+    .feedback-btn:hover {
+        background: rgba(30, 144, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* Центральна іконка Pedro — по центру */
+    .instruction-img {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .slogan-text {
+        margin-top: 135px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .history_main-text {
+        margin-top: 135px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 48px;
+        width: 110px;
+    }
+
+    .slider {
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;
+        width: 42px;
+        left: -4px;
+        bottom: 2px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);
+    }
+
+    .theme-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;
+        top: 8px;
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;
+    }
+
+    .header-text {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    .block-form {
+        margin-top: 2px;
+        padding: 30px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px 18px;
+        padding: 20px 24px;
+        font-size: 16px;
+    }
+
+    .checkbox-group label {
+        font-size: 16px;
+        padding: 10px 14px;
+        min-height: 20px;
+    }
+
+    .input-group label {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .input-group input {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .result label {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    .result-text {
+        min-height: 300px;
+        font-size: 18px;
+        padding: 24px;
+        line-height: 1.8;
+    }
+
+    .submit-group {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 20px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    .result-text .product-image {
+        max-width: 250px;          /* або 220px — підбери під себе */
+    }
+}
+
+@media (min-width: 824px) and (max-width: 854px) and (orientation: landscape) {  
+    
+    body.in-telegram .container {
+        top: 50px; !important;
+        padding: 6px;
+        width: 100%;
+    }
+    body.in-telegram .top-buttons {
+        top: calc(90px + var(--tg-safe-area-top, 0px)) !important;
+    }
+    
+    
+    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
+    .top-buttons {
+        top: 10px !important;
+        left: 15px;
+        gap: -20px;
+    }
+    
+    .main-container {        
+        top: 0px; /* було top: 200px; */
+        padding: 4px;
+        width: 100%;
+    } 
+
+    .container {
+        top: -10px; !important;
+        padding: 6px;
+        width: 100%;
+    }
+    
+    .instruction-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 65px; /* було top: 60px; */
+        height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .slogan-text {
+        margin-top: 65px;
+        font-weight: 100;        
+    }
+
+    .history_main-text {
+        margin-top: 65px;
+        font-weight: 100;        
+    }
+    
+    .slider:before {        
+        height: 30px;             /* було 30px */
+        bottom: 2px;        
+    }
+    .theme-toggle-container {
+        top: 98px; /* було 98px */
+        right: 12px;    /* було right: 8px;  */
+        gap: 1px;
+    }
+    .theme-toggle {    
+        height: 37px;             /* було 40px height: 22px; */
+        width: 75px;              /* було 48px */
+    }
+    .theme-label {
+        font-size: 8px; /* 6px */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 100;
+        color: #FF0000;
+    }
+    .theme-label.active {
+        font-size: 10px;
+    }
+    .theme-label:not(.active) {
+        font-size: 5px;
+    }
+ 
+    .top-buttons {
+        left: 15px;
+        gap: -20px;
+    }
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .feedback-btn {
+        min-width: 60px;
+        padding: 6px 4px;
+    }
+    
+    .btn-icon {
+        width: 35px; /* 32px; */
+        height: 35px;  /* 32px; */
+        margin-bottom: 4px;
+    }
+    
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span{
+        font-size: 8px;
+    }
+    
+    
+    .block-form {
+        margin-top: 50px; /* було 40px */
+        padding: 15px; /* було 10px */
+    }
+        
+    
+    .header-text {
+        font-size: 18px;
+        font-weight: 200;
+    }
+    .input-group input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .input-group label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+    .result input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .result label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .result-text .product-image {
+        max-width: 90px;          /* або 400px — підбери під себе */
+    }
+     
+}
+
+/* Планшети (11 дюймів iPad тощо) — (min-width: 769px) (max-width: 821px) */
+@media (min-width: 769px) and (max-width: 821px) and (orientation: portrait) {
+    /* твої стилі для планшета — збільшені розміри, відступи тощо */
+    body {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+        max-width: 820px;
+        padding: 20px;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }
+
+    /* FEEDBACK відштовхується вправо до перемикача тем */
+    .feedback-btn {
+        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
+        min-width: 85px;
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 95px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 10px;
+        object-fit: contain;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 8px;
+        color: #FFFFFF;
+    }
+
+    body.light-theme .coupons-btn span,
+    body.light-theme .instruction-btn span,
+    body.light-theme .history-btn span,
+    body.light-theme .web-btn span,
+    body.light-theme .feedback-btn span {
+        color: #000000 !important;
+    }
+
+    .coupons-btn:hover,
+    .instruction-btn:hover,
+    .history-btn:hover,
+    .web-btn:hover,
+    .feedback-btn:hover {
+        background: rgba(30, 144, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* Центральна іконка Pedro — по центру */
+    .instruction-img {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .slogan-text {
+        margin-top: 120px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .history_main-text {
+        margin-top: 120px;
+        font-size: 38px;
+        font-weight: 900;
+        text-align: center;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 45px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 48px;
+        width: 110px;
+    }
+
+    .slider {
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;
+        width: 42px;
+        left: -4px;
+        bottom: 2px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);
+    }
+
+    .theme-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;
+        top: 8px;
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;
+    }
+
+    .header-text {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    .block-form {
+        margin-top: 40px;
+        padding: 30px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px 18px;
+        padding: 20px 24px;
+        font-size: 16px;
+    }
+
+    .checkbox-group label {
+        font-size: 16px;
+        padding: 10px 14px;
+        min-height: 20px;
+    }
+
+    .input-group label {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .input-group input {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .result label {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    .result-text {
+        min-height: 300px;
+        font-size: 18px;
+        padding: 24px;
+        line-height: 1.8;
+    }
+
+    .submit-group {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 20px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    .result-text .product-image {
+        max-width: 250px;          /* або 220px — підбери під себе */
+    }
+}
+
+/* iPad Mini та подібні планшети в горизонтальній орієнтації (landscape) */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    /* Загальні збільшення для ландшафту — все ще компактніше, ніж десктоп, але більше, ніж портрет */
+    body {
+        font-size: 20px; /* ще більший базовий текст */
+    }
+
+    .main-container {
+        width: 98%;
+        max-width: 1200px; /* не розтягуємо занадто на великому екрані */
+        padding: 20px;
+    }
+
+    .container {
+        padding: 40px 32px;
+        border-radius: 24px;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 90px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 54px; /* було 64px */
+        height: 54px; /* було 64px */
+        margin-bottom: 12px;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .instruction-img {
+        width: 120px;
+        height: 120px;
+        top: 16px;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 50px;                /*  45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 56px;
+        width: 130px;
+    }
+
+    .slider {
+        border-radius: 28px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .slider:before {
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(76px);
+    }
+
+    .theme-label {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
+    }
+
+    .theme-label.active {
+        font-size: 28px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 140px;
+        font-size: 22px;
+    }
+
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
+    }
+
+    .header-text {
+        font-size: 38px;
+        margin-top: 50px;
+    }
+
+    .block-form {
+        margin-top: 50px;
+        padding: 40px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        font-size: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
+    }
+
+    .input-group label {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .result label {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .result-text {
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
+    }
+
+    .submit-group {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    
+    .result-text .product-image {
+        max-width: 400px;          /* або 400px — підбери під себе */
+    }
+}
+
+    /* Планшети (13 дюймів iPad Air тощо) — ширина від 769 до 1024 px (max-width: 821px) */
+@media (min-width: 1020px) and (max-width: 1025px) and (orientation: portrait) {
+    /* твої стилі для планшета — збільшені розміри, відступи тощо */
+    body {
+        font-size: 18px; /* 18px */
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+        max-width: 1022px;
+        padding: 20px;
+    }
+
+    .container {
+        padding: 10px 32px;
+        border-radius: 24px;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 90px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 54px; /* було 64px */
+        height: 54px; /* було 64px */
+        margin-bottom: 12px;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .feedback-btn span {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .instruction-img {
+        width: 120px;
+        height: 120px;
+        top: 16px;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 50px;                /*  45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 56px;
+        width: 130px;
+    }
+
+    .slider {
+        border-radius: 28px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .slider:before {
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(76px);
+    }
+
+    .theme-label {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
+    }
+
+    .theme-label.active {
+        font-size: 28px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 140px;
+        font-size: 22px;
+    }
+    
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
+    }
+
+    .header-text {
+        font-size: 38px;
+        margin-top: 50px;
+    }
+
+    .block-form {
+        margin-top: 50px;
+        padding: 40px;
+        font-size: 28px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        font-size: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
+    }
+
+    .input-group label {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .result label {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .result-text {
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
+    }
+
+    .submit-group {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    
+    .result-text .product-image {
+        max-width: 280px;          /* або 400px — підбери під себе */
+    }
+}
+
+/* PC тощо */
+@media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
+    /* твої стилі для планшета — збільшені розміри, відступи тощо */
+    body {
+        font-size: 20px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 94%;
+        max-width: 1450px;
+        padding: 55px;
+    }
+    .howto-container {
+        text-align: top;
+    }
+    
+    .container {
+    top: -10px;
+    width: 100%; /* було 100%; */
+    padding: 10px; /* було 20px */
+    border-radius: 12px;
+    text-align: center;
+    position: relative;
+    }
+    
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        font-size: 18px; 
+        left: 4px;
+        right: 4px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .web-btn,
+    .history-btn,
+    .feedback-btn {
+        display: flex;
+        margin-top: -65px; !important;
+        font-size: 18px; 
+        flex-direction: column;
+        align-items: center;
+        min-width: 90px; /* було 110px */
+        padding: 8px 6px; /* було 16px 12px; */
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 50px; /* було 64px */
+        height: 50px; /* було 64px */
+        margin-bottom: 12px;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .web-btn span,
+    .history-btn span,
+    .feedback-btn span {
+        font-size: 18px;
+    }
+
+    .instruction-img {
+        width: 120px;
+        height: 120px;
+        top: 16px;
+    }
+    .headhistory-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 120px; /* було top: 60px; */
+        height: 120px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 50px;                /*  45px; */
+        right: -114px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 56px;
+        width: 130px;
+    }
+
+    .slider {
+        border-radius: 28px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .slider:before {
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(76px);
+    }
+
+    .theme-label {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
+    }
+
+    .theme-label.active {
+        font-size: 28px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 160px;
+        font-size: 22px;
+    }
+
+    .history_main-text {
+        margin-top: 170px;
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .header-text {
+        font-size: 38px;
+        margin-top: 50px;
+    }
+
+    .block-form {
+        margin-top: 10px;
+        padding: 40px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        font-size: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
+    }
+
+    .input-group label {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .result label {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .result-text {
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
+    }
+
+    .submit-group {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    
+    .result-text .product-image {
+        max-width: 400px;          /* або 400px — підбери під себе */
+    }
+}
