@@ -1120,7 +1120,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Повноекранний перегляд */
     .image-viewer {
         display: none;
-        position: fixed;
+        position: center;  /* fixed */
         inset: 0;
         background: rgba(0,0,0,0.95);
         z-index: 9999;
@@ -1137,8 +1137,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        min-width: 100vw;              /* ширина = повний екран */
-        min-height: 100vh;
+        min-width: 50vw;              /* ширина = повний екран 100vw 100vh */
+        min-height: 50vh;
         padding: 60px 10px 20px;
         box-sizing: border-box;
     }
