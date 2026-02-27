@@ -71,7 +71,7 @@ function openImageViewer(src) {
     
     img.onload = () => {
         viewer.scrollTo(0, 0);                  // скидаємо скрол на початок
-        img.style.transform = 'scale(0.5)';     // початковий масштаб 50 %
+        img.style.transform = 'scale(1)';     // початковий масштаб 50 %
         
         // Додатково для iOS — примусово центруемо після завантаження
         setTimeout(() => {
