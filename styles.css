@@ -1101,7 +1101,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
 
-    /* Звичайний перегляд */
+    /* Звичайний перегляд — картинка на всю ширину */
     .structure-img {
         margin-top: 5px;
         width: 100%;
@@ -1122,11 +1122,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: none;
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.95);
+        background: rgba(0,0,0,0.98);
         z-index: 9999;
-        overflow: auto;                /* головний скрол */
-        -webkit-overflow-scrolling: touch;  /* плавний скрол на iOS */
-        touch-action: pinch-zoom pan-x pan-y;  /* дозволяє зум і свайп в усі сторони */
+        overflow: auto;
+        touch-action: pinch-zoom;              /* ключовий для зуму пальцями */
+        -webkit-overflow-scrolling: touch;     /* плавний скрол на iOS */
     }
     
     .image-viewer.active {
@@ -1137,26 +1137,26 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        min-width: 100vw;              /* ширина = повний екран */
+        min-width: 100vw;
         min-height: 100vh;
-        padding: 60px 10px 20px;
+        padding: 60px 10px 40px;
         box-sizing: border-box;
     }
     
     #viewerImg {
         width: auto;
         height: auto;
-        max-width: none;
-        max-height: none;
+        max-width: none !important;
+        max-height: none !important;
         object-fit: none;
-        transform-origin: top left;
-        -webkit-user-select: none;     /* забороняємо виділення тексту */
-        user-select: none;
+        transform-origin: 0 0;                 /* зум починається з лівого верхнього кута */
+        will-change: transform;                /* оптимізація анімації */
+        pointer-events: auto;
     }
     
-    /* Важливо для iOS: знімає обмеження на перетягування */
-    .image-viewer img {
-        pointer-events: auto;
+    /* Дозволяємо перетягування при зумі */
+    .viewer-content img {
+        touch-action: pinch-zoom pan-x pan-y;  /* свайп і зум одночасно */
     }
     
     
