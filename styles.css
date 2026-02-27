@@ -1136,24 +1136,22 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     .viewer-content {
         display: flex;
-        justify-content: center;                    /* центруємо по горизонталі */
-        align-items: flex-start;                    /* прилипає до верхнього краю */
+        justify-content: center;          /* ← горизонтальне центрування */
+        align-items: flex-start;          /* ← прилипає до верхнього краю */
         min-width: 100vw;
         min-height: 100vh;
-        padding: 60px 0 20px;                       /* відступи зверху та знизу */
+        padding: 60px 0 20px;             /* відступи зверху та знизу, без горизонтальних */
         box-sizing: border-box;
     }
     
     #viewerImg {
         width: auto;
         height: auto;
-        max-width: none;
-        max-height: none;
-        transform: scale(0.5);                      /* стартовий масштаб 50 % */
-        transform-origin: top center;               /* зум починається з центру зверху */
-        transition: transform 0.2s ease;            /* плавний зум */
-        will-change: transform;
-        pointer-events: auto;
+        max-width: none !important;
+        max-height: none !important;
+        min-width: 0;
+        transform: scale(0.5);            /* стартовий масштаб 50 % */
+        transform-origin: center top;     /* зум починається з центру зверху */
     }
     
     /* Дозволяємо перетягування при зумі */
