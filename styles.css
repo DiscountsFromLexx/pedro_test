@@ -1100,8 +1100,72 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 30px;
     }
 
+    /* Звичайна картинка — на всю ширину екрана */
     .structure-img {
         margin-top: 5px;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .structurw-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        cursor: pointer; /* показує, що можна клікнути */
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        transition: transform 0.2s ease;
+    }
+    
+    .structurw-img:hover {
+        transform: scale(1.02); /* легке збільшення при наведенні */
+    }
+    
+    /* Повноекранна модалка */
+    .fullscreen-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.95);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+        overflow: auto;
+    }
+    
+    .fullscreen-modal.active {
+        display: flex;
+    }
+    
+    #fullscreenImg {
+        max-width: 95%;
+        max-height: 95vh;
+        object-fit: contain;
+        border-radius: 12px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    }
+    
+    .close-btn {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        color: white;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 10000;
+        background: rgba(0,0,0,0.5);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+    }
+    
+    .close-btn:hover {
+        background: rgba(255,0,0,0.7);
     }
     
     
