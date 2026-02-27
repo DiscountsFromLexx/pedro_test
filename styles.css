@@ -1100,18 +1100,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 30px;
     }
 
-    /* Звичайний перегляд схеми */
+    /* Звичайний перегляд — картинка на всю ширину екрану */
     .structure-img {
         margin-top: 5px;
         width: 100%;
-        overflow-x: auto;           /* горизонтальний скрол, якщо картинка ширша */
+        overflow-x: auto;           /* якщо картинка ширша — з’явиться горизонтальний скрол */
+        text-align: center;
     }
     
     .structurw-img {
         width: 100%;
         height: auto;
         display: block;
-        cursor: pointer;
+        cursor: zoom-in;            /* показує, що можна збільшити */
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
@@ -1128,22 +1129,23 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     .image-viewer.active {
-        display: flex;
+        display: block;
     }
     
     .viewer-content {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: flex-start;
-        min-height: 500%;
+        min-width: 100%;
+        min-height: 100%;
         padding: 60px 10px 20px;
     }
     
     #viewerImg {
-        max-width: none;            /* знімає обмеження ширини */
-        width: auto;
-        height: auto;
-        object-fit: none;           /* не обрізати, показувати повністю */
+        width: auto;                /* оригінальна ширина */
+        height: auto;               /* оригінальна висота */
+        max-width: none;            /* знімає будь-які обмеження */
+        object-fit: none;
         transform-origin: top left;
     }
     
