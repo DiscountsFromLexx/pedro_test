@@ -45,19 +45,21 @@
             </div>        
             
             <div class="structure-img">
-                <img 
-                    src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/str_test.png" 
-                    alt="Структура" 
-                    class="structurw-img"
-                    onclick="openFullscreen(this.src)"
-                >
+            <img 
+                src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/str_test.png" 
+                alt="Структура Педро помічника" 
+                class="structurw-img"
+                onclick="openImageViewer(this.src)"
+            >
+        </div>
+        
+        <!-- Повноекранний перегляд з можливістю зуму та скролу -->
+        <div id="imageViewer" class="image-viewer" onclick="closeImageViewer()">
+            <span class="close-viewer" onclick="closeImageViewer()">✕</span>
+            <div class="viewer-content">
+                <img id="viewerImg" src="" alt="Збільшена схема">
             </div>
-            
-            <!-- Повноекранний перегляд (модалка) -->
-            <div id="fullscreenModal" class="fullscreen-modal" onclick="closeFullscreen()">
-                <span class="close-btn" onclick="closeFullscreen()">✕</span>
-                <img id="fullscreenImg" src="" alt="Збільшена картинка">
-            </div>
+        </div>
 
         <div class="howto-text">
             <p><b>✅ COUPONS</b>
