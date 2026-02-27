@@ -1151,7 +1151,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         max-height: none !important;
         min-width: 0;
         transform: scale(3.5);            /* стартовий масштаб 0.5 -  50 % */
-        transform-origin: center top;     /* зум починається з центру зверху */
+        transform-origin: left top;     /* зум починається з центру зверху */
     }
     
     /* Дозволяємо перетягування при зумі */
