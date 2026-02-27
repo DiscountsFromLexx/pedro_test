@@ -69,7 +69,10 @@ function openImageViewer(src) {
     img.src = src;
     viewer.classList.add('active');
     
-    viewer.scrollTo(0, 0);
+    // Для iOS — примусово дозволяємо скрол після завантаження
+    img.onload = () => {
+        viewer.scrollTo(0, 0);
+    };
 }
 
 function closeImageViewer() {
@@ -77,14 +80,8 @@ function closeImageViewer() {
     viewer.classList.remove('active');
 }
 
-// Прив'язуємо клік на картинку для відкриття
-document.querySelector('.structurw-img')?.addEventListener('click', function() {
-    openImageViewer(this.src);
-});
-
-// Закриття повторним кліком на фон або на зображення
+// Закриття повторним кліком на фон або картинку
 document.getElementById('imageViewer')?.addEventListener('click', function(e) {
-    // Закриваємо незалежно від того, куди клікнули (фон або зображення)
     closeImageViewer();
 });
 
