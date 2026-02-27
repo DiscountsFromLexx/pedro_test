@@ -470,6 +470,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const viewer = document.getElementById('imageViewer');
         viewer.classList.remove('active');
     }
+    if (isTelegramMiniApp) {
+        const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
+        document.getElementById('fullscreenModal').style.paddingTop = `${safeTop}px`;
+    }
 
 
     
