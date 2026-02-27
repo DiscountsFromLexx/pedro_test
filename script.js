@@ -455,6 +455,23 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
+    function openFullscreen(src) {
+    const modal = document.getElementById('fullscreenModal');
+    const img = document.getElementById('fullscreenImg');
+    
+    img.src = src;
+    modal.classList.add('active');
+    }
+    
+    function closeFullscreen() {
+        const modal = document.getElementById('fullscreenModal');
+        modal.classList.remove('active');
+    }
+    if (isTelegramMiniApp) {
+        const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
+        document.getElementById('fullscreenModal').style.paddingTop = `${safeTop}px`;
+    }
+
 
     
     window.scrollToTop = () => {
