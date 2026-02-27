@@ -1090,7 +1090,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     body.in-telegram .howto-text {
-        top: calc(180px + var(--tg-safe-area-top, 20px)) !important;
+        top: calc(110px + var(--tg-safe-area-top, 20px)) !important;
     }
 
     .howto-container {        
@@ -1101,7 +1101,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     howto-text {
         width: 95%;
-        margin-top: 160px;
+        margin-top: 110px;
     }
     
     
@@ -1153,7 +1153,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .headhistory-img {
         position: absolute;
-        top: 2px;
+        top: 1px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 85px; /* було top: 60px; */
