@@ -1101,9 +1101,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .structure-img {
-        width: 100%;
+        width: 20%;
         margin-top: 5px;
-        justify-content: top;
+        justify-content: center;
         align-items: center;
     }
     
