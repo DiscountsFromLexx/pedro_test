@@ -45,7 +45,18 @@
             </div>        
             
             <div class="structure-img">
-            <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/str_test.png" class="structurw-img">
+                <img 
+                    src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/str_test.png" 
+                    alt="Структура" 
+                    class="structurw-img"
+                    onclick="openFullscreen(this.src)"
+                >
+            </div>
+            
+            <!-- Повноекранний перегляд (модалка) -->
+            <div id="fullscreenModal" class="fullscreen-modal" onclick="closeFullscreen()">
+                <span class="close-btn" onclick="closeFullscreen()">✕</span>
+                <img id="fullscreenImg" src="" alt="Збільшена картинка">
             </div>
 
         <div class="howto-text">
