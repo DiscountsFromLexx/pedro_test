@@ -1085,7 +1085,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     }
     body.in-telegram .howto-buttons {
-        top: calc(110px + var(--tg-safe-area-top, 0px)) !important;
+        top: calc(90px + var(--tg-safe-area-top, 0px)) !important;
         text-align: center;
     }
 
@@ -1168,7 +1168,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .history_main-text {
-        margin-top: 110px;
+        margin-top: 180px;
         font-weight: 900;
         font-size: 10px;
         
