@@ -49,13 +49,12 @@
                     src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/str_test.png" 
                     alt="Структура Педро помічника" 
                     class="structurw-img"
-                    loading="lazy"
+                    onclick="openImageViewer(this.src)"
                 >
             </div>
             
             <!-- Повноекранний перегляд -->
             <div id="imageViewer" class="image-viewer">
-                <span class="close-viewer" onclick="closeImageViewer()">✕</span>
                 <div class="viewer-content">
                     <img id="viewerImg" src="" alt="Збільшена схема">
                 </div>
