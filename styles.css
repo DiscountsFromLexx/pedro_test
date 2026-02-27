@@ -1137,8 +1137,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        min-width: 50vw;              /* ширина = повний екран 100vw 100vh */
-        min-height: 50vh;
+        min-width: 10vw;              /* ширина = повний екран 100vw 100vh */
+        min-height: 10vh;
         padding: 60px 10px 20px;
         box-sizing: border-box;
     }
