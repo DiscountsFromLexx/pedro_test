@@ -1089,10 +1089,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
 
-    body.in-telegram .howto-text {
-        top: calc(40px + var(--tg-safe-area-top, 20px)) !important;
-    }
-
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
         padding: 8px;
@@ -1101,7 +1097,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     howto-text {
         width: 95%;
-        top: 40px;
+        margin-top: 40px;
     }
     
     
