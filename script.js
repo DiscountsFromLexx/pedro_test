@@ -462,18 +462,19 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = src;
     viewer.classList.add('active');
     
-    // Дозволяємо зум та скрол пальцями
-    img.style.touchAction = 'pinch-zoom pan-x pan-y';
+    // Автоматичний скрол до початку картинки
+    viewer.scrollTo(0, 0);
     }
     
     function closeImageViewer() {
         const viewer = document.getElementById('imageViewer');
         viewer.classList.remove('active');
     }
-    if (isTelegramMiniApp) {
-        const safeTop = window.Telegram.WebApp.safeAreaInset?.top || 50;
-        document.getElementById('fullscreenModal').style.paddingTop = `${safeTop}px`;
-    }
+    
+    // Прив'язуємо клік до картинки
+    document.querySelector('.structurw-img')?.addEventListener('click', function() {
+        openImageViewer(this.src);
+    });
 
 
     
