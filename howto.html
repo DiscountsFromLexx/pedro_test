@@ -94,28 +94,7 @@
     </div>
     
     <!-- Підключаємо script.js після SDK -->
-    <script src="script.js"></script>
-
-    function openImageViewer(src) {
-    const viewer = document.getElementById('imageViewer');
-    const img = document.getElementById('viewerImg');
-    
-    img.src = src;
-    viewer.classList.add('active');
-    
-    // Автоматичний скрол до початку картинки
-    viewer.scrollTo(0, 0);
-    }
-    
-    function closeImageViewer() {
-        const viewer = document.getElementById('imageViewer');
-        viewer.classList.remove('active');
-    }
-    
-    // Прив'язуємо клік до картинки
-    document.querySelector('.structurw-img')?.addEventListener('click', function() {
-        openImageViewer(this.src);
-    });
+    <script src="script.js"></script>    
         
 </body>
 </html>
