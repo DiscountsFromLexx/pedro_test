@@ -1149,7 +1149,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: auto;
         max-width: none;
         max-height: none;
-        transform-origin: 50% 0;             /* зум починається з центру зверху */
+        transform-origin: 20% 0;             /* зум починається з центру зверху 50% */
         transform: scale(1);
         transition: transform 0.3s ease;
         will-change: transform;
