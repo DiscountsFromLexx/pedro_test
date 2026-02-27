@@ -1124,9 +1124,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         inset: 0;
         background: rgba(0,0,0,0.95);
         z-index: 9999;
-        overflow: auto;
-        touch-action: pinch-zoom;
-        cursor: zoom-out; /* підказує, що клік закриє */
+        overflow: auto;                /* головний скрол */
+        -webkit-overflow-scrolling: touch;  /* плавний скрол на iOS */
+        touch-action: pinch-zoom pan-x pan-y;  /* дозволяє зум і свайп в усі сторони */
     }
     
     .image-viewer.active {
@@ -1137,16 +1137,26 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        min-width: 100%;
-        min-height: 100%;
-        padding: 20px;
+        min-width: 100vw;              /* ширина = повний екран */
+        min-height: 100vh;
+        padding: 60px 10px 20px;
+        box-sizing: border-box;
     }
     
     #viewerImg {
         width: auto;
         height: auto;
         max-width: none;
+        max-height: none;
         object-fit: none;
+        transform-origin: top left;
+        -webkit-user-select: none;     /* забороняємо виділення тексту */
+        user-select: none;
+    }
+    
+    /* Важливо для iOS: знімає обмеження на перетягування */
+    .image-viewer img {
+        pointer-events: auto;
     }
     
     
