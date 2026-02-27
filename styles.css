@@ -1158,6 +1158,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .viewer-content img {
         touch-action: pinch-zoom pan-x pan-y;  /* свайп і зум одночасно */
     }
+
+    .image-viewer img {
+        pointer-events: auto;
+    }
     
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
