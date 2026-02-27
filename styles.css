@@ -1135,7 +1135,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: center;
         align-items: flex-start;
-        min-height: 100%;
+        min-height: 500%;
         padding: 60px 10px 20px;
     }
     
