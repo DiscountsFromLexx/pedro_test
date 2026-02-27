@@ -1138,8 +1138,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: center;          /* ← горизонтальне центрування */
         align-items: flex-start;          /* ← прилипає до верхнього краю */
-        min-width: 400vw;
-        min-height: 200vh;
+        min-width: 100vw;
+        min-height: 100vh;
         padding: 60px 0 20px;             /* відступи зверху та знизу, без горизонтальних */
         box-sizing: border-box;
     }
@@ -1150,7 +1150,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         max-width: none !important;
         max-height: none !important;
         min-width: 0;
-        transform: scale(2);            /* стартовий масштаб 0.5 -  50 % */
+        transform: scale(1);            /* стартовий масштаб 0.5 -  50 % */
         transform-origin: center top;     /* зум починається з центру зверху */
     }
     
