@@ -1101,6 +1101,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
 
+
     /* Звичайний перегляд — картинка на всю ширину */
     .structure-img {
         margin-top: 5px;
@@ -1146,8 +1147,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     #viewerImg {
         width: auto;
         height: auto;
-        max-width: 50%;
-        max-height: 50%;
+        max-width: 90%;
+        max-height: 90%;
         object-fit: none;
         transform-origin: top center;
         -webkit-user-select: none;     /* забороняємо виділення тексту */
@@ -1158,7 +1159,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .image-viewer img {
         pointer-events: auto;
     }
-    
+
+
+
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
