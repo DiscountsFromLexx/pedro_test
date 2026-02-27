@@ -69,19 +69,24 @@ function openImageViewer(src) {
     img.src = src;
     viewer.classList.add('active');
     
-    // Автоматичний скрол до початку картинки
     viewer.scrollTo(0, 0);
-    }
-    
-    function closeImageViewer() {
-        const viewer = document.getElementById('imageViewer');
-        viewer.classList.remove('active');
-    }
-    
-    // Прив'язуємо клік до картинки
-    document.querySelector('.structurw-img')?.addEventListener('click', function() {
-        openImageViewer(this.src);
-    });
+}
+
+function closeImageViewer() {
+    const viewer = document.getElementById('imageViewer');
+    viewer.classList.remove('active');
+}
+
+// Прив'язуємо клік на картинку для відкриття
+document.querySelector('.structurw-img')?.addEventListener('click', function() {
+    openImageViewer(this.src);
+});
+
+// Закриття повторним кліком на фон або на зображення
+document.getElementById('imageViewer')?.addEventListener('click', function(e) {
+    // Закриваємо незалежно від того, куди клікнули (фон або зображення)
+    closeImageViewer();
+});
 
 
 
