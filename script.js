@@ -69,9 +69,10 @@ function openImageViewer(src) {
     img.src = src;
     viewer.classList.add('active');
     
-    // Для iOS — примусово дозволяємо скрол після завантаження
+    // Для iOS — примусово дозволяємо зум після завантаження
     img.onload = () => {
         viewer.scrollTo(0, 0);
+        img.style.transform = 'scale(1)'; // початковий масштаб
     };
 }
 
@@ -80,9 +81,17 @@ function closeImageViewer() {
     viewer.classList.remove('active');
 }
 
+// Відкриття по кліку на картинку
+document.querySelector('.structurw-img')?.addEventListener('click', function() {
+    openImageViewer(this.src);
+});
+
 // Закриття повторним кліком на фон або картинку
 document.getElementById('imageViewer')?.addEventListener('click', function(e) {
-    closeImageViewer();
+    // Якщо клікнули на фон (не на картинку) — закриваємо
+    if (e.target === this || e.target === document.getElementById('viewerImg')) {
+        closeImageViewer();
+    }
 });
 
 
