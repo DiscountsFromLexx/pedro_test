@@ -1137,8 +1137,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: flex-start;
         align-items: flex-start;
-        min-width: 10vw;              /* ширина = повний екран 100vw 100vh */
-        min-height: 10vh;
+        min-width: 100vw;              /* ширина = повний екран 100vw 100vh */
+        min-height: 100vh;
         padding: 60px 10px 20px;
         box-sizing: border-box;
     }
@@ -1146,10 +1146,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     #viewerImg {
         width: auto;
         height: auto;
-        max-width: none;
-        max-height: none;
+        max-width: 50%;
+        max-height: 50%;
         object-fit: none;
-        transform-origin: top left;
+        transform-origin: top center;
         -webkit-user-select: none;     /* забороняємо виділення тексту */
         user-select: none;
     }
