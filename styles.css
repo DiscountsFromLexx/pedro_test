@@ -1121,13 +1121,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Повноекранний перегляд */
     .image-viewer {
         display: none;
-        position: fixed;  /* fixed */
+        position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.95);
+        background: rgba(0,0,0,0.98);
         z-index: 9999;
-        overflow: auto;                /* головний скрол */
-        -webkit-overflow-scrolling: touch;  /* плавний скрол на iOS */
-        touch-action: pinch-zoom pan-x pan-y;  /* дозволяє зум і свайп в усі сторони */
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;          /* плавний скрол на iOS */
+        touch-action: manipulation pinch-zoom;      /* ключ для зуму та свайпу на iOS */
     }
     
     .image-viewer.active {
@@ -1136,11 +1136,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     .viewer-content {
         display: flex;
-        justify-content: flex-start;
-        align-items: flex-start;
-        min-width: 100vw;              /* ширина = повний екран 100vw 100vh */
+        justify-content: center;                    /* центруємо по горизонталі */
+        align-items: flex-start;                    /* прилипає до верхнього краю */
+        min-width: 100vw;
         min-height: 100vh;
-        padding: 60px 10px 20px;
+        padding: 60px 0 20px;                       /* відступи зверху та знизу */
         box-sizing: border-box;
     }
     
@@ -1149,15 +1149,16 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: auto;
         max-width: none;
         max-height: none;
-        object-fit: none;
-        transform-origin: top center;
-        -webkit-user-select: none;     /* забороняємо виділення тексту */
-        user-select: none;
+        transform: scale(0.5);                      /* стартовий масштаб 50 % */
+        transform-origin: top center;               /* зум починається з центру зверху */
+        transition: transform 0.2s ease;            /* плавний зум */
+        will-change: transform;
+        pointer-events: auto;
     }
     
-    /* Важливо для iOS: знімає обмеження на перетягування */
+    /* Дозволяємо перетягування при зумі */
     .image-viewer img {
-        pointer-events: auto;
+        touch-action: pinch-zoom pan-x pan-y;       /* зум + свайп в усі сторони */
     }
 
 
