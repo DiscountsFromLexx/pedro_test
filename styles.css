@@ -1100,19 +1100,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 30px;
     }
 
-    /* Звичайний перегляд — картинка на всю ширину екрану */
+
+    /* Звичайний перегляд */
     .structure-img {
         margin-top: 5px;
         width: 100%;
-        overflow-x: auto;           /* якщо картинка ширша — з’явиться горизонтальний скрол */
-        text-align: center;
+        overflow-x: auto;
     }
     
     .structurw-img {
         width: 100%;
         height: auto;
         display: block;
-        cursor: zoom-in;            /* показує, що можна збільшити */
+        cursor: zoom-in;
         border-radius: 8px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
@@ -1125,7 +1125,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         background: rgba(0,0,0,0.95);
         z-index: 9999;
         overflow: auto;
-        touch-action: pinch-zoom;   /* дозволяє зум пальцями */
+        touch-action: pinch-zoom;
+        cursor: zoom-out; /* підказує, що клік закриє */
     }
     
     .image-viewer.active {
@@ -1138,37 +1139,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         align-items: flex-start;
         min-width: 100%;
         min-height: 100%;
-        padding: 60px 10px 20px;
+        padding: 20px;
     }
     
     #viewerImg {
-        width: auto;                /* оригінальна ширина */
-        height: auto;               /* оригінальна висота */
-        max-width: none;            /* знімає будь-які обмеження */
+        width: auto;
+        height: auto;
+        max-width: none;
         object-fit: none;
-        transform-origin: top left;
-    }
-    
-    .close-viewer {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        color: white;
-        font-size: 40px;
-        font-weight: bold;
-        cursor: pointer;
-        z-index: 10000;
-        background: rgba(0,0,0,0.5);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .close-viewer:hover {
-        background: rgba(255,0,0,0.7);
     }
     
     
