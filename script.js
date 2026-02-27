@@ -69,11 +69,14 @@ function openImageViewer(src) {
     img.src = src;
     viewer.classList.add('active');
     
-    // Для iOS — примусово дозволяємо зум після завантаження
     img.onload = () => {
-        viewer.scrollTo(0, 0);
-        // Початковий масштаб 50 %
-        img.style.transform = 'scale(0.5)';
+        viewer.scrollTo(0, 0);                  // скидаємо скрол на початок
+        img.style.transform = 'scale(0.5)';     // початковий масштаб 50 %
+        
+        // Додатково для iOS — примусово центруемо після завантаження
+        setTimeout(() => {
+            viewer.scrollLeft = (viewer.scrollWidth - viewer.clientWidth) / 2;
+        }, 100);
     };
 }
 
