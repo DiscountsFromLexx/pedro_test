@@ -1138,8 +1138,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         justify-content: center;          /* ← горизонтальне центрування */
         align-items: flex-start;          /* ← прилипає до верхнього краю */
-        min-width: 100vw;
-        min-height: 100vh;
+        min-width: 200vw;
+        min-height: 200vh;
         padding: 60px 0 20px;             /* відступи зверху та знизу, без горизонтальних */
         box-sizing: border-box;
     }
