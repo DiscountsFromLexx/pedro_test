@@ -455,28 +455,6 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = 'index.html';
     });
 
-    function openImageViewer(src) {
-    const viewer = document.getElementById('imageViewer');
-    const img = document.getElementById('viewerImg');
-    
-    img.src = src;
-    viewer.classList.add('active');
-    
-    // Автоматичний скрол до початку картинки
-    viewer.scrollTo(0, 0);
-    }
-    
-    function closeImageViewer() {
-        const viewer = document.getElementById('imageViewer');
-        viewer.classList.remove('active');
-    }
-    
-    // Прив'язуємо клік до картинки
-    document.querySelector('.structurw-img')?.addEventListener('click', function() {
-        openImageViewer(this.src);
-    });
-
-
     
     window.scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
