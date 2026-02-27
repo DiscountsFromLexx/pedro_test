@@ -60,6 +60,31 @@ const miniAppInfo = isTelegramMiniApp ? {
     tg_version: tg.version || 'unknown'
 } : null;
 
+
+
+function openImageViewer(src) {
+    const viewer = document.getElementById('imageViewer');
+    const img = document.getElementById('viewerImg');
+    
+    img.src = src;
+    viewer.classList.add('active');
+    
+    // Автоматичний скрол до початку картинки
+    viewer.scrollTo(0, 0);
+    }
+    
+    function closeImageViewer() {
+        const viewer = document.getElementById('imageViewer');
+        viewer.classList.remove('active');
+    }
+    
+    // Прив'язуємо клік до картинки
+    document.querySelector('.structurw-img')?.addEventListener('click', function() {
+        openImageViewer(this.src);
+    });
+
+
+
 // Обробники кнопок — виконуються відразу після завантаження скрипта
 function initButtons() {
     // Кнопка HOW TO / ІНСТРУКЦІЇ (на index.html)
