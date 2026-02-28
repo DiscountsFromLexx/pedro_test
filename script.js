@@ -100,7 +100,7 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
         const originY = (y / rect.height) * 100;
         
         img.style.transformOrigin = `${originX}% ${originY}%`;
-        img.style.transform = 'scale(0.25)';
+        img.style.transform = 'scale(1)';
         isZoomed = true;
     } else {
         if (isZoomed) {
@@ -114,22 +114,7 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
     }
 });
 
-// Закриття при кліку на фон (поза картинкою) — ВИДАЛЕНО
-// document.getElementById('imageViewer')?.addEventListener('click', ... ) — закоментовано або видалено
 
-// Закриття повторним кліком
-document.getElementById('imageViewer')?.addEventListener('click', function(e) {
-    if (currentScale > 1) {
-        // Якщо вже збільшено — зменшуємо до 1
-        const img = document.getElementById('viewerImg');
-        img.style.transform = 'scale(1)';
-        currentScale = 1;
-        img.style.transformOrigin = 'center top';
-    } else {
-        // Якщо масштаб 1 — закриваємо модалку
-        closeImageViewer();
-    }
-});
 // Дозволяємо зум пальцями та свайп
 document.getElementById('imageViewer')?.addEventListener('touchstart', function(e) {
     if (e.touches.length === 2) {
