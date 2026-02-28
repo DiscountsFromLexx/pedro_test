@@ -63,7 +63,7 @@ const miniAppInfo = isTelegramMiniApp ? {
 
 
 
-let isZoomed = false;
+let isZoomed = false;  // змінна стану
 
 function openImageViewer(src) {
     const viewer = document.getElementById('imageViewer');
@@ -78,12 +78,7 @@ function openImageViewer(src) {
     viewer.scrollTo(0, 0);
 }
 
-function closeImageViewer() {
-    const viewer = document.getElementById('imageViewer');
-    viewer.classList.remove('active');
-}
-
-// Відкриття та перемикання масштабу
+// Відкриття та перемикання масштабу + закриття
 document.querySelector('.structurw-img')?.addEventListener('click', function(e) {
     const viewer = document.getElementById('imageViewer');
     const img = document.getElementById('viewerImg');
@@ -91,7 +86,7 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
     if (!viewer.classList.contains('active')) {
         openImageViewer(this.src);
         
-        // Зум на 25 % саме в точку кліку
+        // Зум на 25 % в точку кліку
         const rect = this.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -100,19 +95,20 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
         const originY = (y / rect.height) * 100;
         
         img.style.transformOrigin = `${originX}% ${originY}%`;
-        img.style.transform = 'scale(1)';
+        img.style.transform = 'scale(1.25)';
         isZoomed = true;
     } else {
-        if (isZoomed) {
-            // Другий клік — повернення до 1 та закриття модалки
-            img.style.transform = 'scale(1)';
-            isZoomed = false;
-            setTimeout(() => {
-                viewer.classList.remove('active');
-            }, 200);  // затримка для плавності
-        }
+        // Другий клік на картинці — повернення до 1 + закриття
+        img.style.transform = 'scale(1)';
+        isZoomed = false;
+        setTimeout(() => {
+            viewer.classList.remove('active');
+        }, 200);  // затримка для плавності
     }
 });
+
+// Закриття при кліку на фон — ВИДАЛЕНО повністю
+// document.getElementById('imageViewer')?.addEventListener('click', ... ) — просто видали цей обробник або закоментуй
 
 
 // Дозволяємо зум пальцями та свайп
