@@ -72,37 +72,48 @@ function openImageViewer(src) {
     img.src = src;
     viewer.classList.add('active');
     
-    img.onload = () => {
-        viewer.scrollTo(0, 0);
-        img.style.transform = 'scale(1)'; // початковий розмір
-        isZoomed = false;
-    };
+    currentScale = 1;
+    img.style.transform = 'scale(1)';
+    viewer.scrollTo(0, 0);
+    
+    // Скидання позиції та масштабу
+    img.style.transformOrigin = 'center top';
 }
 
-// Відкриття та перемикання масштабу
-document.querySelector('.structurw-img')?.addEventListener('click', function() {
+function closeImageViewer() {
     const viewer = document.getElementById('imageViewer');
-    const img = document.getElementById('viewerImg');
+    viewer.classList.remove('active');
+}
+
+// Відкриття по кліку
+document.querySelector('.structurw-img')?.addEventListener('click', function(e) {
+    openImageViewer(this.src);
     
-    if (!viewer.classList.contains('active')) {
-        openImageViewer(this.src);
-    } else {
-        if (isZoomed) {
-            img.style.transform = 'scale(1)';
-            isZoomed = false;
-        } else {
-            img.style.transform = 'scale(1.25)';
-            isZoomed = true;
-        }
-    }
+    // Зум саме в точку кліку (в 2 рази)
+    const img = document.getElementById('viewerImg');
+    const rect = this.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    const originX = (x / rect.width) * 100;
+    const originY = (y / rect.height) * 100;
+    
+    img.style.transformOrigin = `${originX}% ${originY}%`;
+    img.style.transform = 'scale(2)';
+    currentScale = 2;
 });
 
-// Закриття при кліку поза картинкою (якщо потрібно)
+// Закриття повторним кліком
 document.getElementById('imageViewer')?.addEventListener('click', function(e) {
-    if (e.target !== document.getElementById('viewerImg')) {
-        const viewer = document.getElementById('imageViewer');
-        viewer.classList.remove('active');
-        isZoomed = false;
+    if (currentScale > 1) {
+        // Якщо вже збільшено — зменшуємо до 1
+        const img = document.getElementById('viewerImg');
+        img.style.transform = 'scale(1)';
+        currentScale = 1;
+        img.style.transformOrigin = 'center top';
+    } else {
+        // Якщо масштаб 1 — закриваємо модалку
+        closeImageViewer();
     }
 });
 
@@ -112,6 +123,7 @@ document.getElementById('imageViewer')?.addEventListener('touchstart', function(
         // pinch-to-zoom вже працює завдяки touch-action
     }
 });
+
 
 
 
