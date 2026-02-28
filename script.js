@@ -97,20 +97,6 @@ document.querySelector('.structurw-img')?.addEventListener('click', function() {
     }
 });
 
-// Закриття повторним кліком
-document.getElementById('imageViewer')?.addEventListener('click', function(e) {
-    if (currentScale > 1) {
-        // Якщо вже збільшено — зменшуємо до 1
-        const img = document.getElementById('viewerImg');
-        img.style.transform = 'scale(1)';
-        currentScale = 1;
-        img.style.transformOrigin = 'center top';
-    } else {
-        // Якщо масштаб 1 — закриваємо модалку
-        closeImageViewer();
-    }
-});
-
 // Закриття при кліку поза картинкою (якщо потрібно)
 document.getElementById('imageViewer')?.addEventListener('click', function(e) {
     if (e.target !== document.getElementById('viewerImg')) {
