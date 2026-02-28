@@ -63,7 +63,7 @@ const miniAppInfo = isTelegramMiniApp ? {
 
 
 
-let isZoomed = false;  // змінна стану
+let isZoomed = false;
 
 function openImageViewer(src) {
     const viewer = document.getElementById('imageViewer');
@@ -74,19 +74,18 @@ function openImageViewer(src) {
     
     isZoomed = false;
     img.style.transform = 'scale(1)';
-    img.style.transformOrigin = 'center top';
     viewer.scrollTo(0, 0);
 }
 
-// Відкриття та перемикання масштабу + закриття
+// Обробник кліку на звичайну картинку та перемикання
 document.querySelector('.structurw-img')?.addEventListener('click', function(e) {
     const viewer = document.getElementById('imageViewer');
     const img = document.getElementById('viewerImg');
     
     if (!viewer.classList.contains('active')) {
+        // Перший клік — відкрити модалку + зум 125 % в точку кліку
         openImageViewer(this.src);
         
-        // Зум на 25 % в точку кліку
         const rect = this.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
@@ -98,20 +97,17 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
         img.style.transform = 'scale(1.25)';
         isZoomed = true;
     } else {
-        // Другий клік на картинці — повернення до 1 + закриття
+        // Другий клік на збільшеній картинці — повернення до 1 + закриття модалки
         img.style.transform = 'scale(1)';
         isZoomed = false;
+        img.style.transformOrigin = 'center top';
         setTimeout(() => {
             viewer.classList.remove('active');
-        }, 200);  // затримка для плавності
+        }, 200);  // затримка для плавного переходу
     }
 });
 
-// Закриття при кліку на фон — ВИДАЛЕНО повністю
-// document.getElementById('imageViewer')?.addEventListener('click', ... ) — просто видали цей обробник або закоментуй
-
-
-// Дозволяємо зум пальцями та свайп
+// Дозволяємо pinch-зум та свайпи після збільшення
 document.getElementById('imageViewer')?.addEventListener('touchstart', function(e) {
     if (e.touches.length === 2) {
         // pinch-to-zoom вже працює завдяки touch-action
