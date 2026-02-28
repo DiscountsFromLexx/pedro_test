@@ -101,8 +101,8 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
     const originY = (y / rect.height) * 100;
     
     img.style.transformOrigin = `${originX}% ${originY}%`;
-    img.style.transform = 'scale(2)';
-    currentScale = 2;
+    img.style.transform = 'scale(1)';
+    currentScale = 1;
 });
 
 // Закриття повторним кліком
