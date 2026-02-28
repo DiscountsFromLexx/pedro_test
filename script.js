@@ -78,6 +78,11 @@ function openImageViewer(src) {
     viewer.scrollTo(0, 0);
 }
 
+function closeImageViewer() {
+    const viewer = document.getElementById('imageViewer');
+    viewer.classList.remove('active');
+}
+
 // Відкриття та перемикання масштабу
 document.querySelector('.structurw-img')?.addEventListener('click', function(e) {
     const viewer = document.getElementById('imageViewer');
