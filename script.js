@@ -63,9 +63,7 @@ const miniAppInfo = isTelegramMiniApp ? {
 
 
 
-let currentScale = 1;
-let lastTouchX = 0;
-let lastTouchY = 0;
+let isZoomed = false;
 
 function openImageViewer(src) {
     const viewer = document.getElementById('imageViewer');
@@ -74,52 +72,44 @@ function openImageViewer(src) {
     img.src = src;
     viewer.classList.add('active');
     
-    currentScale = 1;
+    isZoomed = false;
     img.style.transform = 'scale(1)';
-    viewer.scrollTo(0, 0);
-    
-    // Скидання позиції та масштабу
     img.style.transformOrigin = 'center top';
+    viewer.scrollTo(0, 0);
 }
 
-function closeImageViewer() {
-    const viewer = document.getElementById('imageViewer');
-    viewer.classList.remove('active');
-}
-
-// Відкриття по кліку
+// Обробник кліку на картинку
 document.querySelector('.structurw-img')?.addEventListener('click', function(e) {
-    openImageViewer(this.src);
-    
-    // Зум саме в точку кліку (в 2 рази)
+    const viewer = document.getElementById('imageViewer');
     const img = document.getElementById('viewerImg');
-    const rect = this.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
     
-    const originX = (x / rect.width) * 100;
-    const originY = (y / rect.height) * 100;
-    
-    img.style.transformOrigin = `${originX}% ${originY}%`;
-    img.style.transform = 'scale(2)';
-    currentScale = 2;
-});
-
-// Закриття повторним кліком
-document.getElementById('imageViewer')?.addEventListener('click', function(e) {
-    if (currentScale > 1) {
-        // Якщо вже збільшено — зменшуємо до 1
-        const img = document.getElementById('viewerImg');
-        img.style.transform = 'scale(1)';
-        currentScale = 1;
-        img.style.transformOrigin = 'center top';
+    if (!viewer.classList.contains('active')) {
+        // Перший клік: відкрити модалку + масштаб 50 % в точку кліку
+        openImageViewer(this.src);
+        
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const originX = (x / rect.width) * 100;
+        const originY = (y / rect.height) * 100;
+        
+        img.style.transformOrigin = `${originX}% ${originY}%`;
+        img.style.transform = 'scale(0.5)';
+        isZoomed = true;
     } else {
-        // Якщо масштаб 1 — закриваємо модалку
-        closeImageViewer();
+        // Другий клік на збільшеній картинці: повернення до 100 % + закриття модалки
+        img.style.transform = 'scale(1)';
+        isZoomed = false;
+        img.style.transformOrigin = 'center top';
+        
+        setTimeout(() => {
+            viewer.classList.remove('active');
+        }, 200);  // невелика затримка для плавності
     }
 });
 
-// Дозволяємо зум пальцями (pinch) і свайп після збільшення
+// Дозволяємо pinch-зум та свайпи (залишаємо як є)
 document.getElementById('imageViewer')?.addEventListener('touchstart', function(e) {
     if (e.touches.length === 2) {
         // pinch-to-zoom вже працює завдяки touch-action
