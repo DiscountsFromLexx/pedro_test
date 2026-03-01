@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const addLog = (msg, data = {}) => console.log(`${msg}:`, data);
     
     
-    // ─── Акордеон для інструкцій ───────────────────────────────────────────────
+    // ─── Акордеон для інструкцій з видимим першим рядком ─────────────────────────
     document.getElementById('instructions')?.addEventListener('click', function() {
         const content = document.getElementById('instructionsContent');
         content.classList.toggle('active');
