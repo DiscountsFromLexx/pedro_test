@@ -850,6 +850,16 @@ body.light-theme .feedback-btn span {
     font-family: 'Montserrat', sans-serif;
     -webkit-tap-highlight-color: transparent;
     text-align: left;
+    cursor: pointer;
+    user-select: none;
+}
+.toggle-icon {
+    font-size: 0.9em;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+.iheader-text.active .toggle-icon {
+    transform: rotate(180deg);
 }
 
 .instructions-text {
@@ -861,6 +871,14 @@ body.light-theme .feedback-btn span {
     letter-spacing: 1px;
     text-align: left;
     line-height: 1.5;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+}
+.instructions-text.active {
+    max-height: 2000px; /* достатньо великий, щоб вмістити весь текст */
+    opacity: 1;
 }
 
 .instructions-text a {
