@@ -1104,10 +1104,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Звичайний перегляд — картинка на всю ширину */
     .structure-img {
-    margin-top: 5px;
-    width: 100%;
-    overflow-x: auto;
-}
+        margin-top: 5px;
+        width: 100%;
+        overflow-x: auto;
+    }
 
     .structurw-img {
         width: 100%;
@@ -1120,7 +1120,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Повноекранний перегляд */
     .image-viewer {
-        display: none;
+        display: block;
         position: fixed;
         inset: 0;
         background: rgba(0,0,0,0.98);
