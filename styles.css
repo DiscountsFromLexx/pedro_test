@@ -1102,32 +1102,24 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
 
 
-    /* Звичайний перегляд — картинка на всю ширину */
     .structure-img {
         margin-top: 5px;
         width: 100%;
-        overflow: hidden; /* або auto, якщо хочеш скрол */
-        touch-action: pinch-zoom pan-x pan-y; /* зум та свайп одразу */
+        max-width: 100%;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
     }
     
-    .zoom-container {
-        width: 100%;
-        overflow: auto;
-        touch-action: pinch-zoom pan-x pan-y;
-    }
-    
-    .structurw-img.zoomable {
+    .structurw-img {
         width: 100%;
         height: auto;
+        max-width: 100%;
         display: block;
-        min-width: 100%; /* дозволяє вийти за екран при зумі */
-        max-width: none;
-        object-fit: none;
-        transform-origin: center top;
-        transition: transform 0.2s ease;
+        object-fit: contain;          /* зберігає пропорції, не обрізає */
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
-        
 
 
 
