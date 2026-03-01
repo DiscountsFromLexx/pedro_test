@@ -100,9 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── Акордеон для інструкцій ───────────────────────────────────────────────
     document.getElementById('instructions')?.addEventListener('click', function() {
         const content = document.getElementById('instructionsContent');
-        
         content.classList.toggle('active');
-        this.classList.toggle('active');  // для повороту іконки
+        this.classList.toggle('active');
     });
     
     
