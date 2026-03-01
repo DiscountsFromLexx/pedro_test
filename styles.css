@@ -860,7 +860,7 @@ body.light-theme .feedback-btn span {
 }
 
 .instructions-text {
-    margin-top: 5px;
+    margin-top: 1px;
     font-size: 14px; /* було 14px; */
     font-weight: 100; /* було 200; */
     font-family: 'Montserrat', sans-serif;
