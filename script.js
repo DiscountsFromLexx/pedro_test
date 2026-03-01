@@ -94,15 +94,15 @@ document.querySelector('.structurw-img')?.addEventListener('click', function(e) 
     // Зум саме в точку кліку (в 2 рази)
     const img = document.getElementById('viewerImg');
     const rect = this.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = e.clientX - rect.center;
+    const y = e.clientY - rect.center;
     
     const originX = (x / rect.width) * 100;
     const originY = (y / rect.height) * 100;
     
     img.style.transformOrigin = `${originX}% ${originY}%`;
-    img.style.transform = 'scale(0.5)';
-    currentScale = 0.5;
+    img.style.transform = 'scale(1)';
+    currentScale = 1;
 });
 
 // Закриття повторним кліком
