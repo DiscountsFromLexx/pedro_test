@@ -1114,7 +1114,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
         overflow-x: auto;
     }
-    
+
     .structurw-img {
         width: 100%;
         height: auto;
@@ -1126,14 +1126,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Повноекранний перегляд */
     .image-viewer {
-        display: none;
+        display: block;
         position: fixed;
         inset: 0;
         background: rgba(0,0,0,0.98);
         z-index: 9999;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;          /* плавний скрол на iOS */
-        touch-action: manipulation pinch-zoom;      /* ключ для зуму та свайпу на iOS */
+        overflow: hidden;                     /* приховуємо скрол, щоб не заважав */
+        touch-action: pinch-zoom pan-x pan-y; /* зум + свайп в усі сторони */
+        -webkit-overflow-scrolling: touch;
     }
     
     .image-viewer.active {
@@ -1141,23 +1141,24 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     .viewer-content {
+        width: 100%;
+        height: 100%;
+        overflow: auto;
         display: flex;
-        justify-content: center;          /* ← горизонтальне центрування */
-        align-items: flex-start;          /* ← прилипає до верхнього краю */
-        min-width: 100vw;
-        min-height: 100vh;
-        padding: 60px 0 20px;             /* відступи зверху та знизу, без горизонтальних */
-        box-sizing: border-box;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0;
     }
     
     #viewerImg {
         width: auto;
         height: auto;
-        max-width: none !important;
-        max-height: none !important;
-        min-width: 0;
-        transform: scale(3.5);            /* стартовий масштаб 0.5 -  50 % */
-        transform-origin: left top;     /* зум починається з центру зверху */
+        max-width: none;
+        max-height: none;
+        transform-origin: 20% 0;             /* зум починається з центру зверху 50% */
+        transform: scale(1);
+        transition: transform 0.3s ease;
+        will-change: transform;
     }
     
     /* Дозволяємо перетягування при зумі */
