@@ -60,11 +60,6 @@ const miniAppInfo = isTelegramMiniApp ? {
     tg_version: tg.version || 'unknown'
 } : null;
 
-
-
-
-
-
 // Обробники кнопок — виконуються відразу після завантаження скрипта
 function initButtons() {
     // Кнопка HOW TO / ІНСТРУКЦІЇ (на index.html)
@@ -90,6 +85,25 @@ if (document.readyState === 'loading') {
 } else {
     initButtons();  // якщо скрипт підключений після завантаження
 }
+
+
+
+// ─── Акордеон для інструкцій ───────────────────────────────────────────────
+document.getElementById('instructions')?.addEventListener('click', function() {
+    const content = document.getElementById('instructionsContent');
+    const icon = this.querySelector('.toggle-icon');
+    
+    if (content.classList.contains('active')) {
+        content.classList.remove('active');
+        this.classList.remove('active');
+    } else {
+        content.classList.add('active');
+        this.classList.add('active');
+    }
+});
+
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('telegramForm');
