@@ -86,25 +86,6 @@ if (document.readyState === 'loading') {
     initButtons();  // якщо скрипт підключений після завантаження
 }
 
-
-
-// ─── Акордеон для інструкцій ───────────────────────────────────────────────
-document.getElementById('instructions')?.addEventListener('click', function() {
-    const content = document.getElementById('instructionsContent');
-    const icon = this.querySelector('.toggle-icon');
-    
-    if (content.classList.contains('active')) {
-        content.classList.remove('active');
-        this.classList.remove('active');
-    } else {
-        content.classList.add('active');
-        this.classList.add('active');
-    }
-});
-
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('telegramForm');
     const submitBtn = document.querySelector('.submit-btn');
@@ -114,6 +95,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     // Логування
     const addLog = (msg, data = {}) => console.log(`${msg}:`, data);
+    
+    
+    // ─── Акордеон для інструкцій ───────────────────────────────────────────────
+    document.getElementById('instructions')?.addEventListener('click', function() {
+        const content = document.getElementById('instructionsContent');
+        const icon = this.querySelector('.toggle-icon');
+        
+        if (content.classList.contains('active')) {
+            content.classList.remove('active');
+            this.classList.remove('active');
+        } else {
+            content.classList.add('active');
+            this.classList.add('active');
+        }
+    });
+    
+    
     // ─── Логіка чекбокса ALL ────────────────────────────────────────
     const allCheckbox = document.getElementById('all');
     const otherCheckboxes = document.querySelectorAll('input[name="check"]:not(#all)');
