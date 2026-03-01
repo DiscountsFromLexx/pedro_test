@@ -1120,7 +1120,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Повноекранний перегляд */
     .image-viewer {
-        display: block;
+        display: none;
         position: fixed;
         inset: 0;
         background: rgba(0,0,0,0.98);
