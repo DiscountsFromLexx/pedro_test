@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Логування
     const addLog = (msg, data = {}) => console.log(`${msg}:`, data);
     
+
     
     // ─── Акордеон для інструкцій з видимим першим рядком ─────────────────────────
     document.getElementById('instructionsContent')?.addEventListener('click', function() {
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.classList.toggle('active');
     });
     
+
     
     // ─── Логіка чекбокса ALL ────────────────────────────────────────
     const allCheckbox = document.getElementById('all');
