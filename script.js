@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     // ─── Акордеон для інструкцій з видимим першим рядком ─────────────────────────
-    document.getElementById('instructions')?.addEventListener('click', function() {
+    document.getElementById('instructionsContent')?.addEventListener('click', function() {
         const content = document.getElementById('instructionsContent');
         content.classList.toggle('active');
         this.classList.toggle('active');
