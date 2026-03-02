@@ -99,10 +99,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // ─── Акордеон для інструкцій з видимим першим рядком ─────────────────────────
-    document.getElementById('instructions')?.addEventListener('click', function() {
-        const content = document.getElementById('instructionsContent');
-        content.classList.toggle('active');
-        this.classList.toggle('active');
+    // ─── Акордеон для інструкцій (тап по заголовку або вмісту) ────────────────────────
+    const instructionsHeader = document.getElementById('instructions');
+    const instructionsContent = document.getElementById('instructionsContent');
+    
+    [instructionsHeader, instructionsContent].forEach(element => {
+        element?.addEventListener('click', function(e) {
+            // Якщо клікнули на посилання всередині вмісту — не перемикаємо акордеон
+            if (e.target.tagName === 'A') {
+                return;
+            }
+            
+            instructionsContent.classList.toggle('active');
+            instructionsHeader.classList.toggle('active');
+        });
     });
     
 
