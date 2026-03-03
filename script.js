@@ -77,6 +77,11 @@ function initButtons() {
         window.location.href = 'index.html';
     });
 
+    // Кнопка МОНЕТИ (на coins.html)
+    document.querySelector('.coins-btn')?.addEventListener('click', () => {
+        window.location.href = 'coins.html';
+    });
+
 }
 
 // Викликаємо ініціалізацію після завантаження сторінки
