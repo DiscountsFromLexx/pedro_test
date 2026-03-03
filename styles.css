@@ -2537,6 +2537,15 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 50px;
     }
 
+    .structure-img {
+        margin-top: 5px;
+        width: 75%;
+        max-width: 75%;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+
     .block-form {
         margin-top: 10px;
         padding: 40px;
