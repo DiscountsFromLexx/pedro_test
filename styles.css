@@ -554,6 +554,7 @@ input:checked + .slider:before {
 .instruction-btn,
 .history-btn,
 .web-btn,
+.coins-btn,
 .feedback-btn {
     display: flex;
     flex-direction: column;       /* іконка зверху, текст знизу */
@@ -578,6 +579,7 @@ body.light-theme .coupons-btn span,
 body.light-theme .instruction-btn span,
 body.light-theme .history-btn span,
 body.light-theme .web-btn span,
+body.light-theme .coins-btn span,
 body.light-theme .feedback-btn span {
     color: #000000 !important;
 }
@@ -586,6 +588,7 @@ body.light-theme .feedback-btn span {
 .instruction-btn:hover,
 .history-btn:hover,
 .web-btn:hover,
+.coins-btn:hover,
 .feedback-btn:hover {
     background: rgba(30, 144, 255, 0.15);  /* легкий фон при наведенні */
     transform: scale(1.05);
@@ -605,6 +608,7 @@ body.light-theme .feedback-btn span {
 .instruction-btn span,
 .history-btn span,
 .web-btn span,
+.coins-btn span,
 .feedback-btn span {
     display: block;
     margin-top: 2px;  /* 4px; */
@@ -1181,6 +1185,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span {
         display: block;
         margin-top: 2px;  /* 4px; */
@@ -1264,6 +1269,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .history-btn,
     .web-btn,
+    .coins-btn,
     .feedback-btn {
         min-width: 60px;
         padding: 6px 4px;
@@ -1279,6 +1285,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span{
         font-size: 8px;
     }
@@ -1367,6 +1374,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .history-btn,
     .web-btn,
+    .coins-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -1391,6 +1399,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span {
         font-size: 14px;
         font-weight: 500;
@@ -1402,6 +1411,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body.light-theme .instruction-btn span,
     body.light-theme .history-btn span,
     body.light-theme .web-btn span,
+    body.light-theme .coins-btn span,
     body.light-theme .feedback-btn span {
         color: #000000 !important;
     }
@@ -1410,6 +1420,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn:hover,
     .history-btn:hover,
     .web-btn:hover,
+    .coins-btn:hover,
     .feedback-btn:hover {
         background: rgba(30, 144, 255, 0.15);
         transform: scale(1.05);
@@ -1646,6 +1657,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .history-btn,
     .web-btn,
+    .coins-btn,
     .feedback-btn {
         min-width: 60px;
         padding: 6px 4px;
@@ -1661,6 +1673,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span{
         font-size: 8px;
     }
@@ -1749,6 +1762,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .history-btn,
     .web-btn,
+    .coins-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -1773,6 +1787,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span {
         font-size: 14px;
         font-weight: 500;
@@ -1784,6 +1799,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body.light-theme .instruction-btn span,
     body.light-theme .history-btn span,
     body.light-theme .web-btn span,
+    body.light-theme .coins-btn span,
     body.light-theme .feedback-btn span {
         color: #000000 !important;
     }
@@ -1792,6 +1808,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn:hover,
     .history-btn:hover,
     .web-btn:hover,
+    .coins-btn:hover,
     .feedback-btn:hover {
         background: rgba(30, 144, 255, 0.15);
         transform: scale(1.05);
@@ -1979,6 +1996,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .history-btn,
     .web-btn,
+    .coins-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -2002,6 +2020,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span {
         font-size: 16px;
         margin-top: 10px;
@@ -2182,6 +2201,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .history-btn,
     .web-btn,
+    .coins-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -2205,6 +2225,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .history-btn span,
     .web-btn span,
+    .coins-btn span,
     .feedback-btn span {
         font-size: 16px;
         margin-top: 10px;
@@ -2393,6 +2414,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .web-btn,
+    .coins-btn,
     .history-btn,
     .feedback-btn {
         display: flex;
@@ -2418,6 +2440,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn span,
     .instruction-btn span,
     .web-btn span,
+    .coins-btn span,
     .history-btn span,
     .feedback-btn span {
         font-size: 18px;
