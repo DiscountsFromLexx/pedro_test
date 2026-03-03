@@ -2538,7 +2538,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .structure-img {
-        position: absolute;
         justify-content: top;
         align-items: center;
         margin-top: 5px;
