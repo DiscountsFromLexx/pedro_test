@@ -2538,9 +2538,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .structure-img {
-        justify-content: center;
-        align-items: center;
-        margin-top: 5px;
+
+        margin-top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
         width: 75%;
         max-width: 75%;
         overflow-x: auto;
