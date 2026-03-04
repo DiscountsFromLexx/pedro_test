@@ -82,6 +82,11 @@ function initButtons() {
         window.location.href = 'coins.html';
     });
 
+    // Кнопка ПРОМОКОДИ (на coupones.html)
+    document.querySelector('.coupons-btn')?.addEventListener('click', () => {
+        window.location.href = 'coupones.html';
+    });
+
 }
 
 // Викликаємо ініціалізацію після завантаження сторінки
