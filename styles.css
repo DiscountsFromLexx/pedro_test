@@ -140,6 +140,10 @@ body.light-theme {
     background: #B0E0E6;  /*  було background: transparent; */
 }
 
+body.dark-theme {
+    background: #000000;  /*  задній фон; */
+}
+
 body.light-theme .container {
     background: #B0E0E6;
 }
