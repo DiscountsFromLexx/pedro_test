@@ -83,7 +83,7 @@ function initButtons() {
     });
 
     // Кнопка ПРОМОКОДИ (на coupones.html)
-    document.querySelector('.coupons-btn')?.addEventListener('click', () => {
+    document.querySelector('.coupones-btn')?.addEventListener('click', () => {
         window.location.href = 'coupones.html';
     });
 
