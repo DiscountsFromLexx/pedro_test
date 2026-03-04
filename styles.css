@@ -555,6 +555,7 @@ input:checked + .slider:before {
 .history-btn,
 .web-btn,
 .coins-btn,
+.coupones-btn,
 .feedback-btn {
     display: flex;
     flex-direction: column;       /* іконка зверху, текст знизу */
@@ -580,6 +581,7 @@ body.light-theme .instruction-btn span,
 body.light-theme .history-btn span,
 body.light-theme .web-btn span,
 body.light-theme .coins-btn span,
+body.light-theme .coupones-btn span,
 body.light-theme .feedback-btn span {
     color: #000000 !important;
 }
@@ -589,6 +591,7 @@ body.light-theme .feedback-btn span {
 .history-btn:hover,
 .web-btn:hover,
 .coins-btn:hover,
+.coupones-btn:hover,
 .feedback-btn:hover {
     background: rgba(30, 144, 255, 0.15);  /* легкий фон при наведенні */
     transform: scale(1.05);
@@ -608,7 +611,8 @@ body.light-theme .feedback-btn span {
 .instruction-btn span,
 .history-btn span,
 .web-btn span,
-.coins-btn span,
+.coupones-btn span,
+.coupons-btn span,
 .feedback-btn span {
     display: block;
     margin-top: 2px;  /* 4px; */
@@ -1186,6 +1190,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span {
         display: block;
         margin-top: 2px;  /* 4px; */
@@ -1270,6 +1275,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .feedback-btn {
         min-width: 60px;
         padding: 6px 4px;
@@ -1286,6 +1292,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span{
         font-size: 8px;
     }
@@ -1375,6 +1382,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -1400,6 +1408,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span {
         font-size: 14px;
         font-weight: 500;
@@ -1412,6 +1421,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body.light-theme .history-btn span,
     body.light-theme .web-btn span,
     body.light-theme .coins-btn span,
+    body.light-theme .coupones-btn span,
     body.light-theme .feedback-btn span {
         color: #000000 !important;
     }
@@ -1421,6 +1431,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn:hover,
     .web-btn:hover,
     .coins-btn:hover,
+    .coupones-btn:hover,
     .feedback-btn:hover {
         background: rgba(30, 144, 255, 0.15);
         transform: scale(1.05);
@@ -1658,6 +1669,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .feedback-btn {
         min-width: 60px;
         padding: 6px 4px;
@@ -1674,6 +1686,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span{
         font-size: 8px;
     }
@@ -1763,6 +1776,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -1788,6 +1802,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span {
         font-size: 14px;
         font-weight: 500;
@@ -1800,6 +1815,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body.light-theme .history-btn span,
     body.light-theme .web-btn span,
     body.light-theme .coins-btn span,
+    body.light-theme .coupones-btn span,
     body.light-theme .feedback-btn span {
         color: #000000 !important;
     }
@@ -1809,6 +1825,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn:hover,
     .web-btn:hover,
     .coins-btn:hover,
+    .coupones-btn:hover,
     .feedback-btn:hover {
         background: rgba(30, 144, 255, 0.15);
         transform: scale(1.05);
@@ -1997,6 +2014,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -2021,6 +2039,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span {
         font-size: 16px;
         margin-top: 10px;
@@ -2202,6 +2221,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .feedback-btn {
         display: flex;
         flex-direction: column;
@@ -2226,6 +2246,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .feedback-btn span {
         font-size: 16px;
         margin-top: 10px;
@@ -2415,6 +2436,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn,
     .web-btn,
     .coins-btn,
+    .coupones-btn,
     .history-btn,
     .feedback-btn {
         display: flex;
@@ -2441,6 +2463,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .instruction-btn span,
     .web-btn span,
     .coins-btn span,
+    .coupones-btn span,
     .history-btn span,
     .feedback-btn span {
         font-size: 18px;
