@@ -136,8 +136,8 @@ body.dark-theme .theme-label {
 }
 
 /* Світлий режим (на основі наданого коду) */
-body.light-theme {
-    background: #B0E0E6;  /*  було background: transparent; */
+body.light-theme {      
+    background: linear-gradient(to bottom, #B0E0E6, #FFFFFF);  /*  було background: #B0E0E6; */
 }
 
 body.dark-theme {
@@ -1150,7 +1150,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .howto-text {
         width: 95%;
-        margin-top: 30px;
+        margin-top: 25px;
     }
 
 
