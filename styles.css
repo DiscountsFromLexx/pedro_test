@@ -7,7 +7,7 @@
 body {
     display: flex;    
     justify-content: top;
-    align-items: bottom;
+    align-items: center;
     min-height: 100vh;
     font-family: Helvetica, Arial, sans-serif;
     -webkit-tap-highlight-color: transparent;
@@ -137,7 +137,7 @@ body.dark-theme .theme-label {
 
 /* Світлий режим (на основі наданого коду) */
 body.light-theme {      
-    background: background: #B0E0E6; /*  було  linear-gradient(to bottom, #B0E0E6, #FFFFFF); */
+    background: #B0E0E6; /*  було  linear-gradient(to bottom, #B0E0E6, #FFFFFF); */
 }
 body.light-theme .container {
     background: linear-gradient(to bottom, #B0E0E6, #FFFFFF);  /*  було background: #B0E0E6; */
