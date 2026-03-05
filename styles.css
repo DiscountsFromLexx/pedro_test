@@ -145,7 +145,7 @@ body.dark-theme {
 }
 
 body.light-theme .container {
-    background: #B0E0E6;
+    background: linear-gradient(to bottom, #B0E0E6, #FFFFFF);  /*  було background: #B0E0E6; */
 }
 
 body.light-theme .loading-text {
