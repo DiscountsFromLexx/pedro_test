@@ -502,13 +502,13 @@ input:checked + .slider:before {
     height: 100%; 
     min-width: 300px;
     max-width: 600px;
-    padding: 10px; /* Було padding: 10px; */
+    padding: 2px; /* Було padding: 10px; */
 }
 
 .container {
     top: 20px;  /* було 20px */
     width: 100%; /* було 100%; */
-    padding: 10px; /* було 20px */
+    padding: 2px; /* було 20px */
     border-radius: 12px;
     text-align: center; /* було 20px */
     position: relative;
@@ -1143,8 +1143,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .container {
         top: -5px; !important;
-        padding: 6px;
-        width: 96%;
+        padding: 2px;
+        width: 100%;
     }
     .main-container {        
         top: 0px; /* було top: 200px; */
