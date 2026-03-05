@@ -137,7 +137,7 @@ body.dark-theme .theme-label {
 
 /* Світлий режим (на основі наданого коду) */
 body.light-theme {      
-    background: linear-gradient(to bottom, #B0E0E6, #FFFFFF);  /*  було background: #B0E0E6; */
+    background: background: #B0E0E6;  /*  було  linear-gradient(to bottom, #B0E0E6, #FFFFFF);*/
 }
 
 body.dark-theme {
