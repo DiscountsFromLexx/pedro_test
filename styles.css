@@ -1147,6 +1147,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 25px; !important; /* було top: 30px; */
         padding: 8px;
         width: 100%;
+        height: 100%;
         background: #B0E0E6;
     }
 
