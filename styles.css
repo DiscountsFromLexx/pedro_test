@@ -1159,13 +1159,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 4px;
         width: 96%;
         height: 100%;
-        margin-left: 4px;
+        
         background: #B0E0E6;
     }
 
     .howto-text {
         width: 95%;
         margin-top: 15px;
+        margin-left: 4px;
         left: 10px;
     }
 
