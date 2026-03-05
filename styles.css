@@ -1164,7 +1164,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .howto-text {
         width: 95%;
         margin-top: 15px;
-        margin-left: 2px;
+        left: 10px;
     }
 
     .structure-img {
