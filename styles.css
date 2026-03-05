@@ -916,12 +916,9 @@ body.light-theme .feedback-btn span {
 }
 
 
-
-
-
 .howto-text {
     margin-top: 80px;
-    left: 4px;
+    left: 8px;
     font-size: 14px; /* було 14px; */
     font-weight: 100; /* було 200; */
     font-family: 'Montserrat', sans-serif;
@@ -1127,6 +1124,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
 @media (min-width: 200px) and (max-width: 480px) and (orientation: portrait) {  
     
     body.in-telegram .container {
+        top: 50px; !important;
+        padding: 4px; /* було top: 6px; */
+        width: 100%;
+    }
+    body.in-telegram .howto-container {
         top: 50px; !important;
         padding: 4px; /* було top: 6px; */
         width: 100%;
