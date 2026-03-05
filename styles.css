@@ -1148,6 +1148,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 8px;
         width: 100%;
         background: #B0E0E6;
+    }
+    body.light-theme .howto-container {     
+        background: #B0E0E6;
     } 
 
     .howto-text {
