@@ -1153,6 +1153,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .main-container {        
         top: 0px; /* було top: 200px; */
         padding: 2px;
+        height: 120%;
 
     }
     
@@ -1160,7 +1161,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 25px; !important; /* було top: 30px; */
         padding: 4px;
         width: 100%;
-        height: 100%;
+
         
         background: #B0E0E6;
     }
