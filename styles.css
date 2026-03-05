@@ -502,7 +502,7 @@ input:checked + .slider:before {
     width: 100%;
     min-width: 300px;
     max-width: 600px;
-    padding: 10px;
+    padding: 0px; /* Було padding: 10px; */
 }
 
 .container {
