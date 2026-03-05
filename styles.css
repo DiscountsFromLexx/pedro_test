@@ -1142,17 +1142,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
 
-    body.light-theme {      
-        background: #B0E0E6;
-    }
-    body.light-theme .container {      
-        background: #B0E0E6;
-    }
-
+    
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
         padding: 8px;
         width: 100%;
+        background: #B0E0E6;
     } 
 
     .howto-text {
