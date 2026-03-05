@@ -1140,11 +1140,21 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: calc(100px + var(--tg-safe-area-top, 0px)) !important;
         text-align: center;
     }
-
+    .container {
+        top: -5px; !important;
+        padding: 6px;
+        width: 96%;
+    }
+    .main-container {        
+        top: 0px; /* було top: 200px; */
+        padding: 4px;
+        width: 100%;
+        height: 100%;
+    }
     
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
-        padding: 8px;
+        padding: 4px;
         width: 100%;
         height: 100%;
         background: #B0E0E6;
@@ -1207,18 +1217,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-weight: 400;
         color: #FFFFFF;
         text-align: center;
-    }
-    .main-container {        
-        top: 0px; /* було top: 200px; */
-        padding: 4px;
-        width: 100%;
-    } 
-
-    .container {
-        top: -5px; !important;
-        padding: 6px;
-        width: 96%;
-    }
+    }    
+    
     
     .instruction-img {
         position: absolute;
