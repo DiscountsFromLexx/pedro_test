@@ -23,7 +23,7 @@ body.dark-theme .container {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-body.dark-theme .main-container {
+body.dark-theme .howto-container {
     background: linear-gradient(to bottom, #000000, #191970);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
