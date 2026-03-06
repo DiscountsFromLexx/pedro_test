@@ -108,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     
-    // ─── Акордеон для інструкцій з видимим першим рядком ─────────────────────────
     // ─── Акордеон для інструкцій (тап по заголовку або вмісту) ────────────────────────
     const instructionsHeader = document.getElementById('instructions');
     const instructionsContent = document.getElementById('instructionsContent');
