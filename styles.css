@@ -2435,6 +2435,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .howto-text {        
         width: 75%;
+        margin-left: 10px;
     }
     
     .container {
