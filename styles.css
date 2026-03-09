@@ -2430,16 +2430,18 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .howto-container {
         text-align: top;
         width: 75%;
+        text-align: center;
+        align-items: top;
     }
     
     .container {
-    top: -10px;
-    width: 100%; /* було 100%; */
-    padding: 10px; /* було 20px */
-    border-radius: 12px;
-    text-align: center;
-    position: relative;
-    }
+        top: -10px;
+        width: 100%; /* було 100%; */
+        padding: 10px; /* було 20px */
+        border-radius: 12px;
+        text-align: center;
+        position: relative;
+        }
     
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
