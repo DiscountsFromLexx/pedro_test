@@ -2429,9 +2429,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .howto-container {
         text-align: top;
-        width: 115%;
+        width: 100%;
         text-align: center;
-        align-items: top;
+        align-items: center;
     }
     
     .container {
