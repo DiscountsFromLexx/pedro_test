@@ -1185,7 +1185,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .structure-img {
         margin-top: 5px;
         
-        transform: translateX(50%);   /* margin-left: 45%; */
+        transform: translateX(2%);   /* margin-left: 45%; */
         width: 100%;  /* max-width: 90%; */
         max-width: 100%;
         display: block;
