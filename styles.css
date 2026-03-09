@@ -1166,9 +1166,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
         padding: 4px;
-        width: 100%;
-        left: 2px;
-        right: 2px;
+        width: 100%; /* left: 2px; right: 2px;*/
+        
+        
 
         
         background: #B0E0E6;
@@ -1184,10 +1184,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .structure-img {
         margin-top: 5px;
-        margin-left: 50%;
-        transform: translateX(-50%);
-        width: 98%;  /* max-width: 90%; */
-        max-width: 98%;
+        margin-left: 45%;
+        transform: translateX(-45%);
+        width: 95%;  /* max-width: 90%; */
+        max-width: 95%;
          
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
