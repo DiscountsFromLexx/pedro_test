@@ -2429,6 +2429,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .howto-container {
         text-align: top;
+        width: 75%;
     }
     
     .container {
