@@ -1177,7 +1177,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .howto-text {
         width: 100%;
         margin-top: 15px;
-        left: 44px;
+        margin-left: 5px;
+
 
     }
 
@@ -2592,10 +2593,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .structure-img {
         margin-top: 15px;
-        margin-left: 50%;
+        margin-left: 5%;
         transform: translateX(-50%);
-        width: 50%;
-        max-width: 50%;
+        width: 75%;
+        max-width: 75%;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
