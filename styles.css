@@ -1188,7 +1188,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         transform: translateX(-50%);
         width: 100%;  /* max-width: 90%; */
         max-width: 100%;
-         
+        display: block;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
