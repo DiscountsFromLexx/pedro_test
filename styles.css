@@ -2563,8 +2563,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 40px;                /*  45px; */
-        right: -44px;  /*  -114px; */
+        top: 45px;                /*  45px; */
+        right: 4px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
