@@ -2461,7 +2461,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 @media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
 
     body {
-        font-size: 24px;
+        font-size: 44px;
         width: 100%;
     }
 
