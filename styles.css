@@ -2654,7 +2654,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 24px 32px;
         width: 75%;
         horizontal-align: middle;
-
+        vertical-align: middle;
+        margin-left: 5%;
         font-size: 18px;
     }
 
