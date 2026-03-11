@@ -633,9 +633,9 @@ body.light-theme .feedback-btn span {
 
 .reklama {
     position: absolute;
-    width: 40px; 
+    width: 20px; 
     height: auto;
-    top: 170px;  /* left: 20%; */
+    top: 150px;  /* left: 20%; */
     
     
     border-radius: 5px;
@@ -1160,7 +1160,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     body.in-telegram .reklama {
         top: 35px; !important;
-        width: 1%;
+        width: 0.5eM;
         height: auto;
     }
     .reklama {
