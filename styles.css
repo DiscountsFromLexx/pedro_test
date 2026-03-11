@@ -633,10 +633,10 @@ body.light-theme .feedback-btn span {
 
 .reklama {
     position: absolute;
-    width: 725px; 
-    height: 90px;
-    top: 15px;
-    left: 20%;
+    width: 360px; 
+    height: 45px;
+    top: 25px;  /* left: 20%; */
+    
     
     border-radius: 5px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
@@ -1160,11 +1160,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     body.in-telegram .reklama {
         top: 35px; !important;
-        width: 10px;
+        width: 5px;
         height: 1.7px;
     }
     .reklama {
-        width: 10px;
+        width: 5px;
         height: 1.7px; 
     }
     .container {
