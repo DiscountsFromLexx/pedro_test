@@ -2459,7 +2459,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
 /* PC тощо */
 @media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
-    /* твої стилі для планшета — збільшені розміри, відступи тощо */
+
     body {
         font-size: 20px;
         width: 100%;
@@ -2467,7 +2467,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .main-container {
         width: 95%;
-        max-width: 95%; /* було 1450px; */
+        max-width: 1450px;; /* було 1450px; */
         padding: 5px; /* було 55px; */
     }
     .howto-container {
@@ -2563,8 +2563,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 20px;                /*  45px; */
-        right: -94px;  /*  -114px; */
+        top: 30px;                /*  45px; */
+        right: -74px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
