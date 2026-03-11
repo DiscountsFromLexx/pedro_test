@@ -632,12 +632,10 @@ body.light-theme .feedback-btn span {
 }
 
 .reklama {
-    width: 100%;                      /* на всю ширину контейнера */
-    max-width: 100%;                  /* не виходить за екран */
-    margin: 10px 0 20px 0;            /* відступи зверху/знизу */
-    overflow: hidden;                 /* приховує, якщо картинка більша */
-    border-radius: 12px;              /* гарні кути для всього блоку */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* легка тінь для краси */
+    position: relative;
+    top: 80px; /* підбери відступ від instruction-img */
+    width: 100%;
+    margin: 0;
 }
 
 .reklama img {
@@ -1165,11 +1163,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     body.in-telegram .reklama {
         top: 35px; !important;
-        width: 0.5eM;
+        width: 2.5eM;
         height: auto;
     }
     .reklama {
-        width: 1%;
+        width: 10%;
         height: auto; 
     }
     .container {
