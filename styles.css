@@ -1326,7 +1326,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
         
     .tgkch-text {
-        left: 50%;
+        margin-left: 50%;
     }
     .header-text {
         font-size: 18px;
