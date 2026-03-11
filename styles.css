@@ -1180,7 +1180,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .reklama {
         position: absolute;
-        top: 65px;
+        top: 105px;
         width: 70%;
         height: auto; 
         left: 50%;
@@ -1235,7 +1235,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     .slogan-text {
-        margin-top: 105px;
+        margin-top: 65px;
         font-weight: 100;
         
     }
