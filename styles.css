@@ -1258,7 +1258,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        top: 160px !important; /* було 10px; */
+        top: 165px !important; /* було 10px; */
         left: 10px;
         gap: -20px;
     }
@@ -1318,19 +1318,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-bottom: 4px;
     }
     
-    .coupons-btn span,
-    .instruction-btn span,
-    .history-btn span,
-    .web-btn span,
-    .coins-btn span,
-    .coupones-btn span,
-    .feedback-btn span{
-        font-size: 8px;
-    }
-    
     
     .block-form {
-        margin-top: 130px; /* було 50px */
+        margin-top: 140px; /* було 50px */
         padding: 10px; /* було 10px */
     }
         
@@ -2657,6 +2647,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: 18px 24px;
         padding: 24px 32px;
         width: 75%;
+        left: 50%;
         font-size: 18px;
     }
 
