@@ -2461,7 +2461,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 @media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
 
     body {
-        font-size: 20px;
+        font-size: 24px;
         width: 100%;
     }
 
@@ -2525,7 +2525,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        margin-top: -145px; !important;
+        margin-top: -140px; !important;
         font-size: 62px; 
         flex-direction: column;
         align-items: center;
@@ -2564,7 +2564,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 45px;                /*  45px; */
-        right: 4px;  /*  -114px; */
+        right: 10px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
