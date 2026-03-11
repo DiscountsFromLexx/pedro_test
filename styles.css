@@ -2513,7 +2513,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 15px;
+        top: 5px;
         font-size: 18px; 
         left: 4px;
         right: 4px;              /* розтягуємо на всю ширину  24px; */
@@ -2581,7 +2581,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 20px;                /*  45px; */
+        top: 10px;                /*  45px; */
         right: -114px;
         display: flex;
         align-items: center;
