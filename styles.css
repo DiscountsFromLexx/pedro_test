@@ -2488,7 +2488,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 220px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 75%;
+        width: 50%;
         height: auto;
         border-radius: 20px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
