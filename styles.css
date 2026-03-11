@@ -2466,9 +2466,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .main-container {
-        width: 95%;
+        width: 100%;
         max-width: 1450px;; /* було 1450px; */
-        padding: 5px; /* було 55px; */
+        padding: 2px; /* було 55px; */
     }
     .howto-container {
         text-align: top;
