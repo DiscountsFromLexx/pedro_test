@@ -633,8 +633,8 @@ body.light-theme .feedback-btn span {
 
 .reklama {
     position: absolute;
-    top: 5px;
-    left: 10%;
+    top: 15px;
+    left: 20%;
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     border-radius: 5px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
@@ -1157,7 +1157,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     body.in-telegram .reklama {
-        top: 15px; !important;
+        top: 25px; !important;
     }
 
     .container {
