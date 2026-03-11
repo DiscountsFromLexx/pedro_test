@@ -2468,7 +2468,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .main-container {
         width: 100%;
         max-width: 100%; /* було 1450px; */
-        padding: 55px;
+        padding: 5px; /* було 55px; */
     }
     .howto-container {
         text-align: top;
@@ -2525,11 +2525,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        margin-top: -115px; !important;
-        font-size: 32px; 
+        margin-top: -125px; !important;
+        
         flex-direction: column;
         align-items: center;
-        min-width: 90px; /* було 110px */
+        min-width: 90px; /* було 110px; font-size: 32px;  */
         padding: 8px 6px; /* було 16px 12px; */
         border-radius: 16px;
         background: transparent;
