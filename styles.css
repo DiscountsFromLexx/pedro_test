@@ -1149,7 +1149,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     }
     body.in-telegram .top-buttons {
-        top: calc(140px + var(--tg-safe-area-top, 0px)) !important;
+        top: calc(150px + var(--tg-safe-area-top, 0px)) !important;
         text-align: center;
     }
 
@@ -1258,7 +1258,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        top: 140px !important; /* було 10px; */
+        top: 150px !important; /* було 10px; */
         left: 15px;
         gap: -20px;
     }
@@ -1288,7 +1288,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         bottom: 2px;        
     }
     .theme-toggle-container {
-        top: 145px; !important; /* було 98px */
+        top: 155px; !important; /* було 98px */
         right: 12px;    /* було right: 8px;  */
         gap: 1px;
     }
@@ -1338,7 +1338,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     
     .block-form {
-        margin-top: 105px; /* було 50px */
+        margin-top: 120px; /* було 50px */
         padding: 10px; /* було 10px */
     }
         
@@ -2665,7 +2665,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 110px;
+        margin-top: 125px;
         padding: 40px;
     }
 
