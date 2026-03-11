@@ -1200,8 +1200,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
         margin-top: 15px;
         margin-left: 5px;
-
-
     }
 
     .instruction-img {
@@ -1262,8 +1260,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
         top: 165px !important; /* було 10px; */
-        left: 10px;
-        gap: -20px;
+        left: 5px;
+        gap: -25px;
     }
     .howto-buttons {
         top: 90px !important; /* було 10px; */
