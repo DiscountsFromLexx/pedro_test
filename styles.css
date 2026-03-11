@@ -2493,7 +2493,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 20px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        border: 1px solid rgba(30, 144, 255, 0.25);
+        border: 1px solid #FFFFFF;
     }
     .reklama img {
         border-radius: 20px;       
@@ -2653,6 +2653,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: 18px 24px;
         padding: 24px 32px;
         width: 90%;
+        justify-content: center;
+        align-items: center;
 
         font-size: 18px;
     }
