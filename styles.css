@@ -2462,12 +2462,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* твої стилі для планшета — збільшені розміри, відступи тощо */
     body {
         font-size: 20px;
-        width: 95%;
+        width: 100%;
     }
 
     .main-container {
-        width: 100%;
-        max-width: 100%; /* було 1450px; */
+        width: 95%;
+        max-width: 95%; /* було 1450px; */
         padding: 5px; /* було 55px; */
     }
     .howto-container {
@@ -2483,7 +2483,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     .container {
         top: -10px;
-        width: 100%; /* було 100%; */
+        width: 95%; /* було 100%; */
         padding: 10px; /* було 20px */
         border-radius: 12px;
         text-align: center;
@@ -2506,7 +2506,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;  /* margin-top: 5px; */
         
-        font-size: 32px; 
+        
         left: 4px;
         right: 4px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -2525,8 +2525,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        margin-top: -125px; !important;
-        
+        margin-top: -145px; !important;
+        font-size: 32px; 
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px; font-size: 32px;  */
