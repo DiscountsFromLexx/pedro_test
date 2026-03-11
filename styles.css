@@ -1637,6 +1637,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 }
 
+/* iPhone горизонт */
 @media (min-width: 824px) and (max-width: 854px) and (orientation: landscape) {  
     
     body.in-telegram .container {
@@ -1653,14 +1654,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 95px;
         width: 80%;
         height: auto; 
-        left: 2%;
+        left: 25%;
     }
     .reklama {
         position: absolute;
         top: 95px;
         width: 80%;
         height: auto; 
-        left: 2%;
+        left: 25%;
     }
     
     
@@ -1694,7 +1695,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     .slogan-text {
-        margin-top: 65px;
+        margin-top: 70px;
         font-weight: 100;        
     }
 
@@ -1708,7 +1709,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         bottom: 2px;        
     }
     .theme-toggle-container {
-        top: 98px; /* було 98px */
+        top: 20px; /* було 98px */
         right: 12px;    /* було right: 8px;  */
         gap: 1px;
     }
@@ -1762,7 +1763,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     
     .block-form {
-        margin-top: 50px; /* було 40px */
+        margin-top: 60px; /* було 40px */
         padding: 15px; /* було 10px */
     }
         
