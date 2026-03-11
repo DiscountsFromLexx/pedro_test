@@ -631,20 +631,6 @@ body.light-theme .feedback-btn span {
     text-align: center;
 }
 
-.reklama {
-    position: relative;
-    top: 230px; /* підбери відступ від instruction-img */
-    width: 100%;
-    left: 50%;
-    margin: 0;
-}
-
-.reklama img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .instruction-img {
     position: absolute;
     top: 2px;
@@ -664,6 +650,30 @@ body.light-theme .feedback-btn span {
     height: 70px;
     border-radius: 50px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+.reklama {
+    position: absolute;
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+
+.reklamam {
+    position: relative;
+    top: 230px; /* підбери відступ від instruction-img */
+    width: 100%;
+    left: 50%;
+    margin: 0;
+}
+
+.reklamam img {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .slogan-text {
