@@ -637,7 +637,7 @@ body.light-theme .feedback-btn span {
     height: 90px;
     top: 15px;
     left: 20%;
-    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    
     border-radius: 5px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
@@ -1160,12 +1160,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     body.in-telegram .reklama {
         top: 35px; !important;
-        width: 30px;
-        height: 3.7px;
+        width: 10px;
+        height: 1.7px;
     }
     .reklama {
-        width: 30px;
-        height: 3.7px; 
+        width: 10px;
+        height: 1.7px; 
     }
     .container {
         top: -5px; !important;
