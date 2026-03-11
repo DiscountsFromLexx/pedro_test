@@ -662,20 +662,6 @@ body.light-theme .feedback-btn span {
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
 
-.reklamam {
-    position: relative;
-    top: 270px; /* підбери відступ від instruction-img */
-    width: 100%;
-    left: 50%;
-    margin: 0;
-}
-
-.reklamam img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .slogan-text {
     margin-top: 95px;
     font-size: 10px;
@@ -1271,7 +1257,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        top: 120px !important; /* було 10px; */
+        top: 130px !important; /* було 10px; */
         left: 15px;
         gap: -20px;
     }
@@ -1351,7 +1337,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     
     .block-form {
-        margin-top: 70px; /* було 50px */
+        margin-top: 85px; /* було 50px */
         padding: 10px; /* було 10px */
     }
         
