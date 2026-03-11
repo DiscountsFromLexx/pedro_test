@@ -2492,6 +2492,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 20px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
+    .reklama img {
+        border-radius: 20px;       
+    }
     
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
