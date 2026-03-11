@@ -2506,7 +2506,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: absolute;  /* margin-top: 5px; */
         
-        font-size: 22px; 
+        font-size: 32px; 
         left: 4px;
         right: 4px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -2525,8 +2525,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        margin-top: -95px; !important;
-        font-size: 22px; 
+        margin-top: -115px; !important;
+        font-size: 32px; 
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px */
