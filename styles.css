@@ -658,7 +658,7 @@ body.light-theme .feedback-btn span {
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     width: 60px;
     height: 60px;
-    border-radius: 50px;
+    border-radius: 5px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
 
@@ -2497,7 +2497,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 90%;
         height: auto;
-        border-radius: 50px;
+        border-radius: 10px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     
