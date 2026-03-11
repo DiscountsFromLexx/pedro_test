@@ -633,7 +633,7 @@ body.light-theme .feedback-btn span {
 
 .reklama {
     position: relative;
-    top: 120px; /* підбери відступ від instruction-img */
+    top: 230px; /* підбери відступ від instruction-img */
     width: 100%;
     left: 50%;
     margin: 0;
@@ -1169,7 +1169,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
     }
     .reklama {
-        top: 30px;
+        position: absolute;
+        top: 70px;
         width: 40%;
         height: auto; 
         left: 50%;
