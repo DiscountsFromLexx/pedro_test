@@ -1180,7 +1180,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .reklama {
         position: absolute;
-        top: 60px;
+        top: 65px;
         width: 70%;
         height: auto; 
         left: 50%;
@@ -1235,7 +1235,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     .slogan-text {
-        margin-top: 100px;
+        margin-top: 105px;
         font-weight: 100;
         
     }
@@ -1274,7 +1274,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        top: 115px !important; /* було 10px; */
+        top: 120px !important; /* було 10px; */
         left: 15px;
         gap: -20px;
     }
@@ -1304,7 +1304,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         bottom: 2px;        
     }
     .theme-toggle-container {
-        top: 90px; !important; /* було 98px */
+        top: 120px; !important; /* було 98px */
         right: 12px;    /* було right: 8px;  */
         gap: 1px;
     }
