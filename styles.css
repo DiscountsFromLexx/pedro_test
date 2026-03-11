@@ -634,7 +634,7 @@ body.light-theme .feedback-btn span {
 .reklama {
     position: relative;
     top: 120px; /* підбери відступ від instruction-img */
-    width: 200%;
+    width: 100%;
     left: 50%;
     margin: 0;
 }
