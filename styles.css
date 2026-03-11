@@ -1699,7 +1699,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
     .slogan-text {
-        margin-top: 70px;
+        margin-top: 75px;
         font-weight: 100;        
     }
 
