@@ -2500,7 +2500,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .reklama {
         position: absolute;
-        top: 30px;
+        top: 70px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 95%;
@@ -2665,7 +2665,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 25px;
+        margin-top: 55px;
         padding: 40px;
     }
 
