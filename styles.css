@@ -1159,13 +1159,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     body.in-telegram .reklama {
-        top: 25px; !important;
-        width: 60px;
-        height: 7.33px;
+        top: 35px; !important;
+        width: 30px;
+        height: 3.7px;
     }
     .reklama {
-        width: 60px;
-        height: 7.px; 
+        width: 30px;
+        height: 3.7px; 
     }
     .container {
         top: -5px; !important;
