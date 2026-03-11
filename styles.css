@@ -1334,7 +1334,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 10px; /* було 10px */
     }
         
-    
+    .tgkch-text {
+        left: 50%;
+    }
     .header-text {
         font-size: 18px;
         font-weight: 200;
