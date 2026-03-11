@@ -632,6 +632,7 @@ body.light-theme .feedback-btn span {
 }
 
 .reklama {
+    position: absolute;
     width: 60px; 
     height: auto;
     top: 100px;  /* left: 20%; */
