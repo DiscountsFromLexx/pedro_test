@@ -633,8 +633,8 @@ body.light-theme .feedback-btn span {
 
 .reklama {
     position: relative;
-    top: 80px; /* підбери відступ від instruction-img */
-    width: 100%;
+    top: 120px; /* підбери відступ від instruction-img */
+    width: 200%;
     margin: 0;
 }
 
@@ -1162,12 +1162,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     body.in-telegram .reklama {
-        top: 35px; !important;
-        width: 2.5eM;
+        top: 45px; !important;
+        width: 7.5eM;
         height: auto;
     }
     .reklama {
-        width: 10%;
+        width: 50%;
         height: auto; 
     }
     .container {
