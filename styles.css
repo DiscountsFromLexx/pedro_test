@@ -2483,7 +2483,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     .container {
         top: -10px;
-        width: 95%; /* було 100%; */
+        width: 100%; /* було 100%; */
         padding: 10px; /* було 20px */
         border-radius: 12px;
         text-align: center;
@@ -2526,7 +2526,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
         margin-top: -145px; !important;
-        font-size: 32px; 
+        font-size: 62px; 
         flex-direction: column;
         align-items: center;
         min-width: 90px; /* було 110px; font-size: 32px;  */
@@ -2563,8 +2563,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 30px;                /*  45px; */
-        right: -74px;  /*  -114px; */
+        top: 40px;                /*  45px; */
+        right: -44px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
