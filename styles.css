@@ -2467,7 +2467,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .main-container {
         width: 100%;
-        max-width: 1450px;
+        max-width: 100%; /* було 1450px; */
         padding: 55px;
     }
     .howto-container {
