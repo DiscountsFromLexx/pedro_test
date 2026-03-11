@@ -2652,7 +2652,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 18px 24px;
         padding: 24px 32px;
-        width: auto;
+        width: 90%;
 
         font-size: 18px;
     }
