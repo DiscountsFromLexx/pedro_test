@@ -661,6 +661,9 @@ body.light-theme .feedback-btn span {
     border-radius: 5px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
+.reklama img {
+        border-radius: 5px;       
+    }
 
 .slogan-text {
     margin-top: 95px;
@@ -2491,6 +2494,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: auto;
         border-radius: 20px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     }
     .reklama img {
         border-radius: 20px;       
@@ -2650,7 +2654,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: 18px 24px;
         padding: 24px 32px;
         width: 75%;
-        left: 50%;
+        margin-left: 50%;
         font-size: 18px;
     }
 
