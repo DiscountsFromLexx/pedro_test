@@ -2495,7 +2495,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 220px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 95%;
+        width: 90%;
         height: auto;
         border-radius: 50px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
@@ -2564,7 +2564,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 45px;                /*  45px; */
-        right: 10px;  /*  -114px; */
+        right: 15px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
@@ -2647,7 +2647,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 135px;
+        margin-top: 165px;
         padding: 40px;
     }
 
