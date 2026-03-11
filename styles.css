@@ -633,6 +633,8 @@ body.light-theme .feedback-btn span {
 
 .reklama {
     position: absolute;
+    width: 725px; 
+    height: 90px;
     top: 15px;
     left: 20%;
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
@@ -1158,8 +1160,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     body.in-telegram .reklama {
         top: 25px; !important;
+        width: 362px; 
+        height: 45px;
     }
-
+    .reklama {
+        width: 362px; 
+        height: 45px;
+    }
     .container {
         top: -5px; !important;
         padding: 2px;
@@ -1178,10 +1185,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 25px; !important; /* було top: 30px; */
         padding: 4px;
         width: 100%; /* left: 2px; right: 2px;*/
-        
-        
-
-        
         background: #B0E0E6;
     }
 
