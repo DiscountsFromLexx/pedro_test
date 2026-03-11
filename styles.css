@@ -2500,7 +2500,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .reklama {
         position: absolute;
-        top: 210px;
+        top: 220px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 95%;
@@ -2532,8 +2532,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupones-btn,
     .history-btn,
     .feedback-btn {
-        display: flex;
-        margin-top: -65px; !important;
+        display: flex; /* margin-top: -65px; !important; */
+        
         font-size: 18px; 
         flex-direction: column;
         align-items: center;
@@ -2550,16 +2550,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 50px; /* було 64px */
         height: 50px; /* було 64px */
         margin-bottom: 12px;
-    }
-
-    .coupons-btn span,
-    .instruction-btn span,
-    .web-btn span,
-    .coins-btn span,
-    .coupones-btn span,
-    .history-btn span,
-    .feedback-btn span {
-        font-size: 18px;
     }
 
     .instruction-img {
@@ -2581,7 +2571,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 10px;                /*  45px; */
+        top: 15px;                /*  45px; */
         right: -114px;
         display: flex;
         align-items: center;
@@ -2665,7 +2655,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 125px;
+        margin-top: 135px;
         padding: 40px;
     }
 
