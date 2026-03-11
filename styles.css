@@ -632,10 +632,9 @@ body.light-theme .feedback-btn span {
 }
 
 .reklama {
-
-    width: 120px; 
+    width: 60px; 
     height: auto;
-    top: 50px;  /* left: 20%; */
+    top: 100px;  /* left: 20%; */
     
     
     border-radius: 5px;
