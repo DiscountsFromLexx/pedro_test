@@ -653,7 +653,7 @@ body.light-theme .feedback-btn span {
 }
 .reklama {
     position: absolute;
-    top: 22px;
+    top: 52px;
     left: 50%;
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     width: 60px;
@@ -1173,15 +1173,15 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     body.in-telegram .reklama {
-        top: 45px; !important;
-        width: 40%;
+        top: 75px; !important;
+        width: 70%;
         height: auto;
         left: 50%;
     }
     .reklama {
         position: absolute;
         top: 70px;
-        width: 40%;
+        width: 70%;
         height: auto; 
         left: 50%;
     }
@@ -1212,6 +1212,39 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-left: 5px;
 
 
+    }
+
+    .instruction-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 65px; /* було top: 60px; */
+        height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .headhistory-img {
+        position: absolute;
+        top: 1px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 85px; /* було top: 60px; */
+        height: 85px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .slogan-text {
+        margin-top: 65px;
+        font-weight: 100;
+        
+    }
+
+    .history_main-text {
+        margin-top: 180px;
+        font-weight: 900;
+        font-size: 16px;
+        
     }
 
     .structure-img {
@@ -1265,40 +1298,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         color: #FFFFFF;
         text-align: center;
     }    
-    
-    
-    .instruction-img {
-        position: absolute;
-        top: 2px;
-        left: 50%;
-        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 65px; /* було top: 60px; */
-        height: 65px; /* було top: 60px; */
-        border-radius: 50px;
-        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
-    }
-    .headhistory-img {
-        position: absolute;
-        top: 1px;
-        left: 50%;
-        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 85px; /* було top: 60px; */
-        height: 85px; /* було top: 60px; */
-        border-radius: 50px;
-        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
-    }
-    .slogan-text {
-        margin-top: 65px;
-        font-weight: 100;
-        
-    }
-
-    .history_main-text {
-        margin-top: 180px;
-        font-weight: 900;
-        font-size: 16px;
-        
-    }
 
     .slider:before {        
         height: 30px;             /* було 30px */
