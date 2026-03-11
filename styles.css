@@ -632,15 +632,20 @@ body.light-theme .feedback-btn span {
 }
 
 .reklama {
-    position: absolute;
-    width: 20px; 
-    height: auto;
-    top: 150px;  /* left: 20%; */
-    
-    
-    border-radius: 5px;
-    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    width: 100%;                      /* на всю ширину контейнера */
+    max-width: 100%;                  /* не виходить за екран */
+    margin: 10px 0 20px 0;            /* відступи зверху/знизу */
+    overflow: hidden;                 /* приховує, якщо картинка більша */
+    border-radius: 12px;              /* гарні кути для всього блоку */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* легка тінь для краси */
 }
+
+.reklama img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
 .instruction-img {
     position: absolute;
     top: 2px;
