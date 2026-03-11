@@ -2650,7 +2650,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .checkbox-group {
         left: 50%;
-        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 18px 24px;
         padding: 24px 32px;
