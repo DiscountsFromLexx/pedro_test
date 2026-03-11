@@ -2525,7 +2525,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        margin-top: -140px; !important;
+        margin-top: -150px; !important;
         font-size: 62px; 
         flex-direction: column;
         align-items: center;
@@ -2539,8 +2539,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .btn-icon {
-        width: 50px; /* було 64px */
-        height: 50px; /* було 64px */
+        width: 55px; /* було 64px */
+        height: 55px; /* було 64px */
         margin-bottom: 12px;
     }
 
@@ -2564,7 +2564,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 45px;                /*  45px; */
-        right: 15px;  /*  -114px; */
+        right: 25px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
