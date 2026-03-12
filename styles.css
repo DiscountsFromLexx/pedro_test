@@ -1147,7 +1147,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     }
     body.in-telegram .howto-container {
-        top: 70px; !important;
+        top: 60px; !important;
         padding: 4px; /* було top: 6px; */
         width: 100%;
     }
