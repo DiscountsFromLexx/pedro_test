@@ -1171,6 +1171,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: auto; 
         left: 50%;
     }
+
+    body.in-telegram .theme-toggle-container {
+        top: 175px; !important; /* було 98px */
+
+    }
     .reklama {
         position: absolute;
         top: 95px;
