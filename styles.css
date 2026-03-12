@@ -1326,7 +1326,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
         
     .tgkch-text {
-        left: 50%;
+        margin-left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
     .header-text {
@@ -2666,6 +2666,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-size: 18px;
         padding: 12px 16px;
         min-height: 24px;
+    }
+    .tgkch-text {
+        margin-left: 5 px;
     }
 
     .input-group label {
