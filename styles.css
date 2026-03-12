@@ -1162,7 +1162,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     body.in-telegram .headhistory-img {
-        top: 10px;
+        top: 20px;
     }
     body.in-telegram .reklama {
         position: absolute;
