@@ -1147,12 +1147,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     }
     body.in-telegram .howto-container {
-        margin-top: 90px; !important;
+        margin-top: 70px; !important;
         padding: 4px; /* було top: 6px; */
         width: 100%;
     }
     body.in-telegram .top-buttons {
-        top: calc(160px + var(--tg-safe-area-top, 0px)) !important;
+        top: calc(170px + var(--tg-safe-area-top, 0px)) !important;
         text-align: center;
     }
 
