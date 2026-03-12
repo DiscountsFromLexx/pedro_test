@@ -1325,10 +1325,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 10px; /* було 10px */
     }
         
-    .tgkch-text {
-        margin-left: 50%;
-        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-    }
+
     .header-text {
         font-size: 18px;
         font-weight: 200;
