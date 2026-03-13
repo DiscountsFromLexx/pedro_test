@@ -1396,19 +1396,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .main-container {
-        width: 744px; /* max-width: 100%; було 820px; */
+        width: 744px !important; /* max-width: 100%; було 820px; */
         height: auto;
         padding: 0px;
     }
     .container {
-        width: 744px; /* max-width: 100%; було 820px; */
+        width: 744px !important; /* max-width: 100%; було 820px; */
         height: auto;
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 34px; /* було 24px; */
+        top: 44px !important; /* було 24px; */
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
