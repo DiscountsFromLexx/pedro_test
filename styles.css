@@ -652,7 +652,7 @@ body.light-theme .feedback-btn span {
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
 .reklama {
-    position: absolute;
+
     top: 90px;
     left: 50%;
     transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
