@@ -1415,7 +1415,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 35px !important;             /* близько 35px від верху — підбери під себе */
+        top: 55px !important;             /* близько 35px від верху — підбери під себе */
         left: 10px;
         right: 10px;
         z-index: 1000;
