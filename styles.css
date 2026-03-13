@@ -1235,6 +1235,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-weight: 100;
         
     }
+    .checkbox-group {
+        height: auto;
+    }
 
     .history_main-text {
         margin-top: 180px;
@@ -1293,6 +1296,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         min-width: 40px; /* було 50px; */
         padding: 6px 4px;
     }    
+
+
+    /* Якщо елементів більше 6 — вони просто не помістяться, можна додати overflow */
+    overflow: auto;   /* або auto, якщо хочеш скрол */
+
 
     .slider:before {        
         height: 30px;             /* було 30px */
