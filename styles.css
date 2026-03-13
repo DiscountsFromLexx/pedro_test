@@ -1389,7 +1389,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .main-container {
-        width: 100%; 
+        width: 744px; 
         max-width: 100%; /* 820px */
         padding: 2px;
     }
@@ -1403,7 +1403,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
 
-        margin-top: 4px;
+        margin-top: 14px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1823,7 +1823,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
 
-        margin-top: 4px;
+        margin-top: -4px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
