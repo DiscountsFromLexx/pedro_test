@@ -1398,7 +1398,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 25%;
     }
     .reklama {
-        position: relative; /* position: absolute; */
+         /* position: absolute; position: relative; */
         top: 95px;
         width: 80%;
         height: auto; 
@@ -1841,7 +1841,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 20px;
     }
     .reklama {
-        top: 170px;
+        top: 165px;
         width: 75%;
         height: auto; 
         left: 50%;
