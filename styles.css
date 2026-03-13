@@ -515,8 +515,8 @@ input:checked + .slider:before {
     width: 100%; /* було 100%; */
     padding: 2px; /* було 20px */
     border-radius: 12px;
-    text-align: center; /* було 20px */
-    position: relative;
+    text-align: center; /* було 20px position: relative; */
+    
 }
 
 /* Стилі для "Зачекайте..." */
