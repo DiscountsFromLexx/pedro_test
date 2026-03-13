@@ -1386,65 +1386,37 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body {
         font-size: 18px;
         width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    body.in-telegram .reklama {
-        position: absolute;
-        top: 95px;
-        width: 80%;
-        height: auto; 
-        left: 25%;
-    }
-    .reklama {
-         /* position: absolute; position: relative; */
-        top: 95px;
-        width: 80%;
-        height: auto; 
-        left: 25%;
     }
 
     .main-container {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100%;
-        padding: 0;
-        margin: 0;
-        top: 0 !important;
-        position: relative;
+        width: 100%; 
+        max-width: 100%; /* 820px */
+        padding: 2px;
     }
-
-    .container {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 15px 20px; /* нормальні відступи з боків */
-        margin: 0;
-        top: 0 !important;
-        position: relative;
-        box-sizing: border-box;
+    .reklama {
+        top: 165px;
+        width: 75%;
+        height: auto; 
+        left: 50%;
     }
-    
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
-        
-        margin-top: 95px !important; /* ~35px від верху — головне значення */
-        left: auto;
-        right: auto;
+
+        margin-top: 4px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px 20px;
-        padding: 10px 0;
-        width: 100%;
-        box-sizing: border-box;
-        z-index: 100;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
     }
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: 160px;        /* головне — відштовхується максимально вправо auto */
+        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
         min-width: 85px;
         padding: 16px 12px;
         border-radius: 16px;
@@ -1460,7 +1432,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         display: flex;
         flex-direction: column;
         align-items: center;
-        min-width: 75px; /* було 110px */
+        min-width: 95px; /* було 110px */
         padding: 16px 12px;
         border-radius: 16px;
         background: transparent;
@@ -1470,8 +1442,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .btn-icon {
-        width: 42px;
-        height: 42px;
+        width: 52px;
+        height: 52px;
         margin-bottom: 10px;
         object-fit: contain;
     }
@@ -1484,7 +1456,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupones-btn span,
     .feedback-btn span {
         font-size: 14px;
-        font-weight: 500;  /* margin-top: 8px; */
+        font-weight: 500;
+        margin-top: 8px;
         color: #FFFFFF;
     }
 
@@ -1522,23 +1495,23 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .slogan-text {
-        margin-top: 135px;
+        margin-top: 120px;
         font-size: 18px;
         font-weight: 300;
         text-align: center;
     }
 
     .history_main-text {
-        margin-top: 135px;
-        font-size: 18px;
-        font-weight: 300;
+        margin-top: 120px;
+        font-size: 38px;
+        font-weight: 900;
         text-align: center;
     }
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 20px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        top: 30px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
         right: 2px;
         display: flex;
         align-items: center;
@@ -1600,7 +1573,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 135px;
+        margin-top: 110px;
         padding: 30px;
     }
 
