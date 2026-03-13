@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', () => {
         const btn = document.querySelector('.scroll-top-btn');
-        if (btn) btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
     console.log("Скрипт Педро завантажився");
 });
