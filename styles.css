@@ -1408,7 +1408,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: 195px;
+        top: 295px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1669,7 +1669,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        top: 20px !important;
+        top: 50px !important;
         left: 15px;
         gap: -20px;
     }
