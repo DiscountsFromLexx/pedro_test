@@ -1837,7 +1837,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 4px;
+        top: 14px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -2007,7 +2007,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 70px;
+        margin-top: 110px;
         padding: 30px;
     }
 
