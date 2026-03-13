@@ -1390,7 +1390,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 25%;
     }
     .reklama {
-        position: absolute;
+        position: relative; /* position: absolute; */
         top: 95px;
         width: 80%;
         height: auto; 
