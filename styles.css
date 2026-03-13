@@ -1422,7 +1422,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: relative; /* знімаємо absolute, щоб не ламало layout */
         top: auto !important;
-        margin-top: 35px !important; /* ~35px від верху — головне значення */
+        margin-top: 55px !important; /* ~35px від верху — головне значення */
         left: auto;
         right: auto;
         display: flex;
