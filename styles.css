@@ -1167,7 +1167,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body.in-telegram .reklama {
         position: absolute;
         top: 95px;
-        width: 90%;
+        width: 75%;
         height: auto; 
         left: 50%;
     }
@@ -1179,7 +1179,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .reklama {
         position: absolute;
         top: 95px;
-        width: 90%;
+        width: 75%;
         height: auto; 
         left: 50%;
     }
