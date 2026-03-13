@@ -1403,7 +1403,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        margin-top: 14px;
+        margin-top: 54px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1511,7 +1511,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 30px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        top: 70px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
         right: 2px;
         display: flex;
         align-items: center;
@@ -1573,7 +1573,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 110px;
+        margin-top: 150px;
         padding: 30px;
     }
 
@@ -1588,6 +1588,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-size: 16px;
         padding: 10px 14px;
         min-height: 20px;
+        width: 75%;
     }
 
     .input-group label {
