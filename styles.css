@@ -1350,6 +1350,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-family: 'Montserrat', sans-serif;
         letter-spacing: 2px;
         margin-bottom: 5px;
+        height: auto;
     }
     .result input {
         font-size: 10px;
