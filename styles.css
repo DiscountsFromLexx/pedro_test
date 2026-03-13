@@ -1410,6 +1410,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 0 !important;
         margin: 0;
     }
+    
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
