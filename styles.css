@@ -1393,6 +1393,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         max-width: 100%; /* 820px */
         padding: 2px;
     }
+    .container {
+        position: relative;
+        top: 2px;  /* було 20px */        
+    }
     .reklama {
         top: 165px;
         width: 75%;
