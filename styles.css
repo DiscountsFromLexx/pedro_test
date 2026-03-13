@@ -1838,7 +1838,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .main-container {
         width: 100%; 
         max-width: 100%; /* 820px */
-        padding: 20px;
+        padding: 2px;
     }
     .reklama {
         top: 165px;
@@ -1850,7 +1850,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
 
-        top: -244px;
+        top: -544px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
