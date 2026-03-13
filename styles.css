@@ -1373,7 +1373,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 }
 
 /* Планшети (iPad Mini тощо) — (min-width: 744px) (max-width: 821px) */
-@media (min-width: 700px) and (max-width: 750px) and (orientation: portrait) {  
+@media (min-width: 700px) and (max-width: 780px) and (orientation: portrait) {  
     
     body {
         font-size: 18px;
@@ -1406,7 +1406,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 114px; /* було 24px; */
+        margin-top: 24px; /* було 24px; */
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1514,7 +1514,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
-        top: 120px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        margin-top: 20px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
         right: 2px;
         display: flex;
         align-items: center;
@@ -1576,7 +1576,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 95px;
+        margin-top: 135px;
         padding: 30px;
     }
 
