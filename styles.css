@@ -1829,15 +1829,15 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .main-container {
-        width: 100%;
-        max-width: 820px;
+        width: 100%; 
+        max-width: 100%; /* 820px */
         padding: 20px;
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: absolute;
-        top: 14px;
+        top: 4px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
