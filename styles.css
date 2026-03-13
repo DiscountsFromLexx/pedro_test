@@ -1397,11 +1397,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .main-container {
         width: 744px; /* max-width: 100%; було 820px; */
-        width: auto;
+        height: auto;
         padding: 0px;
     }
     .container {
-        width: 100%; /* max-width: 100%; було 820px; */
+        width: 744px; /* max-width: 100%; було 820px; */
+        height: auto;
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
