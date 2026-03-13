@@ -1269,12 +1269,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         top: 165px !important; /* було 10px; */
         left: 2px;
-        gap: -35px;
+        gap: -35px; /* було -35px; */
     }
     .howto-buttons {
         top: 90px !important; /* було 10px; */
         left: 5px;
-        gap: -20px;
+        gap: -35px;
         text-align: center;
     }
     .coupons-btn span,
@@ -1290,7 +1290,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-weight: 400;
         color: #FFFFFF;
         text-align: center;
-        min-width: 50px;
+        min-width: 40px; /* було 50px; */
         padding: 6px 4px;
     }    
 
