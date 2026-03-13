@@ -1429,7 +1429,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         
-        margin-top: 55px !important; /* ~35px від верху — головне значення */
+        margin-top: 95px !important; /* ~35px від верху — головне значення */
         left: auto;
         right: auto;
         display: flex;
