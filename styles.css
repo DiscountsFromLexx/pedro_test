@@ -1400,17 +1400,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     body.in-telegram .reklama {
         position: absolute;
         top: 105px;
-        width: 80%;
+        width: 50%;
         height: auto; 
         left: 25%;
-    }
-    .reklama {
-        position: absolute;
-        top: 105px;
-        width: 80%;
-        height: auto; 
-        left: 50%;
-    }
+    }    
     
     .main-container {        
         top: 0px; /* було top: 200px; */
@@ -1430,6 +1423,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 100px !important;
         left: 15px;
         gap: -20px;
+    }
+    .reklama {
+        position: absolute;
+        top: 105px;
+        width: 50%;
+        height: auto; 
+        left: 50%;
     }
     
     .instruction-img {
