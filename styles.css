@@ -2505,8 +2505,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         
-        top: 40px;                /*  45px; position: relative;*/
-        right: 10px;  /*  -114px; */
+        top: 45px;                /*  45px; position: relative;*/
+        right: 20px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
@@ -2592,6 +2592,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 180px;
         padding: 40px;
         width: 75%;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
 
     .checkbox-group {        
