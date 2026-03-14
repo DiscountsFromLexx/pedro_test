@@ -1,10 +1,10 @@
 14-03
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     display: flex;    
@@ -694,8 +694,8 @@ body.light-theme .feedback-btn span {
     flex-wrap: wrap;
     justify-content: space-between;      /* рівномірно розподіляє по ширині */
     align-content: space-between;        /* вирівнює по вертикалі */
-    gap: 8px 16px;                      /* відстань між чекбоксами: 12px вертикально, 16px горизонтально */
-    padding: 16px 20px;                  /* внутрішні відступи контейнера */
+    gap: 4px 16px;                      /* відстань між чекбоксами: 12px вертикально, 16px горизонтально */
+    padding: 8px 10px;                  /* внутрішні відступи контейнера */
     border: 1px solid rgba(30, 144, 255, 0.25);
     border-radius: 12px;
     background: rgba(20, 20, 50, 0.4);
@@ -712,10 +712,10 @@ body.light-theme .feedback-btn span {
     user-select: none;
     font-size: 10px;                     /* повертаємо нормальний розмір тексту */
     font-weight: 400;
-    padding: 10px 14px;                  /* гарні внутрішні відступи */
+    padding: 5px 7px;                  /* гарні внутрішні відступи */
     border-radius: 10px;
     transition: background 0.2s ease;
-    flex: 1 1 40%;                       /* кожен чекбокс займає ~40–50% ширини */
+    flex: 1 1 20%;                       /* кожен чекбокс займає ~40–50% ширини */
     max-width: 45%;                      /* не дає розтягуватися занадто */
     min-width: 140px;                    /* мінімальна ширина, щоб не злипалися */
     box-sizing: border-box;
@@ -732,7 +732,7 @@ body.light-theme .feedback-btn span {
 /* Вирівнювання чекбокса всередині label */
 .checkbox-group input[type="checkbox"] {
     width: 18px;
-    height: 18px;
+    height: auto;
     margin: 0;
 }
 
@@ -1416,15 +1416,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 15px 20px;
         margin: 0;
         top: 4px !important;
-        position: relative;
+        
         box-sizing: border-box;
     }
 
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        
-        top: auto !important;
-        top: 5px !important;  /* 35–40px від верху — підбери */
+        position: relative;
+        margin-top: -15px !important;  /* 35–40px від верху — підбери */
         left: auto;
         right: auto;
         display: flex;
@@ -1516,7 +1515,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coins-btn span,
     .coupones-btn span,
     .feedback-btn span {
-        font-size: 8px;
+        font-size: 10px;
     }
     
     
@@ -2600,11 +2599,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .checkbox-group {        
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 18px 24px;
-        padding: 24px 32px;
+        gap: 18px 44px;
+        padding: 34px 42px;
         width: 75%;
         height: auto;
-        horizontal-align: middle;
+        horizontal-align: left;
         vertical-align: middle;
         font-size: 18px;
         margin-left: 12%;
