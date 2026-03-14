@@ -1747,7 +1747,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 2px;
     }
     .reklama {
-        top: 65px;
+        top: 5px;
         width: 75%;
         height: auto; 
         left: 50%;
@@ -1758,7 +1758,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: -84px;
+        top: -124px;
         left: 5px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
