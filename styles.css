@@ -1402,14 +1402,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 25%;
     }
 
-    
     .container {
         width: 100vw !important;
         max-width: 100vw !important;
         min-width: 100%;
         padding: 15px 20px;
         margin: 0;
-        top: 0 !important;
+        top: 4px !important;
         position: relative;
         box-sizing: border-box;
     }
@@ -1418,7 +1417,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: relative !important;
         top: auto !important;
-        margin-top: 35px !important;  /* 35–40px від верху — підбери */
+        margin-top: 55px !important;  /* 35–40px від верху — підбери */
         left: auto;
         right: auto;
         display: flex;
@@ -1515,7 +1514,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     
     .block-form {
-        margin-top: 130px; /* було 40px */
+        margin-top: 70px; /* було 40px */
         padding: 15px; /* було 10px */
         width: 75%;
     }
