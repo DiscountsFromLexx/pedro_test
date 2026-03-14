@@ -2696,8 +2696,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 15px;
          /* margin-left: 15%; transform: translateX(-55%); */
         
-        width: 75%;
-        max-width: 75%;
+        width: 95%;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
