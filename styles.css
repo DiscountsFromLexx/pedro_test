@@ -2505,8 +2505,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         
-        top: 35px;                /*  45px; position: relative;*/
-        right: 5px;  /*  -114px; */
+        top: 40px;                /*  45px; position: relative;*/
+        right: 10px;  /*  -114px; */
         display: flex;
         align-items: center;
         gap: 10px;
@@ -2589,7 +2589,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 135px;
+        margin-top: 165px;
         padding: 40px;
     }
 
