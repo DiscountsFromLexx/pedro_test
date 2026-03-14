@@ -1741,13 +1741,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     }
 
-    .main-container {
+    .container {
         width: 100%; 
         max-width: 100%; /* 820px */
         padding: 2px;
     }
     .reklama {
-        top: 165px;
+        top: 65px;
         width: 75%;
         height: auto; 
         left: 50%;
@@ -1758,7 +1758,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: -44px;
+        top: -144px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1857,7 +1857,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .history_main-text {
-        margin-top: 120px;
+        margin-top: 70px;
         font-size: 38px;
         font-weight: 900;
         text-align: center;
