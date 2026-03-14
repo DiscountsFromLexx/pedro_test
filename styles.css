@@ -1636,6 +1636,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .result-text .product-image {
         max-width: 250px;          /* або 220px — підбери під себе */
     }
+    .tgkch-text {
+        margin-top: 10px;
+        font-size: 24px;        
+    }
     .channels-text {
         position: relative;
         font-size: 20px;
@@ -1645,10 +1649,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
-    .tgkch-text {
-        margin-top: 40px;
-        font-size: 24px;        
-    }
+    
 }
 
 /* iPhone горизонт */
@@ -2073,6 +2074,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .result-text .product-image {
         max-width: 250px;          /* або 220px — підбери під себе */
     }
+    .tgkch-text {
+        margin-top: 10px;
+        font-size: 24px;        
+    }
     .channels-text {
         position: relative;
         font-size: 20px;
@@ -2081,10 +2086,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 90%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-    }
-    .tgkch-text {
-        margin-top: 40px;
-        font-size: 24px;        
     }
 }
 
