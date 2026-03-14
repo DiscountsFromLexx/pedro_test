@@ -1753,7 +1753,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: auto; 
         left: 50%;
         transform: translateX(-50%); 
-        
+    }
+    .reklama img {
+        border-radius: 20px;       
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
@@ -1851,7 +1853,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .slogan-text {
-        margin-top: 90px;
+        margin-top: 60px;
         font-size: 18px;
         font-weight: 300;
         text-align: center;
@@ -1930,7 +1932,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .block-form {
         position: relative;
-        margin-top: 110px;
+        margin-top: 60px;
         padding: 40px;
         width: 90%;
         left: 50%;
