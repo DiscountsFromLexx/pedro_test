@@ -2653,7 +2653,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .result-text .product-image {
         max-width: 400px;          /* або 400px — підбери під себе */
     }
-    .tgkch-text, .channels-text {
+    .channels-text {
         position: relative;
         font-size: 20px;
         margin-top: 60px;
@@ -2661,5 +2661,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 90%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    }
+    .tgkch-text {
+        font-size: 24px;        
     }
 }
