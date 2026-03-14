@@ -1422,17 +1422,44 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
+          /* position: relative; margin-top: 5px; */
         margin-top: -155px !important;
-        left: auto;
-        right: auto;
+        font-size: 62px;
+        left: 4px;
+        right: 4px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .history-btn,
+    .feedback-btn {
+        display: flex; /* margin-top: -65px; !important; */
+        
+        font-size: 62px; 
+        flex-direction: column;
         align-items: center;
-        gap: 15px 20px;
-        padding: 10px 0;
-        width: 100%;
-        box-sizing: border-box;
+        min-width: 90px; /* було 110px; font-size: 32px;  */
+        padding: 8px 6px; /* було 16px 12px; */
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 55px; /* було 64px */
+        height: 55px; /* було 64px */
+        margin-bottom: 12px;
     }
     .reklama {
         
