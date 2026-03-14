@@ -1747,7 +1747,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 2px;
     }
     .reklama {
-        top: 5px;
+        top: -55px;
         width: 75%;
         height: auto; 
         left: 50%;
@@ -1850,7 +1850,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .slogan-text {
-        margin-top: 120px;
+        margin-top: 90px;
         font-size: 18px;
         font-weight: 300;
         text-align: center;
