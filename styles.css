@@ -1432,7 +1432,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         gap: -20px;
     }
     .reklama {
-        position: absolute;
+        position: relative; /*  змінив з абсолют */
         top: 105px;
         width: 50%;
         height: auto; 
