@@ -1758,8 +1758,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: -124px;
-        left: 5px;
+        top: -164px;
+        left: 10px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
