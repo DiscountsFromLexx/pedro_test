@@ -1421,9 +1421,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        position: relative !important;
+        
         top: auto !important;
-        top: 85px !important;  /* 35–40px від верху — підбери */
+        top: 5px !important;  /* 35–40px від верху — підбери */
         left: auto;
         right: auto;
         display: flex;
@@ -1436,7 +1436,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         box-sizing: border-box;
     }
     .reklama {
-        position: relative;
+        
         top: auto;
         width: 100%;
         margin: 20px 0 30px 0;
