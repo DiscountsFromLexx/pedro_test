@@ -2406,11 +2406,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
     }
 
-    .main-container {
-        width: 100%;
-        max-width: 1450px;; /* було 1450px; */
-        padding: 2px; /* було 55px; */
-    }
+
     .howto-container {
         text-align: top;
         width: 100%;
@@ -2451,7 +2447,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;  /* margin-top: 5px; */
-        margin-top: 5px;
+        margin-top: 5px !important;
         font-size: 62px;
         left: 4px;
         right: 4px;              /* розтягуємо на всю ширину  24px; */
@@ -2471,7 +2467,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        margin-top: -160px; !important;
+
         font-size: 62px; 
         flex-direction: column;
         align-items: center;
