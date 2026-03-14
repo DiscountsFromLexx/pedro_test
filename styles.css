@@ -1417,7 +1417,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: relative !important;
         top: auto !important;
-        margin-top: 55px !important;  /* 35–40px від верху — підбери */
+        top: 55px !important;  /* 35–40px від верху — підбери */
         left: auto;
         right: auto;
         display: flex;
@@ -1508,7 +1508,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .web-btn span,
     .coins-btn span,
     .coupones-btn span,
-    .feedback-btn span{
+    .feedback-btn span {
         font-size: 8px;
     }
     
