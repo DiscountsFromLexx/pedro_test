@@ -1410,14 +1410,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .container {
-        width: 100% !important;
-        max-width: auto;
-        min-width: 100%;
-        padding: 15px 20px;
-        margin: 0;
-        top: 4px !important;
+        top: -10px;
+        width: 100%; /* було 100%; */
+        padding: 10px; /* було 20px */
+        border-radius: 12px;
+        text-align: center;
         position: relative;
-        box-sizing: border-box;
     }
 
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
@@ -1462,20 +1460,23 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-bottom: 12px;
     }
     .reklama {
-        
-        top: auto;
-        width: 100%;
-        margin: 20px 0 30px 0;
-        text-align: center;
+        margin-top: 5px;;
+        top: 220px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 50%;
+        height: auto;
+        border-radius: 20px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        border: 1px solid #FFFFFF;
     }
     .reklama img {
-        width: 100% !important;
-        height: auto !important;
-        border-radius: 12px;
+        border-radius: 20px;       
     }
     
     .instruction-img {
-        position: relative;
+
         top: auto;
         margin: 20px auto 30px;
         width: 120px;
@@ -1517,23 +1518,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-label:not(.active) {
         font-size: 5px;
     }
-    .coupons-btn,
-    .instruction-btn,
-    .history-btn,
-    .web-btn,
-    .coins-btn,
-    .coupones-btn,
-    .feedback-btn {
-        min-width: 60px;
-        padding: 6px 4px;
-    }
-    
-    .btn-icon {
-        width: 35px; /* 32px; */
-        height: 35px;  /* 32px; */
-        margin-bottom: 4px;
-    }
-    
+
     .coupons-btn span,
     .instruction-btn span,
     .history-btn span,
@@ -1541,14 +1526,17 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coins-btn span,
     .coupones-btn span,
     .feedback-btn span {
-        font-size: 8px;
+        font-size: 12px;
     }
     
     
     .block-form {
-        margin-top: 70px; /* було 40px */
-        padding: 15px; /* було 10px */
-        width: 75%;
+        position: relative;
+        margin-top: 180px;
+        padding: 40px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
         
     
