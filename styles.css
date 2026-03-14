@@ -1382,7 +1382,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     body.in-telegram .container {
-        top: 50px; !important;
+        top: 50px !important;
         padding: 6px;
         width: 100%;
     }
@@ -1401,14 +1401,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 10px;       
     }
     
-    .main-container {        
-        top: 0px; /* було top: 200px; */
-        padding: 4px;
-        width: 100%;
-    } 
-
     .container {
-        top: -10px; !important;
+        top: 2px !important;
         padding: 6px;
         width: 100%;
         height: auto; 
