@@ -537,7 +537,7 @@ input:checked + .slider:before {
 
 /* Контейнер кнопок — горизонтальний рядок */
 .top-buttons {
-    position: relative /* або 90px на мобілках */
+     /* position: relative або 90px на мобілках */
     top: 10px;                    /* або 90px на мобілках */
     left: 5px;
     text-align: center;
@@ -2446,7 +2446,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
-        position: relative;  /* margin-top: 5px; */
+          /* position: relative; margin-top: 5px; */
         margin-top: -25px !important;
         font-size: 62px;
         left: 4px;
