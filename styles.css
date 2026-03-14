@@ -2495,7 +2495,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 16px;
     }
     .headhistory-img {
-        position: absolute;
+        position: relative;
         top: 2px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
@@ -2507,7 +2507,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
-        position: absolute;
+        position: relative;
         top: 45px;                /*  45px; */
         right: 25px;  /*  -114px; */
         display: flex;
