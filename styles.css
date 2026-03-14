@@ -1235,6 +1235,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         
     }
     .checkbox-group {
+        width: 50%;
         height: auto;
     }
 
