@@ -1853,7 +1853,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .slogan-text {
-        margin-top: 60px;
+        margin-top: 50px;
         font-size: 18px;
         font-weight: 300;
         text-align: center;
@@ -1932,7 +1932,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .block-form {
         position: relative;
-        margin-top: 5px;
+        top: 5px;
         padding: 40px;
         width: 90%;
         left: 50%;
