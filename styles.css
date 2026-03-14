@@ -2589,6 +2589,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
+        position: relative;
         margin-top: 180px;
         padding: 40px;
         width: 75%;
