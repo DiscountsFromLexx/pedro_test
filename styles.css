@@ -1412,14 +1412,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
     }
     
-    
-    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
-    .top-buttons {
-        top: 60px !important;
-        left: 15px;
-        gap: -20px;
-    }
-    
     .main-container {        
         top: 0px; /* було top: 200px; */
         padding: 4px;
@@ -1430,7 +1422,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: -10px; !important;
         padding: 6px;
         width: 100%;
-        height: 1380px; 
+        height: auto; 
+    }
+
+    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
+    .top-buttons {
+        top: 100px !important;
+        left: 15px;
+        gap: -20px;
     }
     
     .instruction-img {
