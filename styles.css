@@ -1761,7 +1761,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: -194px;
+        top: -184px;
         left: 20px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1932,7 +1932,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .block-form {
         position: relative;
-        margin-top: 60px;
+        margin-top: 5px;
         padding: 40px;
         width: 90%;
         left: 50%;
