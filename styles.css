@@ -537,7 +537,7 @@ input:checked + .slider:before {
 
 /* Контейнер кнопок — горизонтальний рядок */
 .top-buttons {
-    position: absolute;
+    position: relative /* або 90px на мобілках */
     top: 10px;                    /* або 90px на мобілках */
     left: 5px;
     text-align: center;
