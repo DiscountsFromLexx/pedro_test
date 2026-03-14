@@ -1932,7 +1932,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .block-form {
         position: relative;
-        top: 5px;
+        top: -55px;
         padding: 40px;
         width: 90%;
         left: 50%;
