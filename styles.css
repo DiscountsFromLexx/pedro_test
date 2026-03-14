@@ -653,7 +653,6 @@ body.light-theme .feedback-btn span {
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
 
-
 .slogan-text {
     margin-top: 95px;
     font-size: 10px;
@@ -1013,13 +1012,13 @@ body.light-theme .result-text strong {
 
 /* Промокод і весь текст після нього — завжди контрастний */
 .promo-code,
-.promo-code ~ * {
+.promo-code ~ 
     color: #ffeb3b !important;  /* світло-жовтий — ідеально видно на чорному */
 }
 
 /* Світла тема — темніший колір */
 body.light-theme .promo-code,
-body.light-theme .promo-code ~ * {
+body.light-theme .promo-code ~ 
     color: #ef6c00 !important;  /* помаранчевий */
 }
 
@@ -1045,14 +1044,14 @@ body.light-theme .promo-code ~ * {
 }
 
 /* Текст після промокоду (якщо є додатковий текст після span) */
-.result-text .promo-code + * {
+.result-text .promo-code + 
     margin-top: 8px;
     color: inherit !important;
 }
 
 /* Усі тексти всередині blockquote — завжди контрастні */
 blockquote,
-blockquote * {
+blockquote 
     color: #f0f4f8 !important; /* світлий білий/сірий — видно на темному фоні */
 }
 
@@ -1159,6 +1158,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 75%;
         height: auto; 
         left: 50%;
+        transform: translateX(-50%); 
     }
 
     body.in-telegram .theme-toggle-container {
@@ -1171,6 +1171,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 75%;
         height: auto; 
         left: 50%;
+        transform: translateX(-50%); 
     }
 
     .reklama img {
@@ -1397,7 +1398,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 25%;
     }
     .reklama img {
-        border-radius: 5px;       
+        border-radius: 10px;       
     }
     
     .main-container {        
@@ -1425,6 +1426,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 50%;
         height: auto; 
         left: 50%;
+        transform: translateX(-50%); 
     }
     
     .instruction-img {
@@ -1732,6 +1734,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 75%;
         height: auto; 
         left: 50%;
+        transform: translateX(-50%); 
+        
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
