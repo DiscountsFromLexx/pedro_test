@@ -2655,10 +2655,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .channels-text {
         position: relative;
-        font-size: 24px;
-        margin-top: 100px;
+        font-size: 20px;
+        margin-top: 80px;
         padding: 40px;
-        width: auto;
+        width: 100%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
