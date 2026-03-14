@@ -1143,7 +1143,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 @media (min-width: 200px) and (max-width: 480px) and (orientation: portrait) {  
     
     body.in-telegram .container {
-        top: 50px; !important;
+        top: 90px; !important;
         padding: 4px; /* було top: 6px; */
         width: 100%;
     }
