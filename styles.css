@@ -1759,7 +1759,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: -184px;
+        top: -194px;
         left: 20px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
@@ -1858,7 +1858,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .history_main-text {
-        margin-top: 70px;
+        margin-top: 50px;
         font-size: 38px;
         font-weight: 900;
         text-align: center;
@@ -1929,8 +1929,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
+        position: relative;
         margin-top: 110px;
-        padding: 30px;
+        padding: 40px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
 
     .checkbox-group {
@@ -1981,6 +1985,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .result-text .product-image {
         max-width: 250px;          /* або 220px — підбери під себе */
+    }
+    .channels-text {
+        position: relative;
+        font-size: 20px;
+        margin-top: 60px;
+        padding: 40px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    }
+    .tgkch-text {
+        margin-top: 40px;
+        font-size: 24px;        
     }
 }
 
