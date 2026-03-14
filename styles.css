@@ -1416,14 +1416,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 15px 20px;
         margin: 0;
         top: 4px !important;
-        position: relative;
+        
         box-sizing: border-box;
     }
 
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
         position: relative;
-        margin-top: -115px !important;  /* 35–40px від верху — підбери */
+        margin-top: -15px !important;  /* 35–40px від верху — підбери */
         left: auto;
         right: auto;
         display: flex;
@@ -1515,7 +1515,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coins-btn span,
     .coupones-btn span,
     .feedback-btn span {
-        font-size: 8px;
+        font-size: 10px;
     }
     
     
