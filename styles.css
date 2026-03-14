@@ -2421,7 +2421,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         }
 
     .reklama {
-        position: absolute;
+        margin-top: 5px;;
         top: 220px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
@@ -2439,7 +2439,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
-        position: absolute;  /* margin-top: 5px; */
+        position: relative;  /* margin-top: 5px; */
+        margin-top: 5px;
         font-size: 62px;
         left: 4px;
         right: 4px;              /* розтягуємо на всю ширину  24px; */
