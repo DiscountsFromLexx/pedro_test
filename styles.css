@@ -652,19 +652,7 @@ body.light-theme .feedback-btn span {
     border-radius: 50px;
     z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
 }
-.reklama {
 
-    top: 90px;
-    left: 50%;
-    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-    width: 60px;
-    height: 60px;
-    border-radius: 5px;
-    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
-}
-.reklama img {
-        border-radius: 5px;       
-    }
 
 .slogan-text {
     margin-top: 95px;
