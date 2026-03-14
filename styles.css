@@ -1405,6 +1405,24 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .reklama img {
         border-radius: 20px;       
     }
+    .howto-container {        
+        top: 25px; !important; /* було top: 30px; */
+        padding: 4px;
+        width: 100%;
+        left: 2px;
+        right: 2px;
+
+        
+        background: #B0E0E6;
+    }
+
+    .howto-text {
+        width: 100%;
+        margin-top: 15px;
+        left: 44px;
+        font-size: 20px;
+
+    }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
@@ -1842,6 +1860,24 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .reklama img {
         border-radius: 20px;       
+    }
+    .howto-container {        
+        top: 25px; !important; /* було top: 30px; */
+        padding: 4px;
+        width: 100%;
+        left: 2px;
+        right: 2px;
+
+        
+        background: #B0E0E6;
+    }
+
+    .howto-text {
+        width: 100%;
+        margin-top: 15px;
+        left: 44px;
+        font-size: 20px;
+
     }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
