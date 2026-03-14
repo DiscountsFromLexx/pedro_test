@@ -1757,7 +1757,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
-
+        position: relative;
         top: -44px;
         left: 2px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
@@ -1839,7 +1839,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Центральна іконка Pedro — по центру */
     .instruction-img {
-        position: absolute;
+        position: relative;
         top: 12px;
         left: 50%;
         transform: translateX(-50%);
