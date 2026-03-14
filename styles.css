@@ -693,7 +693,7 @@ body.light-theme .feedback-btn span {
     flex-wrap: wrap;
     justify-content: space-between;      /* рівномірно розподіляє по ширині */
     align-content: space-between;        /* вирівнює по вертикалі */
-    gap: 12px 16px;                      /* відстань між чекбоксами: 12px вертикально, 16px горизонтально */
+    gap: 8px 16px;                      /* відстань між чекбоксами: 12px вертикально, 16px горизонтально */
     padding: 16px 20px;                  /* внутрішні відступи контейнера */
     border: 1px solid rgba(30, 144, 255, 0.25);
     border-radius: 12px;
@@ -709,7 +709,7 @@ body.light-theme .feedback-btn span {
     gap: 8px;                            /* відстань між чекбоксом і текстом */
     cursor: pointer;
     user-select: none;
-    font-size: 14px;                     /* повертаємо нормальний розмір тексту */
+    font-size: 10px;                     /* повертаємо нормальний розмір тексту */
     font-weight: 400;
     padding: 10px 14px;                  /* гарні внутрішні відступи */
     border-radius: 10px;
