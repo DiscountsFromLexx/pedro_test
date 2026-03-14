@@ -1747,7 +1747,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 2px;
     }
     .reklama {
-        top: -55px;
+        position: relative;
+        top: -95px;
         width: 75%;
         height: auto; 
         left: 50%;
