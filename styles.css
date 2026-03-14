@@ -2693,10 +2693,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .structure-img {
-        margin-top: 15px;
-         /* margin-left: 15%; transform: translateX(-55%); */
-        
-        width: 95%;
+        margin-top: 5px;
+        margin-right: 5px;
+           /* transform: translateX(2%); margin-left: 45%; */
+        width: 95%;  /* max-width: 90%; */
+        max-width: 95%;
+        display: block;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
