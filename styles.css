@@ -2467,7 +2467,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn,
     .feedback-btn {
         display: flex; /* margin-top: -65px; !important; */
-        top: 5px;
+        top: -45px !important;
         font-size: 62px; 
         flex-direction: column;
         align-items: center;
