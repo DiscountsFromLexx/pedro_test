@@ -1,4 +1,2639 @@
+14-03
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    display: flex;    
+    justify-content: top;
+    align-items: top;
+    min-height: 100vh;
+    font-family: Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Темний режим (старий styles.css) */
+body.dark-theme {
+    background: linear-gradient(to bottom, #000000, #191970);
+}
+
+body.dark-theme .container {
+    background: linear-gradient(to bottom, #000000, #191970);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .howto-container {
+    background: linear-gradient(to bottom, #000000, #191970);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .instruction-btn {
+    background: transparent;
+    font-weight: 100;
+    color: #FFFFFF;
+    border: 0px solid #1E90FF;
+}
+
+
+body.dark-theme .coupons-btn {
+    background: transparent;
+    font-weight: 100;
+    color: #FFFFFF;
+    border: 0px solid #1E90FF;
+}
+
+body.dark-theme .checkbox-group {
+    
+    color: #FFFFFF;
+}
+
+body.dark-theme .header-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .input-group label {
+    color: #FFFFFF;
+}
+
+body.dark-theme .result label {
+    color: #FFFFFF;
+}
+
+body.dark-theme .input-group input {
+    border: 1px solid #4682B4;
+    color: #FFFFFF;
+    background: #000000;
+}
+
+body.dark-theme .result input {
+    border: 1px solid #4682B4;
+    color: #FFFFFF;
+    background: #000000;
+}
+
+body.dark-theme .input-group input:focus {
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+body.dark-theme .result input:focus {
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+body.dark-theme .submit-btn, body.dark-theme .clear-btn {
+    background: linear-gradient(to bottom, #4682B4, #4682B4);
+    border: 1px solid #1E90FF;
+}
+
+body.dark-theme .submit-btn:hover, body.dark-theme .clear-btn:hover {
+    background: linear-gradient(to bottom, #4682B4, #1E90FF);
+}
+
+body.dark-theme .slogan-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .history_main-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .channels-text {
+    color: #FFFFFF;
+}    
+
+body.dark-theme .tgkch-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .iheader-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .instructions-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .instructions-text a {
+    color: #00BFFF;
+}
+
+body.dark-theme .instructions-text a:hover {
+    color: #B2EBF2;
+}
+
+
+body.dark-theme .howto-text {
+    color: #FFFFFF;
+}
+
+body.dark-theme .howto-text a {
+    color: #00BFFF;
+}
+
+body.dark-theme .howto-text a:hover {
+    color: #B2EBF2;
+}
+
+body.dark-theme .theme-label {
+    color: #FFFFFF;
+}
+
+/* Світлий режим (на основі наданого коду) */
+body.light-theme {      
+    background: #B0E0E6; /*  було  linear-gradient(to bottom, #B0E0E6, #FFFFFF); */
+}
+body.light-theme .container {
+    background: linear-gradient(to bottom, #B0E0E6, #FFFFFF);  /*  було background: #B0E0E6; */
+}
+
+body.dark-theme {
+    background: #000000;  /*  задній фон; */
+}
+
+body.light-theme .loading-text {
+    color: #FF0000; /*  або #1a3d5a для контрасту */
+}
+
+
+body.light-theme .header-text {
+    color: #000000;
+    font-weight: 500;
+}
+
+body.light-theme .input-group label {
+    color: #000000;
+}
+body.light-theme .result-text {
+    background: rgba(240, 248, 255, 0.9);
+    color: #1a1a3d; /* темний синій/чорний */
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Плейсхолдер */
+.result-text:empty:before {
+    content: "Тут буде магія...";
+    color: #888;
+    font-style: italic;
+}
+
+body.light-theme .input-group input {
+    border: 0px solid #000080;
+    color: #000000;
+    background: #F5F5F5;
+}
+
+
+body.light-theme .input-group input:focus {
+    border-color: #1E90FF;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.3);
+}
+
+.result-text:empty:before {
+    content: "Тут буде магія...";
+    color: #888;
+    font-style: italic;
+}
+
+body.light-theme .checkbox-group {
+    background: #B0E0E6;   /* було #4682B4; */
+    border: 1px solid #FFFFFF; 
+    color: #000000;
+}
+
+body.light-theme .submit-btn, body.light-theme .clear-btn {
+    background: #4682B4;
+    border: 1px solid #FFFFFF;
+}
+
+body.light-theme .submit-btn:hover, body.light-theme .clear-btn:hover {
+    background: linear-gradient(to bottom, #4682B4, #1E90FF);
+}
+
+body.light-theme .channels-text {
+    color: #000000;
+    font-weight: 300;
+}
+
+body.light-theme .slogan-text {
+    color: #000000;
+    font-weight: 200;
+}
+
+body.light-theme .history_main-text {
+    color: #000000;
+    font-weight: 900;
+}
+
+body.light-theme .tgkch-text {
+    color: #000000;
+}
+
+body.light-theme .iheader-text {
+    color: #000000;
+}
+
+body.light-theme .instructions-text {
+    color: #000000;
+}
+
+body.light-theme .instructions-text a {
+    color: #1E90FF;
+}
+
+body.light-theme .instructions-text a:hover {
+    color: #4682B4;
+}
+
+
+body.light-theme .howto-text {
+    color: #000000;
+}
+
+body.light-theme .howto-text a {
+    color: #1E90FF;
+}
+
+body.light-theme .howto-text a:hover {
+    color: #4682B4;
+}
+
+body.light-theme .theme-label {
+    color: #000000;
+}
+
+/* Текст після промокоду (code + звичайний текст) */
+.promo-code {
+    background: rgba(255, 193, 7, 0.15); /* легкий жовтий фон */
+    color: #ffeb3b;                      /* жовтий текст для темної теми */
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: monospace;
+    font-weight: 600;
+    user-select: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+}
+
+.promo-code:hover {
+    background: rgba(255, 193, 7, 0.3);
+    transform: scale(1.05);
+}
+body.light-theme .promo-code {
+    background: rgba(255, 193, 7, 0.2);
+    color: #ef6c00; /* темніший жовтий/помаранчевий для світлої теми */
+}
+
+/* Універсальні кольори для заголовків і посилань */
+
+/* Заголовки розділів */
+.moneti-title {
+    color: #FFFFFF; /* золотистий жовтий — видно на темному */ 
+}
+body.light-theme .moneti-title {
+    color: #000000; /* помаранчевий для світлої */
+}
+
+.crystal-title {
+    color: #81d4fa; /* м'який блакитний */
+}
+body.light-theme .crystal-title {
+    color: #0288d1; /* темніший блакитний */
+}
+
+.prizi-title {
+    color: #a5d6a7; /* м'який зелений */
+}
+body.light-theme .prizi-title {
+    color: #388e3c; /* темніший зелений */
+}
+
+/* Посилання — об'єднаний блок */
+.moneti-link,
+.crystal-link,
+.prizi-link,
+.complect-link,
+.bestsellers-link {
+    color: #4fc3f7; /* синій у темній темі */
+}
+
+/* Світла тема — темніший синій для всіх типів посилань */
+body.light-theme .moneti-link,
+body.light-theme .crystal-link,
+body.light-theme .prizi-link,
+body.light-theme .complect-link,
+body.light-theme .bestsellers-link {
+    color: #0277bd;
+}
+
+/* Загальний текст результату (якщо потрібно) */
+.result-text {
+    color: #f0f4f8; /* дуже світлий сіро-білий — ідеально на темному */
+}
+body.light-theme .result-text {
+    color: #1a2533; /* темно-синій/сірий для світлої */
+}
+
+/* Підказка */
+.hint {
+    color: #b0bec5;
+}
+body.light-theme .hint {
+    color: #455a64;
+}
+
+body.light-theme .hint {
+    color: #666666; /* темніший сірий */
+}
+
+/* Загальний текст результату (якщо потрібно) */
+.result-text {
+    color: #e0e0ff; /* світло-білий для темної */
+}
+body.light-theme .result-text {
+    color: #1a1a3d; /* темно-синій/чорний для світлої */
+}
+
+blockquote {
+    background: rgba(255,255,255,0.08);
+    border-left: 4px solid #1E90FF;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 6px;
+}
+body.light-theme blockquote {
+    background: rgba(0,0,0,0.05);
+    border-left-color: #0288d1;
+}
+
+
+/* Стилі для перемикача тем (зменшений розмір, окремий контейнер, з написом) */
+.theme-toggle-container {
+    position: absolute; /* було position: absolute;  */
+    top: 20px;                /* було 15px */
+    right: 20px;              /* було right: 15px; */
+    display: flex;
+    align-items: center;
+    gap: 4px;                 /* було 2px → трохи збільшено для кращого вигляду */
+    z-index: 1000;
+}
+
+.theme-label {
+    font-size: 11px;          /* було 14px / 16px */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    transition: font-size 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+body.dark-theme .theme-label {
+    color: #FFFFFF;
+}
+
+body.light-theme .theme-label {
+    color: #000000;
+}
+
+.theme-label-moon {
+    order: -1;
+}
+
+.theme-label-sun {
+    order: 1;
+}
+
+.theme-label.active {
+    font-size: 19px;          /* було 13px */
+}
+.theme-label-moon,
+.theme-label-sun {
+    font-size: 1.5em;           /* трохи більші іконки для кращої видимості */
+    line-height: 1;
+    vertical-align: middle;
+    position: relative;
+    top: 6px;                   /* головний параметр — опускає іконки вниз */
+    margin-top: -2px;           /* компенсує, якщо є зайвий відступ зверху */
+}
+
+.theme-label:not(.active) {
+    font-size: 9px;           /* було 9px */
+}
+
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    height: 30px;             /* було height: 35px; */
+    width: 70px;              /* було 55px */
+}
+
+.theme-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 8px;   /* було top: 0; */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    transition: 0.4s;
+    border: 1px solid #FFFFFF;
+    border-radius: 12px;      /* пропорційно зменшено з 24px */
+}
+
+/* Напис на повзунку */
+.slider:after {
+    position: absolute;
+    content: "ТЕМНА ТЕМА";
+    font-size: 8px;           /* було 12px */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    color: #D3D3D3;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    transition: 0.4s;
+    letter-spacing: 0.3px;
+}
+
+input:checked + .slider:after {
+    content: "СВІТЛА ТЕМА";
+    color: #FF8C00; /* було #FFFFFF; */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 25px;             /* було 30px */
+    width: 30px;              /* було 30px */
+    left: -20px;                /* скориговано з -30px → тепер всередині */
+    bottom: 0.5px;              /* було 2px */
+    background-color: transparent;
+    border: 0px solid #FFFFFF; /* було 1px solid #FFFFFF; */
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #B0E0E6; /* було #1E90FF; */
+}
+
+input:checked + .slider:before {
+    transform: translateX(75px);  /* було 119px → пропорційно зменшено */
+}
+
+/* Очищаємо дублювання та конфліктні правила */
+.theme-label {
+    /* це правило дублювало попереднє — обираємо одне */
+    font-size: 11px;
+    font-weight: 500;         /* трохи легше, ніж 600 */
+    letter-spacing: 0.5px;
+}
+
+/* Решта стилів зі старого styles.css */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto; 
+    min-width: 100%; /* Було 300px; */
+    max-width: auto; /* Було 600px; */
+    padding: 2px; /* Було padding: 10px; */
+}
+
+.container {
+    top: 20px;  /* було 20px */
+    width: 100%; /* було 100%; */
+    height: auto;
+    padding: 2px; /* було 20px */
+    border-radius: 12px;
+    text-align: center; /* було 20px position: relative; */
+    position: relative;
+}
+
+/* Стилі для "Зачекайте..." */
+.loading-text {
+    color: #FF0000;
+    font-weight: 500;
+    font-style: italic;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Контейнер кнопок — горизонтальний рядок */
+.top-buttons {
+    position: absolute;
+    top: 10px;                    /* або 90px на мобілках */
+    left: 5px;
+    text-align: center;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    gap: -35px;                    /* відстань між кнопками 12px;*/
+    align-items: center;        /* вирівнюємо по низу, щоб підписи були на одному рівні */
+}
+
+.howto-buttons {
+    position: absolute;
+    top: 10px;                    /* або 90px на мобілках */
+    left: 5px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    gap: -35px;                    /* відстань між кнопками 12px;*/
+    align-items: center;        /* вирівнюємо по низу, щоб підписи були на одному рівні */
+}
+
+
+/* Стилі для кнопок */
+.coupons-btn,
+.instruction-btn,
+.history-btn,
+.web-btn,
+.coins-btn,
+.coupones-btn,
+.feedback-btn {
+    display: flex;
+    flex-direction: column;       /* іконка зверху, текст знизу */
+    align-items: center;
+    justify-content: center;
+    min-width: 70px;
+    padding: 8px 6px;
+    background: transparent;
+    border: none;                 /* без рамки навколо кнопки */
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 300;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+/* Світла тема — чорний текст */
+body.light-theme .coupons-btn span,
+body.light-theme .instruction-btn span,
+body.light-theme .history-btn span,
+body.light-theme .web-btn span,
+body.light-theme .coins-btn span,
+body.light-theme .coupones-btn span,
+body.light-theme .feedback-btn span {
+    color: #000000 !important;
+}
+
+.coupons-btn:hover,
+.instruction-btn:hover,
+.history-btn:hover,
+.web-btn:hover,
+.coins-btn:hover,
+.coupones-btn:hover,
+.feedback-btn:hover {
+    background: rgba(30, 144, 255, 0.15);  /* легкий фон при наведенні */
+    transform: scale(1.05);
+    font-weight: 100; /* було 300px */
+}
+
+/* Іконка */
+.btn-icon {
+    width: 30px;                  /* розмір іконки — підбери */
+    height: 30px;
+    margin-bottom: 4px;           /* відстань між іконкою і текстом */
+    object-fit: contain;
+}
+
+/* Підпис під іконкою */
+.coupons-btn span,
+.instruction-btn span,
+.history-btn span,
+.web-btn span,
+.coupones-btn span,
+.coupons-btn span,
+.feedback-btn span {
+    display: block;
+    margin-top: 2px;  /* 4px; */
+    font-size: 9px;
+    font-weight: 400;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.instruction-img {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+.headhistory-img {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 70px;
+    height: 70px;
+    border-radius: 50px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+.reklama {
+
+    top: 90px;
+    left: 50%;
+    transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+}
+.reklama img {
+        border-radius: 5px;       
+    }
+
+.slogan-text {
+    margin-top: 95px;
+    font-size: 10px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.history_main-text {
+    margin-top: 65px;
+    font-size: 20px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.header-text {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.block-form {
+    margin-top: 110px; /* було 50px */
+    padding: 15px; /* було 10px */
+}
+
+.checkbox-group {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* було repeat(auto-fit, minmax(140px, 1fr)); */
+    grid-template-rows: repeat(3, minmax(16px, 5px));   /* фіксовані 3 рядки 16px, auto  repeat(3, minmax(16px, 5px)); */
+    gap: 6px 8px; /* було gap: 6px 8px; */
+    padding: 12px 16px;
+    border: 1px solid rgba(30, 144, 255, 0.25);
+    border-radius: 10px;
+    background: rgba(20, 20, 50, 0.4);
+    margin: 6px 0 10px; /* було 12px 0 20px; */
+
+    /* Якщо елементів більше 6 — вони просто не помістяться, можна додати overflow */
+    overflow: auto;   /* або auto, якщо хочеш скрол */
+}
+
+/* label вже не потребує flex-властивостей */
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 4px;                     /* було 4px — трохи більше для зручності */
+    cursor: pointer;
+    user-select: none;
+    font-size: 10px;              /* 10px — занадто мало, повертаємо до читабельного */
+                                 /* повертаємо нормальний колір, #696969 погано читається */
+    padding: 4px 6px;            /* було 4px 6px — зменшуємо, щоб не було зайвого простору */
+    border-radius: 8px;           /* 50px робить дуже круглим — краще 8–12px */
+    transition: background 0.15s;
+    position: relative;
+    height: 1px;                 /* прибираємо height:1px — це ламало все */
+    min-height: 10px;             /* мінімальна висота для зручного натискання 16px */
+   
+}
+
+.checkbox-group label:hover,
+.checkbox-group label:active {
+    background: rgba(30, 144, 255, 0.12);
+}
+
+
+.input-group {
+    height: auto;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 400;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    transition: border-color 0.3s ease;
+}
+
+
+.result {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.result label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #ffffff; /* або #000 для світлої теми */
+}
+
+.result-text {
+    width: 100%;
+    min-height: 180px;
+    padding: 16px;
+    background: rgba(30, 30, 50, 0.6);
+    border-radius: 12px;
+    border: none;
+    color: #e0e0ff; /* білий/світло-блакитний для темної теми */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    overflow-y: auto;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+}
+
+
+.submit-group {
+    display: flex;    
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.submit-btn {
+    padding: 8px;
+    width: 50%;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+.clear-btn {
+    padding: 8px;
+    width: 50%;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover, .clear-btn:hover {
+    transform: translateY(-2px);
+}
+
+.submit-btn:active, .clear-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.channels-text {
+    margin-top: 30px;
+    font-size: 14px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+    margin-left: 4px; /*  background: #B0E0E6; */   
+}
+
+.tgkch-text {
+    font-size: 16px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.channels-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.channels-text a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+.iheader-text {
+    margin-top: 40px;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    text-align: left;
+    cursor: pointer;
+    user-select: none;
+}
+.toggle-icon {
+    font-size: 2.5em; /* було 1.1em;; */
+    margin-left: 8px;
+    transition: transform 0.4s ease;
+}
+.iheader-text.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.instructions-text {
+    margin-top: 1px;
+    font-size: 14px; /* було 14px; */
+    font-weight: 100; /* було 200; */
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out, opacity 0.5s ease;
+    max-height: 33px;               /* висота першого рядка + трохи запасу 60px */
+    opacity: 0.5;                     /* текст видно одразу */
+    position: relative;
+}
+.instructions-text.active {
+    max-height: 2000px;             /* великий запас, щоб вмістити все */
+}
+.instructions-text::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;                   /* висота градієнту */
+    background: linear-gradient(to bottom, transparent, var(--bg-color)); /* колір фону сторінки */
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.6s ease;
+}
+
+.instructions-text.active::after {
+    opacity: 0;                     /* градієнт зникає при розгортанні */
+}
+
+.instructions-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.instructions-text a:hover {
+    text-decoration: underline;
+}
+
+
+.howto-text {
+    margin-top: 80px;
+    left: 8px;
+    font-size: 14px; /* було 14px; */
+    font-weight: 100; /* було 200; */
+    font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    letter-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.howto-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+.howto-text a:hover {
+    text-decoration: underline;
+}
+
+.scroll-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #FF7F50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.scroll-top-btn:hover {
+    background: #FF6347;
+    transform: scale(1.1);
+}
+
+.input-with-paste {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.input-with-paste input {
+    margin-top: 2px;
+    flex: 1;
+    padding-right: 110px; /* місце для кнопки */
+}
+
+.paste-btn {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 12px;
+    font-size: 12px;
+    background: #1E90FF;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.paste-btn:hover {
+    background: #00bfff;
+}
+/* Усі жирні тексти в результаті — білі в темній темі */
+.result-text b,
+.result-text strong {
+    color: #ffffff; /* чистий білий — ідеально видно на темному */
+    font-weight: 600; /* трохи жирніше, щоб виділявся */
+}
+
+/* Світла тема — темний жирний текст */
+body.light-theme .result-text b,
+body.light-theme .result-text strong {
+    color: #1a1a3d; /* темно-синій/чорний */
+}
+
+/* Промокод і весь текст після нього — завжди контрастний */
+.promo-code,
+.promo-code ~ * {
+    color: #ffeb3b !important;  /* світло-жовтий — ідеально видно на чорному */
+}
+
+/* Світла тема — темніший колір */
+body.light-theme .promo-code,
+body.light-theme .promo-code ~ * {
+    color: #ef6c00 !important;  /* помаранчевий */
+}
+
+/* Сам промокод (span.promo-code) — фон + бордер + hover */
+.promo-code {
+    background: rgba(255, 193, 7, 0.18);
+    color: #fff9c4 !important;
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 193, 7, 0.4);
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    user-select: none;
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+.promo-code:hover {
+    background: rgba(255, 193, 7, 0.35);
+    transform: scale(1.03);
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+/* Текст після промокоду (якщо є додатковий текст після span) */
+.result-text .promo-code + * {
+    margin-top: 8px;
+    color: inherit !important;
+}
+
+/* Усі тексти всередині blockquote — завжди контрастні */
+blockquote,
+blockquote * {
+    color: #f0f4f8 !important; /* світлий білий/сірий — видно на темному фоні */
+}
+
+/* Світла тема */
+body.light-theme blockquote,
+body.light-theme blockquote * {
+    color: #1a2533 !important; /* темно-синій/сірий */
+}
+
+/* Промокод і його сусіди — перекриваємо все */
+.promo-code,
+.promo-code ~ *,
+blockquote .promo-code ~ * {
+    color: #ffeb3b !important;
+}
+
+body.light-theme .promo-code,
+body.light-theme .promo-code ~ *,
+body.light-theme blockquote .promo-code ~ * {
+    color: #ef6c00 !important;
+}
+
+/* Підказка *Клікніть...* — сіра */
+blockquote i {
+    color: #b0bec5 !important;
+    font-size: 13px;
+}
+
+body.light-theme blockquote i {
+    color: #455a64 !important;
+}
+
+/* Якщо текст після промокоду все ще темний — примусово білий */
+.result-text blockquote p,
+.result-text blockquote div,
+.result-text blockquote span:not(.promo-code) {
+    color: inherit !important;
+}
+ 
+.result-text .product-image {
+    float: right;
+    margin: 0 0 16px 20px;         /* трохи більше відступів для планшетів */
+    max-width: 90px;              /* базовий розмір для телефонів */
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    clear: both;
+}
+
+
+
+/* Текст промокодів у resultText — завжди контрастний */
+.result-text[data-coupons-loaded] p,
+.result-text[data-coupons-loaded] span,
+.result-text[data-coupons-loaded] div,
+.result-text[data-coupons-loaded] {
+    color: #f0f4f8 !important; /* світлий білий/сірий у темній темі */
+}
+
+body.light-theme .result-text[data-coupons-loaded],
+body.light-theme .result-text[data-coupons-loaded] * {
+    color: #1a2533 !important; /* темно-синій/чорний у світлій темі */
+}
+
+/* Виділення заголовка "Актуальні промокоди та акції" */
+.result-text[data-coupons-loaded] b {
+    color: #FFEFD5 !important; /* було #ffeb3b золотистий у темній */
+    font-size: 16px;
+}
+
+body.light-theme .result-text[data-coupons-loaded] b {
+    color: #f57c00 !important; /* помаранчевий у світлій */
+}
+
+@media (min-width: 200px) and (max-width: 480px) and (orientation: portrait) {  
+    
+    body.in-telegram .container {
+        top: 50px; !important;
+        padding: 4px; /* було top: 6px; */
+        width: 100%;
+    }
+    body.in-telegram .howto-container {
+        margin-top: 40px; !important;
+        padding: 4px; /* було top: 6px; */
+        width: 100%;
+    }
+    body.in-telegram .top-buttons {
+        top: calc(170px + var(--tg-safe-area-top, 0px)) !important;
+        text-align: center;
+    }
+
+    }
+    body.in-telegram .howto-buttons {
+        top: calc(130px + var(--tg-safe-area-top, 0px)) !important;
+        text-align: center;
+    }
+    body.in-telegram .headhistory-img {
+        top: 20px;
+    }
+    body.in-telegram .reklama {
+        position: absolute;
+        top: 100px;
+        width: 75%;
+        height: auto; 
+        left: 50%;
+    }
+
+    body.in-telegram .theme-toggle-container {
+        top: 175px; !important; /* було 98px */
+
+    }
+    .reklama {
+        position: absolute;
+        top: 100px;
+        width: 75%;
+        height: auto; 
+        left: 50%;
+    }
+    .container {
+        top: -5px; !important;
+        padding: 2px;
+        width: 100%; /* height: 120vh; */
+        height: 100%;
+
+    }
+    .main-container {        
+        top: 0px; /* було top: 200px; */
+        padding: 2px; 
+        
+
+    }
+    
+    .howto-container {        
+        top: 20px; !important; /* було top: 30px; */
+        padding: 4px;
+        width: 100%; /* left: 2px; right: 2px;*/
+        background: #B0E0E6;
+    }
+
+    .howto-text {
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 5px;
+    }
+
+    .instruction-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 65px; /* було top: 60px; */
+        height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .headhistory-img {
+        position: absolute;
+        top: 1px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 85px; /* було top: 60px; */
+        height: 85px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .slogan-text {
+        margin-top: 70px;
+        font-weight: 100;
+        
+    }
+    .checkbox-group {
+        height: auto;
+    }
+
+    .history_main-text {
+        margin-top: 180px;
+        font-weight: 900;
+        font-size: 16px;
+        
+    }
+
+    .structure-img {
+        margin-top: 5px;
+        margin-right: 5px;
+           /* transform: translateX(2%); margin-left: 45%; */
+        width: 95%;  /* max-width: 90%; */
+        max-width: 95%;
+        display: block;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .structurw-img {
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+        display: block;
+        object-fit: contain;          /* зберігає пропорції, не обрізає */
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
+    .top-buttons {
+        top: 165px !important; /* було 10px; */
+        left: 2px;
+        gap: -35px; /* було -35px; */
+    }
+    .howto-buttons {
+        top: 90px !important; /* було 10px; */
+        left: 5px;
+        gap: -35px;
+        text-align: center;
+    }
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coins-btn span,
+    .coupones-btn span,
+    .feedback-btn span {
+        display: block;
+        margin-top: 2px;  /* 4px; */
+        font-size: 9px;
+        font-weight: 400;
+        color: #FFFFFF;
+        text-align: center;
+        min-width: 40px; /* було 50px; */
+        padding: 6px 4px;
+    }    
+
+
+    /* Якщо елементів більше 6 — вони просто не помістяться, можна додати overflow */
+    overflow: auto;   /* або auto, якщо хочеш скрол */
+
+
+    .slider:before {        
+        height: 30px;             /* було 30px */
+        bottom: 2px;        
+    }
+    .theme-toggle-container {
+        top: 170px; !important; /* було 98px */
+        right: 12px;    /* було right: 8px;  */
+        gap: 1px;
+    }
+    .theme-toggle {    
+        height: 37px;             /* було 40px height: 22px; */
+        width: 75px;              /* було 48px */
+    }
+    .theme-label {
+        font-size: 8px; /* 6px */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 100;
+        color: #FF0000;
+    }
+    .theme-label.active {
+        font-size: 10px;
+    }
+    .theme-label:not(.active) {
+        font-size: 5px;
+    }
+    
+    
+    .btn-icon {
+        width: 35px; /* 32px; */
+        height: 35px;  /* 32px; */
+        margin-bottom: 4px;
+    }
+    
+    
+    .block-form {
+        margin-top: 140px; /* було 50px */
+        padding: 10px; /* було 10px */
+    }
+        
+
+    .header-text {
+        font-size: 18px;
+        font-weight: 200;
+    }
+    .input-group input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .input-group label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+        height: auto;
+    }
+    .result input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+    }
+     .result label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .result-text .product-image {
+        max-width: 90px;          /* або 400px — підбери під себе */
+    }
+     
+}
+
+/* Планшети (iPad Mini тощо) — (min-width: 744px) (max-width: 821px) */
+@media (min-width: 700px) and (max-width: 780px) and (orientation: portrait) {  
+    
+    body {
+        width: 100%;
+    }
+    
+    body.in-telegram .container {
+        top: 50px; !important;
+        padding: 6px;
+        width: 100%;
+    }
+    body.in-telegram .top-buttons {
+        top: calc(90px + var(--tg-safe-area-top, 0px)) !important;
+    }
+
+    body.in-telegram .reklama {
+        position: absolute;
+        top: 105px;
+        width: 80%;
+        height: auto; 
+        left: 25%;
+    }
+    .reklama {
+        position: absolute;
+        top: 105px;
+        width: 80%;
+        height: auto; 
+        left: 50%;
+    }
+    
+    
+    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
+    .top-buttons {
+        top: 60px !important;
+        left: 15px;
+        gap: -20px;
+    }
+    
+    .main-container {        
+        top: 0px; /* було top: 200px; */
+        padding: 4px;
+        width: 100%;
+    } 
+
+    .container {
+        top: -10px; !important;
+        padding: 6px;
+        width: 100%;
+    }
+    
+    .instruction-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 65px; /* було top: 60px; */
+        height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .slogan-text {
+        margin-top: 75px;
+        font-weight: 100;        
+    }
+
+    .history_main-text {
+        margin-top: 65px;
+        font-weight: 100;        
+    }
+    
+    .slider:before {        
+        height: 30px;             /* було 30px */
+        bottom: 2px;        
+    }
+    .theme-toggle-container {
+        top: 20px; /* було 98px */
+        right: 12px;    /* було right: 8px;  */
+        gap: 1px;
+    }
+    .theme-toggle {    
+        height: 37px;             /* було 40px height: 22px; */
+        width: 75px;              /* було 48px */
+    }
+    .theme-label {
+        font-size: 8px; /* 6px */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 100;
+        color: #FF0000;
+    }
+    .theme-label.active {
+        font-size: 10px;
+    }
+    .theme-label:not(.active) {
+        font-size: 5px;
+    }
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .feedback-btn {
+        min-width: 60px;
+        padding: 6px 4px;
+    }
+    
+    .btn-icon {
+        width: 35px; /* 32px; */
+        height: 35px;  /* 32px; */
+        margin-bottom: 4px;
+    }
+    
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coins-btn span,
+    .coupones-btn span,
+    .feedback-btn span{
+        font-size: 8px;
+    }
+    
+    
+    .block-form {
+        margin-top: 130px; /* було 40px */
+        padding: 15px; /* було 10px */
+    }
+        
+    
+    .header-text {
+        font-size: 18px;
+        font-weight: 200;
+    }
+    .input-group input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .input-group label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+    .result input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .result label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .result-text .product-image {
+        max-width: 90px;          /* або 400px — підбери під себе */
+    }
+     
+}
+
+/* iPhone горизонт */
+@media (min-width: 824px) and (max-width: 854px) and (orientation: landscape) {  
+    
+    body {
+        width: 100%;
+    }
+    
+    body.in-telegram .container {
+        top: 50px; !important;
+        padding: 6px;
+        width: 100%;
+    }
+    body.in-telegram .top-buttons {
+        top: calc(90px + var(--tg-safe-area-top, 0px)) !important;
+    }
+
+    body.in-telegram .reklama {
+        position: absolute;
+        top: 105px;
+        width: 80%;
+        height: auto; 
+        left: 25%;
+    }
+    .reklama {
+        position: absolute;
+        top: 105px;
+        width: 80%;
+        height: auto; 
+        left: 50%;
+    }
+    
+    
+    /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
+    .top-buttons {
+        top: 20px !important;
+        left: 15px;
+        gap: -20px;
+    }
+    
+    .main-container {        
+        top: 0px; /* було top: 200px; */
+        padding: 4px;
+        width: 100%;
+    } 
+
+    .container {
+        top: -10px; !important;
+        padding: 6px;
+        width: 100%;
+    }
+    
+    .instruction-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 65px; /* було top: 60px; */
+        height: 65px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+    .slogan-text {
+        margin-top: 75px;
+        font-weight: 100;        
+    }
+
+    .history_main-text {
+        margin-top: 65px;
+        font-weight: 100;        
+    }
+    
+    .slider:before {        
+        height: 30px;             /* було 30px */
+        bottom: 2px;        
+    }
+    .theme-toggle-container {
+        top: 20px; /* було 98px */
+        right: 12px;    /* було right: 8px;  */
+        gap: 1px;
+    }
+    .theme-toggle {    
+        height: 37px;             /* було 40px height: 22px; */
+        width: 75px;              /* було 48px */
+    }
+    .theme-label {
+        font-size: 8px; /* 6px */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 100;
+        color: #FF0000;
+    }
+    .theme-label.active {
+        font-size: 10px;
+    }
+    .theme-label:not(.active) {
+        font-size: 5px;
+    }
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .feedback-btn {
+        min-width: 60px;
+        padding: 6px 4px;
+    }
+    
+    .btn-icon {
+        width: 35px; /* 32px; */
+        height: 35px;  /* 32px; */
+        margin-bottom: 4px;
+    }
+    
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coins-btn span,
+    .coupones-btn span,
+    .feedback-btn span{
+        font-size: 8px;
+    }
+    
+    
+    .block-form {
+        margin-top: 120px; /* було 40px */
+        padding: 15px; /* було 10px */
+    }
+        
+    
+    .header-text {
+        font-size: 18px;
+        font-weight: 200;
+    }
+    .input-group input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .input-group label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+    .result input {
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+    }
+     .result label {
+        display: block;
+        font-size: 8px;
+        font-weight: 400;
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    .result-text .product-image {
+        max-width: 90px;          /* або 400px — підбери під себе */
+    }
+     
+}
+
+/* Планшети (11 дюймів iPad тощо) — (min-width: 769px) (max-width: 821px) */
+@media (min-width: 769px) and (max-width: 841px) and (orientation: portrait) {
+    /* твої стилі для планшета — збільшені розміри, відступи тощо */
+    body {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%; 
+        max-width: 100%; /* 820px */
+        padding: 2px;
+    }
+    .reklama {
+        top: 165px;
+        width: 75%;
+        height: auto; 
+        left: 50%;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+
+        top: -44px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }
+
+    /* FEEDBACK відштовхується вправо до перемикача тем */
+    .feedback-btn {
+        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
+        min-width: 85px;
+        padding: 16px 12px;
+        border-radius: 16px;
+    }
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 95px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 52px;
+        height: 52px;
+        margin-bottom: 10px;
+        object-fit: contain;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coins-btn span,
+    .coupones-btn span,
+    .feedback-btn span {
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 8px;
+        color: #FFFFFF;
+    }
+
+    body.light-theme .coupons-btn span,
+    body.light-theme .instruction-btn span,
+    body.light-theme .history-btn span,
+    body.light-theme .web-btn span,
+    body.light-theme .coins-btn span,
+    body.light-theme .coupones-btn span,
+    body.light-theme .feedback-btn span {
+        color: #000000 !important;
+    }
+
+    .coupons-btn:hover,
+    .instruction-btn:hover,
+    .history-btn:hover,
+    .web-btn:hover,
+    .coins-btn:hover,
+    .coupones-btn:hover,
+    .feedback-btn:hover {
+        background: rgba(30, 144, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    /* Центральна іконка Pedro — по центру */
+    .instruction-img {
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        z-index: 10;
+    }
+
+    .slogan-text {
+        margin-top: 120px;
+        font-size: 18px;
+        font-weight: 300;
+        text-align: center;
+    }
+
+    .history_main-text {
+        margin-top: 120px;
+        font-size: 38px;
+        font-weight: 900;
+        text-align: center;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 30px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 48px;
+        width: 110px;
+    }
+
+    .slider {
+        border-radius: 24px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 12px;
+        letter-spacing: 0.8px;
+    }
+
+    .slider:before {
+        height: 42px;
+        width: 42px;
+        left: -4px;
+        bottom: 2px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(64px);
+    }
+
+    .theme-label {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.2em;
+        top: 8px;
+        margin-top: -4px;
+    }
+
+    .theme-label.active {
+        font-size: 24px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 12px;
+    }
+
+    .header-text {
+        font-size: 32px;
+        margin-top: 40px;
+    }
+
+    .block-form {
+        margin-top: 110px;
+        padding: 30px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px 18px;
+        padding: 20px 24px;
+        font-size: 16px;
+    }
+
+    .checkbox-group label {
+        font-size: 16px;
+        padding: 10px 14px;
+        min-height: 20px;
+    }
+
+    .input-group label {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .input-group input {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .result label {
+        font-size: 22px;
+        margin-bottom: 14px;
+    }
+
+    .result-text {
+        min-height: 300px;
+        font-size: 18px;
+        padding: 24px;
+        line-height: 1.8;
+    }
+
+    .submit-group {
+        gap: 16px;
+        margin-top: 24px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 20px;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    .result-text .product-image {
+        max-width: 250px;          /* або 220px — підбери під себе */
+    }
+}
+
+/* iPad Mini та подібні планшети в горизонтальній орієнтації (landscape) */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    /* Загальні збільшення для ландшафту — все ще компактніше, ніж десктоп, але більше, ніж портрет */
+    body {
+        font-size: 20px; /* ще більший базовий текст */
+    }
+
+    .main-container {
+        width: 98%;
+        max-width: 1200px; /* не розтягуємо занадто на великому екрані */
+        padding: 20px;
+    }
+
+    .container {
+        padding: 40px 32px;
+        border-radius: 24px;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 90px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 54px; /* було 64px */
+        height: 54px; /* було 64px */
+        margin-bottom: 12px;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coins-btn span,
+    .coupones-btn span,
+    .feedback-btn span {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .instruction-img {
+        width: 120px;
+        height: 120px;
+        top: 16px;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 50px;                /*  45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 56px;
+        width: 130px;
+    }
+
+    .slider {
+        border-radius: 28px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .slider:before {
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(76px);
+    }
+
+    .theme-label {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
+    }
+
+    .theme-label.active {
+        font-size: 28px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 140px;
+        font-size: 22px;
+    }
+
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
+    }
+
+    .header-text {
+        font-size: 38px;
+        margin-top: 50px;
+    }
+
+    .block-form {
+        margin-top: 50px;
+        padding: 40px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        font-size: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
+    }
+
+    .input-group label {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .result label {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .result-text {
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
+    }
+
+    .submit-group {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    
+    .result-text .product-image {
+        max-width: 400px;          /* або 400px — підбери під себе */
+    }
+}
+
+    /* Планшети (13 дюймів iPad Air тощо) — ширина від 769 до 1024 px (max-width: 821px) */
+@media (min-width: 1020px) and (max-width: 1025px) and (orientation: portrait) {
+    /* твої стилі для планшета — збільшені розміри, відступи тощо */
+    body {
+        font-size: 18px; /* 18px */
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+        max-width: 1022px;
+        padding: 20px;
+    }
+
+    .container {
+        padding: 10px 32px;
+        border-radius: 24px;
+    }
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;
+        top: 24px;
+        left: 2px;
+        right: 8px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .history-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .feedback-btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 90px; /* було 110px */
+        padding: 16px 12px;
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 54px; /* було 64px */
+        height: 54px; /* було 64px */
+        margin-bottom: 12px;
+    }
+
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coins-btn span,
+    .coupones-btn span,
+    .feedback-btn span {
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .instruction-img {
+        width: 120px;
+        height: 120px;
+        top: 16px;
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 50px;                /*  45px; */
+        right: 2px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 56px;
+        width: 130px;
+    }
+
+    .slider {
+        border-radius: 28px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .slider:before {
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(76px);
+    }
+
+    .theme-label {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
+    }
+
+    .theme-label.active {
+        font-size: 28px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 140px;
+        font-size: 22px;
+    }
+    
+    .history_main-text {
+        margin-top: 140px;
+        font-size: 38px;
+    }
+
+    .header-text {
+        font-size: 38px;
+        margin-top: 50px;
+    }
+
+    .block-form {
+        margin-top: 50px;
+        padding: 40px;
+        font-size: 28px;
+    }
+
+    .checkbox-group {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        font-size: 18px;
+    }
+
+    .checkbox-group label {
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
+    }
+
+    .input-group label {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .result label {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .result-text {
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
+    }
+
+    .submit-group {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    
+    .result-text .product-image {
+        max-width: 280px;          /* або 400px — підбери під себе */
+    }
+}
+
+/* PC тощо */
+@media (min-width: 1370px) and (max-width: 3025px) and (orientation: landscape) {
+
+    body {
+        font-size: 44px;
+        width: 100%;
+    }
+
+    .main-container {
+        width: 100%;
+        max-width: 1450px;; /* було 1450px; */
+        padding: 2px; /* було 55px; */
+    }
+    .howto-container {
+        text-align: top;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+    }
+    .howto-text {        
+        width: 75%;
+        margin-left: 10px;
+    }
+    
+    .container {
+        top: -10px;
+        width: 100%; /* було 100%; */
+        padding: 10px; /* було 20px */
+        border-radius: 12px;
+        text-align: center;
+        position: relative;
+        }
+
+    .reklama {
+        position: absolute;
+        top: 220px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 50%;
+        height: auto;
+        border-radius: 20px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        border: 1px solid #FFFFFF;
+    }
+    .reklama img {
+        border-radius: 20px;       
+    }
+    
+
+    /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
+    .top-buttons {
+        position: absolute;  /* margin-top: 5px; */
+        font-size: 62px;
+        left: 4px;
+        right: 4px;              /* розтягуємо на всю ширину  24px; */
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: flex-start; /* кнопки зліва */
+        gap: 1px;
+    }    
+
+    .coupons-btn,
+    .instruction-btn,
+    .web-btn,
+    .coins-btn,
+    .coupones-btn,
+    .history-btn,
+    .feedback-btn {
+        display: flex; /* margin-top: -65px; !important; */
+        margin-top: -160px; !important;
+        font-size: 62px; 
+        flex-direction: column;
+        align-items: center;
+        min-width: 90px; /* було 110px; font-size: 32px;  */
+        padding: 8px 6px; /* було 16px 12px; */
+        border-radius: 16px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.25s ease;
+    }
+
+    .btn-icon {
+        width: 55px; /* було 64px */
+        height: 55px; /* було 64px */
+        margin-bottom: 12px;
+    }
+
+    .instruction-img {
+        width: 120px;
+        height: 120px;
+        top: 16px;
+    }
+    .headhistory-img {
+        position: absolute;
+        top: 2px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 120px; /* було top: 60px; */
+        height: 120px; /* було top: 60px; */
+        border-radius: 50px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+    }
+
+    /* Перемикач тем — праворуч від FEEDBACK */
+    .theme-toggle-container {
+        position: absolute;
+        top: 45px;                /*  45px; */
+        right: 25px;  /*  -114px; */
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 1001;            /* вище всіх кнопок */
+    }
+
+    .theme-toggle {
+        height: 56px;
+        width: 130px;
+    }
+
+    .slider {
+        border-radius: 28px;
+        border: 2px solid #FFFFFF;
+    }
+
+    .slider:after {
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .slider:before {
+        height: 50px;
+        width: 50px;
+        left: -6px;
+        bottom: 3px;
+        border: 0px solid #FFFFFF;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(76px);
+    }
+
+    .theme-label {
+        font-size: 18px;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    theme-label-moon,
+    .theme-label-sun {
+        font-size: 2.5em;
+        top: 10px;
+        margin-top: -6px;
+    }
+
+    .theme-label.active {
+        font-size: 28px;
+    }
+
+    .theme-label:not(.active) {
+        font-size: 14px;
+    }
+
+    .slogan-text {
+        margin-top: 160px;
+        font-size: 22px;
+    }
+
+    .history_main-text {
+        margin-top: 170px;
+        font-size: 22px;
+        font-weight: 500;
+    }
+
+    .header-text {
+        font-size: 38px;
+        margin-top: 50px;
+    }
+
+    .structure-img {
+        margin-top: 15px;
+         /* margin-left: 15%; transform: translateX(-55%); */
+        
+        width: 75%;
+        max-width: 75%;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .block-form {
+        margin-top: 135px;
+        padding: 40px;
+    }
+
+    .checkbox-group {        
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px 24px;
+        padding: 24px 32px;
+        width: 75%;
+        height: auto;
+        horizontal-align: middle;
+        vertical-align: middle;
+        font-size: 18px;
+        margin-left: 12%;
+
+    }
+
+    .checkbox-group label {
+        font-size: 18px;
+        padding: 12px 16px;
+        min-height: 24px;
+    }
+
+    .input-group label {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .input-group input {
+        font-size: 20px;
+        padding: 18px;
+    }
+
+    .result label {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .result-text {
+        min-height: 360px;
+        font-size: 20px;
+        padding: 32px;
+        line-height: 1.9;
+    }
+
+    .submit-group {
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .submit-btn,
+    .clear-btn {
+        font-size: 22px;
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    
+    .result-text .product-image {
+        max-width: 400px;          /* або 400px — підбери під себе */
+    }
+}
 
 
 
