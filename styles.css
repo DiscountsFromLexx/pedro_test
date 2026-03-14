@@ -694,8 +694,8 @@ body.light-theme .feedback-btn span {
     flex-wrap: wrap;
     justify-content: space-between;      /* рівномірно розподіляє по ширині */
     align-content: space-between;        /* вирівнює по вертикалі */
-    gap: 8px 16px;                      /* відстань між чекбоксами: 12px вертикально, 16px горизонтально */
-    padding: 16px 20px;                  /* внутрішні відступи контейнера */
+    gap: 4px 16px;                      /* відстань між чекбоксами: 12px вертикально, 16px горизонтально */
+    padding: 8px 10px;                  /* внутрішні відступи контейнера */
     border: 1px solid rgba(30, 144, 255, 0.25);
     border-radius: 12px;
     background: rgba(20, 20, 50, 0.4);
@@ -712,10 +712,10 @@ body.light-theme .feedback-btn span {
     user-select: none;
     font-size: 10px;                     /* повертаємо нормальний розмір тексту */
     font-weight: 400;
-    padding: 10px 14px;                  /* гарні внутрішні відступи */
+    padding: 5px 7px;                  /* гарні внутрішні відступи */
     border-radius: 10px;
     transition: background 0.2s ease;
-    flex: 1 1 40%;                       /* кожен чекбокс займає ~40–50% ширини */
+    flex: 1 1 20%;                       /* кожен чекбокс займає ~40–50% ширини */
     max-width: 45%;                      /* не дає розтягуватися занадто */
     min-width: 140px;                    /* мінімальна ширина, щоб не злипалися */
     box-sizing: border-box;
@@ -732,7 +732,7 @@ body.light-theme .feedback-btn span {
 /* Вирівнювання чекбокса всередині label */
 .checkbox-group input[type="checkbox"] {
     width: 18px;
-    height: 18px;
+    height: auto;
     margin: 0;
 }
 
