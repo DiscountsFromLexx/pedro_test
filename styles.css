@@ -2484,6 +2484,16 @@ body.light-theme .result-text[data-coupons-loaded] b {
         height: 55px; /* було 64px */
         margin-bottom: 12px;
     }
+    .coupons-btn span,
+    .instruction-btn span,
+    .history-btn span,
+    .web-btn span,
+    .coupones-btn span,
+    .coupons-btn span,
+    .feedback-btn span {
+        font-size: 12px;
+        font-weight: 400;
+    }
 
     .instruction-img {
         width: 120px;
