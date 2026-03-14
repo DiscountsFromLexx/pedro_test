@@ -1932,7 +1932,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .block-form {
         position: relative;
-        top: -55px;
+        margin-top: -155px;
         padding: 40px;
         width: 90%;
         left: 50%;
@@ -1941,7 +1941,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .checkbox-group {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 14px 18px;
+        gap: 14px 38px;
         padding: 20px 24px;
         font-size: 16px;
     }
