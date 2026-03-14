@@ -2653,12 +2653,12 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .result-text .product-image {
         max-width: 400px;          /* або 400px — підбери під себе */
     }
-    .channels-text {
+    .tgkch-text, .channels-text {
         position: relative;
         font-size: 20px;
         margin-top: 60px;
         padding: 40px;
-        width: 75%;
+        width: 90%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
