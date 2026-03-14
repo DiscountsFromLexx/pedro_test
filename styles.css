@@ -1643,7 +1643,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .channels-text {
         position: relative;
         font-size: 20px;
-        margin-top: 60px;
+        margin-top: 30px;
         padding: 40px;
         width: 90%;
         left: 50%;
@@ -2081,7 +2081,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .channels-text {
         position: relative;
         font-size: 20px;
-        margin-top: 60px;
+        margin-top: 30px;
         padding: 40px;
         width: 90%;
         left: 50%;
@@ -2595,7 +2595,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .history-btn span,
     .web-btn span,
     .coupones-btn span,
-    .coupons-btn span,
+    .coins-btn span,
     .feedback-btn span {
         font-size: 12px;
         font-weight: 400;
