@@ -2504,8 +2504,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
-        position: relative;
-        top: 5px;                /*  45px; */
+        
+        top: 5px;                /*  45px; position: relative;*/
         right: 5px;  /*  -114px; */
         display: flex;
         align-items: center;
