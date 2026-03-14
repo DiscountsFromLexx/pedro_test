@@ -1402,7 +1402,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     .container {
-        top: 5px !important;
+        top: 10px !important;
         padding: 6px;
         width: 100%;
         height: auto; 
