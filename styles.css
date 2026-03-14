@@ -1263,7 +1263,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     /* Якщо клас .in-telegram відсутній (браузер на телефоні) — явно повертаємо 10px */
     .top-buttons {
-        top: 205px !important; /* було 10px; */
+        margin-top: 25px !important; /* було 10px; */
         left: 2px;
         gap: -35px; /* було -35px; */
     }
