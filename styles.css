@@ -1423,7 +1423,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: relative !important;
         top: auto !important;
-        top: 55px !important;  /* 35–40px від верху — підбери */
+        top: 85px !important;  /* 35–40px від верху — підбери */
         left: auto;
         right: auto;
         display: flex;
