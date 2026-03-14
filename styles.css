@@ -1759,8 +1759,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
         position: relative;
-        top: -164px;
-        left: 10px;
+        top: -184px;
+        left: 20px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
@@ -1772,7 +1772,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: 180px;        /* головне — відштовхується максимально вправо auto */
+        margin-left: 190px;        /* головне — відштовхується максимально вправо auto 180 */
         min-width: 85px;
         padding: 16px 12px;
         border-radius: 16px;
