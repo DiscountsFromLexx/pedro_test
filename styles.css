@@ -2428,8 +2428,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .reklama {
         position: relative;
-        top: 5px;;
-        top: 220px;
+        top: 20px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
         width: 50%;
