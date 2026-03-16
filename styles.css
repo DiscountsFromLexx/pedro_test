@@ -1432,7 +1432,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: relative;
         top: -184px;
-        left: 20px;
+        left: 18px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
