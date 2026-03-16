@@ -1405,6 +1405,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .reklama img {
         border-radius: 20px;       
     }
+    .headhistory-img {
+        width: 50%;
+        height: auto;
+    }
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
         padding: 4px;
@@ -1536,8 +1540,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     .structure-img {
-        margin-top: 150px;
-        width: 50%;
+        margin-top: 50px;
+        width: 20%;
         height: auto;
     }
 
