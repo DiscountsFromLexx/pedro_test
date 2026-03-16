@@ -1531,6 +1531,11 @@ body.light-theme .result-text[data-coupons-loaded] b {
         font-weight: 900;
         text-align: center;
     }
+    .structure-img {
+        margin-top: 210px;
+        width: 100%;
+        height: auto;
+    }
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
