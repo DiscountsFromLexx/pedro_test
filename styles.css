@@ -1251,8 +1251,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 25px;
         margin-right: 5px;
            /* transform: translateX(2%); margin-left: 45%; */
-        width: 50%;  /* max-width: 90%; */
-        max-width: 50%;
+        width: 100%;  /* max-width: 90%; */
+        max-width: 100%;
         display: block;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
@@ -1540,11 +1540,15 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     .structure-img {
-        position: relative;
-        margin-top: 30px;
-        width: 10px;
-        max-width: 10px;
-        height: auto;
+        margin-top: 25px;
+        margin-right: 5px;
+           /* transform: translateX(2%); margin-left: 45%; */
+        width: 100%;  /* max-width: 90%; */
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Перемикач тем — праворуч від FEEDBACK */
