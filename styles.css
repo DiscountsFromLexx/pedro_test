@@ -1545,7 +1545,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .theme-toggle-container {
         position: absolute;
         top: 30px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
-        right: 2px;
+        right: 4px;
         display: flex;
         align-items: center;
         gap: 10px;
