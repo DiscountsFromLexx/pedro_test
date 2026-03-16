@@ -1406,7 +1406,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 20px;       
     }
     .headhistory-img {
-        width: 50%;
+        width: 25%;
         height: auto;
     }
     .howto-container {        
@@ -1540,7 +1540,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         text-align: center;
     }
     .structure-img {
-        margin-top: 50px;
+        margin-top: 30px;
         width: 20%;
         height: auto;
     }
