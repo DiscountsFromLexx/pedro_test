@@ -1411,9 +1411,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
         left: 2px;
         right: 2px;
-
-        
         background: #B0E0E6;
+    }
+    .howto-buttons {
+        top: 90px !important; /* було 10px; */
+        left: 5px;
+        gap: -35px;
+        text-align: center;
     }
 
     .howto-text {
