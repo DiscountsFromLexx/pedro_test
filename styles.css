@@ -1224,8 +1224,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         top: 1px;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 85px; /* було top: 60px; */
-        height: 85px; /* було top: 60px; */
+        width: 100px; /* було top: 60px; */
+        height: 100px; /* було top: 60px; */
         border-radius: 50px;
         z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
     }
@@ -1241,18 +1241,18 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .history_main-text {
-        margin-top: 180px;
+        margin-top: 250px;
         font-weight: 900;
-        font-size: 16px;
+        font-size: 12px;
         
     }
 
     .structure-img {
-        margin-top: 5px;
+        margin-top: 25px;
         margin-right: 5px;
            /* transform: translateX(2%); margin-left: 45%; */
-        width: 95%;  /* max-width: 90%; */
-        max-width: 95%;
+        width: 50%;  /* max-width: 90%; */
+        max-width: 50%;
         display: block;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
