@@ -2813,7 +2813,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         -webkit-overflow-scrolling: touch;
     }
     .structure-img img {
-        width: 25px;
+        width: 100%;
         border-radius: 5px;       
     }
 
