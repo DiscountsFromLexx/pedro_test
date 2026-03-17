@@ -1111,6 +1111,10 @@ body.light-theme blockquote i {
     box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     clear: both;
 }
+.result-text a {
+    color: #1E90FF;
+    text-decoration: none;
+}
 
 
 
@@ -2807,6 +2811,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
+    }
+    .structure-img img {
+        width: 25px;
+        border-radius: 5px;       
     }
 
     .block-form {
