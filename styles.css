@@ -1883,21 +1883,29 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .reklama img {
         border-radius: 20px;       
     }
+    .headhistory-img {
+        width: 35%;
+        height: auto;
+    }
     .howto-container {        
         top: 25px; !important; /* було top: 30px; */
         padding: 4px;
-        width: 100%;
-        left: 2px;
+        width: 95%;
+        left: 5px;
         right: 2px;
-
-        
         background: #B0E0E6;
+    }
+    .howto-buttons {
+        top: 90px !important; /* було 10px; */
+        left: 5px;
+        gap: -35px;
+        text-align: center;
     }
 
     .howto-text {
         width: 100%;
         margin-top: 35px;
-        left: 44px;
+        margin-left: 5px;
         font-size: 20px;
 
     }
@@ -1906,7 +1914,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .top-buttons {
         position: relative;
         top: -184px;
-        left: 20px;
+        left: 18px;
         right: 8px;              /* розтягуємо на всю ширину  24px; */
         z-index: 1000;
         display: flex;
@@ -1918,7 +1926,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     /* FEEDBACK відштовхується вправо до перемикача тем */
     .feedback-btn {
-        margin-left: 190px;        /* головне — відштовхується максимально вправо auto 180 */
+        margin-left: 140px;        /* головне — відштовхується максимально вправо auto 180 */
         min-width: 85px;
         padding: 16px 12px;
         border-radius: 16px;
@@ -1944,8 +1952,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .btn-icon {
-        width: 52px;
-        height: 52px;
+        width: 32px;
+        height: 32px;
         margin-bottom: 10px;
         object-fit: contain;
     }
@@ -2004,17 +2012,28 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .history_main-text {
-        margin-top: 50px;
+        margin-top: 210px;
         font-size: 38px;
         font-weight: 900;
         text-align: center;
+    }
+    .structure-img {
+        margin-top: 25px;
+        margin-right: 5px;
+           /* transform: translateX(2%); margin-left: 45%; */
+        width: 100%;  /* max-width: 90%; */
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Перемикач тем — праворуч від FEEDBACK */
     .theme-toggle-container {
         position: absolute;
         top: 30px;                /* трохи нижче, щоб не перекривати кнопки 45px; */
-        right: 2px;
+        right: 4px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -2082,6 +2101,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
+    .telegramForm {
+        width: 90%;
+    }
 
     .checkbox-group {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -2145,6 +2167,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
+    
 }
 
 /* iPad Mini та подібні планшети в горизонтальній орієнтації (landscape) */
