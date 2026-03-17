@@ -1262,6 +1262,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
     }
+    .structure-img img {
+        width: 100%;
+        border-radius: 5px;       
+    }
     
     .structurw-img {
         width: 100%;
@@ -1553,6 +1557,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
+    }
+    .structure-img img {
+        width: 100%;
+        border-radius: 5px;       
     }
 
     /* Перемикач тем — праворуч від FEEDBACK */
@@ -2031,6 +2039,10 @@ body.light-theme .result-text[data-coupons-loaded] b {
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
         -webkit-overflow-scrolling: touch;
+    }
+    .structure-img img {
+        width: 100%;
+        border-radius: 5px;       
     }
 
     /* Перемикач тем — праворуч від FEEDBACK */
