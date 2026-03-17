@@ -2514,7 +2514,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .block-form {
-        margin-top: 50px;
+        margin-top: 40px;
         padding: 40px;
         font-size: 28px;
     }
@@ -2578,8 +2578,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         position: relative;
         font-size: 20px;
         margin-top: 30px;
-        padding: 40px;
-        width: 90%;
+        padding: 20px;
+        width: 95%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
