@@ -2373,7 +2373,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .reklama {
         position: relative;
-        top: 15px;
+        top: 25px;
         width: 75%;
         height: auto; 
         left: 50%;
