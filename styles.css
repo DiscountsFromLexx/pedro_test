@@ -1623,6 +1623,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
+    .telegramForm {
+        width: 90%;
+    }
 
     .checkbox-group {
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
