@@ -2371,6 +2371,17 @@ body.light-theme .result-text[data-coupons-loaded] b {
         padding: 10px 32px;
         border-radius: 24px;
     }
+    .reklama {
+        position: relative;
+        top: -95px;
+        width: 75%;
+        height: auto; 
+        left: 50%;
+        transform: translateX(-50%); 
+    }
+    .reklama img {
+        border-radius: 20px;       
+    }
 
     /* Контейнер усіх кнопок (включаючи FEEDBACK) — тепер єдиний рядок */
     .top-buttons {
@@ -2558,6 +2569,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
     
     .result-text .product-image {
         max-width: 280px;          /* або 400px — підбери під себе */
+    }
+    .tgkch-text {
+        margin-top: 10px;
+        font-size: 24px;        
+    }
+    .channels-text {
+        position: relative;
+        font-size: 20px;
+        margin-top: 30px;
+        padding: 40px;
+        width: 90%;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
 }
 
