@@ -1701,6 +1701,21 @@ body.light-theme .result-text[data-coupons-loaded] b {
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
+    .calendar-img {
+        margin-top: 5px;
+        margin-right: 5px;
+           /* transform: translateX(2%); margin-left: 45%; */
+        width: 100%;  /* max-width: 90%; */
+        max-width: 100%;
+        display: block;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    .calendar-img img {
+        width: 50%;
+        border-radius: 5px;       
+    }
     
 }
 
