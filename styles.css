@@ -2404,6 +2404,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .result-text .product-image {
         max-width: 400px;          /* або 400px — підбери під себе */
     }
+    .calendar-img {
+        margin-top: 5px;
+        margin-right: 5px;
+
+        display: block;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    .calendar-img img {
+        width: 50%;
+        border-radius: 5px;       
+    }
 }
 
     /* Планшети (13 дюймів iPad Air тощо) — ширина від 769 до 1024 px (max-width: 821px) */
@@ -2635,6 +2648,19 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 95%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+    }
+    .calendar-img {
+        margin-top: 5px;
+        margin-right: 5px;
+
+        display: block;
+        overflow-x: auto;
+        touch-action: pinch-zoom pan-x pan-y;
+        -webkit-overflow-scrolling: touch;
+    }
+    .calendar-img img {
+        width: 50%;
+        border-radius: 5px;       
     }
 }
 
