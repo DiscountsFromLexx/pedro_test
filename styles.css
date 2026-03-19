@@ -1730,7 +1730,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         position: relative;
 
         width: 90%;
-        height: 75%; 
+        height: 50%; 
         left: 50%;
         transform: translateX(-50%);
     }     
