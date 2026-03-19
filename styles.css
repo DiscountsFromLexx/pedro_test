@@ -1719,6 +1719,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         margin-top: 5px;
         margin-right: 5px;
         width: 90%;
+        height: 50%;
         display: block;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
