@@ -1718,7 +1718,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .calendar-img {
         margin-top: 5px;
         margin-right: 5px;
-        width: 75%;
+        width: 90%;
         display: block;
         overflow-x: auto;
         touch-action: pinch-zoom pan-x pan-y;
@@ -1729,7 +1729,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         border-radius: 5px; 
         position: relative;
 
-        width: 75%;
+        width: 90%;
         height: auto; 
         left: 50%;
         transform: translateX(-50%);
