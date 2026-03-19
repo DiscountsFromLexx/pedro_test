@@ -1725,8 +1725,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
         -webkit-overflow-scrolling: touch;
     }
     .calendar-img img {
+
+        border-radius: 5px; 
+        position: relative;
+
         width: 75%;
-        border-radius: 5px;       
+        height: auto; 
+        left: 50%;
+        transform: translateX(-50%);
     }     
 
     
