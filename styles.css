@@ -1711,7 +1711,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         -webkit-overflow-scrolling: touch;
     }
     .calendar-img img {
-        width: 50%;
+        width: 75%;
         border-radius: 5px;       
     }     
 
@@ -2414,7 +2414,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         -webkit-overflow-scrolling: touch;
     }
     .calendar-img img {
-        width: 50%;
+        width: 75%;
         border-radius: 5px;       
     }
 }
@@ -2659,7 +2659,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         -webkit-overflow-scrolling: touch;
     }
     .calendar-img img {
-        width: 50%;
+        width: 75%;
         border-radius: 5px;       
     }
 }
