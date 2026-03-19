@@ -2847,7 +2847,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
         horizontal-align: left;
         vertical-align: middle;
         font-size: 18px;
-        margin-left: 24%;
+        left: 50%;
+        transform: translateX(-50%);
 
     }
 
