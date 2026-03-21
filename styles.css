@@ -1703,7 +1703,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
         max-width: 250px;          /* або 220px — підбери під себе */
     }
     .tgkch-text {
-        margin-top: 10px;
+        margin-top: 5px;
         font-size: 24px;        
     }
     .channels-text {
