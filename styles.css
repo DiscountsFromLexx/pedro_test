@@ -2958,14 +2958,14 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .channels-text {
         position: relative;
         font-size: 20px;
-        margin-top: 60px;
-        padding: 40px;
+        margin-top: 5px;
+        padding: 10px;;
         width: 90%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
     .tgkch-text {
-        margin-top: 40px;
+        margin-top: 5px;
         font-size: 24px;        
     }
     
