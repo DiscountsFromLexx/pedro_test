@@ -1702,19 +1702,21 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .result-text .product-image {
         max-width: 250px;          /* або 220px — підбери під себе */
     }
-    .tgkch-text {
-        margin-top: 5px;
-        font-size: 24px;        
-    }
+    
     .channels-text {
         position: relative;
         font-size: 20px;
         margin-top: 5px;
-        padding: 40px;
+        padding: 10px;
         width: 90%;
         left: 50%;
         transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
     }
+    .tgkch-text {
+        margin-top: 5px;
+        font-size: 24px;        
+    }
+    
     .calendar-img {
         margin-top: 5px;
         margin-right: 5px;
