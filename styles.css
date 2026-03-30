@@ -1179,12 +1179,9 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     }
     .reklama {
-        position: absolute;
-        top: 100px;
-        width: 75%;
-        height: auto; 
-        left: 50%;
-        transform: translateX(-50%); 
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;           /* загальний радіус для слайдера */
     }
 
     .reklama img {
@@ -2748,15 +2745,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .reklama {
         position: relative;
-        top: 100px;
-        left: 50%;
-        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
-        width: 50%;
-        height: auto;
-        border-radius: 20px;
-        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        border: 1px solid #FFFFFF;
+        overflow: hidden;
+        border-radius: 12px;           /* загальний радіус для слайдера */
     }
     .reklama img {
         border-radius: 20px;       
