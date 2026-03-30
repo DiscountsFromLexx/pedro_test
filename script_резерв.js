@@ -1,8 +1,5 @@
+30-03
 
-
-
-
-01-03
 // Генерація або отримання постійного UUID для користувача
 const getUserUUID = () => {
     const STORAGE_KEY = 'pedro_user_uuid';
@@ -82,6 +79,16 @@ function initButtons() {
         window.location.href = 'index.html';
     });
 
+    // Кнопка МОНЕТИ (на coins.html)
+    document.querySelector('.coins-btn')?.addEventListener('click', () => {
+        window.location.href = 'coins.html';
+    });
+
+    // Кнопка ПРОМОКОДИ (на coupones.html)
+    document.querySelector('.coupones-btn')?.addEventListener('click', () => {
+        window.location.href = 'coupones.html';
+    });
+
 }
 
 // Викликаємо ініціалізацію після завантаження сторінки
@@ -101,15 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Логування
     const addLog = (msg, data = {}) => console.log(`${msg}:`, data);
     
+
     
-    // ─── Акордеон для інструкцій ───────────────────────────────────────────────
-    document.getElementById('instructions')?.addEventListener('click', function() {
-        const content = document.getElementById('instructionsContent');
-        
-        content.classList.toggle('active');
-        this.classList.toggle('active');  // для повороту іконки
+    // ─── Акордеон для інструкцій (тап по заголовку або вмісту) ────────────────────────
+    const instructionsHeader = document.getElementById('instructions');
+    const instructionsContent = document.getElementById('instructionsContent');
+    
+    [instructionsHeader, instructionsContent].forEach(element => {
+        element?.addEventListener('click', function(e) {
+            // Якщо клікнули на посилання всередині вмісту — не перемикаємо акордеон
+            if (e.target.tagName === 'A') {
+                return;
+            }
+            
+            instructionsContent.classList.toggle('active');
+            instructionsHeader.classList.toggle('active');
+        });
     });
     
+
     
     // ─── Логіка чекбокса ALL ────────────────────────────────────────
     const allCheckbox = document.getElementById('all');
@@ -477,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', () => {
         const btn = document.querySelector('.scroll-top-btn');
-        if (btn) btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
     console.log("Скрипт Педро завантажився");
 });
