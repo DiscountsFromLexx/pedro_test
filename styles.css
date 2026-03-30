@@ -1193,11 +1193,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     .reklama-slider {
     position: relative;
-    width: 100%;
-    margin: 15px 0 25px 0;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+
     }
     
     .slider-track {
@@ -1207,14 +1203,13 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
     
     .slider-item {
-        width: 100%;
+
         flex-shrink: 0;
         display: block;
     }
     
     .slider-item img {
-        width: 100%;
-        height: auto;
+
         display: block;
     }
     
