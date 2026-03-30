@@ -68,17 +68,28 @@
                 </button>
             </div>
 
-            <div class="reklama">
-                <a href="http://www.youtube.com/@lexxexpressshara" target="_blank">
-                    <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/myyoutube.png" 
-                         alt="YouTube" 
-                         style="width: 100%; height: auto; box-shadow: inset 0 4px 14px rgba(0,0,0,0.1);">
-                </a>
-                <a href="https://s.click.aliexpress.com/e/_c3EIZR6d" target="_blank">
-                    <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/action.png" 
-                         alt="Action" 
-                         style="width: 100%; height: auto; box-shadow: inset 0 4px 14px rgba(0,0,0,0.1);">
-                </a>
+            <div class="reklama-slider">
+                <div class="slider-track" id="sliderTrack">
+                    <!-- Банер 1 -->
+                    <a href="http://www.youtube.com/@lexxexpressshara" target="_blank" class="slider-item">
+                        <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/myyoutube.png"
+                             alt="YouTube"
+                             style="width: 100%; height: auto;">
+                    </a>
+                    
+                    <!-- Банер 2 -->
+                    <a href="https://s.click.aliexpress.com/e/_c3EIZR6d" target="_blank" class="slider-item">
+                        <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/action.png"
+                             alt="Action"
+                             style="width: 100%; height: auto;">
+                    </a>
+                </div>
+                
+                <!-- Індикатори (крапки) -->
+                <div class="slider-dots" id="sliderDots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                </div>
             </div>
 
             <div class="block-form">
