@@ -499,37 +499,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── Автослайдер для банерів ───────────────────────────────────────────────
     let currentSlide = 0;
     const sliderTrack = document.getElementById('sliderTrack');
-    const dots = document.querySelectorAll('.dot');
     
-    function goToSlide(slideIndex) {
-        currentSlide = slideIndex;
+    function goToSlide(n) {
+        currentSlide = n;
         sliderTrack.style.transform = `translateX(-${currentSlide * 50}%)`;
-        
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === currentSlide);
-        });
     }
     
-    // Автоматичне перемикання кожні 3 секунди
-    let autoSlideInterval = setInterval(() => {
-        currentSlide = (currentSlide + 1) % 2;   // 2 банери
+    // Автоперемикання кожні 3 секунди
+    let autoInterval = setInterval(() => {
+        currentSlide = (currentSlide + 1) % 2;
         goToSlide(currentSlide);
     }, 3000);
     
-    // Клік по крапках
-    dots.forEach(dot => {
-        dot.addEventListener('click', () => {
-            const index = parseInt(dot.getAttribute('data-index'));
-            goToSlide(index);
-            clearInterval(autoSlideInterval);   // зупиняємо автоперемикання при ручному керуванні
-            autoSlideInterval = setInterval(() => {
-                currentSlide = (currentSlide + 1) % 2;
-                goToSlide(currentSlide);
-            }, 3000);
-        });
-    });
-    
-    // Свайпи (для мобільних)
+    // Свайпи
     let touchStartX = 0;
     
     sliderTrack.addEventListener('touchstart', e => {
@@ -538,14 +520,20 @@ document.addEventListener('DOMContentLoaded', () => {
     
     sliderTrack.addEventListener('touchend', e => {
         const touchEndX = e.changedTouches[0].screenX;
-        if (touchEndX < touchStartX - 50) {
-            // свайп вліво
+        
+        if (touchEndX < touchStartX - 50) {           // свайп вліво
             currentSlide = (currentSlide + 1) % 2;
             goToSlide(currentSlide);
-        } else if (touchEndX > touchStartX + 50) {
-            // свайп вправо
+        } else if (touchEndX > touchStartX + 50) {    // свайп вправо
             currentSlide = (currentSlide - 1 + 2) % 2;
             goToSlide(currentSlide);
         }
+        
+        // Після свайпу перезапускаємо автоперемикання
+        clearInterval(autoInterval);
+        autoInterval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % 2;
+            goToSlide(currentSlide);
+        }, 3000);
     });
 });
