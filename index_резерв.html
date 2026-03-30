@@ -1,19 +1,4 @@
 30-09
-<div class="reklama">
-                <a href="http://www.youtube.com/@lexxexpressshara" target="_blank">
-                    <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/myyoutube.png" 
-                         alt="YouTube" 
-                         style="width: 100%; height: auto; box-shadow: inset 0 4px 14px rgba(0,0,0,0.1);">
-                </a>
-                <a href="https://s.click.aliexpress.com/e/_c3EIZR6d" target="_blank">
-                    <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/action.png" 
-                         alt="Action" 
-                         style="width: 100%; height: auto; box-shadow: inset 0 4px 14px rgba(0,0,0,0.1);">
-                </a>
-            </div>
-
-14-03
-
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -26,10 +11,20 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Додаємо Telegram Web Apps SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MXLX1XMFSD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-MXLX1XMFSD');
+    </script>
     
 </head>
 <body class="dark-theme">
-    <div class="main-container">      
+    
 
         <div class="container"> 
 
@@ -74,12 +69,28 @@
                 </button>
             </div>
 
-            <div class="reklama">
-                <a href="https://s.click.aliexpress.com/e/_c2J21jnz" target="_blank">
-                    <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/Anniversary_Sale.png" 
-                         alt="Реклама" 
-                         style="width: 100%; height: auto;">
-                </a>
+            <div class="reklama>
+               
+                    <!-- Банер 1 -->
+                    <a href="http://www.youtube.com/@lexxexpressshara" target="_blank" class="slider-item">
+                        <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/myyoutube.png"
+                             alt="YouTube"
+                             style="width: 100%; height: auto;">
+                    </a>
+                    
+                    <!-- Банер 2 -->
+                    <a href="https://s.click.aliexpress.com/e/_c3EIZR6d" target="_blank" class="slider-item">
+                        <img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/action.png"
+                             alt="Action"
+                             style="width: 100%; height: auto;">
+                    </a>
+                </div>
+                
+                <!-- Індикатори (крапки) -->
+                <div class="slider-dots" id="sliderDots">
+                    <span class="dot active" data-index="0"></span>
+                    <span class="dot" data-index="1"></span>
+                </div>
             </div>
 
             <div class="block-form">
@@ -178,6 +189,16 @@
                      alt="e_mail" 
                      style="width: 1.5em; height: 1.5em; vertical-align: middle; margin: 0 4px;"> <a href="support@lexxexpress.click" target="_blank">support@lexxexpress.click</a>
                 </p>
+
+            <div class="calendar-img">
+                
+                    <br><img 
+                        src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/Calendar.png"
+                        alt="Структура Педро помічника"
+                        class="structurw-img zoomable">
+               
+            
+            </div>
               
                 <p><br>シ Ми працюємо для вас та завдяки вам!<img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/heart.png" 
                      alt="heart" 
@@ -185,14 +206,19 @@
 
                 <p><br><br><img src="https://raw.githubusercontent.com/DiscountsFromLexx/Pedro_telegram_app/main/img/paw-print_12575872.png" 
                      alt="paw" 
-                     style="width: 1.5em; height: 1.5em; vertical-align: middle; horizontal-align: left; margin: 0 4px;"> 𐌋㠪乂乂 ©2026 v.1.1<br><br></p>
+                     style="width: 1.5em; height: 1.5em; vertical-align: middle; horizontal-align: left; margin: 0 4px;"> 𐌋㠪乂乂 ©2026 v.2.0<br><br></p>
+
             </div>
+
+            
+            
         </div>
+
+            
         
         <button class="scroll-top-btn" onclick="scrollToTop()">Вгору</button>
-    </div>
+
     <!-- Підключаємо script.js після SDK -->
     <script src="script.js"></script>
 </body>
 </html>
-
