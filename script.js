@@ -495,42 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
 
-    // ─── Автослайдер для банерів у .reklama ─────────────────────────────────────
-    const sliderTrack = document.getElementById('sliderTrack');
-    let currentSlide = 0;
     
-    function moveToSlide(n) {
-        currentSlide = n % 2;
-        sliderTrack.style.transform = `translateX(-${currentSlide * 50}%)`;
-    }
-    
-    // Автоматичне перемикання кожні 3 секунди
-    let autoInterval = setInterval(() => {
-        moveToSlide(currentSlide + 1);
-    }, 3000);
-    
-    // Свайпи
-    let touchStartX = 0;
-    
-    sliderTrack.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    sliderTrack.addEventListener('touchend', (e) => {
-        const touchEndX = e.changedTouches[0].screenX;
-    
-        if (touchEndX < touchStartX - 50) {           // свайп вліво
-            moveToSlide(currentSlide + 1);
-        } else if (touchEndX > touchStartX + 50) {    // свайп вправо
-            moveToSlide(currentSlide - 1);
-        }
-    
-        // Після свайпу перезапускаємо таймер
-        clearInterval(autoInterval);
-        autoInterval = setInterval(() => {
-            moveToSlide(currentSlide + 1);
-        }, 3000);
-    });
     console.log("Скрипт Педро завантажився");
 
     
