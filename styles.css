@@ -1179,33 +1179,17 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     }
     .reklama {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;           /* загальний радіус для слайдера */
+        position: absolute;
+        top: 100px;
+        width: 75%;
+        height: auto; 
+        left: 50%;
+        transform: translateX(-50%); 
     }
 
     .reklama img {
         border-radius: 5px;       
     }
-    .slider-track {
-    display: flex;
-    width: 200%;                   /* 2 банери × 100% */
-    transition: transform 0.6s ease-in-out;
-    }
-    
-    .slider-item {
-        width: 100%;
-        flex-shrink: 0;
-        display: block;
-    }
-    
-    .slider-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: inherit;        /* бере радіус від батьківського .reklama */
-    }
-    
     .container {
         top: 5px; !important;
         padding: 2px;
@@ -1442,19 +1426,6 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .reklama img {
         border-radius: 20px;       
     }
-    .slider-item {
-        width: 100%;
-        flex-shrink: 0;
-        display: block;
-    }
-    
-    .slider-item img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: inherit;        /* бере радіус від батьківського .reklama */
-    }
-    
     .headhistory-img {
         width: 35%;
         height: auto;
@@ -2745,12 +2716,34 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .reklama {
         position: relative;
-        overflow: hidden;
-        border-radius: 12px;           /* загальний радіус для слайдера */
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);   /* саме це вирівнює центр картинки з центром контейнера */
+        width: 50%;
+        height: auto;
+        border-radius: 20px;
+        z-index: 10;                   /* щоб не перекривалися іншими елементами, якщо потрібно */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        border: 1px solid #FFFFFF;
     }
     .reklama img {
         border-radius: 20px;       
     }
+    .reklama-slider {
+    position: relative;
+    width: 100%;
+    margin: 15px 0 25px 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+    
+    .slider-track {
+        display: flex;
+        transition: transform 0.6s ease-in-out;
+        width: 200%;                    /* 2 слайди × 100% */
+    }
+    
     .slider-item {
         width: 100%;
         flex-shrink: 0;
@@ -2761,7 +2754,31 @@ body.light-theme .result-text[data-coupons-loaded] b {
         width: 100%;
         height: auto;
         display: block;
-        border-radius: inherit;        /* бере радіус від батьківського .reklama */
+    }
+    
+    /* Крапки внизу */
+    .slider-dots {
+        position: absolute;
+        bottom: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+    }
+    
+    .dot {
+        width: 10px;
+        height: 10px;
+        background: rgba(255,255,255,0.6);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+        background: #ffffff;
+        transform: scale(1.3);
     }
     
 
