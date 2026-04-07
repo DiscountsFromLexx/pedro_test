@@ -1188,7 +1188,7 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 
     .reklama img {
-        border-radius: 5px;       
+        border-radius: 10px;       
     }
     .container {
         top: 5px; !important;
