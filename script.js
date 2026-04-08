@@ -496,7 +496,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Блок слайдера ---
-
     const slider = document.getElementById('slider');
     if (slider) {
         let isPaused = false;
@@ -509,20 +508,23 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxScroll = slider.scrollWidth - itemWidth;
             const currentScroll = slider.scrollLeft;
         
+            // Если мы на последнем баннере
             if (currentScroll >= maxScroll - 5) {
-                // 1. Убираем плавность в CSS, чтобы прыжок в начало был мгновенным
+                // 1. Убираем плавность
                 slider.style.scrollBehavior = 'auto';
-                // 2. Прыгаем в самое начало
+                // 2. Мгновенно прыгаем в начало (на первый баннер)
                 slider.scrollLeft = 0;
-                // 3. Возвращаем плавность (через минимальную задержку, чтобы браузер успел применить скролл)
+                
+                // 3. Возвращаем плавность для следующего шага, который случится через 5 сек
                 setTimeout(() => {
                     slider.style.scrollBehavior = 'smooth';
-                    // 4. И сразу делаем первый сдвиг ко второму баннеру
-                    slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
                 }, 50);
+                
+                // ВАЖНО: Мы НЕ делаем здесь scrollBy. 
+                // Мы просто остаемся на первом баннере и ждем следующего цикла интервала.
             } else {
-                // Обычный сдвиг вперед
-                slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                // Если мы на первом баннере — плавно едем ко второму
+                slider.scrollTo({ left: currentScroll + itemWidth, behavior: 'smooth' });
             }
         }
     
