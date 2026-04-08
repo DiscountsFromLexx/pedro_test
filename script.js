@@ -529,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         // Запуск интервала
-        slideInterval = setInterval(autoPlay, 5000);
+        slideInterval = setInterval(autoPlay, 3000);
     
         // Функции остановки и старта
         const stopSlider = () => {
@@ -540,7 +540,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const startSlider = () => {
             isPaused = false;
             clearInterval(slideInterval);
-            slideInterval = setInterval(autoPlay, 5000);
+            slideInterval = setInterval(autoPlay, 3000);
         };
     
         // Слушатели событий
