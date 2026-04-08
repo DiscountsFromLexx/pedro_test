@@ -508,23 +508,22 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxScroll = slider.scrollWidth - itemWidth;
             const currentScroll = slider.scrollLeft;
         
-            // Если мы на последнем баннере
-            if (currentScroll >= maxScroll - 5) {
-                // 1. Убираем плавность
-                slider.style.scrollBehavior = 'auto';
-                // 2. Мгновенно прыгаем в начало (на первый баннер)
-                slider.scrollLeft = 0;
-                
-                // 3. Возвращаем плавность для следующего шага, который случится через 5 сек
+            // Если мы стоим на ВТОРОМ баннере и собираемся ехать на КЛОН
+            if (currentScroll >= (maxScroll - itemWidth) - 5 && currentScroll < maxScroll - 5) {
+                // Плавно едем на клона
+                slider.style.scrollBehavior = 'smooth';
+                slider.scrollLeft = maxScroll;
+        
+                // Ждем, пока анимация свайпа закончится (обычно 500-600мс)
                 setTimeout(() => {
-                    slider.style.scrollBehavior = 'smooth';
-                }, 50);
-                
-                // ВАЖНО: Мы НЕ делаем здесь scrollBy. 
-                // Мы просто остаемся на первом баннере и ждем следующего цикла интервала.
+                    // Мгновенно и незаметно прыгаем на реальный ПЕРВЫЙ баннер
+                    slider.style.scrollBehavior = 'auto';
+                    slider.scrollLeft = 0;
+                }, 600); 
             } else {
-                // Если мы на первом баннере — плавно едем ко второму
-                slider.scrollTo({ left: currentScroll + itemWidth, behavior: 'smooth' });
+                // Обычный плавный сдвиг (с первого на второй)
+                slider.style.scrollBehavior = 'smooth';
+                slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
             }
         }
     
