@@ -495,7 +495,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
 
-    // --- Блок слайдера (вставлять в самый конец script.js, но ПЕРЕД последней закрывающей скобкой }); ) ---
+    // --- Блок слайдера ---
 
     const slider = document.getElementById('slider');
     if (slider) {
@@ -520,7 +520,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         // Запуск интервала
-        slideInterval = setInterval(autoPlay, 3000);
+        slideInterval = setInterval(autoPlay, 5000);
     
         // Функции остановки и старта
         const stopSlider = () => {
@@ -531,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const startSlider = () => {
             isPaused = false;
             clearInterval(slideInterval);
-            slideInterval = setInterval(autoPlay, 3000);
+            slideInterval = setInterval(autoPlay, 5000);
         };
     
         // Слушатели событий
