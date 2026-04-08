@@ -2983,3 +2983,38 @@ body.light-theme .result-text[data-coupons-loaded] b {
     }
 }
 
+/* Настройки слайдера */
+    .reklama {
+        overflow: hidden;
+        border-radius: 10px; /* Сохраняем ваш радиус */
+    }
+    
+    .slider-container {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory; /* Магнитный эффект при свайпе */
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch; /* Плавность на iOS */
+    }
+    
+    /* Убираем полосу прокрутки */
+    .slider-container::-webkit-scrollbar {
+        display: none;
+    }
+    .slider-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    
+    .slider-item {
+        flex: 0 0 100%; /* Каждый баннер занимает 100% ширины */
+        scroll-snap-align: start;
+        display: block;
+    }
+    
+    .slider-item img {
+        display: block;
+        width: 100%;
+        border-radius: 10px;
+    }
+
