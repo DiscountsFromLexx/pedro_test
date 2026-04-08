@@ -495,42 +495,52 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
 
-    document.addEventListener('DOMContentLoaded', function() {
+    // --- Блок слайдера (вставлять в самый конец script.js, но ПЕРЕД последней закрывающей скобкой }); ) ---
+
     const slider = document.getElementById('slider');
-    let isPaused = false;
-
-    // Функция переключения
-    function autoPlay() {
-        if (isPaused) return;
-        
-        const scrollWidth = slider.scrollWidth;
-        const currentScroll = slider.scrollLeft;
-        const itemWidth = slider.offsetWidth;
-
-        if (currentScroll + itemWidth >= scrollWidth) {
-            // Если дошли до конца — возвращаемся в начало
-            slider.scrollTo({ left: 0, behavior: 'smooth' });
-        } else {
-            // Листаем к следующему
-            slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
+    if (slider) {
+        let isPaused = false;
+        let slideInterval;
+    
+        function autoPlay() {
+            if (isPaused) return;
+    
+            const itemWidth = slider.clientWidth; // Используем видимую ширину без рамок
+            const maxScroll = slider.scrollWidth - itemWidth;
+            const currentScroll = slider.scrollLeft;
+    
+            // Если дошли до конца (с запасом 5px для Safari) — в начало, иначе дальше
+            if (currentScroll >= maxScroll - 5) {
+                slider.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                slider.scrollTo({ left: currentScroll + itemWidth, behavior: 'smooth' });
+            }
         }
-    }
-
-    // Запуск интервала (3000 мс = 3 сек)
-        let slideInterval = setInterval(autoPlay, 3000);
     
-        // Пауза при взаимодействии (свайпе/клике)
-        slider.addEventListener('touchstart', () => {
+        // Запуск
+        slideInterval = setInterval(autoPlay, 3000);
+    
+        // Остановка при взаимодействии
+        const stopSlider = () => {
             isPaused = true;
-            clearInterval(slideInterval);
-        });
+            if (slideInterval) clearInterval(slideInterval);
+        };
     
-        // Возобновление автоплея после того, как пользователь закончил свайп
-        slider.addEventListener('touchend', () => {
+        // Перезапуск после взаимодействия
+        const startSlider = () => {
             isPaused = false;
+            clearInterval(slideInterval); // На всякий случай чистим
             slideInterval = setInterval(autoPlay, 3000);
-        });
-    });
+        };
+    
+        // События для тач-скринов (Safari/Mini App)
+        slider.addEventListener('touchstart', stopSlider, { passive: true });
+        slider.addEventListener('touchend', startSlider, { passive: true });
+    
+        // События для мыши (Safari на Mac)
+        slider.addEventListener('mouseenter', stopSlider);
+        slider.addEventListener('mouseleave', startSlider);
+    }
 
     
     console.log("Скрипт Педро завантажився");
