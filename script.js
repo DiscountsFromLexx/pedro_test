@@ -495,6 +495,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
 
+    document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.getElementById('slider');
+    let isPaused = false;
+
+    // Функция переключения
+    function autoPlay() {
+        if (isPaused) return;
+        
+        const scrollWidth = slider.scrollWidth;
+        const currentScroll = slider.scrollLeft;
+        const itemWidth = slider.offsetWidth;
+
+        if (currentScroll + itemWidth >= scrollWidth) {
+            // Если дошли до конца — возвращаемся в начало
+            slider.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            // Листаем к следующему
+            slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
+        }
+    }
+
+    // Запуск интервала (3000 мс = 3 сек)
+        let slideInterval = setInterval(autoPlay, 3000);
+    
+        // Пауза при взаимодействии (свайпе/клике)
+        slider.addEventListener('touchstart', () => {
+            isPaused = true;
+            clearInterval(slideInterval);
+        });
+    
+        // Возобновление автоплея после того, как пользователь закончил свайп
+        slider.addEventListener('touchend', () => {
+            isPaused = false;
+            slideInterval = setInterval(autoPlay, 3000);
+        });
+    });
+
     
     console.log("Скрипт Педро завантажився");
 
