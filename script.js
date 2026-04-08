@@ -504,18 +504,25 @@ document.addEventListener('DOMContentLoaded', () => {
     
         function autoPlay() {
             if (isPaused) return;
-    
+        
             const itemWidth = slider.clientWidth;
             const maxScroll = slider.scrollWidth - itemWidth;
             const currentScroll = slider.scrollLeft;
-    
+        
             if (currentScroll >= maxScroll - 5) {
-                // Мгновенно возвращаемся в начало без анимации 'smooth'
-                // Это создаст эффект начала нового круга
-                slider.scrollTo({ left: 0, behavior: 'auto' });
+                // 1. Убираем плавность в CSS, чтобы прыжок в начало был мгновенным
+                slider.style.scrollBehavior = 'auto';
+                // 2. Прыгаем в самое начало
+                slider.scrollLeft = 0;
+                // 3. Возвращаем плавность (через минимальную задержку, чтобы браузер успел применить скролл)
+                setTimeout(() => {
+                    slider.style.scrollBehavior = 'smooth';
+                    // 4. И сразу делаем первый сдвиг ко второму баннеру
+                    slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
+                }, 50);
             } else {
-                // Листаем вправо (баннеры едут справа налево)
-                slider.scrollTo({ left: currentScroll + itemWidth, behavior: 'smooth' });
+                // Обычный сдвиг вперед
+                slider.scrollBy({ left: itemWidth, behavior: 'smooth' });
             }
         }
     
