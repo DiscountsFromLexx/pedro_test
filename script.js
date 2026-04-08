@@ -505,39 +505,38 @@ document.addEventListener('DOMContentLoaded', () => {
         function autoPlay() {
             if (isPaused) return;
     
-            const itemWidth = slider.clientWidth; // Используем видимую ширину без рамок
+            const itemWidth = slider.clientWidth;
             const maxScroll = slider.scrollWidth - itemWidth;
             const currentScroll = slider.scrollLeft;
     
-            // Если дошли до конца (с запасом 5px для Safari) — в начало, иначе дальше
             if (currentScroll >= maxScroll - 5) {
-                slider.scrollTo({ left: 0, behavior: 'smooth' });
+                // Мгновенно возвращаемся в начало без анимации 'smooth'
+                // Это создаст эффект начала нового круга
+                slider.scrollTo({ left: 0, behavior: 'auto' });
             } else {
+                // Листаем вправо (баннеры едут справа налево)
                 slider.scrollTo({ left: currentScroll + itemWidth, behavior: 'smooth' });
             }
         }
     
-        // Запуск
+        // Запуск интервала
         slideInterval = setInterval(autoPlay, 3000);
     
-        // Остановка при взаимодействии
+        // Функции остановки и старта
         const stopSlider = () => {
             isPaused = true;
             if (slideInterval) clearInterval(slideInterval);
         };
     
-        // Перезапуск после взаимодействия
         const startSlider = () => {
             isPaused = false;
-            clearInterval(slideInterval); // На всякий случай чистим
+            clearInterval(slideInterval);
             slideInterval = setInterval(autoPlay, 3000);
         };
     
-        // События для тач-скринов (Safari/Mini App)
+        // Слушатели событий
         slider.addEventListener('touchstart', stopSlider, { passive: true });
         slider.addEventListener('touchend', startSlider, { passive: true });
-    
-        // События для мыши (Safari на Mac)
         slider.addEventListener('mouseenter', stopSlider);
         slider.addEventListener('mouseleave', startSlider);
     }
