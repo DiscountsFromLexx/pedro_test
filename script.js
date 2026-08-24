@@ -72,10 +72,7 @@ function initButtons() {
         window.location.href = 'history.html';
     });
 
-    // ─── Кнопка FEEDBACK — повернення на головну ─────────────────────────────────
-    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
-        window.location.href = 'index.html';
-    });
+    
 
     // Кнопка МОНЕТИ (на coins.html)
     document.querySelector('.coins-btn')?.addEventListener('click', () => {
@@ -255,13 +252,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     
-    // ─── Кнопка WEB / FEEDBACK — без логування (не критичні дії) ──────
-    document.querySelector('.web-btn')?.addEventListener('click', () => {
-        window.open('https://pedroapp.lexxexpress.click', '_blank');
-    });
-    //document.querySelector('.feedback-btn')?.addEventListener('click', () => {
-    //    window.open('https://t.me/EarlyBirdDeals_bot', '_blank');
-    // });
     
     // ─── Функція відправки форми ────────────────────────────────────────
     const sendForm = async () => {
@@ -481,10 +471,239 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    // ─── Кнопка FEEDBACK — повернення на головну ─────────────────────────────────
-    document.querySelector('.feedback-btn')?.addEventListener('click', () => {
-        window.location.href = 'index.html';
+    // === БЛОК ЧАТУ ТА ЗВОРОТНОГО ЗВ'ЯЗКУ ===
+
+// Отримання та збереження локальної історії чату
+const CHAT_STORAGE_KEY = `pedro_chat_history_${userUUID}`;
+
+function getLocalMessages() {
+    try {
+        return JSON.parse(localStorage.getItem(CHAT_STORAGE_KEY)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function saveLocalMessage(sender, text, time = null) {
+    const messages = getLocalMessages();
+    messages.push({
+        sender, // 'user' або 'support'
+        text,
+        time: time || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     });
+    localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+}
+
+// Рендеринг повідомлень у вікні чату
+function renderChatMessages(container) {
+    const messages = getLocalMessages();
+    container.innerHTML = '';
+
+    if (messages.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; color: #888; font-size: 13px; margin-top: 30px;">
+                👋 Напишіть своє питання або пропозицію.<br>Ми відповімо вам прямо тут!
+            </div>
+        `;
+        return;
+    }
+
+    messages.forEach(msg => {
+        const isUser = msg.sender === 'user';
+        const msgWrapper = document.createElement('div');
+        msgWrapper.style.cssText = `
+            display: flex;
+            flex-direction: column;
+            align-items: ${isUser ? 'flex-end' : 'flex-start'};
+            margin-bottom: 10px;
+        `;
+
+        const bubble = document.createElement('div');
+        bubble.style.cssText = `
+            max-width: 80%;
+            padding: 9px 13px;
+            border-radius: ${isUser ? '14px 14px 2px 14px' : '14px 14px 14px 2px'};
+            background: ${isUser ? 'linear-gradient(135deg, #00ff88, #00bd68)' : 'rgba(255, 255, 255, 0.1)'};
+            color: ${isUser ? '#000' : '#fff'};
+            font-size: 14px;
+            line-height: 1.4;
+            word-break: break-word;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        `;
+        bubble.textContent = msg.text;
+
+        const timeSpan = document.createElement('span');
+        timeSpan.style.cssText = 'font-size: 10px; opacity: 0.6; margin-top: 3px; padding: 0 4px;';
+        timeSpan.textContent = msg.time;
+
+        msgWrapper.appendChild(bubble);
+        msgWrapper.appendChild(timeSpan);
+        container.appendChild(msgWrapper);
+    });
+
+    container.scrollTop = container.scrollHeight;
+}
+
+// Запит на сервер для отримання нових відповідей від підтримки
+async function fetchServerReplies(chatContainer) {
+    try {
+        const response = await fetch(`https://lexxexpress.click/pedro/chat/history?uuid=${userUUID}`);
+        if (!response.ok) return;
+        const data = await response.json();
+        
+        if (data.success && Array.isArray(data.replies) && data.replies.length > 0) {
+            const localMessages = getLocalMessages();
+            let hasNew = false;
+
+            data.replies.forEach(rep => {
+                // Перевіряємо, чи немає вже цієї відповіді локально
+                const exists = localMessages.some(m => m.sender === 'support' && m.text === rep.text && m.time === rep.time);
+                if (!exists) {
+                    saveLocalMessage('support', rep.text, rep.time);
+                    hasNew = true;
+                }
+            });
+
+            if (hasNew) renderChatMessages(chatContainer);
+        }
+    } catch (e) {
+        console.warn('Неможливо оновити повідомлення чату:', e);
+    }
+}
+
+// Відкриття модального вікна чату
+function openFeedbackModal() {
+    let modal = document.getElementById('pedroFeedbackModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        const chatBox = modal.querySelector('#chatMessagesContainer');
+        renderChatMessages(chatBox);
+        fetchServerReplies(chatBox);
+        return;
+    }
+
+    modal = document.createElement('div');
+    modal.id = 'pedroFeedbackModal';
+    modal.style.cssText = `
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.75); z-index: 10000;
+        display: flex; align-items: center; justify-content: center;
+        backdrop-filter: blur(4px); padding: 15px; box-sizing: border-box;
+    `;
+
+    const tgUser = tg?.initDataUnsafe?.user;
+    const defaultContact = tgUser?.username ? `@${tgUser.username}` : (tgUser?.first_name || '');
+
+    modal.innerHTML = `
+        <div style="background: var(--card-bg, #1e1e24); color: var(--text-color, #fff); border-radius: 16px; max-width: 440px; width: 100%; height: 560px; display: flex; flex-direction: column; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); position: relative; box-sizing: border-box;">
+            
+            <!-- Шапка чату -->
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; margin-bottom: 10px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="font-size: 20px;">💬</span>
+                    <div>
+                        <h4 style="margin: 0; font-size: 16px;">Чат підтримки Педро</h4>
+                        <span style="font-size: 11px; color: #00ff88;">● Онлайн</span>
+                    </div>
+                </div>
+                <button id="closeFeedbackModal" style="background: none; border: none; font-size: 22px; color: #888; cursor: pointer;">✕</button>
+            </div>
+
+            <!-- Вікно історії повідомлень -->
+            <div id="chatMessagesContainer" style="flex: 1; overflow-y: auto; padding: 8px; background: rgba(0,0,0,0.25); border-radius: 10px; margin-bottom: 10px;"></div>
+
+            <!-- Поле контакту (якщо користувач не в Telegram) -->
+            ${!isTelegramMiniApp ? `
+            <input type="text" id="feedbackContact" value="${defaultContact}" placeholder="@username Telegram або Email для зв'язку" style="width: 100%; box-sizing: border-box; padding: 7px 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.2); color: inherit; margin-bottom: 8px; font-size: 12px;">
+            ` : ''}
+
+            <!-- Поле вводу та кнопка -->
+            <div style="display: flex; gap: 8px;">
+                <textarea id="feedbackMessage" rows="1" placeholder="Ваше повідомлення..." style="flex: 1; box-sizing: border-box; padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: inherit; font-size: 14px; resize: none;"></textarea>
+                <button id="sendFeedbackBtn" style="padding: 0 16px; background: linear-gradient(135deg, #00ff88, #00bd68); color: #000; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center;">➤</button>
+            </div>
+            
+            <div id="feedbackStatus" style="font-size: 11px; margin-top: 4px; min-height: 14px; text-align: center;"></div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const chatBox = modal.querySelector('#chatMessagesContainer');
+    const closeModal = () => { modal.style.display = 'none'; };
+    modal.querySelector('#closeFeedbackModal').onclick = closeModal;
+    modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+
+    renderChatMessages(chatBox);
+    fetchServerReplies(chatBox);
+
+    // Періодичне опитування, поки відкрито вікно
+    const pollInterval = setInterval(() => {
+        if (modal.style.display !== 'none') {
+            fetchServerReplies(chatBox);
+        }
+    }, 7000);
+
+    // Відправка повідомлення
+    const handleSend = async () => {
+        const contactInput = modal.querySelector('#feedbackContact');
+        const contact = contactInput ? contactInput.value.trim() : defaultContact;
+        const textInput = modal.querySelector('#feedbackMessage');
+        const text = textInput.value.trim();
+        const status = modal.querySelector('#feedbackStatus');
+        const sendBtn = modal.querySelector('#sendFeedbackBtn');
+
+        if (!text) return;
+
+        sendBtn.disabled = true;
+        status.textContent = 'Надсилання...';
+        status.style.color = '#888';
+
+        const tgUserCurrent = tg?.initDataUnsafe?.user || {};
+        const payload = {
+            message: text,
+            contact: contact,
+            user_id: tgUserCurrent.id || 0,
+            user_name: tgUserCurrent.first_name || (tgUserCurrent.last_name ? `${tgUserCurrent.first_name} ${tgUserCurrent.last_name}` : 'Гість'),
+            username: tgUserCurrent.username ? `@${tgUserCurrent.username}` : (contact.startsWith('@') ? contact : 'немає'),
+            source: isTelegramMiniApp ? 'MINI_APP' : 'WEB',
+            device: deviceInfo,
+            mini_app: miniAppInfo,
+            uuid: userUUID
+        };
+
+        try {
+            const response = await fetch('https://lexxexpress.click/pedro/feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            if (response.ok && data.success) {
+                saveLocalMessage('user', text);
+                renderChatMessages(chatBox);
+                textInput.value = '';
+                status.textContent = '';
+            } else {
+                throw new Error(data.error || 'Помилка');
+            }
+        } catch (err) {
+            status.style.color = '#ff5555';
+            status.textContent = '❌ Помилка з’єднання';
+        } finally {
+            sendBtn.disabled = false;
+        }
+    };
+
+    modal.querySelector('#sendFeedbackBtn').onclick = handleSend;
+    modal.querySelector('#feedbackMessage').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSend();
+        }
+    });
+}
 
     
     window.scrollToTop = () => {
