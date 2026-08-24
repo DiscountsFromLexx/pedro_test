@@ -68,7 +68,7 @@ function getLocalMessages() {
 function saveLocalMessage(sender, text, time = null) {
     const messages = getLocalMessages();
     messages.push({
-        sender, // 'user' або 'support'
+        sender,
         text,
         time: time || new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     });
@@ -139,6 +139,7 @@ function renderChatMessages(container) {
     container.scrollTop = container.scrollHeight;
 }
 
+// Запит на сервер (тихий режим, без спаму в консоль при 404)
 async function fetchServerReplies(chatContainer) {
     try {
         const response = await fetch(`https://lexxexpress.click/pedro/chat/history?uuid=${userUUID}`);
@@ -160,7 +161,7 @@ async function fetchServerReplies(chatContainer) {
             if (hasNew) renderChatMessages(chatContainer);
         }
     } catch (e) {
-        console.warn('Помилка оновлення чату:', e);
+        // Сервер поки не підтримує історію — ігноруємо помилку
     }
 }
 
@@ -170,7 +171,6 @@ function openFeedbackModal() {
         modal.style.display = 'flex';
         const chatBox = modal.querySelector('#chatMessagesContainer');
         renderChatMessages(chatBox);
-        fetchServerReplies(chatBox);
         return;
     }
 
@@ -183,7 +183,6 @@ function openFeedbackModal() {
         backdrop-filter: blur(5px); padding: 12px; box-sizing: border-box;
     `;
 
-    // Визначаємо дані підписника
     const tgUser = tg?.initDataUnsafe?.user;
     const tgFullName = tgUser ? [tgUser.first_name, tgUser.last_name].filter(Boolean).join(' ') : '';
     const tgUsername = tgUser?.username ? `@${tgUser.username}` : (tgUser?.id ? `ID: ${tgUser.id}` : '');
@@ -192,7 +191,6 @@ function openFeedbackModal() {
     modal.innerHTML = `
         <div style="background: #0f1621; color: #ffffff; border-radius: 16px; max-width: 420px; width: 100%; height: 580px; max-height: 90vh; display: flex; flex-direction: column; box-shadow: 0 16px 36px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
             
-            <!-- Telegram Header -->
             <div style="background: #17212b; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.3);">
                 <div style="display: flex; align-items: center; gap: 12px;">
                     <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0088cc, #34aadf); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; color: #fff; box-shadow: 0 2px 6px rgba(0,136,204,0.4);">
@@ -209,10 +207,8 @@ function openFeedbackModal() {
                 <button id="closeFeedbackModal" style="background: none; border: none; font-size: 20px; color: #7f8c99; cursor: pointer; padding: 4px 8px; border-radius: 50%;">✕</button>
             </div>
 
-            <!-- Messages Stream Area -->
             <div id="chatMessagesContainer" style="flex: 1; overflow-y: auto; padding: 12px; background: #0e1621; display: flex; flex-direction: column;"></div>
 
-            <!-- Web Contact bar (тільки для веб-версії поза TG) -->
             ${!isTelegramMiniApp ? `
             <div style="background: #17212b; padding: 6px 12px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px;">
                 <span style="font-size: 11px; color: #7f8c99; white-space: nowrap;">Контакт:</span>
@@ -220,7 +216,6 @@ function openFeedbackModal() {
             </div>
             ` : ''}
 
-            <!-- Telegram Input Area -->
             <div style="background: #17212b; padding: 10px 12px; display: flex; align-items: flex-end; gap: 10px; border-top: 1px solid rgba(0,0,0,0.2);">
                 <textarea id="feedbackMessage" rows="1" placeholder="Напишіть повідомлення..." style="flex: 1; background: #242f3d; border: none; border-radius: 18px; color: #fff; padding: 10px 14px; font-size: 14px; outline: none; resize: none; max-height: 100px; line-height: 1.3; box-sizing: border-box;"></textarea>
                 <button id="sendFeedbackBtn" style="width: 38px; height: 38px; border-radius: 50%; background: #5288c1; color: #fff; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; transition: background 0.2s;">
@@ -240,13 +235,6 @@ function openFeedbackModal() {
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
 
     renderChatMessages(chatBox);
-    fetchServerReplies(chatBox);
-
-    setInterval(() => {
-        if (modal.style.display !== 'none') {
-            fetchServerReplies(chatBox);
-        }
-    }, 7000);
 
     const handleSend = async () => {
         const textInput = modal.querySelector('#feedbackMessage');
@@ -256,7 +244,6 @@ function openFeedbackModal() {
 
         if (!text) return;
 
-        // Визначення імені та контакту
         let contact = '';
         if (isTelegramMiniApp) {
             contact = tgUser?.username ? `@${tgUser.username}` : (tgUser?.id ? `ID: ${tgUser.id}` : 'Telegram Mini App');
@@ -291,8 +278,12 @@ function openFeedbackModal() {
                 body: JSON.stringify(payload)
             });
 
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
+
             const data = await response.json();
-            if (response.ok && data.success) {
+            if (data.success) {
                 saveLocalMessage('user', text);
                 renderChatMessages(chatBox);
                 textInput.value = '';
@@ -301,9 +292,10 @@ function openFeedbackModal() {
                 throw new Error(data.error || 'Помилка');
             }
         } catch (err) {
+            console.error('Feedback send error:', err);
             if (status) {
                 status.style.color = '#ff5555';
-                status.textContent = '❌ Помилка з’єднання';
+                status.textContent = '❌ Помилка з’єднання (перевірте бекенд)';
             }
         } finally {
             sendBtn.disabled = false;
