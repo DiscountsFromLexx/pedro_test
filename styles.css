@@ -563,7 +563,8 @@ input:checked + .slider:before {
 .coupons-btn,
 .instruction-btn,
 .history-btn,
-.web-btn, .main-btn,
+.web-btn,
+.main-btn,
 .coins-btn,
 .coupones-btn,
 .feedback-btn {
@@ -1478,7 +1479,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .history-btn,
-    .web-btn, .main-btn,
+    .web-btn,
+    .main-btn,
     .coins-btn,
     .coupones-btn,
     .feedback-btn {
@@ -1838,7 +1840,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .history-btn,
-    .web-btn, .main-btn,
+    .web-btn,
+    .main-btn,
     .coins-btn,
     .coupones-btn,
     .feedback-btn {
@@ -1982,7 +1985,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .history-btn,
-    .web-btn, .main-btn,
+    .web-btn,
+    .main-btn,
     .coins-btn,
     .coupones-btn,
     .feedback-btn {
@@ -2278,7 +2282,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .history-btn,
-    .web-btn, .main-btn,
+    .web-btn,
+    .main-btn,
     .coins-btn,
     .coupones-btn,
     .feedback-btn {
@@ -2509,7 +2514,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
     .coupons-btn,
     .instruction-btn,
     .history-btn,
-    .web-btn, .main-btn,
+    .web-btn,
+    .main-btn,
     .coins-btn,
     .coupones-btn,
     .feedback-btn {
@@ -2804,7 +2810,8 @@ body.light-theme .result-text[data-coupons-loaded] b {
 
     .coupons-btn,
     .instruction-btn,
-    .web-btn, .main-btn,
+    .web-btn,
+    .main-btn,
     .coins-btn,
     .coupones-btn,
     .history-btn,
