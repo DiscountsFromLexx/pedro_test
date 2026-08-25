@@ -653,6 +653,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btn) btn.style.display = window.scrollY > 100 ? 'block' : 'none';
     });
 
+    // ─── Кнопка FEEDBACK — повернення на головну ─────────────────────────────────
+    document.querySelector('.main-btn')?.addEventListener('click', () => {
+        window.location.href = 'index.html';
+    });
+    
     // Слайдер
     const slider = document.getElementById('slider');
     if (slider) {
