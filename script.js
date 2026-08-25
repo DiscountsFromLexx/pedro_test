@@ -146,22 +146,13 @@ async function fetchServerReplies(chatContainer) {
         if (!response.ok) return;
         const data = await response.json();
         
-        if (data.success && Array.isArray(data.replies) && data.replies.length > 0) {
-            const localMessages = getLocalMessages();
-            let hasNew = false;
-
-            data.replies.forEach(rep => {
-                const exists = localMessages.some(m => m.sender === 'support' && m.text === rep.text && m.time === rep.time);
-                if (!exists) {
-                    saveLocalMessage('support', rep.text, rep.time);
-                    hasNew = true;
-                }
-            });
-
-            if (hasNew) renderChatMessages(chatContainer);
+        if (data.success && Array.isArray(data.messages)) {
+            // Зберігаємо повний синхронізований масив з сервера
+            localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(data.messages));
+            renderChatMessages(chatContainer);
         }
     } catch (e) {
-        // Сервер поки не підтримує історію — ігноруємо помилку
+        console.warn('Помилка синхронізації чату:', e);
     }
 }
 
