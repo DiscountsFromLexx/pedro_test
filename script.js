@@ -204,9 +204,7 @@ function openFeedbackModal() {
             
             <div style="background: #17212b; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(0,0,0,0.3);">
                 <div style="display: flex; align-items: center; gap: 12px;">
-                    <div style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #0088cc, #34aadf); display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: bold; color: #fff; box-shadow: 0 2px 6px rgba(0,136,204,0.4);">
-                        🤖
-                    </div>
+                    <img src="https://raw.githubusercontent.com/DiscountsFromAli/X-CUBOT/main/images/pedro.jpeg" alt="Pedro" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover; box-shadow: 0 2px 6px rgba(0,0,0,0.3); flex-shrink: 0; display: block;">
                     <div>
                         <div style="font-weight: 600; font-size: 15px; color: #f5f5f5;">Підтримка Педро</div>
                         <div style="font-size: 12px; color: #00ff88; display: flex; align-items: center; gap: 4px;">
