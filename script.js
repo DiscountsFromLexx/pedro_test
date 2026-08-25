@@ -141,27 +141,47 @@ function renderChatMessages(container) {
 
 // Запит на сервер (тихий режим, без спаму в консоль при 404)
 async function fetchServerReplies(chatContainer) {
+    if (!chatContainer) return;
     try {
         const response = await fetch(`https://lexxexpress.click/pedro/chat/history?uuid=${userUUID}`);
         if (!response.ok) return;
         const data = await response.json();
         
         if (data.success && Array.isArray(data.messages)) {
-            // Зберігаємо повний синхронізований масив з сервера
-            localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(data.messages));
-            renderChatMessages(chatContainer);
+            const currentSaved = localStorage.getItem(CHAT_STORAGE_KEY);
+            const incoming = JSON.stringify(data.messages);
+            
+            // Якщо на сервері з'явилися нові відповіді — оновлюємо локально та перемальовуємо
+            if (currentSaved !== incoming) {
+                localStorage.setItem(CHAT_STORAGE_KEY, incoming);
+                renderChatMessages(chatContainer);
+            }
         }
     } catch (e) {
-        console.warn('Помилка синхронізації чату:', e);
+        // При помилці мережі не перериваємо роботу
     }
 }
 
+// Змінна для збереження таймера опитування
+let chatPollInterval = null;
+
 function openFeedbackModal() {
     let modal = document.getElementById('pedroFeedbackModal');
+    
     if (modal) {
         modal.style.display = 'flex';
         const chatBox = modal.querySelector('#chatMessagesContainer');
         renderChatMessages(chatBox);
+        fetchServerReplies(chatBox);
+        
+        // Запускаємо опитування при повторному відкритті вікна
+        if (!chatPollInterval) {
+            chatPollInterval = setInterval(() => {
+                if (modal.style.display !== 'none') {
+                    fetchServerReplies(chatBox);
+                }
+            }, 3000); // Перевірка кожні 3 секунди
+        }
         return;
     }
 
@@ -221,11 +241,27 @@ function openFeedbackModal() {
     document.body.appendChild(modal);
 
     const chatBox = modal.querySelector('#chatMessagesContainer');
-    const closeModal = () => { modal.style.display = 'none'; };
+    const closeModal = () => { 
+        modal.style.display = 'none'; 
+        if (chatPollInterval) {
+            clearInterval(chatPollInterval);
+            chatPollInterval = null;
+        }
+    };
     modal.querySelector('#closeFeedbackModal').onclick = closeModal;
     modal.onclick = (e) => { if (e.target === modal) closeModal(); };
 
     renderChatMessages(chatBox);
+    fetchServerReplies(chatBox);
+
+    // Фонове оновлення кожні 3 секунди
+    if (!chatPollInterval) {
+        chatPollInterval = setInterval(() => {
+            if (modal.style.display !== 'none') {
+                fetchServerReplies(chatBox);
+            }
+        }, 3000);
+    }
 
     const handleSend = async () => {
         const textInput = modal.querySelector('#feedbackMessage');
@@ -234,6 +270,10 @@ function openFeedbackModal() {
         const sendBtn = modal.querySelector('#sendFeedbackBtn');
 
         if (!text) return;
+
+        saveLocalMessage('user', text);
+        renderChatMessages(chatBox);
+        textInput.value = '';
 
         let contact = '';
         if (isTelegramMiniApp) {
@@ -263,31 +303,15 @@ function openFeedbackModal() {
         };
 
         try {
-            const response = await fetch('https://lexxexpress.click/pedro/feedback', {
+            await fetch('https://lexxexpress.click/pedro/feedback', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
-
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}`);
-            }
-
-            const data = await response.json();
-            if (data.success) {
-                saveLocalMessage('user', text);
-                renderChatMessages(chatBox);
-                textInput.value = '';
-                if (status) status.textContent = '';
-            } else {
-                throw new Error(data.error || 'Помилка');
-            }
+            // Одразу синхронізуємо чат після відправки
+            setTimeout(() => fetchServerReplies(chatBox), 500);
         } catch (err) {
             console.error('Feedback send error:', err);
-            if (status) {
-                status.style.color = '#ff5555';
-                status.textContent = '❌ Помилка з’єднання (перевірте бекенд)';
-            }
         } finally {
             sendBtn.disabled = false;
             sendBtn.style.opacity = '1';
